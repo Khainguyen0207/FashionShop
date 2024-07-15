@@ -1,0 +1,110 @@
+.overview .tool-bar {
+    position: relative;
+    display: block;
+    height: 15vh;
+}
+
+.tool-bar .function a {
+    display: block;
+    padding: 12px 24px;
+    background-color: chartreuse;
+    border-radius: 10px;
+    float: right;
+    transition: 0.7s;
+}
+
+.tool-bar .function a:hover {
+    display: block;
+    padding: 12px 24px;
+    background-color: rgba(128, 255, 0, 0.278);
+    border-radius: 10px;
+    float: right;
+    transition: 0.7s;
+}
+
+.overview .list-categorys {
+    display: block;
+}
+
+.overview .list-categorys li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.list-categorys .list-fashion {
+    display: block;
+    background-color: lightcyan;
+    padding: 10px 20px;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+}
+
+.list-fashion .nav {
+    position: relative;
+    display: flex;
+    background-color: #FFD0D0;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 0 20px;
+    margin: 10px 0;
+}
+
+
+.list-fashion .sub-menu .icon-arrow {
+    position: relative;
+    transition: 0.5s;
+}
+
+.list-fashion .sub-menu:hover .icon-arrow {
+    transform: rotate(90deg);
+    transition: 0.5s;
+}
+
+
+.nav .icon-edit {
+    position: relative;
+    transition: 0.5s;
+}
+
+.nav .icon-edit:hover {
+    position: relative;
+    color: rgba(0, 0, 0, 0.311);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.nav .list-small {
+    display: none;
+}
+
+.nav .list-small a {
+    position: relative;
+    display: block;
+    z-index: 2;
+    background-color: red;
+    border-radius: 10px;
+    padding: 10px;
+    transition: 0.5s;
+    text-align: center;
+}
+
+.nav .sub-menu .list-small a:hover {
+   background-color: rgb(122, 122, 122);
+   transition: 0.5s;
+}
+
+.nav .list-small  {
+    display: block; /* or 'display: flex', depending on your layout */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: visibility 0s 0s ease-out, max-height 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+.nav li:hover .list-small {
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* giá trị này nên lớn hơn chiều cao tối đa mà phần tử có thể có */
+    transition: visibility 0s 0s ease-out, max-height 0.8s ease-out, opacity 0.3s ease-out;
+}

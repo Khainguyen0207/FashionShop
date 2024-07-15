@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.table-form {
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e8e8e8;
+    margin: 10px;
+}
+
+table, th, td {
+    position: relative;
+    border-collapse: collapse;
+    font-size: 20px;
+    width: 100%;
+}
+
+td, th {
+    width: max-content;
+    padding: 10px;
+    text-align: center;
+}
+
+.head {
+    background-color: #c3c3c3;
+}
+
+.table-info {
+    width: calc(90% / 4);
+}
+
+.table-info input {
+    width: 20px;
+    height: 20px;
+}
+
+.table-info tbody td a {
+    display: inline-block;
+    text-decoration: none; 
+    padding: 6px 12px; 
+    border: 1px solid rgb(255, 2, 40);
+    border-radius: 10px;
+    color: black;
+}

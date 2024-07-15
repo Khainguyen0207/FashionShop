@@ -1,0 +1,247 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: lightgreen;
+    width: 100%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+#header {
+    position: relative;
+}
+
+#container {
+    position: fixed;
+    display: flex;
+    width: 100%;
+}
+
+.menu-bar .list-menu {
+    position: relative;
+    display: inline-block;
+    background-color: #FFFAE6;
+    margin: 5px 5px 5px 10px;
+    border-radius: 10px;
+    height: 99vh;
+}
+
+.menu-bar .review p {
+    position: relative;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: #FF0000;
+}
+
+.menu-bar .list-menu .menu {
+    position: relative;
+    display: block;
+    border-radius: 5px;
+}
+
+.menu-bar .list-menu img {
+    position: relative;
+    display: block;
+    margin: 30px;
+    width: 200px;
+}
+
+.menu-bar .list-menu .menu a {
+    position: relative;
+    display: flex;
+    padding: 10px 20px;
+    word-spacing: 2px;
+    justify-content: space-between;
+}
+
+.menu-bar .list-menu a span {
+    position: relative;
+    display: flex;
+    gap: 4px;
+    justify-content: space-between;
+}
+
+.menu-bar .list-menu a p {
+    position: relative;
+    display: block;
+    gap: 4px;
+    justify-content: space-between;
+    transition: 0.6s;
+}
+
+.list-menu li:hover > a {
+    background-color: #ACD793;
+    border-radius: 10px;
+    transition: 0.6s;
+}
+
+.list-menu a .icon-arrow {
+    position: relative;
+    display: block;
+    transition: 0.5s;
+}
+
+.list-menu li:hover a .icon-arrow {
+    position: relative;
+    display: block;
+    transform: rotate(90deg);
+}
+
+
+.list-menu .footer-menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 20px;
+}
+
+.list-menu .footer-menu a {
+    position: relative;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: chartreuse;
+    padding: 12px 24px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: 0.6s;
+}
+
+.list-menu .footer-menu a:hover {
+    background-color: lightgray;
+    transition: 0.6s;
+}
+
+.menu li .list-small {
+    position: relative;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: visibility 0.3s ease-out, max-height 0.6s ease-out, opacity 0.3s ease-out;
+}
+
+.menu li:hover .list-small {
+    position: relative;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    max-height: 200px;
+    overflow: visible;
+    transition: visibility 0.3s ease-out, max-height 0.6s ease-out, opacity 0.3s ease-out;
+}
+
+
+.menu .list-small li:hover a {
+    background-color: #FFFAE6;
+    border-left: 5px solid red;
+    padding-left: 10px;
+    transition: 0.6s;
+    border-radius: 0;
+}
+
+#container .overview {
+    position: relative;
+    display: block;
+    width: 100%;
+    background-color: lightgreen;
+    z-index: -1;
+    border-radius: 10px;
+    margin: 5px 5px 5px 10px;
+    height: 99vh;
+}
+
+.overview .tool-bar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tool-bar .interact_product .search_product {
+    position: relative;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    gap: 5px;
+    float: left;
+}
+
+.tool-bar .interact_product {
+    display: flex;
+    flex-direction: column;
+}
+
+.interact_product .search_product a {
+    background-color: chartreuse;
+    padding: 12px 24px; 
+    border-radius: 10px;
+}
+
+.interact_product .search_product a:hover {
+    background-color: lightgray; 
+    transition: 0.3s;
+}
+
+.interact_product .search_product input {
+    position: relative;
+    border: 1px solid rgb(208, 159, 159);
+    border-radius: 10px;
+    padding: 12px 24px; 
+}
+
+.interact_product .fill_product {
+    display: block;
+
+}
+
+.tool-bar .add_product {
+    position: relative;
+    display: flex;
+    float: right;
+    gap: 5px;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.add_product .add_product_single ,
+.add_product .add_product_file {
+    display: block;
+    padding: 12px 24px;
+}
+
+.add_product .add_product_single a,
+.add_product .add_product_file a {
+    background-color: chartreuse;
+    border-radius: 10px;
+    padding: 12px 24px;
+}
+
+.add_product .add_product_single a:hover,
+.add_product .add_product_file a:hover {
+    background-color: lightgray;
+    transition: 0.6s;
+}
+
+.overview .tool-bar {
+    background-color: #87bb85;
+    border-radius: 10px;
+    padding: 10px 0px;
+}
+
+
+
+
+
+
