@@ -16,6 +16,8 @@
     </div> 
     @include('layouts.table')
 
-    {{-- Chân trang  --}}
+    <div class="pages">
+        
+    </div>
 </div>
 @endsection
