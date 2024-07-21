@@ -15,8 +15,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $users = DB::table('users')->select('name','id','email', 'role')->get();
-        $table = FunctionController::table('customer');
+        $users = DB::table('users')->select('name','id','email', 'role')->take(15)->get(); //Lấy giá trị account
+        $table = FunctionController::table('customer'); //Setting table
         $render = [$table, $users];
         return view('admin.customer', RenderController::render('customer', $render));
     }
@@ -42,7 +42,17 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+    }
+
+    public function page(string $numberPage)
+    {
+        $maxPage = 15;
+        $number = $maxPage * $numberPage;
+        $users = DB::table('users')->select('name','id','email', 'role')->skip($number)->take($maxPage)->get();
+        $table = FunctionController::table('customer'); //Setting table
+        $render = [$table, $users];
+        return view('admin.customer', RenderController::render('customer', $render));
     }
 
     /**

@@ -5,10 +5,8 @@
 }
 
 .table-form {
-    display: block;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e8e8e8;
-    margin: 10px;
+    background-color: #ffffff;
 }
 
 table, th, td {
@@ -18,14 +16,55 @@ table, th, td {
     width: 100%;
 }
 
+
 td, th {
     width: max-content;
     padding: 10px;
     text-align: center;
 }
 
+.body {
+    background-color: #fffae6;
+    border-bottom: 1px solid lightgray;
+}
+
+.body:hover {
+    background-color: rgb(245 239 213);
+    color: black;
+}
+
+.body .btn {
+    display: flex;
+    gap: 15px;
+}
+
+.body input {
+    width: 20px;
+    height: 20px;
+}
+
+.body .btn-edit {
+    padding: 6px 12px;
+    background-color: yellow;
+    border-radius: 10px;
+}
+
+.body .btn-del {
+    padding: 6px 12px;
+    background-color: red;
+    border-radius: 10px;
+} 
+
+.body .btn-edit:hover,
+.body .btn-del:hover {
+    background-color: lightgray;
+    transition: 0.3s;
+}
+
 .head {
-    background-color: #c3c3c3;
+    border-radius: 2px;
+    background-color: #70eb70;
+    color: white;
 }
 
 .table-info {
@@ -40,8 +79,32 @@ td, th {
 .table-info tbody td a {
     display: inline-block;
     text-decoration: none; 
-    padding: 6px 12px; 
+    padding: 6px 12px;
     border: 1px solid rgb(255, 2, 40);
     border-radius: 10px;
     color: black;
 }
+
+table {
+    display: block;
+    border: 2px solid #70eb70;
+    border-radius: 7px;
+}
+
+.pages {
+    display: block;
+    float: right;
+    margin: 20px 0px;
+}
+
+.pages .num-page {
+    padding: 6px 12px;
+}
+
+.pages .num-page:focus,
+.pages .num-page:hover {
+    background-color: lightgray;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+

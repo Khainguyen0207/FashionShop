@@ -58,7 +58,7 @@
                         </li>
                     </div>
                     <div class="footer-slider">
-                        <p><a target="_blank" href="https://www.facebook.com/khainguyen0207">KhaiNguyen0207</a></p>
+                        <p><a target="_blank" href="https://www.facebook.com/ntkhai2005">KhaiNguyen0207</a></p>
                     </div>
                 </ul>
             </div>

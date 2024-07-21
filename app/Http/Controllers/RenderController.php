@@ -19,14 +19,14 @@ class RenderController extends Controller
                 if (count($home) == count($data)) {
                     return array_combine($home, $data);
                 } else {
-                    return self::error_render(31);
+                    return self::error_render(22);
                 }
-            case 'customer': 
-                $customers = ['header', 'body'];
-                if (count($customers) == count($data)) {
-                    return array_combine($customers, $data);
+            case 'customer':
+                $customers = ['header', 'body'];//Set key = $customers 
+                if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($customers, $data); 
                 } else {
-                    return self::error_render(31);
+                    return self::error_render(29);
                 }
             case 'customer': 
         }
