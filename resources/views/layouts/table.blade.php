@@ -30,13 +30,13 @@
                                 <td class="table-info">user</td>
                             @endif
                         @else
-                            <td class="table-info">{{ $account}}</td>
+                            <td class="table-info">{{ $account }}</td>
                         @endif
                     @endforeach
                     <td>
                         <div class="btn">
                             <a class="btn-edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn-del" href=""><i class="fa-solid fa-trash-can"></i></a>
+                            <a class="btn-del" href="/admin/customer/del"><i class="fa-solid fa-trash-can"></i></a>
                         </div>
                     </td>
                 </tr>
@@ -46,8 +46,8 @@
 </div>
 <div class="pages">
     <a class="num-page" href=""><i class="fa-solid fa-arrow-left"></i></a>
-    <a class="num-page" style="background-color: #00d6eb; border-radius: 5px; color: white;"  href="/admin/customer/0">0</a>
-    <a class="num-page" id="1" href="/admin/customer/1" onclick="click('1')">1</a>
-    <a class="num-page" href="/admin/customer/2">2</a>
+    <a class="num-page" style="background-color: #00d6eb; border-radius: 5px; color: white;"  href="/admin/customer/page/0">0</a>
+    <a class="num-page" id="1" href="/admin/customer/page/1" onclick="click('1')">1</a>
+    <a class="num-page" href="/admin/customer/page/2">2</a>
     <a class="num-page" href=""><i class="fa-solid fa-arrow-right"></i></a>
 </div>

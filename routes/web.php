@@ -39,7 +39,8 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
-    Route::get('/customer/{page}', [CustomerController::class, 'page'])->name('admin.customer.page');
+    Route::get('/customer/page/{page}', [CustomerController::class, 'page'])->name('admin.customer.page');
+    // Route::delete('/customer/del', [CustomerController::class, 'destroy'])->name('admin.customer.del');
 
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });
