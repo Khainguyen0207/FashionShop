@@ -17,7 +17,7 @@ class CustomerController extends Controller
    
     public function index()
     {
-        $maxNumberPage = DB::table('users')->get() / MAX_PAGE;
+        $maxNumberPage = intdiv(count(DB::table('users')->get()), MAX_PAGE);
         $users = DB::table('users')->select('name','id','email', 'role')->take(15)->get(); //Lấy giá trị account
         $table = FunctionController::table('customer'); //Setting table
         $render = [$table, $users, 'number' => 0, 'maxPage' => $maxNumberPage];
