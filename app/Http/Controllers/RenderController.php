@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class RenderController extends Controller
 {
 
-    private function error_render($line_num) {
+    private static function error_render($line_num) {
         throw new Exception('Thiếu giá trị render tại line: ' . $line_num); 
     }
 
@@ -22,7 +22,7 @@ class RenderController extends Controller
                     return self::error_render(22);
                 }
             case 'customer':
-                $customers = ['header', 'body'];//Set key = $customers 
+                $customers = ['header', 'body', 'number', 'maxPage'];//Set key = $customers 
                 if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
                     return array_combine($customers, $data); 
                 } else {
