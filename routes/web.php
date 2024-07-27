@@ -45,7 +45,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     
     //categories
     Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
-    Route::get('/categories/{name_category}', [CategoriesController::class, 'view'])->name('categories.category.view');
+    Route::get('/categories-{id_category}', [CategoriesController::class, 'view'])->name('categories.category.view');
     // Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
 
     //Logout

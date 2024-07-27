@@ -20,10 +20,11 @@
         <div class="list-categorys">
             <div class="list-fashion">
                 <h3>Danh mục thời trang</h3>
-                <ul class="girl-fashion nav">
-                    <li>Thời trang cho nữ <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i> </span></li>
+                @foreach ($categories as $category)
+                <ul class="nav">
+                    <li>{{ $category->name_category }} <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i> </span></li>
                     <li class="sub-menu">
-                        <a href="/admin/categories/women">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
+                        <a href="/admin/categories-{{$category->id}}">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
                         <ul class="list-small">
                             <li><a href="">Quần</a></li>
                             <li><a href="">Áo</a></li>
@@ -31,26 +32,7 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="man-fashion nav">
-                    <li>Thời trang cho nam <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i> </span></li>
-                    <li class="sub-menu">
-                        <a href="/admin/categories/men">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
-                        <ul class="list-small">
-                            <li><a href="">Quần</a></li>
-                            <li><a href="">Áo</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="child-fashion nav">
-                    <li>Thời trang cho bé <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i> </span></li>
-                    <li class="sub-menu">
-                        <a href="/admin/categories/children">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
-                        <ul class="list-small">
-                            <li><a href="">Quần</a></li>
-                            <li><a href="">Áo</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                @endforeach
             </div>
         </div>
         <div class="footer">
