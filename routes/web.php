@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\CategoriesController;
 
 Route::get('/', function() {
     if (Auth::check()) {
@@ -35,22 +36,28 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 });
 
 Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
-
+    // Home
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
-
+    //customer
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
     Route::get('/customer/page-{page}', [CustomerController::class, 'page'])->name('admin.customer.page');
     Route::delete('/customer/del-{id}', [CustomerController::class, 'destroy'])->name('admin.customer.del');
+    
+    //categories
+    Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
+    Route::get('/categories/{name_category}', [CategoriesController::class, 'view'])->name('categories.category.view');
+    // Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
 
+    //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });
 
 Route::prefix('/user')->middleware('auth')->group(function () {
 
     Route::get('/', [UserController::class, 'home'])->name('user.home');
-
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
+    //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 
 });

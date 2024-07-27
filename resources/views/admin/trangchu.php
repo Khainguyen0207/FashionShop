@@ -1,21 +1,3 @@
-<?php
-    use KhaiNguyen\Controllers\AuthController;
-    use KhaiNguyen\Controllers\CartController;
-
-    $logout = new AuthController();
-    $CartController = new CartController();
-
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == "logout") {
-            $logout->logout();
-        }
-    }
-
-    if (isset($_GET['add-fruit'])) {
-        $CartController->insertProductForCart();
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
