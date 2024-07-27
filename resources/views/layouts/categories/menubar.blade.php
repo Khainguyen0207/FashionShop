@@ -1,7 +1,7 @@
 <div class="menu-bar">
     <ul class="list-menu">
         <div class="review">
-            <p>Admin Fashion</p>
+            <p>Thời trang cho ...</p>
             <a href="#logo"><img src="{{ asset('assets/admin/img/logo.png') }}" alt="logo"></a>
         </div>
 
