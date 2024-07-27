@@ -1,40 +1,4 @@
-Delete account: [{"id":12,"name":"Admin0","email":"tkhai@admin.n0","email_verified_at":"2024-07-14 08:23:00","password":"$2y$12$B0L2f5OK8y.DuDQs\/66B7eDmclmghU\/KpbqUzUHXBREZfVIF.jz7G","remember_token":"wo5U7wKKTk","created_at":"2024-07-14 08:23:00","updated_at":"2024-07-14 08:23:00","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:13
-Delete account: [{"id":13,"name":"Admin1","email":"tkhai@admin.n1","email_verified_at":"2024-07-14 08:23:00","password":"$2y$12$vNZjibZvVeiK\/ssycAIMLODIpuI5OVrOlXiCRMdsM5srmU5nfXNA6","remember_token":"k7Qwa9wQpX","created_at":"2024-07-14 08:23:00","updated_at":"2024-07-14 08:23:00","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:43
-Delete account: [{"id":14,"name":"Admin2","email":"tkhai@admin.n2","email_verified_at":"2024-07-14 08:23:00","password":"$2y$12$VmAoUnXOX7XWFCpH78RHveAdG1MSGjt6Fn\/bU3F6\/CuKt4VzJbBk6","remember_token":"OktQcUH0Ph","created_at":"2024-07-14 08:23:00","updated_at":"2024-07-14 08:23:00","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:44
-Delete account: [{"id":15,"name":"Admin3","email":"tkhai@admin.n3","email_verified_at":"2024-07-14 08:23:00","password":"$2y$12$e07FaWvF\/0Xqo6KTSQcLkuAzwTsa\/USd\/ftAWcsGMDNgC2QT5Qldi","remember_token":"g09yJefo7K","created_at":"2024-07-14 08:23:01","updated_at":"2024-07-14 08:23:01","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:45
-Delete account: [{"id":16,"name":"Admin4","email":"tkhai@admin.n4","email_verified_at":"2024-07-14 08:23:01","password":"$2y$12$NJm6kNtdnawSGt1PVbe\/AOpkn0Lwcjvi8F72QB6Ke9Ld7NMbrjqX6","remember_token":"eOELjIg66x","created_at":"2024-07-14 08:23:01","updated_at":"2024-07-14 08:23:01","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:47
-Delete account: [{"id":17,"name":"Admin5","email":"tkhai@admin.n5","email_verified_at":"2024-07-14 08:23:01","password":"$2y$12$GBHo.auvzxIkXwsmYHZdEecmJL7RVEZhh1RPLH\/\/rndyPCRWY1j2e","remember_token":"YomZC2q2il","created_at":"2024-07-14 08:23:01","updated_at":"2024-07-14 08:23:01","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:49
-Delete account: [{"id":18,"name":"Admin6","email":"tkhai@admin.n6","email_verified_at":"2024-07-14 08:23:01","password":"$2y$12$n0UQvZJkkM7BBFk\/Ip5bAOa\/qbT3bcKvBN0AhclxHQP7g3lueVTHa","remember_token":"rQub2DWyRN","created_at":"2024-07-14 08:23:01","updated_at":"2024-07-14 08:23:01","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:00:51
-Delete account: [{"id":19,"name":"Admin7","email":"tkhai@admin.n7","email_verified_at":"2024-07-14 08:23:01","password":"$2y$12$l2k7fsiBLysNtZo0kTdUgexZa7gpxLxdaS2tPKzlqj0YWYVSPxzNy","remember_token":"hTSX9yqmjk","created_at":"2024-07-14 08:23:02","updated_at":"2024-07-14 08:23:02","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:01:11
-Delete account: [{"id":211,"name":"Admin199","email":"tkhai@admin.n199","email_verified_at":"2024-07-14 08:23:44","password":"$2y$12$f.NBxN8Vwtohy3S3Y9ywhOuRiugmDXBTk3Rn\/sNYy4hAkSnVNOlK6","remember_token":"Uww4i0AnYn","created_at":"2024-07-14 08:23:44","updated_at":"2024-07-14 08:23:44","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:01:17
-Delete account: [{"id":80,"name":"Admin68","email":"tkhai@admin.n68","email_verified_at":"2024-07-14 08:23:15","password":"$2y$12$c1lREQPXM5.kWnaueThVHuy1e5AzUoru2NV6vxC8pDpgLRMQqJ3oq","remember_token":"5TCrShOlcP","created_at":"2024-07-14 08:23:15","updated_at":"2024-07-14 08:23:15","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:14
-Delete account: [{"id":28,"name":"Admin16","email":"tkhai@admin.n16","email_verified_at":"2024-07-14 08:23:03","password":"$2y$12$UqyY3hWhsHS6e03w\/40iZe0YMt4xoLoduJWhspQ9cs2BRL\/h6fb02","remember_token":"pUdYbx6IHU","created_at":"2024-07-14 08:23:03","updated_at":"2024-07-14 08:23:03","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:19
-Delete account: [{"id":20,"name":"Admin8","email":"tkhai@admin.n8","email_verified_at":"2024-07-14 08:23:02","password":"$2y$12$21EzhxftfkNK83HJCUOHeOjlfMd0Rw0H6a8iU.sXJl9wciHXXJPDG","remember_token":"loyjIhliI7","created_at":"2024-07-14 08:23:02","updated_at":"2024-07-14 08:23:02","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:33
-Delete account: [{"id":22,"name":"Admin10","email":"tkhai@admin.n10","email_verified_at":"2024-07-14 08:23:02","password":"$2y$12$fKIpURL9dx3fuRi1d9Wg3.W58xWErTNzfSUfykl5ISEn2sjog\/jdW","remember_token":"slbOJfHIgM","created_at":"2024-07-14 08:23:02","updated_at":"2024-07-14 08:23:02","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:34
-Delete account: [{"id":24,"name":"Admin12","email":"tkhai@admin.n12","email_verified_at":"2024-07-14 08:23:02","password":"$2y$12$\/iyb7kFzhq9VaWgKzEgpQOhJIWYyl4j0JO9OTv4GKIvFpoG8U9Juy","remember_token":"HCJpa5Ozjp","created_at":"2024-07-14 08:23:03","updated_at":"2024-07-14 08:23:03","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:36
-Delete account: [{"id":26,"name":"Admin14","email":"tkhai@admin.n14","email_verified_at":"2024-07-14 08:23:03","password":"$2y$12$mWk0TaLzbIbB2eONg2S2suMQJL0WNiZroa9ZQvpPxNhwslu6KVy.C","remember_token":"gOSejXEhBg","created_at":"2024-07-14 08:23:03","updated_at":"2024-07-14 08:23:03","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:37
-Delete account: [{"id":25,"name":"Admin13","email":"tkhai@admin.n13","email_verified_at":"2024-07-14 08:23:03","password":"$2y$12$.Yy3CEQ3lzf6mRcOEC39y.D2FUAnYhYGZyD6VZ98985vDkXvDhX\/K","remember_token":"6ecJvudaZL","created_at":"2024-07-14 08:23:03","updated_at":"2024-07-14 08:23:03","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:38
-Delete account: [{"id":27,"name":"Admin15","email":"tkhai@admin.n15","email_verified_at":"2024-07-14 08:23:03","password":"$2y$12$W5\/XzZVrwZcBMU0Vi2cAZOIn2duMZViJOlJEA.leHTRx0B0McmPiO","remember_token":"p2hJlcd36F","created_at":"2024-07-14 08:23:03","updated_at":"2024-07-14 08:23:03","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:11:40
-Delete account: [{"id":21,"name":"Admin9","email":"tkhai@admin.n9","email_verified_at":"2024-07-14 08:23:02","password":"$2y$12$eS.2TEaPAFbES\/uJDygQeOsCZkCi3hkiNws\/GhpQBbUVXa4flfiBi","remember_token":"AxfDvpe7nD","created_at":"2024-07-14 08:23:02","updated_at":"2024-07-14 08:23:02","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:48:22
-Delete account: [{"id":23,"name":"Admin11","email":"tkhai@admin.n11","email_verified_at":"2024-07-14 08:23:02","password":"$2y$12$8sud66HPnFkde10J19bTaO57e.5Qmgi7gzsUEQnvBfdkPmlnt\/aSa","remember_token":"8QV1HrM05y","created_at":"2024-07-14 08:23:02","updated_at":"2024-07-14 08:23:02","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:49:28
-Delete account: [{"id":29,"name":"Admin17","email":"tkhai@admin.n17","email_verified_at":"2024-07-14 08:23:03","password":"$2y$12$kJMflXkPVtZl2lVU9oMntO\/2j.bamJu7\/06pNlxJ.D4tgWP9kc.nW","remember_token":"UL2lgaGztu","created_at":"2024-07-14 08:23:04","updated_at":"2024-07-14 08:23:04","role":0}] 
-In table 'users' =>  Time 2024-07-26 17:49:33
+Delete account: [{"id":31,"name":"Admin19","email":"tkhai@admin.n19","email_verified_at":"2024-07-14 08:23:04","password":"$2y$12$LmlmxOt6EIZgVk186WVcweAA8N8xURGWprlf4sTe6VV9d2AVAjYwy","remember_token":"acZv93n3pz","created_at":"2024-07-14 08:23:04","updated_at":"2024-07-14 08:23:04","role":0}] 
+In table 'users' =>  Time 2024-07-27 22:46:38
+Delete account: [{"id":32,"name":"Admin20","email":"tkhai@admin.n20","email_verified_at":"2024-07-14 08:23:04","password":"$2y$12$19OwUmpPa2w0UGxLWILlWe4MD1oK1d9KxjE1PebkNrjJJKvfuf7v6","remember_token":"KXnw0f2fhy","created_at":"2024-07-14 08:23:04","updated_at":"2024-07-14 08:23:04","role":0}] 
+In table 'users' =>  Time 2024-07-27 22:46:41

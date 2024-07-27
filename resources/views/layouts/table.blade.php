@@ -57,7 +57,7 @@
         </thead>
         <tbody>
             @foreach ($body as $accounts)
-                <tr class="body" onclick="selectCheckBox(this)">
+                <tr class="body">
                     <td><input type="checkbox"></td>
                     @foreach ($accounts as $key => $account)
                         @if (($account == 1 || $account == 0) && $key == 'role')
@@ -72,8 +72,8 @@
                     @endforeach
                     <td>
                         <div class="btn">
-                            <a class="btn-edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn-del" href="#" onclick="deleteCustomer(event, '/admin/customer/del-{{ $accounts->id }}')">
+                            <a class="btn-edit" title="Edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn-del" title="Delete" href="#" onclick="deleteCustomer(event, '/admin/customer/del-{{ $accounts->id }}')">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </div>
