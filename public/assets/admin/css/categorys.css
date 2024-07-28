@@ -108,3 +108,101 @@
     max-height: 500px; /* giá trị này nên lớn hơn chiều cao tối đa mà phần tử có thể có */
     transition: visibility 0s 0s ease-out, max-height 0.8s ease-out, opacity 0.3s ease-out;
 }
+
+#addCategory {
+    position: absolute;
+    display: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: #F8EDED;
+    height: auto;
+    width: 600px;
+    border-radius: 10px;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    transition: 2s;
+    padding: 20px;
+    z-index: 10;
+}
+
+#addCategory .header {
+    position: relative;
+    text-align: center;
+    padding-bottom: 20px ;
+}
+
+#addCategory .container .input {
+    position: relative;
+    font-size: 16px;
+    padding: 6px 12px;
+}
+
+label {
+    position: relative;
+    display: inline-block;
+    background-color: rgb(213, 213, 213);
+    border-radius: 4px;
+    margin: 10px 0px;
+    padding: 10px;
+    cursor: pointer;
+    /* Style as you please, it will become the visible UI component. */
+}
+ 
+#upload-photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+#addCategory .footer {
+    position: relative;
+    display: block;
+    padding: 10px 0;
+}
+
+#addCategory .footer .btn-add {
+    position: relative;
+    display: block;
+    float: right;
+    background-color: lightgreen;
+    border: 1px solid rgb(27, 180, 48);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#addCategory .footer .btn-add:hover {
+    background-color:lightslategray;
+    border: 1px solid rgb(11, 65, 18);
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.my-animation {
+    position: fixed;
+    opacity: 1;
+    display: inline-block;
+    animation-name: my-keyframes;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes my-keyframes {
+    0% {
+        opacity: 0;
+        top: -100px;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    
+    100% {
+        opacity: 1;
+    }
+}
+

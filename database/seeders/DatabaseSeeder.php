@@ -20,6 +20,6 @@ class DatabaseSeeder extends Seeder
             'password' => '123456',
             'role' => 1
         ];
-        User::factory()->create($data);
+        // User::factory()->create($data);
     }
 }

@@ -16,6 +16,7 @@ class CategorySeeder extends Seeder
         $data = [
             'name_category' => 'Thời trang cho nam',
         ];
+        
         Category::factory()->create($data);
     }
 }

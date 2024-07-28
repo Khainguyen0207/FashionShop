@@ -21,7 +21,6 @@
     </div> 
     @include('layouts.table')
     <div class="footer">
-        
     </div>
 </div>
 @endsection
