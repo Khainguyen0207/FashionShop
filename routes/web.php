@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
@@ -46,8 +47,13 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //categories
     Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
-    Route::get('/categories-{id_category}', [CategoriesController::class, 'view'])->name('categories.category.view');
-
+    
+    Route::prefix('/categories-{id_category}')->group(function() {
+        Route::get('/', [CategoriesController::class, 'view'])->name('categories.category.view');
+        Route::get('/products', [ProductController::class, 'index'])->name('categories.category.products');
+        Route::get('/charts', [CategoriesController::class, 'view'])->name('categories.category.charts');
+        Route::get('/promotion', [CategoriesController::class, 'view'])->name('categories.category.promotion');
+    });
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });

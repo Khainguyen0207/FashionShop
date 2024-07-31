@@ -112,7 +112,7 @@
 #addCategory {
     position: absolute;
     display: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #F8EDED;
     height: auto;
     width: 600px;
@@ -123,6 +123,7 @@
     transition: 2s;
     padding: 20px;
     z-index: 10;
+    box-shadow: 5px 5px lightgray;
 }
 
 #addCategory .header {
@@ -165,7 +166,7 @@ label {
     display: block;
     float: right;
     background-color: lightgreen;
-    border: 1px solid rgb(27, 180, 48);
+    border: none;
     border-radius: 5px;
     padding: 10px;
 }
@@ -182,7 +183,7 @@ label {
     opacity: 1;
     display: inline-block;
     animation-name: my-keyframes;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-in-out;
     animation-delay: 0s;
     animation-iteration-count: 1;
@@ -197,7 +198,7 @@ label {
     }
 
     50% {
-        opacity: 0.5;
+        opacity: 1;
     }
 
     

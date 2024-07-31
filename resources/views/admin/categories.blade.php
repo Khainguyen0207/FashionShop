@@ -17,7 +17,7 @@
                         <p>Tên danh mục</p>
                         <input type="text" name="name_category" class="input" spellcheck="false" >
                         <p>Mô tả</p>
-                        <textarea style="padding: 5px ;width: 100%; height: 20vh; font-size: 16px;" spellcheck="false" name="description"></textarea>
+                        <textarea maxlength="5000" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;" spellcheck="false"  name="description" ></textarea>
                     </div>
                     <div class="image-product">
                         <p>Hình ảnh sản phẩm</p>
@@ -84,9 +84,9 @@
                     <li class="sub-menu">
                         <a href="/admin/categories-{{$category->id}}">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
                         <ul class="list-small">
-                            <li><a href="">Quần</a></li>
-                            <li><a href="">Áo</a></li>
-                            <li><a href="">Giày</a></li>
+                            <li><a href="/admin/categories-{{$category->id}}">Sản phẩm</a></li>
+                            {{-- <li><a href="">Áo</a></li>
+                            <li><a href="">Giày</a></li> --}}
                         </ul>
                     </li>
                 </ul>

@@ -11,7 +11,6 @@ class CategoriesController extends Controller
 {
     public function home() {
         $data = DB::table('categories')->select('id', 'name_category')->get();
-
         $render = [
             'title' => '',
             'categories' => $data->toArray(),
@@ -20,7 +19,10 @@ class CategoriesController extends Controller
     }
 
     public function view($id_category) {
-        return view('admin.categories.products');
+        $data = DB::table('categories')->select('name_category', 'id')->where('id', $id_category)->get();
+        $nameCategory = $data->first()->name_category;
+        $id = $data->first()->id;
+        return view('admin.categories.products', ['name_category' => $nameCategory, 'id' => $id ]);
     }
 
     public function store(Request $request) {

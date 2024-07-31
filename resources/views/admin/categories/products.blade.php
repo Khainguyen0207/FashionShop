@@ -23,13 +23,10 @@
                         <a href="">Nhập sản phẩm</a>
                     </div>
                 </div>
-                
             </div>
 
             <div class="list-categorys">
-                <table>
-                    
-                </table>
+                @include('layouts.table')
             </div>
         </section>
     </div>

@@ -28,6 +28,13 @@ class RenderController extends Controller
                 } else {
                     return self::error_render(29);
                 }
+            case 'product':
+                $customers = ['header', 'body', 'number', 'maxPage'];//Set key = $customers 
+                if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($customers, $data); 
+                } else {
+                    return self::error_render(29);
+                }
             case 'customer': 
         }
     }
