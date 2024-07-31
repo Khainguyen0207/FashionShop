@@ -157,18 +157,19 @@ a {
     position: relative;
     display: block;
     width: 100%;
-    background-color: lightgreen;
+    background-color: #FFFAE6;
     z-index: -1;
     border-radius: 10px;
     margin: 5px 5px 5px 10px;
     height: 99vh;
+    padding: 20px;
 }
 
 .overview .tool-bar {
     position: relative;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
 .tool-bar .interact_product .search_product {
@@ -181,6 +182,7 @@ a {
 }
 
 .tool-bar .interact_product {
+    position: relative;
     display: flex;
     flex-direction: column;
 }
@@ -219,8 +221,9 @@ a {
 
 .add_product .add_product_single ,
 .add_product .add_product_file {
-    display: block;
-    padding: 12px 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .add_product .add_product_single a,
@@ -236,11 +239,7 @@ a {
     transition: 0.6s;
 }
 
-.overview .tool-bar {
-    background-color: #87bb85;
-    border-radius: 10px;
-    padding: 10px 0px;
-}
+
 
 
 

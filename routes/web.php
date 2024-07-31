@@ -49,8 +49,8 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
     
     Route::prefix('/categories-{id_category}')->group(function() {
-        Route::get('/', [CategoriesController::class, 'view'])->name('categories.category.view');
-        Route::get('/products', [ProductController::class, 'index'])->name('categories.category.products');
+        Route::get('/', [ProductController::class, 'view'])->name('categories.category.view');
+        Route::get('/products', [ProductController::class, 'view'])->name('categories.category.products');
         Route::get('/charts', [CategoriesController::class, 'view'])->name('categories.category.charts');
         Route::get('/promotion', [CategoriesController::class, 'view'])->name('categories.category.promotion');
     });

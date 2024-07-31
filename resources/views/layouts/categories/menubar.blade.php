@@ -17,12 +17,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/admin/categories-{{$id}}/charts">
+                    <a href="/admin/categories-{{ $id }}/charts">
                         <span> <i class="fa-solid fa-chart-simple"></i> Thống kê đánh giá</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/categories-{{$id}}/promotion">
+                    <a href="/admin/categories-{{ $id }}/promotion">
                         <span><i class="fa-solid fa-ticket"></i> Chương trình khuyến mãi</span>
                     </a>
                 </li>
