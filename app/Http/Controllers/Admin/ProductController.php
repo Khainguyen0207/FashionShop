@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -19,6 +18,7 @@ class ProductController extends Controller
         return redirect(route('categories.home'));
     }
     public function index($id_category) {
+        $this->name_category = DB::table('categories')->where('id', '=', $id_category)->select('name_category')->get()->first()->name_category;
         $keyTable = [
             'product_name',
             'product_code',

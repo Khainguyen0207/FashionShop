@@ -7,7 +7,7 @@
 @section('overview')
     <div class="overview">
         <div id="addCategory" class="my-animation">
-            <form action="{{route('categories.store')}}" method="POST">
+            <form action="{{ route('categories.store') }}" method="POST">
                 @csrf
                 <div class="header">
                     <h2>Thêm danh mục</h2>
