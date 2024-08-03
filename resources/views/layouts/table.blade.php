@@ -46,51 +46,49 @@
             <tr class="head">
                 <th></th>
                 @foreach ($header as $item)
-                    @if ($item == null)
-                        {{ $item = 'Không xác định'}}
-                    @else
-                        <th class="table-info">{{ $item }}</th>
-                    @endif
+                    <th class="table-info">{{ $item }}</th>
                 @endforeach
                 <th>Thông tin</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($body as $accounts)
+            @foreach ($body as $item)
                 <tr class="body">
                     <td><input type="checkbox"></td>
-                    @foreach ($accounts as $key => $account)
-                        @if (($account == 1 || $account == 0) && $key == 'role')
-                            @if ($account == 1 )
-                                <td class="table-info">admin</td>
+                        @foreach ($key as $key_data)
+                            @if (isset($item[$key_data]))
+                                <td class="table-info">{{ $item[$key_data] }}</td>
                             @else
-                                <td class="table-info">user</td>
+                                <td class="table-info">Không xác định</td>
                             @endif
-                        @else
-                            <td class="table-info">{{ $account }}</td>
-                        @endif
-                    @endforeach
+                        @endforeach
                     <td>
                         <div class="btn">
                             <a class="btn-edit" title="Edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn-del" title="Delete" href="#" onclick="deleteCustomer(event, '/admin/customer/del-{{ $accounts->id }}')">
+                            <a class="btn-del" title="Delete" href="#" onclick="deleteCustomer(event, '/admin/customer/del-{{ $item['id'] }}')">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                         </div>
                     </td>
-                </tr>
+                </td>
             @endforeach
         </tbody>
     </table>
 </div>
 <div class="pages">
+    @php
+    $fullUrl = request()->url(); // Lấy URL đầy đủ
+    $parsedUrl = parse_url($fullUrl, PHP_URL_PATH); // Lấy phần đường dẫn từ URL
+    $baseUrl = preg_replace('/\/page-\d+$/', '', $parsedUrl); // Xóa phần `/page-1`
+    $baseFullUrl = url($baseUrl); // Tạo URL đầy đủ từ đường dẫn đã cắt
+    @endphp
     @if ($number != 0)
-        <a class="num-page" href="/admin/customer/page-0"><i class="fa-solid fa-arrow-left"></i></a>
-        <a class="num-page" href="/admin/customer/page-{{ $number -1 }}">{{ $number - 1}}</a>
+        <a class="num-page" href="{{  $baseFullUrl }}/page-0"><i class="fa-solid fa-arrow-left"></i></a>
+        <a class="num-page" href="{{  $baseFullUrl }}/page-{{ $number - 1 }}">{{ $number - 1}}</a>
     @endif
-    <a class="num-page" style="background-color: #00d6eb; border-radius: 5px; color: white;"  href="/admin/customer/page-{{ $number }}">{{ $number }}</a>
+    <a class="num-page" style="background-color: #00d6eb; border-radius: 5px; color: white;"  href="{{ $baseFullUrl}}/page-{{ $number }}">{{ $number }}</a>
     @if ($number != $maxPage)
-        <a class="num-page" href="/admin/customer/page-{{ $number + 1 }}">{{ $number + 1}}</a>
-        <a class="num-page"  onmouseover="window.status='your text';" href="/admin/customer/page-{{ $maxPage }}"><i class="fa-solid fa-arrow-right"></i></a>
+        <a class="num-page" href="{{  $baseFullUrl }}/page-{{ $number + 1 }}">{{ $number + 1}}</a>
+        <a class="num-page"  onmouseover="window.status='your text';" href="{{ $baseFullUrl}}/page-{{ $maxPage }}"><i class="fa-solid fa-arrow-right"></i></a>
     @endif
 </div>

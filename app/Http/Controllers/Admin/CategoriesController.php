@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,7 @@ class CategoriesController extends Controller
         return view('admin.categories.products', ['name_category' => $nameCategory, 'id' => $id ]);
     }
 
-    public function store(Request $request) {
+    public function store(Request $request) { //Request để ý bảo mật cao hơn
         $nameCategory = $request->input('name_category');
         $description = $request->input('description');
         if (isset($nameCategory)) {
@@ -34,9 +35,9 @@ class CategoriesController extends Controller
                 trim($description);
                 $data = [
                     'name_category' => $nameCategory, 
-                    'description' => $description, 
+                    'description' => $description,    
                 ];  
-                DB::table('categories')->insert($data);
+                Category::query()->create($data);
             } catch (\Throwable $th) {
                dd($th);
             }

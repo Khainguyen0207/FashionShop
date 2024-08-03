@@ -82,9 +82,9 @@
                 <ul class="nav">
                     <li>{{ $category->name_category }} <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i> </span></li>
                     <li class="sub-menu">
-                        <a href="/admin/categories-{{$category->id}}">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
+                        <a href="/admin/categories-{{$category->id}}/products">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
                         <ul class="list-small">
-                            <li><a href="/admin/categories-{{$category->id}}">Sản phẩm</a></li>
+                            <li><a href="/admin/categories-{{$category->id}}/products">Sản phẩm</a></li>
                             {{-- <li><a href="">Áo</a></li>
                             <li><a href="">Giày</a></li> --}}
                         </ul>

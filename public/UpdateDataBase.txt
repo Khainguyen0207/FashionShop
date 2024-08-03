@@ -1,4 +1,0 @@
-Delete account: [{"id":31,"name":"Admin19","email":"tkhai@admin.n19","email_verified_at":"2024-07-14 08:23:04","password":"$2y$12$LmlmxOt6EIZgVk186WVcweAA8N8xURGWprlf4sTe6VV9d2AVAjYwy","remember_token":"acZv93n3pz","created_at":"2024-07-14 08:23:04","updated_at":"2024-07-14 08:23:04","role":0}] 
-In table 'users' =>  Time 2024-07-27 22:46:38
-Delete account: [{"id":32,"name":"Admin20","email":"tkhai@admin.n20","email_verified_at":"2024-07-14 08:23:04","password":"$2y$12$19OwUmpPa2w0UGxLWILlWe4MD1oK1d9KxjE1PebkNrjJJKvfuf7v6","remember_token":"KXnw0f2fhy","created_at":"2024-07-14 08:23:04","updated_at":"2024-07-14 08:23:04","role":0}] 
-In table 'users' =>  Time 2024-07-27 22:46:41

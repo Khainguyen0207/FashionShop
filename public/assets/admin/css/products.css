@@ -163,6 +163,8 @@ a {
     margin: 5px 5px 5px 10px;
     height: 99vh;
     padding: 20px;
+    overflow: auto;
+    max-height: 99vh;
 }
 
 .overview .tool-bar {

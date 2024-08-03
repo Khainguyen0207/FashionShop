@@ -47,13 +47,14 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //categories
     Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
-    
-    Route::prefix('/categories-{id_category}')->group(function() {
-        Route::get('/', [ProductController::class, 'view'])->name('categories.category.view');
-        Route::get('/products', [ProductController::class, 'view'])->name('categories.category.products');
-        Route::get('/charts', [CategoriesController::class, 'view'])->name('categories.category.charts');
-        Route::get('/promotion', [CategoriesController::class, 'view'])->name('categories.category.promotion');
+    Route::get('/categories-{id_category}', [ProductController::class, 'home'])->name('category.home');
+    Route::get('/categories-{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
+    Route::get('/categories-{id_category}/products/page-{page}', [ProductController::class, 'page'])->name('category.products.page');
+    Route::prefix('')->group(function() {
+        
     });
+
+    
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });

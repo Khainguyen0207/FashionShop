@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\RenderController;
@@ -13,14 +14,23 @@ const MAX_PAGE = 15;
 
 class CustomerController extends Controller
 {
-
-   
     public function index()
     {
+        $url = route('admin.customer.index');
+        $key = ['name','id','email', 'role'];
         $maxNumberPage = intdiv(count(DB::table('users')->get()), MAX_PAGE);
-        $users = DB::table('users')->select('name','id','email', 'role')->take(15)->get(); //Lấy giá trị account
-        $table = FunctionController::table('customer'); //Setting table
-        $render = [$table, $users, 'number' => 0, 'maxPage' => $maxNumberPage];
+        $users = DB::table('users')->select($key)->take(15)->get(); //Lấy giá trị account
+        $users = json_decode($users, true);
+
+        foreach ($users as $index => $account) {
+            if ($account['role'] == 1) {
+                $users[$index]['role'] = 'admin';
+            } else if ($account['role'] == 0) {
+                $users[$index]['role'] = 'user';
+            }
+        }
+        $table = FunctionController::table('customer',$key); //Setting table
+        $render = [$table, $users, $key,  'number' => 0, 'maxPage' => $maxNumberPage, $url];
         return view('admin.customer', RenderController::render('customer', $render));
     }
 
@@ -50,11 +60,14 @@ class CustomerController extends Controller
 
     public function page(string $numberPage)
     {
+        $key = ['name','id','email', 'role'];
         $maxNumberPage = intdiv(count(DB::table('users')->get()), MAX_PAGE);
         $number = MAX_PAGE * $numberPage;
-        $users = DB::table('users')->select('name','id','email', 'role')->skip($number)->take(MAX_PAGE)->get();
-        $table = FunctionController::table('customer'); //Setting table
-        $render = [$table, $users, 'number' => $numberPage, 'maxPage' => $maxNumberPage];
+        $users = DB::table('users')->select($key)->skip($number)->take(MAX_PAGE)->get();
+        $users = json_decode($users, true);
+        $table = FunctionController::table('customer', $key); //Setting table theo key và sẽ xuất bảng theo key
+        $url = route('admin.customer.index');
+        $render = [$table, $users , $key, $numberPage, $maxNumberPage, $url];
         return view('admin.customer', RenderController::render('customer', $render));
     }
 

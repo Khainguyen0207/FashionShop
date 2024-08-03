@@ -25,28 +25,29 @@ class RenderController extends Controller
                 if (count($home) == count($data)) {
                     return array_combine($home, $data);
                 } else {
-                    return self::error_render(22);
+                    return self::error_render(28);
                 }
             case 'customer':
                 $customers = [
-                    'header', 
-                    'body', 
-                    'number', 
-                    'maxPage'
+                    'header',
+                    'body',
+                    'key',
+                    'number',
+                    'maxPage',
+                    'url'
                 ];//Set key = $customers
                 if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
                     return array_combine($customers, $data); 
                 } else {
-                    return self::error_render(29);
+                    return self::error_render(41);
                 }
             case 'product':
-                $customers = ['header', 'body', 'name_category', 'id', 'number', 'maxPage']; //Set key = $products
-                if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return array_combine($customers, $data); 
+                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage']; //Set key = $products
+                if (count($products) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($products, $data);
                 } else {
-                    return self::error_render(29);
+                    return self::error_render(48);
                 }
-            case 'customer':
         }
     }
 }
