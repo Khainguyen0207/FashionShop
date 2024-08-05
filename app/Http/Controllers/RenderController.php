@@ -42,7 +42,7 @@ class RenderController extends Controller
                     return self::error_render(41);
                 }
             case 'product':
-                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage']; //Set key = $products
+                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage', 'url']; //Set key = $products
                 if (count($products) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
                     return array_combine($products, $data);
                 } else {

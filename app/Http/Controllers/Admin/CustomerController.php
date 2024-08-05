@@ -16,23 +16,12 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $url = route('admin.customer.index');
-        $key = ['name','id','email', 'role'];
-        $maxNumberPage = intdiv(count(DB::table('users')->get()), MAX_PAGE);
-        $users = DB::table('users')->select($key)->take(15)->get(); //Lấy giá trị account
-        $users = json_decode($users, true);
+        $render = $this->getCustomers();
 
-        foreach ($users as $index => $account) {
-            if ($account['role'] == 1) {
-                $users[$index]['role'] = 'admin';
-            } else if ($account['role'] == 0) {
-                $users[$index]['role'] = 'user';
-            }
-        }
-        $table = FunctionController::table('customer',$key); //Setting table
-        $render = [$table, $users, $key,  'number' => 0, 'maxPage' => $maxNumberPage, $url];
         return view('admin.customer', RenderController::render('customer', $render));
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -58,19 +47,6 @@ class CustomerController extends Controller
         
     }
 
-    public function page(string $numberPage)
-    {
-        $key = ['name','id','email', 'role'];
-        $maxNumberPage = intdiv(count(DB::table('users')->get()), MAX_PAGE);
-        $number = MAX_PAGE * $numberPage;
-        $users = DB::table('users')->select($key)->skip($number)->take(MAX_PAGE)->get();
-        $users = json_decode($users, true);
-        $table = FunctionController::table('customer', $key); //Setting table theo key và sẽ xuất bảng theo key
-        $url = route('admin.customer.index');
-        $render = [$table, $users , $key, $numberPage, $maxNumberPage, $url];
-        return view('admin.customer', RenderController::render('customer', $render));
-    }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -94,10 +70,35 @@ class CustomerController extends Controller
     {
         $info = DB::table('users')->where('id', $id)->get();
         $deleted = DB::table('users')->where('id', $id)->delete();
-        $date = Carbon::now();;
+        $date = Carbon::now();
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete account: $info \nIn table 'users' =>  Time $date\n");
         }
         return redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    private function getCustomers() {
+        $getCustomers = DB::table('users')
+            ->paginate(15);
+        $keyTable = ['name','id','email', 'role'];
+        $table = FunctionController::table('customer', $keyTable); //Setting table
+        $users = $getCustomers->items();
+        foreach ($users as $key => $item) {
+            $users[$key] = collect($users[$key])->toArray();
+            if ($users[$key]['role'] == 1) {
+                $users[$key]['role'] = 'admin';
+            } else if ($users[$key]['role'] == 0) {
+                $users[$key]['role'] = 'user';
+            }
+        }
+        $render = [
+            $table,
+            $users,
+            $keyTable,
+            'number' => $getCustomers->currentPage(),
+            'maxNumberPage' => $getCustomers->lastPage(),
+            'url' => $getCustomers->path()
+        ];
+        return $render;
     }
 }

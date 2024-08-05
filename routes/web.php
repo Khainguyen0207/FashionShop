@@ -30,8 +30,8 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 
     Route::post('/register', [RegisterController::class, 'store'])->name('auth.register.post');
 
-    Route::get('/forgetPassword', function () {
-        return view('auth.forgetPassword', ['title' => 'Quên mật khẩu']);
+    Route::get('/forget-password', function () {
+        return view('auth.forget-password', ['title' => 'Quên mật khẩu']);
     })->name('auth.forgetPassword'); 
 
 });
@@ -41,19 +41,14 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
     //customer
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
-    Route::get('/customer/page-{page}', [CustomerController::class, 'page'])->name('admin.customer.page');
-    Route::delete('/customer/del-{id}', [CustomerController::class, 'destroy'])->name('admin.customer.del');
+    Route::delete('/customer/del/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.del');
     
     //categories
     Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
-    Route::get('/categories-{id_category}', [ProductController::class, 'home'])->name('category.home');
-    Route::get('/categories-{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
-    Route::get('/categories-{id_category}/products/page-{page}', [ProductController::class, 'page'])->name('category.products.page');
-    Route::prefix('')->group(function() {
-        
-    });
-
+    Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
+    Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
+    Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
     
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');

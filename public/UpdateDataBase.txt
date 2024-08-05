@@ -1,0 +1,8 @@
+Delete account: [{"id":28,"name":"Nguyen Van 6","email":"NguyenVan6@6.vn","email_verified_at":"2024-08-03 15:24:51","password":"$2y$12$OOT0.d9sOD4E\/ndKTfpfUOY8mGLf4wv068Nz4S6HXF1CiVWQirwVC","remember_token":"NpbNEy5Ao3","created_at":"2024-08-03 15:24:51","updated_at":"2024-08-03 15:24:51","role":0}] 
+In table 'users' =>  Time 2024-08-05 17:18:37
+Delete product: [{"id":5,"product_code":"MSSPN104","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-05 17:25:02
+Delete product: [{"id":6,"product_code":"MSSPN105","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-05 17:25:04
+Delete account: [{"id":39,"name":"Nguyen Van 17","email":"NguyenVan17@17.vn","email_verified_at":"2024-08-03 15:24:53","password":"$2y$12$SMaF57WwToMcaWc9n55HC.llphDF3kv20FYFohCT1EgfLet7m2Pg2","remember_token":"vHR46SsLmF","created_at":"2024-08-03 15:24:54","updated_at":"2024-08-03 15:24:54","role":0}] 
+In table 'users' =>  Time 2024-08-05 17:29:34

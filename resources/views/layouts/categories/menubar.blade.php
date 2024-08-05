@@ -8,7 +8,7 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="/admin/categories-{{$id}}/products">
+                    <a href="/admin/categories/{{ $id }}/products">
                         <span><i class="fa-solid fa-shop"></i> Sản phẩm thời trang</span>
                         {{-- <p><i class="icon-arrow fa-solid fa-caret-right"></i></p> --}}
                     </a>

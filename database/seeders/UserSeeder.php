@@ -13,14 +13,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i=0; $i < 20; $i++) { 
-            $data = [
-                'name' => 'Nguyen Van ' .$i,
-                'email' => "NguyenVan$i@$i.vn",
-                'password' => '123456',
-                'role' => 0
-            ];
-            User::factory()->create($data);
-        }
+        $data = [
+            'name' => "admin",
+            'email' => "admin@admin.vn",
+            'password' => '123456',
+            'role' => 1
+        ];
+        User::factory()->create($data);
     }
 }

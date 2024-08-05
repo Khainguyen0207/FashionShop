@@ -113,7 +113,18 @@
     position: absolute;
     display: none;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #F8EDED;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    height: 100vh;
+    width: 100%;
+    z-index: 10;
+}
+
+#addCategory form {
+    position: absolute;
+    display: block;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5a6a6;
     height: auto;
     width: 600px;
     border-radius: 10px;
@@ -125,6 +136,7 @@
     z-index: 10;
     box-shadow: 5px 5px lightgray;
 }
+
 
 #addCategory .header {
     position: relative;
@@ -206,4 +218,3 @@ label {
         opacity: 1;
     }
 }
-
