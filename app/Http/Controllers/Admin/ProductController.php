@@ -35,7 +35,11 @@ class ProductController extends Controller
         $keyTable = [ 'product_name', 'product_code', 'price', 'category_name', 'number_items'];
         $table = FunctionController::table('product', $keyTable);
         $products = $getProducts->items();
-        $this->name_category = DB::table('categories')->where('id', $id_category)->select('name_category')->first()->name_category;
+        try {
+            $this->name_category = DB::table('categories')->where('id', $id_category)->select('name_category')->first()->name_category;
+        } catch (\Throwable $th) {
+            abort(404);
+        }
         foreach ($products as $key => $item) {
             $products[$key] = collect($products[$key])->toArray();
             $products[$key] += [
@@ -47,12 +51,13 @@ class ProductController extends Controller
             $table,
             $products,
             $keyTable,
-            'name_category' => $this->name_category, 
+            'name_category' => $this->name_category,
             'id' => $id_category,
             'number' => $getProducts->currentPage(),
             'maxPage' => $getProducts->lastPage(),
             'url' => $getProducts->path()
         ];
+       
         return $render;
     }
     

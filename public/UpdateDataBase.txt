@@ -6,3 +6,25 @@ Delete product: [{"id":6,"product_code":"MSSPN105","product_name":"\u00c1o con k
 In table 'products' =>  Time 2024-08-05 17:25:04
 Delete account: [{"id":39,"name":"Nguyen Van 17","email":"NguyenVan17@17.vn","email_verified_at":"2024-08-03 15:24:53","password":"$2y$12$SMaF57WwToMcaWc9n55HC.llphDF3kv20FYFohCT1EgfLet7m2Pg2","remember_token":"vHR46SsLmF","created_at":"2024-08-03 15:24:54","updated_at":"2024-08-03 15:24:54","role":0}] 
 In table 'users' =>  Time 2024-08-05 17:29:34
+Delete account: [{"id":41,"name":"Nguyen Van 19","email":"NguyenVan19@19.vn","email_verified_at":"2024-08-03 15:24:54","password":"$2y$12$Qawye5a\/NCk9Aq1JwzE4E.vjS7loyO0JSIj.t7ZJyFbj6C5fIJ8Gi","remember_token":"ip3k03ElNb","created_at":"2024-08-03 15:24:54","updated_at":"2024-08-03 15:24:54","role":0}] 
+In table 'users' =>  Time 2024-08-06 09:20:59
+Delete categories: [{"id":7,"name_category":"dvsd","description":"vsdvsdvsdv","created_at":"2024-08-06 09:42:10","updated_at":"2024-08-06 09:42:10"}] 
+In table 'categories' =>  Time 2024-08-06 11:08:31
+Delete categories: [{"id":6,"name_category":"Hello anh em","description":"Hello anh em","created_at":"2024-08-05 17:54:46","updated_at":"2024-08-05 17:54:46"}] 
+In table 'categories' =>  Time 2024-08-06 11:10:32
+Delete categories: [{"id":5,"name_category":"Th\u1eddi trang 3 l\u00e1","description":"Th\u1eddi trang 3 l\u00e1","created_at":"2024-08-05 17:26:17","updated_at":"2024-08-05 17:26:17"}] 
+In table 'categories' =>  Time 2024-08-06 11:11:19
+Delete categories: [{"id":8,"name_category":"Th\u1eddi trang Ch\u00e2u \u00c2u","description":"Th\u1eddi trang Ch\u00e2u \u00c2u","created_at":"2024-08-06 11:11:43","updated_at":"2024-08-06 11:11:43"}] 
+In table 'categories' =>  Time 2024-08-06 11:11:49
+Delete categories: [{"id":9,"name_category":"Th\u1eddi trang ch\u00e2u M\u0129","description":"Th\u1eddi trang ch\u00e2u M\u0129","created_at":"2024-08-06 11:16:27","updated_at":"2024-08-06 11:16:27"}] 
+In table 'categories' =>  Time 2024-08-06 11:16:36
+Delete categories: [{"id":4,"name_category":"\u0110\u1ed3 cho tr\u1ebb em","description":"\u0110\u1ed3 cho tr\u1ebb em","created_at":"2024-08-03 17:56:46","updated_at":"2024-08-03 17:56:46"}] 
+In table 'categories' =>  Time 2024-08-06 11:18:12
+Delete account: [{"id":22,"name":"Nguyen Van 0","email":"NguyenVan0@0.vn","email_verified_at":"2024-08-03 15:24:49","password":"$2y$12$nSY.EDxsS3q9n8SzemIk\/ejfZ9qz1cbNyCsQA9ee92ZBTgR6dJr1i","remember_token":"q7t19AwKiG","created_at":"2024-08-03 15:24:50","updated_at":"2024-08-03 15:24:50","role":0}] 
+In table 'users' =>  Time 2024-08-06 11:18:58
+Delete categories: [{"id":10,"name_category":"DevTool","description":"Nguy\u1ec5n Tr\u1ecdng Kh\u1ea3i creator","created_at":"2024-08-06 11:36:48","updated_at":"2024-08-06 11:36:48"}] 
+In table 'categories' =>  Time 2024-08-06 11:36:58
+Delete categories: [{"id":11,"name_category":"Th\u1eddi trang t\u1ee9 ph\u01b0\u01a1ng","description":"Th\u1eddi trang t\u1ee9 ph\u01b0\u01a1ng","created_at":"2024-08-06 12:39:00","updated_at":"2024-08-06 12:39:00"}] 
+In table 'categories' =>  Time 2024-08-06 12:39:26
+Delete categories: [{"id":12,"name_category":"Hello world","description":"Hello world","created_at":"2024-08-06 12:41:16","updated_at":"2024-08-06 12:41:16"}] 
+In table 'categories' =>  Time 2024-08-06 12:41:20

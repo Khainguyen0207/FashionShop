@@ -8,7 +8,7 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a href="/admin/categories/{{ $id }}/products">
+                    <a href="{{route('category.products.home', $id)}}">
                         <span><i class="fa-solid fa-shop"></i> Sản phẩm thời trang</span>
                         {{-- <p><i class="icon-arrow fa-solid fa-caret-right"></i></p> --}}
                     </a>
@@ -17,13 +17,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/admin/categories-{{$id}}/charts">
+                    <a href="{{route('category.charts.home', $id)}}">
                         <span> <i class="fa-solid fa-chart-simple"></i> Thống kê đánh giá</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/categories-{{$id}}/promotion">
+                    <a href="{{route('category.vouchers.home', $id)}}">
                         <span><i class="fa-solid fa-ticket"></i> Chương trình khuyến mãi</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-del" data-url="del" href="#">
+                        <span><i class="fa-solid fa-trash"></i> Xóa danh mục</span>
                     </a>
                 </li>
             </ul>

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class CategoriesController extends Controller
 {
@@ -43,5 +44,15 @@ class CategoriesController extends Controller
             }
         }
         return redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function destroy($id_category) {
+        $info = DB::table('categories')->where('id', $id_category)->get();
+        $deleted = DB::table('categories')->where('id', $id_category)->delete();
+        $date = Carbon::now();
+        if ($deleted) {
+            fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete categories: $info \nIn table 'categories' =>  Time $date\n");
+        }
+        return redirect(route('categories.home'));
     }
 }

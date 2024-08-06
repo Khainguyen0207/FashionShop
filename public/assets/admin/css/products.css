@@ -224,12 +224,13 @@ a {
 .add_product .add_product_single ,
 .add_product .add_product_file {
     position: relative;
-    display: flex;
-    align-items: center;
+    display: block;
 }
 
 .add_product .add_product_single a,
 .add_product .add_product_file a {
+    display: block;
+    text-align: center;
     background-color: chartreuse;
     border-radius: 10px;
     padding: 12px 24px;

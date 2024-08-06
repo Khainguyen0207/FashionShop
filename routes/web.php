@@ -39,6 +39,7 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     // Home
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+    
     //customer
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
     Route::delete('/customer/del/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.del');
@@ -46,10 +47,21 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //categories
     Route::get('/categories', [CategoriesController::class, 'home'])->name('categories.home');
     Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
+    Route::delete('/categories/{id_category}/del', [CategoriesController::class, 'destroy'])->name('categories.category.del');
+    
+    //categories - products
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
     Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
     
+    //categories - charts
+    Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
+    Route::get('/categories/{id_category}/charts', [ProductController::class, 'index'])->name('category.charts.home');
+
+    //categories - vouchers
+    Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
+    Route::get('/categories/{id_category}/vouchers', [ProductController::class, 'index'])->name('category.vouchers.home');
+
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });
