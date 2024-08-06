@@ -28,3 +28,31 @@ Delete categories: [{"id":11,"name_category":"Th\u1eddi trang t\u1ee9 ph\u01b0\u
 In table 'categories' =>  Time 2024-08-06 12:39:26
 Delete categories: [{"id":12,"name_category":"Hello world","description":"Hello world","created_at":"2024-08-06 12:41:16","updated_at":"2024-08-06 12:41:16"}] 
 In table 'categories' =>  Time 2024-08-06 12:41:20
+Delete product: [{"id":4,"product_code":"MSSPN103","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:50
+Delete product: [{"id":17,"product_code":"MSSPN116","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:52
+Delete product: [{"id":18,"product_code":"MSSPN117","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:54
+Delete product: [{"id":19,"product_code":"MSSPN118","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:55
+Delete product: [{"id":21,"product_code":"MSSPN120","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:56
+Delete product: [{"id":22,"product_code":"MSSPN121","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:39:58
+Delete product: [{"id":23,"product_code":"MSSPN122","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:40:00
+Delete product: [{"id":26,"product_code":"MSSPN125","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:40:02
+Delete product: [{"id":28,"product_code":"MSSPN127","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:40:04
+Delete product: [{"id":32,"product_code":"MSSPN131","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 15:40:07
+Delete product: [{"id":104,"product_code":"MSSP11450","product_name":"\u00c1o 2 l\u1ed7 cho nam 15 tu\u1ed5i","category_id":"1","price":12000,"image":"C:\\Windows\\Temp\\php8896.tmp","unsold_quantity":0,"sold_quantity":12,"description":null,"review_and_comment":null,"created_at":"2024-08-06 17:09:00","updated_at":"2024-08-06 17:09:00"}] 
+In table 'products' =>  Time 2024-08-06 17:24:03
+Delete product: [{"id":91,"product_code":"MSSPN190","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 17:25:56
+Delete product: [{"id":77,"product_code":"MSSPN176","product_name":"\u00c1o 5 d\u00e2y","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 17:25:59
+Delete product: [{"id":73,"product_code":"MSSPN172","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
+In table 'products' =>  Time 2024-08-06 17:26:01

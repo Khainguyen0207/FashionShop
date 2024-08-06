@@ -11,6 +11,5 @@
         @yield('overview')
     </div>
 @endsection
-
 @push('footer')
 @endpush

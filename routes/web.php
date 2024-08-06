@@ -52,6 +52,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //categories - products
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
+    Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
     Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
     
     //categories - charts

@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use id;
 use Carbon\Carbon;
+use Nette\Utils\Image;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
 
@@ -60,6 +65,24 @@ class ProductController extends Controller
        
         return $render;
     }
+
+    public function store(ProductRequest $productRequest) {
+        dd($productRequest);
+        $image = $productRequest->file('image')->store('profile');
+        $id_category = $productRequest->route()->parameter('id_category');
+        $data = $productRequest->validated();
+        $data += [
+            'product_code' => "MSSP" .$productRequest->route()->parameter('id_category') .floor(rand(1, $id_category * 10000)),
+            'unsold_quantity' => 0,
+            'category_id' => $id_category,
+        ];
+        try {
+            Product::query()->create($data);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
+        return redirect(route('category.products.home', $id_category))->with(['success' => 'Thêm sản phẩm thành công']);
+    }
     
     public function destroy($id_category, $product_id) {
         $info = DB::table('products')->where('id', $product_id)->get();
@@ -69,5 +92,10 @@ class ProductController extends Controller
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete product: $info \nIn table 'products' =>  Time $date\n");
         }
         return redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function show(string $id)
+    {
+        
     }
 }

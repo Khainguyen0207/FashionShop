@@ -23,7 +23,7 @@
                     <textarea maxlength="5000" class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" placeholder="Mô tả danh mục"  name="description" ></textarea>
                 </div>
                 <div class="image-product">
-                    <p>Hình ảnh sản phẩm</p>
+                    <p>Hình ảnh danh mục</p>
                     <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
                     <input type="file" id="upload-photo" />
                     <div id="preview"></div>
