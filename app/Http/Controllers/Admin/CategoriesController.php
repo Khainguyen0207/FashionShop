@@ -28,6 +28,7 @@ class CategoriesController extends Controller
     }
 
     public function store(Request $request) { //Request để ý bảo mật cao hơn
+        $urlImage = $request->image->store('profile', 'public');
         $nameCategory = $request->input('name_category');
         $description = $request->input('description');
         if (isset($nameCategory)) {
@@ -37,6 +38,7 @@ class CategoriesController extends Controller
                 $data = [
                     'name_category' => $nameCategory, 
                     'description' => $description,    
+                    'image' => $urlImage
                 ];  
                 Category::query()->create($data);
             } catch (\Throwable $th) {

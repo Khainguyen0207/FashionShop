@@ -9,67 +9,74 @@
 @section('overview')
     <div id="addCategory" >
         <div class="screen" onclick="clickAddCategory(event)"></div>
-        <form action="{{route('category.products.store', $id)}}" id="addCategoryForm" class="my-animation" method="POST" enctype="multipart/form-data">
-            @csrf
-                <div class="header">
-                    <h2 class="tittle">Thêm sản phẩm</h2>
-                </div>
-                <div class="container">
-                    <div class="information-product">
-                        <p style="font-size: 20px; padding: 5px 0px">Tên sản phẩm</p>
-                        <input type="text" name="product_name" class="input" placeholder="Tên sản phẩm của bạn" spellcheck="false" required>
-                        <p style="font-size: 20px; padding: 5px 0px">Giá</p>
-                        <input type="number" class="input" name="price" id="" placeholder="Giá sản phẩm" required>
-                        <p style="font-size: 20px; padding: 5px 0px">Số lượng</p>
-                        <input type="number" class="input" name="sold_quantity" id="" placeholder="Số lượng sản phẩm" required>
-                        <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
-                        <textarea maxlength="5000" class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" placeholder="Mô tả sản phẩm của bạn"  name="description" required></textarea>
+        <div id="addCategoryForm">
+            <form action="{{route('category.products.store', $id)}}"  class="my-animation" method="POST" enctype="multipart/form-data">
+                @csrf
+                    <div class="header">
+                        <h2 class="tittle">Thêm sản phẩm</h2>
                     </div>
-                    <div class="image-product">
-                        <p>Hình ảnh sản phẩm</p>
-                        <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
-                        <input type="file" id="upload-photo" name="image[]" multiple required/>
-                        <div id="preview"></div>
-                        <script>
-                            document.getElementById('upload-photo').addEventListener('change', function(event) {
-                                var files = event.target.files;
-                                var preview = document.getElementById('preview');
-                                
-                                // Clear any existing content
-                                preview.innerHTML = '';
-                            
-                                // Loop through all selected files
-                                for (var i = 0; i < files.length; i++) {
-                                    var file = files[i];
+                    <div class="container">
+                        <div class="information-product">
+                            <p style="font-size: 20px; padding: 5px 0px">Tên sản phẩm</p>
+                            <input type="text" name="product_name" class="input" placeholder="Tên sản phẩm của bạn" spellcheck="false" required>
+                            <p style="font-size: 20px; padding: 5px 0px">Giá</p>
+                            <input type="number" class="input" name="price" id="" placeholder="Giá sản phẩm" required>
+                            <p style="font-size: 20px; padding: 5px 0px">Số lượng</p>
+                            <input type="number" class="input" name="sold_quantity" id="" placeholder="Số lượng sản phẩm" required>
+                            <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
+                            <textarea maxlength="5000" class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" 
+                            placeholder="Sản phẩm: ....
+Xuất xứ: ....
+Mô tả sản phẩm: ...
+                            "  
+                            name="description" required></textarea>
+                        </div>
+                        <div class="image-product">
+                            <p>Hình ảnh sản phẩm</p>
+                            <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
+                            <input type="file" id="upload-photo" name="image[]" multiple required/>
+                            <div id="preview"></div>
+                            <script>
+                                document.getElementById('upload-photo').addEventListener('change', function(event) {
+                                    var files = event.target.files;
+                                    var preview = document.getElementById('preview');
                                     
-                                    // Only process image files
-                                    if (!file.type.match('image.*')) {
-                                        continue;
+                                    // Clear any existing content
+                                    preview.innerHTML = '';
+                                
+                                    // Loop through all selected files
+                                    for (var i = 0; i < files.length; i++) {
+                                        var file = files[i];
+                                        
+                                        // Only process image files
+                                        if (!file.type.match('image.*')) {
+                                            continue;
+                                        }
+                                    
+                                        var imgContainer = document.createElement('div');
+                                        imgContainer.style.display = 'inline-block';
+                                        var img = document.createElement('img');
+                                        img.src = URL.createObjectURL(file);
+                                        console.log(img);
+                                        
+                                        img.style.height = '100px';
+                                        img.style.maxWidth = '200px';
+                                        img.style.display = 'block';
+                                        img.style.marginRight = '5px';
+                                        img.style.marginBottom = '5px';
+                                        imgContainer.appendChild(img);
+                                        preview.appendChild(imgContainer);
                                     }
-                                
-                                    var imgContainer = document.createElement('div');
-                                    imgContainer.style.display = 'inline-block';
-                                    var img = document.createElement('img');
-                                    img.src = URL.createObjectURL(file);
-                                    console.log(img);
-                                    
-                                    img.style.height = '100px';
-                                    img.style.maxWidth = '200px';
-                                    img.style.display = 'block';
-                                    img.style.marginRight = '5px';
-                                    img.style.marginBottom = '5px';
-                                    imgContainer.appendChild(img);
-                                    preview.appendChild(imgContainer);
-                                }
-                            });
-                        </script>
+                                });
+                            </script>
+                        </div>
                     </div>
-                </div>
-                <div class="footer">    
-                    <button type="submit" class="btn-add btn"><i class="fa-solid fa-plus"></i> Thêm sản phẩm</button>
-                    <button type="submit" class="btn-close btn" onclick="clickAddCategory(event)"><i class="fa-solid fa-xmark"></i> Hủy</button>
-                </div>
-        </form>
+                    <div class="footer">    
+                        <button type="submit" class="btn-add btn"><i class="fa-solid fa-plus"></i> Thêm sản phẩm</button>
+                        <button type="submit" class="btn-close btn" onclick="clickAddCategory(event)"><i class="fa-solid fa-xmark"></i> Hủy</button>
+                    </div>
+            </form>
+        </div>
     </div>
     <div class="overview">
         <section>

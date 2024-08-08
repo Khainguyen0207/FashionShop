@@ -89,8 +89,7 @@ class ProductController extends Controller
 
     public function show(string $id_category, string $id)
     {
-        $information_product = Product::query()->where('id', $id)->first()->getOriginal();
-        return redirect(route('category.products.home', $id_category, $information_product));
+        //Hello 
     }
 
     public function edit(string $id_category, string $id)
@@ -102,14 +101,40 @@ class ProductController extends Controller
             $images[] = Storage::url($value);
         }
         $render = [
-            'title' => "Thêm sản phẩm",
+            'title' => "Chỉnh sửa sản phẩm",
             'product_name' => $information_product->product_name, 
             'price'  => $information_product->price, 
             'sold_quantity' => $information_product->sold_quantity, 
             'description' => $information_product->description,
-            'images' => $images
+            'images' => $images,
+            'id_category' => $id_category,
+            'product_id' => $id
         ];
         return view('layouts.categories.product-add', $render);
+    }
+
+    public function update(ProductRequest $productRequest)
+    {
+        $data = $productRequest->validated();
+        $urlImage = "";
+        if (!empty($productRequest->file('image'))) {
+            foreach ($productRequest->file('image') as $key => $value) {
+                $urlImage .= $value->store('profile', 'public') .'|';
+            }
+            $urlImage = substr($urlImage, 0, strlen($urlImage) - 1);
+            $data['image'] = $urlImage;
+        }
+        $id_category = $productRequest->route()->parameter('id_category');
+        $product_id = $productRequest->route()->parameter('product_id');
+        $data += [
+            'category_id' => $id_category,
+        ];
+        try {
+            Product::query()->where('id', $product_id)->update($data);
+        } catch (\Throwable $th) {
+            return redirect(route('category.products.home', $id_category))->with(['error' => 'Cập nhật sản phẩm thất bại']);
+        }
+        return redirect(route('category.products.home', $id_category))->with(['success' => 'Cập nhật sản phẩm thành công']);
     }
     
     public function destroy($id_category, $product_id) {

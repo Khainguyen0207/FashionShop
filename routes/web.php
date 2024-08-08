@@ -55,7 +55,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
 
     Route::get('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
-    Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
+    Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'update'])->name('category.products.update');
 
     Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
     

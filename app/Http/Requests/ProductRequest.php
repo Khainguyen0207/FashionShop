@@ -13,7 +13,6 @@ class ProductRequest extends FormRequest
             'price' => 'required',
             'sold_quantity' => 'required|min:1',
             'description' => 'required',
-            'image' => 'required', 'image'
         ];
     }
 }

@@ -38,8 +38,7 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
                     const tokenInput = document.createElement('input');
                     tokenInput.type = 'hidden';
                     tokenInput.name = '_token';
-                    tokenInput.value = $('meta[name="csrf-token"]').attr('content');
-                    
+                    tokenInput.value = $('meta[name="csrf-token"]').attr('content');                   
                     
                     form.appendChild(methodInput);
                     form.appendChild(tokenInput);
@@ -54,10 +53,10 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
             clickAddCategory(event);
             const url = event.currentTarget.dataset.url;
             console.log(url);
+            
             $.ajax({
                 url: url,
             }).then((data)=> {
-                console.log(data);
                 $('#addCategoryForm').html(data)
             });
         });

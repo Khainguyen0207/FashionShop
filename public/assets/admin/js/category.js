@@ -3,7 +3,14 @@ var clickCategory = true;
 function clickAddCategory(event) {
     event.preventDefault();
     var category = document.getElementById('addCategory')
+
+    var form = document.getElementById('addCategoryForm')
+    var tittle = form.querySelector('.tittle');
+    tittle.innerHTML = "Thêm sản phẩm"
+    var button_text = form.querySelector('.btn-add');
+    button_text.innerHTML = '<i class="fa-regular fa-pen-to-square"></i> Thêm sản phẩm'
     var getInformation = document.querySelector('.information-product');
+    
     getInformation.childNodes.forEach(element => {
         if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
             element.value = ''
@@ -20,7 +27,6 @@ function clickAddCategory(event) {
     while (size != 0) {
         preview.childNodes.forEach(element => {
             element.remove()
-            console.log("Size: " + size);
             size--;
         });
     }

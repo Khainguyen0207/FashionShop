@@ -10,7 +10,7 @@
 @section('overview')
 <div id="addCategory" >
     <div class="screen" onclick="clickAddCategory(event)"></div>
-    <form action="{{route('categories.store')}}" id="addCategoryForm" class="my-animation"  method="POST">
+    <form action="{{route('categories.store')}}" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
         @csrf
             <div class="header">
                 <h2 class="tittle">Thêm danh mục</h2>
@@ -25,7 +25,7 @@
                 <div class="image-product">
                     <p>Hình ảnh danh mục</p>
                     <label for="upload-photo" ><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
-                    <input type="file" id="upload-photo" required/>
+                    <input type="file" id="upload-photo" name="image" required/>
                     <div id="preview"></div>
                     <script>
                         document.getElementById('upload-photo').addEventListener('change', function(event) {
@@ -62,7 +62,7 @@
                 </div>
             </div>
             <div class="footer">
-                <button type="submit" class="btn-add btn"><i class="fa-solid fa-plus"></i> Thêm danh mục</button>
+                <button type="submit" class="btn-add btn"></button>
                 <button type="submit" onclick="clickAddCategory(event)" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
             </div>
     </form>
