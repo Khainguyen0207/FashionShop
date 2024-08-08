@@ -9,7 +9,7 @@
 @section('overview')
     <div id="addCategory" >
         <div class="screen" onclick="clickAddCategory(event)"></div>
-        <form action="{{route('category.products.store', $id)}}" class="my-animation" method="POST" enctype="multipart/form-data">
+        <form action="{{route('category.products.store', $id)}}" id="addCategoryForm" class="my-animation" method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="header">
                     <h2 class="tittle">Thêm sản phẩm</h2>
@@ -28,7 +28,7 @@
                     <div class="image-product">
                         <p>Hình ảnh sản phẩm</p>
                         <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
-                        <input type="file" id="upload-photo" name="image" multiple/>
+                        <input type="file" id="upload-photo" name="image[]" multiple required/>
                         <div id="preview"></div>
                         <script>
                             document.getElementById('upload-photo').addEventListener('change', function(event) {
@@ -41,7 +41,7 @@
                                 // Loop through all selected files
                                 for (var i = 0; i < files.length; i++) {
                                     var file = files[i];
-                                
+                                    
                                     // Only process image files
                                     if (!file.type.match('image.*')) {
                                         continue;
@@ -51,7 +51,7 @@
                                     imgContainer.style.display = 'inline-block';
                                     var img = document.createElement('img');
                                     img.src = URL.createObjectURL(file);
-                                    console.log(img.src);
+                                    console.log(img);
                                     
                                     img.style.height = '100px';
                                     img.style.maxWidth = '200px';

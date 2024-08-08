@@ -40,10 +40,10 @@ class CategoriesController extends Controller
                 ];  
                 Category::query()->create($data);
             } catch (\Throwable $th) {
-               dd($th);
+                return redirect(route('categories.home'))->with(['success' => 'Thêm danh mục thất bại']);
             }
         }
-        return redirect($_SERVER['HTTP_REFERER']);
+        return redirect(route('categories.home'))->with(['success' => 'Thêm danh mục thành công']);
     }
 
     public function destroy($id_category) {

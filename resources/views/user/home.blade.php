@@ -7,7 +7,7 @@
         <label for="">Người dùng: {{ $name }}</label>
         @if ($role == 1)
             <p>Phân quyền: Admin</p>
-            <a href="/admin">Chuyển trang admin</a>
+            <a href="{{route('admin.home')}}">Chuyển trang admin</a>
         @else
             <p>Phân quyền: Người dùng</p>
         @endif

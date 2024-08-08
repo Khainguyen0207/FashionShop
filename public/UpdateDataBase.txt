@@ -1,58 +1,12 @@
-Delete account: [{"id":28,"name":"Nguyen Van 6","email":"NguyenVan6@6.vn","email_verified_at":"2024-08-03 15:24:51","password":"$2y$12$OOT0.d9sOD4E\/ndKTfpfUOY8mGLf4wv068Nz4S6HXF1CiVWQirwVC","remember_token":"NpbNEy5Ao3","created_at":"2024-08-03 15:24:51","updated_at":"2024-08-03 15:24:51","role":0}] 
-In table 'users' =>  Time 2024-08-05 17:18:37
-Delete product: [{"id":5,"product_code":"MSSPN104","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-05 17:25:02
-Delete product: [{"id":6,"product_code":"MSSPN105","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-05 17:25:04
-Delete account: [{"id":39,"name":"Nguyen Van 17","email":"NguyenVan17@17.vn","email_verified_at":"2024-08-03 15:24:53","password":"$2y$12$SMaF57WwToMcaWc9n55HC.llphDF3kv20FYFohCT1EgfLet7m2Pg2","remember_token":"vHR46SsLmF","created_at":"2024-08-03 15:24:54","updated_at":"2024-08-03 15:24:54","role":0}] 
-In table 'users' =>  Time 2024-08-05 17:29:34
-Delete account: [{"id":41,"name":"Nguyen Van 19","email":"NguyenVan19@19.vn","email_verified_at":"2024-08-03 15:24:54","password":"$2y$12$Qawye5a\/NCk9Aq1JwzE4E.vjS7loyO0JSIj.t7ZJyFbj6C5fIJ8Gi","remember_token":"ip3k03ElNb","created_at":"2024-08-03 15:24:54","updated_at":"2024-08-03 15:24:54","role":0}] 
-In table 'users' =>  Time 2024-08-06 09:20:59
-Delete categories: [{"id":7,"name_category":"dvsd","description":"vsdvsdvsdv","created_at":"2024-08-06 09:42:10","updated_at":"2024-08-06 09:42:10"}] 
-In table 'categories' =>  Time 2024-08-06 11:08:31
-Delete categories: [{"id":6,"name_category":"Hello anh em","description":"Hello anh em","created_at":"2024-08-05 17:54:46","updated_at":"2024-08-05 17:54:46"}] 
-In table 'categories' =>  Time 2024-08-06 11:10:32
-Delete categories: [{"id":5,"name_category":"Th\u1eddi trang 3 l\u00e1","description":"Th\u1eddi trang 3 l\u00e1","created_at":"2024-08-05 17:26:17","updated_at":"2024-08-05 17:26:17"}] 
-In table 'categories' =>  Time 2024-08-06 11:11:19
-Delete categories: [{"id":8,"name_category":"Th\u1eddi trang Ch\u00e2u \u00c2u","description":"Th\u1eddi trang Ch\u00e2u \u00c2u","created_at":"2024-08-06 11:11:43","updated_at":"2024-08-06 11:11:43"}] 
-In table 'categories' =>  Time 2024-08-06 11:11:49
-Delete categories: [{"id":9,"name_category":"Th\u1eddi trang ch\u00e2u M\u0129","description":"Th\u1eddi trang ch\u00e2u M\u0129","created_at":"2024-08-06 11:16:27","updated_at":"2024-08-06 11:16:27"}] 
-In table 'categories' =>  Time 2024-08-06 11:16:36
-Delete categories: [{"id":4,"name_category":"\u0110\u1ed3 cho tr\u1ebb em","description":"\u0110\u1ed3 cho tr\u1ebb em","created_at":"2024-08-03 17:56:46","updated_at":"2024-08-03 17:56:46"}] 
-In table 'categories' =>  Time 2024-08-06 11:18:12
-Delete account: [{"id":22,"name":"Nguyen Van 0","email":"NguyenVan0@0.vn","email_verified_at":"2024-08-03 15:24:49","password":"$2y$12$nSY.EDxsS3q9n8SzemIk\/ejfZ9qz1cbNyCsQA9ee92ZBTgR6dJr1i","remember_token":"q7t19AwKiG","created_at":"2024-08-03 15:24:50","updated_at":"2024-08-03 15:24:50","role":0}] 
-In table 'users' =>  Time 2024-08-06 11:18:58
-Delete categories: [{"id":10,"name_category":"DevTool","description":"Nguy\u1ec5n Tr\u1ecdng Kh\u1ea3i creator","created_at":"2024-08-06 11:36:48","updated_at":"2024-08-06 11:36:48"}] 
-In table 'categories' =>  Time 2024-08-06 11:36:58
-Delete categories: [{"id":11,"name_category":"Th\u1eddi trang t\u1ee9 ph\u01b0\u01a1ng","description":"Th\u1eddi trang t\u1ee9 ph\u01b0\u01a1ng","created_at":"2024-08-06 12:39:00","updated_at":"2024-08-06 12:39:00"}] 
-In table 'categories' =>  Time 2024-08-06 12:39:26
-Delete categories: [{"id":12,"name_category":"Hello world","description":"Hello world","created_at":"2024-08-06 12:41:16","updated_at":"2024-08-06 12:41:16"}] 
-In table 'categories' =>  Time 2024-08-06 12:41:20
-Delete product: [{"id":4,"product_code":"MSSPN103","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:50
-Delete product: [{"id":17,"product_code":"MSSPN116","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:52
-Delete product: [{"id":18,"product_code":"MSSPN117","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:54
-Delete product: [{"id":19,"product_code":"MSSPN118","product_name":"\u00c1o con kh\u1ec9","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:55
-Delete product: [{"id":21,"product_code":"MSSPN120","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:56
-Delete product: [{"id":22,"product_code":"MSSPN121","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:39:58
-Delete product: [{"id":23,"product_code":"MSSPN122","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:40:00
-Delete product: [{"id":26,"product_code":"MSSPN125","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:40:02
-Delete product: [{"id":28,"product_code":"MSSPN127","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:40:04
-Delete product: [{"id":32,"product_code":"MSSPN131","product_name":"Qu\u1ea7n d\u00e0i 3 l\u1ed7","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 15:40:07
-Delete product: [{"id":104,"product_code":"MSSP11450","product_name":"\u00c1o 2 l\u1ed7 cho nam 15 tu\u1ed5i","category_id":"1","price":12000,"image":"C:\\Windows\\Temp\\php8896.tmp","unsold_quantity":0,"sold_quantity":12,"description":null,"review_and_comment":null,"created_at":"2024-08-06 17:09:00","updated_at":"2024-08-06 17:09:00"}] 
-In table 'products' =>  Time 2024-08-06 17:24:03
-Delete product: [{"id":91,"product_code":"MSSPN190","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 17:25:56
-Delete product: [{"id":77,"product_code":"MSSPN176","product_name":"\u00c1o 5 d\u00e2y","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 17:25:59
-Delete product: [{"id":73,"product_code":"MSSPN172","product_name":"\u00c1o thun x\u1ecbn","category_id":"1","price":30000,"image":"\/img\/data","unsold_quantity":10,"sold_quantity":1,"description":null,"review_and_comment":null,"created_at":"2024-08-03 15:15:14","updated_at":"2024-08-03 15:15:14"}] 
-In table 'products' =>  Time 2024-08-06 17:26:01
+Delete product: [{"id":35,"product_code":"MSSP18325","product_name":"\u00c1o 3 l\u1ed7","category_id":"1","price":190000,"image":"profile\/p7C3mCZKQ3WbM3vE8Z7KSFlTUwrVAWzqYWGYclIU.jpg|profile\/ITsmjnNNRSV5AS6YmlBV5XfLayOf3z8uChPWcev3.webp","unsold_quantity":0,"sold_quantity":120,"description":null,"review_and_comment":null,"created_at":"2024-08-07 14:07:13","updated_at":"2024-08-07 14:07:13"}] 
+In table 'products' =>  Time 2024-08-08 14:28:35
+Delete product: [{"id":37,"product_code":"MSSP18203","product_name":"457457","category_id":"1","price":657567,"image":"profile\/bqZnuCZyEP1JhfIXp0Jljc2YEbvPEtZA1f2pYx8Z.png","unsold_quantity":0,"sold_quantity":65756756,"description":null,"review_and_comment":null,"created_at":"2024-08-08 16:43:41","updated_at":"2024-08-08 16:43:41"}] 
+In table 'products' =>  Time 2024-08-08 16:43:45
+Delete product: [{"id":38,"product_code":"MSSP17869","product_name":"\u00c1o da c\u1ecdp tr\u1eafng","category_id":"1","price":2,"image":"profile\/dT1HMuV6eguVNk6q8k8Ec5SJkyvZ419lMHqWrgtX.png","unsold_quantity":0,"sold_quantity":1200000,"description":"{{ $description }}","review_and_comment":null,"created_at":"2024-08-08 16:45:08","updated_at":"2024-08-08 16:45:08"}] 
+In table 'products' =>  Time 2024-08-08 16:49:43
+Delete product: [{"id":40,"product_code":"MSSP15916","product_name":"3456","category_id":"1","price":456456456,"image":"profile\/j0gOo06bzpbvKZJ6PtRBqJdsF4DNl5r0uG4E2EZW.png|profile\/hEAuWcYfaGgECUvhhSS8W8XUtADOVcQ57YSUQ1d0.png|profile\/xUaat0JGB4HuilBbgRHw84JwTTFvhfswxEN4hzE2.png","unsold_quantity":0,"sold_quantity":45645645,"description":"64564564","review_and_comment":null,"created_at":"2024-08-08 17:33:37","updated_at":"2024-08-08 17:33:37"}] 
+In table 'products' =>  Time 2024-08-08 18:14:27
+Delete product: [{"id":36,"product_code":"MSSP18238","product_name":"\u00c1o 10 l\u1ed7","category_id":"1","price":10000,"image":"profile\/guAswNXRZ2AL6V0MX8pJccRtTKtknjGqJ2x6nZTa.png|profile\/VjCaWq4hBc0QS9cKkxjvGGp9CaGoIBQxBk8Y2koe.png","unsold_quantity":0,"sold_quantity":110,"description":null,"review_and_comment":null,"created_at":"2024-08-08 14:29:06","updated_at":"2024-08-08 14:29:06"}] 
+In table 'products' =>  Time 2024-08-08 18:14:30
+Delete product: [{"id":39,"product_code":"MSSP12731","product_name":"\u00c1o thun","category_id":"1","price":9000,"image":"profile\/hUSmIDM5V13DDzJqzHO821QUZvUrty1MxcdGSUja.jpg|profile\/FJWMZlGjFUmwon5kxRTWapinqpS9CLLKdmfBWDXD.webp","unsold_quantity":0,"sold_quantity":2,"description":"S\u1ea3n ph\u1ea9m: \u00c1o thun\r\nXu\u1ea5t x\u1ee9: VietNam","review_and_comment":null,"created_at":"2024-08-08 16:49:31","updated_at":"2024-08-08 16:49:31"}] 
+In table 'products' =>  Time 2024-08-08 18:14:31

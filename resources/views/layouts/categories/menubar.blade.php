@@ -27,14 +27,14 @@
                     </a>
                 </li>
                 <li>
-                    <a class="btn-del" data-url="del" href="#">
+                    <a class="btn-del btn-action"  data-url="del" href="#">
                         <span><i class="fa-solid fa-trash"></i> Xóa danh mục</span>
                     </a>
                 </li>
             </ul>
         </div>
         <div class="footer-menu">
-            <a href="/admin/categories"><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+            <a href="{{ route('categories.home') }}"><i class="fa-solid fa-arrow-left"></i> Quay lại</a>
         </div>
     </ul>
 </div>

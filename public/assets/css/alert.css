@@ -1,0 +1,82 @@
+.alert-danger {
+    position: absolute;
+    display: block;
+    box-sizing: border-box;
+    display: flex;
+    font-weight: 400;
+    width: 300px;
+    height: 50px;
+    border: 1px solid red;
+    border-left: 4px solid #f10000;
+    background-color: rgb(255, 255, 255);
+    color: rgb(241, 0, 0);
+    right: 0;
+    margin: 10px;
+    border-radius: 3px;
+    padding: 5px;
+    padding-left: 15px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    align-items: center;
+    box-shadow: 5px 5px 2px #6a87874d;
+    z-index: 100;
+}
+
+.alert-success {
+    position: absolute;
+    display: block;
+    font-family: "Roboto Mono", monospace;
+    box-sizing: border-box;
+    display: flex;
+    font-weight: 400;
+    width: 300px;
+    height: 50px;
+    border: 1px solid rgb(0, 241, 0);
+    border-left: 4px solid rgb(0, 241, 0);
+    background-color: rgb(255, 255, 255);
+    color: #2fb344;
+    right: 0;
+    margin: 10px;
+    border-radius: 3px;
+    padding: 5px;
+    padding-left: 15px;
+    box-shadow: 5px 5px 2px #6a87874d;
+    align-items: center;
+    z-index: 100;
+}
+
+.my-animation-alert {
+    position: fixed;
+    opacity: 1;
+    display: inline-block;
+    animation-name: my-animation-alert;
+    animation-duration: 3s;
+    transition-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes my-animation-alert {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+}
+

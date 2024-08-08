@@ -31,8 +31,8 @@
                         @endforeach
                     <td>
                         <div class="btn">
-                            <a class="btn-edit" title="Edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn-del" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#">
+                            <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#">
                                 <i class="fa-solid fa-trash-can" ></i>
                             </a>
                         </div>

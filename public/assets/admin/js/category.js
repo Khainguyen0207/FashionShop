@@ -27,6 +27,10 @@ function clickAddCategory(event) {
     clickCategory = !clickCategory;
 }
 
+function clearText(element) {
+    
+}
+
 function updating() {
     Swal.fire({
         title: 'Thông báo',

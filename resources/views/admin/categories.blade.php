@@ -10,7 +10,7 @@
 @section('overview')
 <div id="addCategory" >
     <div class="screen" onclick="clickAddCategory(event)"></div>
-    <form action="{{route('categories.store')}}" class="my-animation" method="POST">
+    <form action="{{route('categories.store')}}" id="addCategoryForm" class="my-animation"  method="POST">
         @csrf
             <div class="header">
                 <h2 class="tittle">Thêm danh mục</h2>
@@ -18,14 +18,14 @@
             <div class="container">
                 <div class="information-product">
                     <p style="font-size: 20px; padding: 5px 0px">Tên danh mục</p>
-                    <input type="text" name="name_category" class="input" placeholder="Tên danh mục của bạn" spellcheck="false" >
+                    <input type="text" name="name_category" class="input" placeholder="Tên danh mục của bạn" spellcheck="false" required>
                     <p style="margin:5px 0; font-size: 20px">Mô tả</p>
                     <textarea maxlength="5000" class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" placeholder="Mô tả danh mục"  name="description" ></textarea>
                 </div>
                 <div class="image-product">
                     <p>Hình ảnh danh mục</p>
-                    <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
-                    <input type="file" id="upload-photo" />
+                    <label for="upload-photo" ><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
+                    <input type="file" id="upload-photo" required/>
                     <div id="preview"></div>
                     <script>
                         document.getElementById('upload-photo').addEventListener('change', function(event) {

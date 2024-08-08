@@ -53,6 +53,10 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
     Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
+
+    Route::get('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
+    Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
+
     Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
     
     //categories - charts
@@ -76,4 +80,3 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 
 });
-
