@@ -17,12 +17,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{route('category.charts.home', $id)}}">
+                    {{-- {{route('category.charts.home', $id)}} --}}
+                    <a href="#" onclick="updating()">
                         <span> <i class="fa-solid fa-chart-simple"></i> Thống kê đánh giá</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('category.vouchers.home', $id)}}">
+                    {{-- {{route('category.vouchers.home', $id)}} --}}
+                    <a href="#" onclick="updating()">
                         <span><i class="fa-solid fa-ticket"></i> Chương trình khuyến mãi</span>
                     </a>
                 </li>

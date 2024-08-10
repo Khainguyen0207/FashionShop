@@ -33,8 +33,13 @@ function clickAddCategory(event) {
     clickCategory = !clickCategory;
 }
 
-function clearText(element) {
-    
+function turn(clickCategory) {
+    var category = document.getElementById('addCategory')
+    if (clickCategory) {
+        category.style.display = 'block'
+    } else {
+        category.style.display = 'none'
+    }
 }
 
 function updating() {

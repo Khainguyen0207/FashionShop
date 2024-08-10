@@ -1,9 +1,14 @@
 @extends('layouts.admin')
 @push('head')
     <link rel="stylesheet" href="{{asset('assets/admin/css/customer.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/addCategory.css')}}">
+    <script src="{{asset('assets/admin/js/category.js')}}"></script>
 @endpush
 
 @section('overview')
+<div id="addCategory">
+    <div class="screen" onclick="clickAddCategory(event)"></div>
+</div>
 <div class="overview">
     <div id="header">
         <h1>Danh sách khách hàng</h1>
