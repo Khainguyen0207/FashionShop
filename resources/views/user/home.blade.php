@@ -3,6 +3,8 @@
 @push('head')
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/home.css')}}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 @endpush
 
 @section('content')
@@ -28,7 +30,7 @@
         </div>
     </div>
     <div id="content">
-        <div class="nav-bar">
+        <div class="nav-bar interview">
             <h2 class="title"  style="margin-bottom: 10px;">Danh mục</h2>
             <div class="list-bar">
                 <div class="small-bar">
@@ -66,21 +68,147 @@
             <div class="promotion">
                 <h2>Chương trình khuyến mãi</h2>
                 <div class="img img-promotion">
-                    <a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
+                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div> 
                 </div>
             </div>
+
             <div class="events-new_products">
                 <div class="new-products">
                     <h2>Sản phẩm mới</h2>
-                    <div class="img img-new-products">
-                        <a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="new-product"></a>
-                        <a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="events"></a>
+                    <div class="img img-new-product">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>  
                     </div>
                 </div>
                 <div class="events">
                     <h2>Sự kiện và voucher</h2>
                     <div class="img img-events">
-                        <a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="events"></a>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
+                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <script>
+                const swiper = new Swiper('.swiper-container', {
+                    spaceBetween: 10,
+                    loop: true, // Cho phép vòng lặp qua các slide
+                    slidesPerView: 2, // Hiển thị 2 slide cùng lúc
+                    centeredSlides: true, // Đặt slide đang xem ở giữa
+                    slidesPerGroup: 1, // Di chuyển từng slide một
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    autoplay: {
+                        delay: 1000,
+                        disableOnInteraction: false,
+                    },
+                });
+
+            </script>
+        </div>
+
+        <div class="nav-bar sale">
+            <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
+                <h2>Giảm giá <span style="color:red; font-size: 14px;" id="time-sale">Thời gian: </span></h2>
+                <script>
+                    setInterval(() => {
+                        const time = new Date();
+                        var time_date = time.getDate() + "/" + time.getMonth() + "/" + time.getFullYear();
+                        var time_real = time.getHours() + "-" + time.getMinutes() + "-" + time.getSeconds();
+                        console.log(time_date +"    " +time_real);
+                        document.getElementById('time-sale').innerHTML = "Thời gian: " + time_date +"   " +time_real;
+                    }, 1000);
+                </script>
+            </div>
+            <div class="list-products-sale">
+                <div class="products-sale">
+                    <div class="product-sale">
+                        <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
+                        <div class="informations information-product-sale ">
+                            <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                            <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
+                        </div>
+                        <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                    </div>  
+                    <div class="product-sale">
+                        <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                        <div class="informations information-product-sale ">
+                            <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                            <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
+                        </div>
+                        <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                    </div>  
+                    {{-- Thêm sản phẩm --}}
+                </div>
+            </div>
+        </div>
+
+        <div class="products">
+            <div class="nav-bar man" onclick="alert('hello')">
+                <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
+                    <h2> Thời trang nam </h2>
+                </div>
+                <div class="list-products">
+                    <div class="products">
+                        <div class="product">
+                            <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
+                            <div class="informations information-product ">
+                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                                <p class="sale-price">129.000 VNĐ</p>
+                            </div>
+                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="nav-bar woman">
+                <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
+                    <h2>Thời trang nữ</h2>
+                </div>
+                <div class="list-products">
+                    <div class="products">
+                        <div class="product">
+                            <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
+                            <div class="informations information-product ">
+                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                                <p class="sale-price">129.000 VNĐ</p>
+                            </div>
+                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                        </div>  
                     </div>
                 </div>
             </div>
