@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Http\Request;
+use App\Mail\UserActivationEmail;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\HomeController;
@@ -8,11 +12,13 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\SessionGuard;
+
 Route::get('/', [LoginController::class, 'index'])->name('home');
-Route::get('/hi', function() {
-    dd(Auth::guard());
+
+Route::get('hi',function() {
+    $token = Hash::make("tkhai12386@gmail.com");
+    Mail::to("cudaimst1@gmail.com") ->send(new UserActivationEmail("Mã khôi phục - Fashion Store", floor(rand(1000, 9999))));
+    return redirect(route('auth.forgetPassword'))->with('success', 'Mã xác thực được gửi vào mail của bạn');
 });
 
 Route::prefix('/auth')->middleware('guest')->group(function () {
