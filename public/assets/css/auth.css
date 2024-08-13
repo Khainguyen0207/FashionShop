@@ -157,6 +157,7 @@
     transition: 0.5s;
 }
 
-form .save-user {
-    font-size: 16px;
+form .save-user .remember-login {
+    width: 15px; 
+    height:15px;
 }

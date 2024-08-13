@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\HomeController;
@@ -9,13 +8,11 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
-
-Route::get('/', function() {
-    if (Auth::check()) {
-        return redirect(route('user.home'));
-    } else {
-        return redirect(route('login'));
-    }
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\SessionGuard;
+Route::get('/', [LoginController::class, 'index'])->name('home');
+Route::get('/hi', function() {
+    dd(Auth::guard());
 });
 
 Route::prefix('/auth')->middleware('guest')->group(function () {

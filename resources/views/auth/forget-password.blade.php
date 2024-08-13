@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="btn-login">
-                <button type="submit" id="btn-sendmail">Gửi mail</button>
+                <button type="submit" id="btn-sendmail">Send mail</button>
             </div>
             <div class="login-api">
                 <p style="text-align: center;">Sign in with</p>

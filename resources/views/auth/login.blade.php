@@ -23,8 +23,8 @@
                 <button type="submit" id="btn-validate" >Login</button>
             </div>
             <div class="save-user" style="margin-bottom: 10px">
-                <input class="remember-login" name="remember" type="checkbox">
-                <label for="">Lưu đăng nhập</label>
+                <input class="remember-login" type="checkbox" name="remember" id="remember"/> 
+                <span>Remember</span>
             </div>
             <div class="login-api">
                 <p style="text-align: center;">Sign in with</p>

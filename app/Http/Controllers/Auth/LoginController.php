@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Contracts\Auth\UserProvider;
 
 class LoginController extends Controller
 {
@@ -17,23 +19,25 @@ class LoginController extends Controller
         
     public function index()
     {
-        
+        if (Auth::check()) {
+            return redirect(route('user.home'));
+        }
+        return redirect(route('login'));
     }
-
     
     public function create()
     {
-        //
+        
     }
-
    
     public function store(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        if (! Auth::attempt($credentials, true)) {
-            throw ValidationException::withMessages(['email' => 'Tài khoản hoặc mật khẩu không chính xác']);
-        } 
+        $remember = $request->has('remember');
         
+        if (!Auth::attempt($credentials, $remember)) {
+            throw ValidationException::withMessages(['email' => 'Tài khoản hoặc mật khẩu không chính xác']);
+        }
         return redirect(route('user.home'));
     }
     
