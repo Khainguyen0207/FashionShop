@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
@@ -24,18 +25,17 @@ Route::get('hi',function() {
 Route::prefix('/auth')->middleware('guest')->group(function () {
 
     Route::get('/', [LoginController::class, 'showFormLogin'])->name('login');
-
+    //login
     Route::get('/login', [LoginController::class, 'showFormLogin'])->name('auth.login');
-
     Route::post('/login', [LoginController::class, 'store'])->name('auth.login.post');
-    
-    Route::get('/register', [RegisterController::class, 'home'])->name('auth.register');
 
+    //Register
+    Route::get('/register', [RegisterController::class, 'home'])->name('auth.register');
     Route::post('/register', [RegisterController::class, 'store'])->name('auth.register.post');
 
-    Route::get('/forget-password', function () {
-        return view('auth.forget-password', ['title' => 'Quên mật khẩu']);
-    })->name('auth.forgetPassword'); 
+    //Forget password 
+    Route::get('/forget-password', [ForgetPasswordController::class, 'index'])->name('auth.forgetPassword.home'); 
+    Route::post('/forget-password', [ForgetPasswordController::class, 'store'])->name('auth.forgetPassword.store'); 
 
 });
 

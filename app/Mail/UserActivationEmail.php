@@ -18,7 +18,6 @@ class UserActivationEmail extends Mailable
      */
     private string $title;
     private int $code;
-
     public function __construct(string $title, int $code)
     {
         $this->title = $title;
@@ -42,7 +41,12 @@ class UserActivationEmail extends Mailable
     {
         return new Content(
             view: 'mail.send-code',
-            with: ['title' => $this->title, 'code' => $this->code],
+            with: [
+                'title' => $this->title, 
+                'code' => $this->code,
+                'mail_contact' => "name.fashion.store@gmail.com",
+                'name' => 'JSON',
+            ],
         );
     }
 
@@ -53,6 +57,8 @@ class UserActivationEmail extends Mailable
      */
     public function attachments(): array
     {
-        return [];
+        return [
+            
+        ];
     }
 }

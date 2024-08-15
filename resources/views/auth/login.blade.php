@@ -24,7 +24,7 @@
             </div>
             <div class="save-user" style="margin-bottom: 10px">
                 <input class="remember-login" type="checkbox" name="remember" id="remember"/> 
-                <span>Remember</span>
+                <span>Remember me</span>
             </div>
             <div class="login-api">
                 <p style="text-align: center;">Sign in with</p>
