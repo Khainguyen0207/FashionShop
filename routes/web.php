@@ -35,8 +35,13 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 
     //Forget password 
     Route::get('/forget-password', [ForgetPasswordController::class, 'index'])->name('auth.forgetPassword.home'); 
-    Route::post('/forget-password', [ForgetPasswordController::class, 'store'])->name('auth.forgetPassword.store'); 
+    Route::post('/forget-password', [ForgetPasswordController::class, 'store'])->name('auth.forgetPassword.store');
+    
+    Route::get('/forget-password/confirm', [ForgetPasswordController::class, 'edit'])->name('password.reset');
+    Route::post('/forget-password/confirm', [ForgetPasswordController::class, 'confirm'])->name('password.reset.confirm');
 
+    Route::get('/forget-password/change', [ForgetPasswordController::class, 'edit_password'])->name('password.change');
+    Route::post('/forget-password/change', [ForgetPasswordController::class, 'change'])->name('password.change.confirm');
 });
 
 Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {

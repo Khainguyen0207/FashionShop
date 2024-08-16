@@ -53,7 +53,6 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
             clickAddCategory(event);
             const url = event.currentTarget.dataset.url;
             console.log(url);
-            
             $.ajax({
                 url: url,
             }).then((data)=> {

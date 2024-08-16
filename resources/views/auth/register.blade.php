@@ -42,7 +42,7 @@
                 </ul>
             </div>
             <div class="information-support">
-                <span><a href="{{route('auth.forgetPassword')}}">Forget Password</a></span>
+                <span><a href="{{route('auth.forgetPassword.home')}}">Forget Password</a></span>
                 <span><a href="{{route('auth.login')}}">Login</a></span>
             </div>
         </form>

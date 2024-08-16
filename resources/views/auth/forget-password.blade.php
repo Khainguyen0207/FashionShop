@@ -1,9 +1,8 @@
 @extends('layouts.auth')
-
 @section('content')
 <div id="main">
     <div class="form">
-        <form action="{{ route('auth.register') }}" method="post">
+        <form action="{{ route('auth.forgetPassword.store') }}" method="post">
             @csrf
             <div class="tittle-login">
                 <h3>Forget Password</h3>
@@ -11,7 +10,7 @@
             <div class="input-information">
                 <div class="input-user input">
                     <label for="" style="font-size:20px;">Recovery email</label> <br>
-                    <input id="recovery_email" type="email" name="email" spellcheck="false" require="require" value="admin@admin.vn"><br>
+                    <input id="recovery_email" type="email" name="email" spellcheck="false" value="admin@admin.vn"><br>
                 </div>
             </div>
             <div class="btn-login">
@@ -33,3 +32,7 @@
     </div>
 </div>
 @endsection
+
+@push('footer')
+    <script src="{{asset('assets/auth/forget-password.js')}}"></script>
+@endpush
