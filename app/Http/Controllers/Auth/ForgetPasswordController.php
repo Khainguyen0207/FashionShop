@@ -41,7 +41,7 @@ class ForgetPasswordController extends Controller
         if ($send) {
             $expired_time = User_otp::query()->where('email', $data['email'])->first();
             if (Carbon::now()->diffInMinutes($expired_time->expired_at) < 8) {
-                User_otp::query()->update($request);
+                User_otp::query()->where('email', $data['email'])->update($request);
                 Mail::to($data['email'])->queue(new UserActivationEmail("Mã khôi phục - Fashion Store", $code));
                 return redirect(route('password.reset', ['token' => $token, 'email' => $data['email']]))->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);
             } else {
@@ -92,7 +92,10 @@ class ForgetPasswordController extends Controller
 
     public function change(ChangePasswordRequest $request) {
         $code = $request->validated();
-        User::query()->where('email', $request->email)->update(['password'=> Hash::make($code['password'])]);
+        $user = User::query()->where('email', $request->email)->first();
+        $user->password = $code['password'];
+        $user->save();
+        // User::query()->where('email', $request->email)->update(['password'=> $code['password']]);
         return redirect(route('login'))->with(['success' => 'Đổi mật khẩu thành công']);
     }
 }

@@ -84,7 +84,15 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'home'])->name('user.home');
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
+    Route::get('/products', function() {
+        return view('user.products');
+    })->name('products.home');
+
+    Route::get('/products/id', function() {
+        return view('user.product');
+    })->name('products.home');
+
+
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
-
 });

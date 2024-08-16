@@ -3,30 +3,14 @@
 @push('head')
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <title>Trang chủ</title>
 @endpush
 
 @section('content')
-    <div id="header">
-        <a href="#"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
-        <div class="bar">
-            <a href="#" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
-            <a href="{{route('admin.logout')}}" class="login"><i class="fa-solid fa-user"></i> Đăng xuất</a>
-        </div>
-    </div>
-    <div id="menu-bar">
-        <div class="menu">
-            <li class="content-menu"><a href="#"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
-            <li class="content-menu"><a href="#products"><i class="fa-solid fa-box-open"></i> Sản phẩm</a></li>
-            <li class="content-menu"><a href="#sale"><i class="fa-solid fa-ticket"></i> Khuyến mãi</a></li>
-            <li class="content-menu"><a href="#footer"><i class="fa-solid fa-headset"></i> Liên hệ</a></li>
-        </div>
-        <div class="search">
-            <i class="icon fa-solid fa-magnifying-glass"></i>
-            <input type="search" name="search" placeholder="Tìm kiếm"> 
-        </div>
-    </div>
+    @include('layouts.user.header')
     <div id="container">
         <div class="nav-bar interview">
             <h2 class="title"  style="margin-bottom: 10px;">Danh mục</h2>
@@ -151,16 +135,12 @@
             <div class="list-products-sale">
                 <div class="products-sale">
                     <div class="product-sale">
-                        <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
-                        <div class="informations information-product-sale ">
-                            <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                            <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
-                        </div>
-                        <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                    </div>  
-                    <div class="product-sale">
-                        <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                        <a href="" class="image" style="width: 100%">
+                            <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                            <div class="animation-img">
+                                <p style="color: black">Chi tiết sản phẩm</p>
+                            </div>
+                        </a>
                         <div class="informations information-product-sale ">
                             <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
                             <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
@@ -184,7 +164,12 @@
                 <div class="list-products">
                     <div class="products">
                         <div class="product">
-                            <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
+                            <a href="" class="image" style="width: 100%">
+                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                                <div class="animation-img">
+                                    <p style="color: black">Chi tiết sản phẩm</p>
+                                </div>
+                            </a>
                             <div class="informations information-product ">
                                 <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
                                 <p class="sale-price">129.000 VNĐ</p>
@@ -205,7 +190,12 @@
                 <div class="list-products">
                     <div class="products">
                         <div class="product">
-                            <a href=""><img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review"></a>
+                            <a href="" class="image" style="width: 100%">
+                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                                <div class="animation-img">
+                                    <p style="color: black">Chi tiết sản phẩm</p>
+                                </div>
+                            </a>
                             <div class="informations information-product ">
                                 <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
                                 <p class="sale-price">129.000 VNĐ</p>
@@ -221,25 +211,5 @@
             </div>
         </div>
     </div>
-    <div id="footer">
-        <h1>Giới thiệu</h1>
-        <li>FashionStore tự hào mang đến những sản phẩm thời trang chất lượng cao với xu hướng mới nhất từ khắp nơi trên thế giới. Phong cách và đẳng cấp, tất cả đều có tại FashionStore.</li>
-        <div class="social-networking-contact">
-            <div class="social-networking">
-                <h1>Mạng xã hội</h1>
-                <li>FB: <a href="#">facebook.com/supportfashionstore</a></li>
-                <li>Tiktok: <a href="#">@supportfashionstore</a></li>
-                <li>IG: <a href="#">@supportfashionstore</a></li>
-            </div>
-            <div class="contact">
-                <h1>Liên hệ </h1>
-                <li>Hotline: <a href="#">(+84) 123 456 789</a></li>
-                <li>Email: <a href="#">supportfashionstore@support.vn</a></li>
-                <li>Địa chỉ: 123 Đường Thời Trang, Quận 1, TP. Hồ Chí Minh</li>
-            </div>
-        </div>
-        <h1>Cảm ơn</h1>
-            <li>Cảm ơn quý khách đã ghé thăm và mua sắm tại FashionStore. Chúng tôi luôn nỗ lực để mang đến cho quý khách trải nghiệm mua sắm tốt nhất!</li>
-        <p style="display:block;color: gray;float:right;">@Bản quyền thuộc về Fashionstore</p>
-    </div>
+    @include('layouts.user.footer')
 @endsection

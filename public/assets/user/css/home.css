@@ -17,94 +17,7 @@ body {
     font-style: normal;
 }
 
-#header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 12vh;
-    background-color: #ffa384;
-    padding: 10px;
-}
 
-#header img {
-    position: relative;
-    display: block;
-    float: left;
-    width: 70px;
-}
-
-#header .bar a {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #ffedf2;
-    padding: 9px 12px;
-    font-size: 16px;
-    color: black;
-    border-radius: 20px;
-}
-
-#header .bar a:hover {
-    background-color: aquamarine;
-    transition: 0.6s;
-}
-
-
-#menu-bar {
-    position: relative;
-    display: flex;
-    background-color:initial;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 2;
-    background-color: var(--background);
-}
-
-#menu-bar .menu {
-    position: relative;
-    display: flex;
-}
-
-#menu-bar .menu li {
-    list-style: none;
-}
-
-#menu-bar .menu li a {
-    display: block;
-    text-decoration: none;
-    color: black;
-    padding: 12px 24px; 
-    font-size: 20px;
-}
-
-#menu-bar .menu li:hover {
-    background-color: #fefabd;
-}
-
-#menu-bar .search {
-    position: relative;
-    display: block;
-}
-
-#menu-bar .search input {
-    position: relative;
-    border: none;
-    padding: 9px 12px 9px 50px;
-    font-size: 20px;
-    background-color: transparent;
-    margin-right: 10px;
-    border-radius: 20px;
-    outline: 2px solid #ffffff;
-}
-#menu-bar .search .icon {
-    position: absolute;
-    margin: 13px 20px; 
-    z-index: 1;
-}
-
-#menu-bar .search input:focus-visible {
-    border: none;
-}
 
 #container {
     background-color: var(--background);
@@ -265,16 +178,11 @@ body {
 }
 
 /*setting swiper end*/
-
-.list-products-sale {
-    position: relative;
-    display: block;
-}
-
 .list-products-sale .products-sale,
 .list-products .products {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start;
 }
@@ -283,13 +191,11 @@ body {
 .list-products .products .product {
     position: relative;
     display: block;
-    background-color: var(--background);
+    background-color: #fff6ea;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-    max-width: calc(100% / 5);
 }
-
 .products-sale .product-sale .information-product-sale,
 .products .product .information-product {
     font-size: 20px;
@@ -302,14 +208,52 @@ body {
     overflow: hidden;            
     text-overflow: ellipsis;  
 }
-
+.list-products-sale .products-sale .product-sale .image,
+.list-products .products .product .image
+{
+    position: relative;
+    display: inline-block;
+}
 .list-products-sale .products-sale .product-sale .img,
 .list-products .products .product .img
- {
+{
+    position: relative;
+    display: block;
     width: 100%;
-    max-width: 250px;    
+    max-width: 250px;
     max-height: 200px;
     border-radius: 20px;
+}
+
+.animation-img {
+    position: absolute;
+    display: inline-block;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.104);
+    transform: translateY(100%);
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.list-products-sale .products-sale .product-sale .image:hover .animation-img,
+.list-products .products .product .image:hover .animation-img
+{
+    opacity: 1;
+    transform: translateY(0%);
+    z-index: 2;
+}
+
+.list-products-sale .products-sale .product-sale .image:hover .img,
+.list-products .products .product .image:hover .img {
+    filter: blur(4px);
+    transition: 0.3s ease-in-out;
 }
 
 .list-products-sale .products-sale .product-sale .btn,
@@ -334,23 +278,5 @@ body {
 .list-products-sale .products-sale .product-sale .btn:hover,
 .list-products .products .product .btn:hover {
     background-color: #ffa384;
-}
-
-#footer {
-    display: block;
-    background-color: #d9d9d9;
-    padding: 30px;
-}
-
-#footer .social-networking-contact {
-    display: flex;
-    justify-content: space-between;
-}
-
-#footer li {
-    list-style: none;
-}
-
-#footer h1 {
-    color: #a52a2a;
+    transition: 0.3s ease-in-out;
 }
