@@ -23,7 +23,7 @@
             <div class="products">
                 @for ($i = 0; $i < 10; $i++)
                 <div class="product">
-                    <a href="" class="image" style="width: 100%">
+                    <a href="{{route('product.id')}}" class="image" style="width: 100%">
                         <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
                         <div class="animation-img">
                             <p style="color: black">Chi tiết sản phẩm</p>
@@ -55,7 +55,6 @@
                 <p href="#" class="seen">Nhận ngay vouchers giảm giá đến 50% khi tham gia sự kiện cùng cô bé quàng khăn đỏ nào <a href="#" style="color: red">Đến ngay</a></p>   
             </div>
         </div>
-
         <div class="header" style="margin: 20px auto;">
             <div class="title"><h1>Sản phẩm khác có thể bạn sẽ thích</h1></div>
         </div>

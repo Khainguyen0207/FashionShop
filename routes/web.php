@@ -90,7 +90,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
 
     Route::get('/products/id', function() {
         return view('user.product');
-    })->name('products.home');
+    })->name('product.id');
 
 
     //Logout

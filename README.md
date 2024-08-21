@@ -1,2 +1,4 @@
-##Comming soon
-Fashion shop
+##Comming soon - Fashion shop
+Setup 
+Chạy lệnh php artisan queue:work
+
