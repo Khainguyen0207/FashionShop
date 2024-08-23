@@ -134,21 +134,22 @@
             </div>
             <div class="list-products-sale">
                 <div class="products-sale">
-                    <div class="product-sale">
-                        <a href="" class="image" style="width: 100%">
-                            <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                            <div class="animation-img">
-                                <p style="color: black">Chi tiết sản phẩm</p>
+                    @for ($i = 0; $i < 5; $i++)
+                        <div class="product-sale">
+                            <a href="" class="image" style="width: 100%">
+                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                                <div class="animation-img">
+                                    <p style="color: black">Chi tiết sản phẩm</p>
+                                </div>
+                            </a>
+                            <div class="informations information-product-sale ">
+                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                                <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
                             </div>
-                        </a>
-                        <div class="informations information-product-sale ">
-                            <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                            <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
-                        </div>
-                        <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                    </div>  
-                    {{-- Thêm sản phẩm --}}
+                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                        </div>  
+                    @endfor
                 </div>
             </div>
             <div class="info" style="display: block; float: right;">
@@ -163,20 +164,22 @@
                 </div>
                 <div class="list-products">
                     <div class="products">
-                        <div class="product">
-                            <a href="" class="image" style="width: 100%">
-                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                <div class="animation-img">
-                                    <p style="color: black">Chi tiết sản phẩm</p>
+                        @for ($i = 0; $i < 5; $i++)
+                            <div class="product">
+                                <a href="" class="image" style="width: 100%">
+                                    <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
+                                    <div class="animation-img">
+                                        <p style="color: black">Chi tiết sản phẩm</p>
+                                    </div>
+                                </a>
+                                <div class="informations information-product ">
+                                    <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
+                                    <p class="sale-price">129.000 VNĐ</p>
                                 </div>
-                            </a>
-                            <div class="informations information-product ">
-                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                                <p class="sale-price">129.000 VNĐ</p>
-                            </div>
-                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                        </div>  
+                                <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                                <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                            </div>  
+                        @endfor
                     </div>
                     <div class="info" style="display: block; float: right;">
                         <a href="#" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
@@ -189,10 +192,11 @@
                 </div>
                 <div class="list-products">
                     <div class="products">
+                        @for ($i = 0; $i < 5; $i++)
                         <div class="product">
                             <a href="" class="image" style="width: 100%">
                                 <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                <div class="animation-img">
+                                <div class="animation-img">cart
                                     <p style="color: black">Chi tiết sản phẩm</p>
                                 </div>
                             </a>
@@ -203,6 +207,7 @@
                             <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
                             <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
                         </div>  
+                        @endfor
                     </div>
                     <div class="info" style="display: block; float: right;">
                         <a href="#" style="text-decoration: none; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>

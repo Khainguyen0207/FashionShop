@@ -1,7 +1,7 @@
 <div id="header">
     <a href="#"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
     <div class="bar">
-        <a href="#" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
+        <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
         <a href="#" class="login" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa-solid fa-user"></i> Đăng xuất</a>
         <form id="logout" action="{{ route('user.logout') }}" method="POST" style="display: none;">
             @csrf

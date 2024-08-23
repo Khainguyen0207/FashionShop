@@ -93,7 +93,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         return view('user.product');
     })->name('product.id');
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.view');
+    Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
 
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
