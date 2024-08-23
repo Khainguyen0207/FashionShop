@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
@@ -92,6 +93,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         return view('user.product');
     })->name('product.id');
 
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.view');
 
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
