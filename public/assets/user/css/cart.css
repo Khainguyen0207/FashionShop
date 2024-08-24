@@ -1,8 +1,9 @@
 
 :root {
     --background-item: #fff6ea;
+    --background-product: #D5ED9F;
     --background: #ffe0ae ;
-    --text-color: black;
+    --text-color: #800000;
 }
 
 * {
@@ -20,45 +21,100 @@ body {
 }
 
 #container {
+    display: flex;
     background-color: var(--background);
     padding: 20px;
+    width: 100%;
+    gap: 15px;
+    align-items: flex-start;
 }
 
-.list-products .products {
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.list-products .products .product {
+.products {
     position: relative;
     display: block;
     background-color: var(--background-item);
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.products h1 {
+    display: block;
+    border-bottom: 2px lightgray solid;
+}
+
+.products .product {
+    position: relative;
+    display: flex;
+    background-color: var(--background-product);
+    text-align: center;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
     padding: 10px;
     border-radius: 10px;
-    text-align: center;
+}
+
+.products .product .seen-product {
+    text-decoration: none; 
+    color: red;
+}
+
+
+.products .product .seen-product:hover {
+    color: #ffa384;
 }
 
 .products .product .information-product {
+    display: flex;
     font-size: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
 }
 
 .truncate-1 {
     display: -webkit-box;        
+    color: var(--text-color);
     -webkit-line-clamp: 1;      
     -webkit-box-orient: vertical; 
     overflow: hidden;            
     text-overflow: ellipsis;  
 }
 
-.list-products .products .product .image
+.information-product .quantity {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.quantity .quantity-func {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    color: var(--text-color);
+    background-color: #d5edcc;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.quantity .quantity-func a {
+    color: var(--text-color);
+}
+
+.quantity .quantity-func a:hover {
+    color: rgb(252, 0, 0);
+}
+
+.products .product .image
 {
     position: relative;
     display: inline-block;
 }
 
-.list-products .products .product .img
+.products .product .img
 {
     position: relative;
     display: block;
@@ -87,40 +143,76 @@ body {
 }
 
 
-.list-products .products .product .image:hover .animation-img
+.products .product .image:hover .animation-img
 {
     opacity: 1;
     transform: translateY(0%);
     z-index: 1;
 }
 
-.list-products .products .product .image:hover .img {
+.products .product .image:hover .img {
     filter: blur(4px);
     transition: 0.3s ease-in-out;
 }
 
-
-.list-products .products .product .btn {
-    display: inline-block;
-    padding: 9px 12px;
-    text-decoration: none;
+.pay {
+    display: block;
+    width: 30%;
+    background-color: var(--background-item);
+    padding: 10px;
     border-radius: 10px;
-    color: white;
 }
 
-.list-products .products .product .btn-buy {
+.pay .header {
+    display: block;
+    border-bottom: 2px lightgray solid;
+    margin-bottom: 2px;
+}
+
+.pay .content {
+    display: block;
+    border-bottom: 2px lightgray solid;
+    margin-bottom: 10px;
+}
+
+.pay .content table {
+    width: 100%;
+}
+
+.pay .content tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.pay .content .total-amount {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.pay .footer .btn {
+    display: block;
+    padding: 9px 12px;
+    text-decoration: none;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+}
+
+.pay .footer .btn-pay {
     background-color: red;
 }
 
-.list-products .products .product .btn-cart {
-    background-color: #89af7d;
+.pay .footer .btn-voucher {
+    background-color: #399918;
 }
 
 
-.list-products .products .product .btn:hover {
+.pay .footer .btn:hover {
     background-color: #ffa384;
     transition: 0.3s ease-in-out;
 }
+
 
 @keyframes my-animation-product {
     0% {
@@ -131,8 +223,6 @@ body {
 
     100% {
         opacity: 1;
-        z-index: 1;
-
         height: 100px;
         z-index: 2;
         transform: translateY(0%);

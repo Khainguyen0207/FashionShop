@@ -5,6 +5,8 @@ use App\Mail\UserActivationEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
@@ -13,7 +15,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
-use App\Http\Controllers\CartController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
@@ -81,10 +82,11 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
 });
 
 Route::prefix('/user')->middleware('auth')->group(function () {
-
+    //Home
     Route::get('/', [UserController::class, 'home'])->name('user.home');
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
+    //Product
     Route::get('/products', function() {
         return view('user.products');
     })->name('products.home');
@@ -93,7 +95,12 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         return view('user.product');
     })->name('product.id');
 
+    //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
+
+    //Pay
+    Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
+    
 
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
