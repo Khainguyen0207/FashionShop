@@ -1,0 +1,25 @@
+
+:root {
+    --background-item: #fff6ea;
+    --background-product: #D5ED9F;
+    --background: #ffe0ae ;
+    --text-color: #800000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    display: block;
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+#container {
+    
+}
