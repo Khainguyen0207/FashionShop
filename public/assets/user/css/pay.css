@@ -21,5 +21,88 @@ body {
 }
 
 #container {
-    
+    position: relative;
+    background-color: var(--background);
+    padding: 20px;
+}
+
+#container .form-order {
+    position: relative;
+    display: block;
+    background-color: var(--background-item);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.form-order .header {
+    border-bottom: 2px lightgray solid;
+}
+
+.form-order .content form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-order .content form input {
+    padding: 5px 10px;
+    outline: 1px gray;
+    outline-style: solid;
+    font-size: 16px;
+    outline-color: #9a9a9a;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-order .content form input[type='number']::-webkit-inner-spin-button,
+.form-order .content form input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; /* Loại bỏ khoảng cách */
+}
+
+.form-order .content .order-information table {
+    width: 100%;
+}
+
+.form-order .content .order-information tr {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-order .content form input:focus {
+    outline: 0;
+    box-shadow: 0px 0px 2px 2px #4e4e4e;
+}
+
+
+.form-order .content .item {
+    color: #800000;
+}
+
+.form-order .content .payment-method {
+    position: relative;
+    display: block;
+}
+
+.form-order .content .payment-method .select-banking {
+    position: relative;
+    display: flex;
+    width: auto;
+}
+
+.form-order .content .payment-method img {
+    position: relative;
+    width: auto;
+    max-height: 100px;
+    width: auto;
+}
+
+
+
+.form-order .footer {
+    border-top: 2px lightgray solid;
+}
+
+.form-order .footer .btn {
+    display: inline-block;
 }

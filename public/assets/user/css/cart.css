@@ -75,12 +75,13 @@ body {
 }
 
 .truncate-1 {
-    display: -webkit-box;        
+    display: -webkit-box;  
     color: var(--text-color);
     -webkit-line-clamp: 1;      
     -webkit-box-orient: vertical; 
     overflow: hidden;            
-    text-overflow: ellipsis;  
+    text-overflow: ellipsis;   
+
 }
 
 .information-product .quantity {
