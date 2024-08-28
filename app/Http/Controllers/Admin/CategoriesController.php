@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function home() {
         $data = DB::table('categories')->select('id', 'name_category')->get();
         $render = [
-            'title' => '',
+            'title' => 'Hello',
             'categories' => $data->toArray(),
         ];
         return view('admin.categories', $render);
