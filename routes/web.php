@@ -17,6 +17,9 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 
 Route::get('hi',function() {
     $token = Hash::make("tkhai12386@gmail.com");

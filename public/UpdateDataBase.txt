@@ -20,3 +20,9 @@ Delete product: [{"id":44,"product_code":"MSSP19388","product_name":"\u00c1o 2 l
 In table 'products' =>  Time 2024-08-09 00:08:27
 Delete categories: [{"id":5,"name_category":"dbdfb","description":"sdvsdvds","created_at":"2024-08-09 00:26:45","updated_at":"2024-08-09 00:26:45"}] 
 In table 'categories' =>  Time 2024-08-09 00:26:52
+Delete product: [{"id":45,"product_code":"MSSP11981","product_name":"SP1","category_id":"1","price":1,"image":"profile\/Ik4buyBQ0lhPiLlTlEBtTPmIRrYkaallpeUr6g2n.png","unsold_quantity":0,"sold_quantity":1,"description":"SP13qwfes","review_and_comment":null,"created_at":"2024-08-09 00:08:39","updated_at":"2024-08-09 00:10:45"}] 
+In table 'products' =>  Time 2024-08-28 21:04:32
+Delete product: [{"id":46,"product_code":"MSSP16357","product_name":"SP232","category_id":"1","price":2,"image":"profile\/l6w9F51wvrGqCl9I01Bgw4vawlcKxdi8rgm8rbWr.png|profile\/W7fcepsDsBDB6izWuPxnfmi3gAotukfwABHLGG5q.png|profile\/QHjnSfypdfdP8LgA5frQAbZQnJxEMW1aGOE7ogZX.png","unsold_quantity":0,"sold_quantity":2,"description":"sdvsvsdvsdv","review_and_comment":null,"created_at":"2024-08-09 00:08:48","updated_at":"2024-08-09 00:10:57"}] 
+In table 'products' =>  Time 2024-08-28 21:04:34
+Delete product: [{"id":47,"product_code":"MSSP1356","product_name":"dsvsdv","category_id":"1","price":325345345,"image":"profile\/m7UFXNbKQgAeYKXoZYvD9xW4pWXSEJoZVAMJm83a.png","unsold_quantity":0,"sold_quantity":45345,"description":"34534534","review_and_comment":null,"created_at":"2024-08-28 21:07:53","updated_at":"2024-08-28 21:07:53"}] 
+In table 'products' =>  Time 2024-08-28 21:07:58

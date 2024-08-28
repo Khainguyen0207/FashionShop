@@ -196,7 +196,7 @@
                         <div class="product">
                             <a href="" class="image" style="width: 100%">
                                 <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                <div class="animation-img">cart
+                                <div class="animation-img">
                                     <p style="color: black">Chi tiết sản phẩm</p>
                                 </div>
                             </a>

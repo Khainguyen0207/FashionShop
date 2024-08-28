@@ -82,7 +82,7 @@ class ProductController extends Controller
         try {
             Product::query()->create($data);
         } catch (\Throwable $th) {
-            return redirect(route('category.products.home', $id_category))->with(['error' => 'Thêm sản phẩm thất bại']);
+            return redirect(route('category.products.home', $id_category))->with(['status' => 'Thêm sản phẩm thất bại']);
         }
         return redirect(route('category.products.home', $id_category))->with(['success' => 'Thêm sản phẩm thành công']);
     }

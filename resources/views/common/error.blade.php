@@ -13,4 +13,9 @@
             {{ session('success') }}
         </span>
     </div>
+    <div class="alert alert-error my-animation-alert">
+        <span id="status">
+            {{ session('status') }}
+        </span>
+    </div>
 @endsession

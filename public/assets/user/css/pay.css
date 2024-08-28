@@ -57,7 +57,7 @@ body {
 .form-order .content form input[type='number']::-webkit-inner-spin-button,
 .form-order .content form input[type='number']::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    margin: 0; /* Loại bỏ khoảng cách */
+    margin: 0;
 }
 
 .form-order .content .order-information table {
@@ -99,7 +99,6 @@ body {
 .payment-method .select-banking .banking {
     max-height: 100px;
 }
-
 
 .form-order .content .payment-method img {
     position: relative;
