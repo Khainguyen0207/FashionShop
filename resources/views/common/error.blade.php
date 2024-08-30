@@ -7,15 +7,16 @@
     </div>
 @endif
 
+@if(session('error'))
+    <div class="alert alert-danger my-animation-alert">
+        {{ session('error') }}
+    </div>
+@endif
+
 @session('success')
     <div class="alert alert-success my-animation-alert">
         <span id="success">
             {{ session('success') }}
-        </span>
-    </div>
-    <div class="alert alert-error my-animation-alert">
-        <span id="status">
-            {{ session('status') }}
         </span>
     </div>
 @endsession

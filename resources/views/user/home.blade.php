@@ -127,7 +127,6 @@
                         const time = new Date();
                         var time_date = time.getDate() + "/" + time.getMonth() + "/" + time.getFullYear();
                         var time_real = time.getHours() + "-" + time.getMinutes() + "-" + time.getSeconds();
-                        console.log(time_date +"    " +time_real);
                         document.getElementById('time-sale').innerHTML = "Thời gian: " + time_date +"   " +time_real;
                     }, 1000);
                 </script>
