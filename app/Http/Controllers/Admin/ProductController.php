@@ -8,10 +8,13 @@ use App\Models\Product;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Excel\ExcelController;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -87,7 +90,6 @@ class ProductController extends Controller
             Product::query()->create($data);
         } catch (\Throwable $th) {
             return redirect(route('category.products.home', $id_category))->with(['error' => 'Thêm sản phẩm thất bại']);
-
         } 
         return redirect(route('category.products.home', $id_category))->with(['success' => 'Thêm sản phẩm thành công']);
     }
@@ -123,7 +125,7 @@ class ProductController extends Controller
         $data = $productRequest->validated();
         $urlImage = "";
         if (!empty($productRequest->file('image'))) {
-            foreach ($productRequest->file('image') as $key => $value) {
+            foreach ($productRequest->file('image') as $value) {
                 $urlImage .= $value->store('profile', 'public') .'|';
             }
             $urlImage = substr($urlImage, 0, strlen($urlImage) - 1);
@@ -143,12 +145,20 @@ class ProductController extends Controller
     }
     
     public function destroy($id_category, $product_id) {
-        $info = DB::table('products')->where('id', $product_id)->get();
-        $deleted = DB::table('products')->where('id', $product_id)->delete();
         $date = Carbon::now();
+        $info = DB::table('products')->where('id', $product_id)->get();
+        //Delete image in storage
+        foreach (explode('|', $info->first()->image) as $value) {
+            Storage::delete($value);
+        }
+        $deleted = DB::table('products')->where('id', $product_id)->delete();
         if ($deleted) {
-            fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete product: $info \nIn table 'products' =>  Time $date\n");
+            $num = count(explode('|', $info->first()->image));
+            fwrite(fopen('./history/DeleteImageHistory.txt', 'a'), "Delete $num image  =>  Time $date\n");
+            fwrite(fopen('./history/UpdateDataBase.txt', 'a'), "Delete product: $info \nIn table 'products' =>  Time $date\n");
         }
         return redirect($_SERVER['HTTP_REFERER']);
     }
+
+    
 }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProductController;
@@ -66,6 +67,9 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
     Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
+    //categories - products excel
+    Route::post('/categories/{id_category}/products/import', [ExcelController::class, 'import'])->name('category.products.import');
+    Route::get('/categories/{id_category}/products/export', [ExcelController::class, 'export'])->name('category.products.export');
 
     Route::get('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
     Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'update'])->name('category.products.update');

@@ -25,11 +25,7 @@
                             <input type="number" class="input" name="sold_quantity" id="" placeholder="Số lượng sản phẩm" required>
                             <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
                             <textarea class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" 
-                            placeholder="Sản phẩm: ....
-Xuất xứ: ....
-Mô tả sản phẩm: ...
-                            "  
-                            name="description" required></textarea>
+                            placeholder="Mô tả sản phẩm" name="description" required></textarea>
                         </div>
                         <div class="image-product">
                             <p>Hình ảnh sản phẩm</p>
@@ -94,14 +90,10 @@ Mô tả sản phẩm: ...
                 </div>
                 <div class="add_product">
                     <div class="add_product_single">
-                        <a href="" onclick="clickAddCategory(event)"><i class="fa-solid fa-plus"></i> Thêm sản phẩm</a>
-                    </div>
-                    <div class="add_product_file">
-                        <a href="#" class="update" onclick="updating()"><i class="fa-solid fa-cloud-arrow-up"></i> File</a>
+                        <a href="" onclick="clickAddCategory(event)" ><i class="fa-solid fa-plus"></i> Thêm sản phẩm</a>
                     </div>
                 </div>
             </div>
-
             <div class="list-categorys">
                 @include('layouts.table')
             </div>

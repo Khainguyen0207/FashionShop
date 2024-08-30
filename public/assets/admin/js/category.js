@@ -51,3 +51,34 @@ function updating() {
         confirmButtonText: 'Đồng ý',
     });
 }
+
+
+function clickImportByExcel(event) {
+    event.preventDefault()
+    const url = event.currentTarget.dataset.url;
+
+    const form = document.createElement('form')
+    form.action = url
+    form.method = 'post'
+    form.enctype= 'multipart/form-data'
+
+    const inputData = document.createElement('input')
+    inputData.type = 'file'
+    inputData.name = 'importExcel'
+    inputData.accept = '.xlsx, .xls'
+    inputData.id = "importExcel"
+    inputData.style.opacity = '0';
+
+    const tokenInput = document.createElement('input');
+    tokenInput.type = 'hidden';
+    tokenInput.name = '_token';
+    tokenInput.value = $('meta[name="csrf-token"]').attr('content');
+    
+    inputData.click()
+    form.appendChild(tokenInput)
+    form.appendChild(inputData)
+    document.body.appendChild(form);
+    inputData.addEventListener('change', function() {
+        form.submit()
+    })
+}
