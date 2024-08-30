@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Admin;
 use id;
 use Carbon\Carbon;
 use App\Models\Product;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
-use Illuminate\Support\Facades\Storage;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -67,13 +68,16 @@ class ProductController extends Controller
 
     public function store(ProductRequest $productRequest) {
         $data = $productRequest->validated();
-        $urlImage = "";
-        foreach ($productRequest->file('image') as $key => $value) {
+        //Get id category from route parameter
+        $id_category = $productRequest->route()->parameter('id_category');
+        $urlImage = ""; //create variable urlImage to contain image link
+        $fileInput = $productRequest->file('image');
+        //Check image only png or jbg
+        foreach ($fileInput as $value) {
             $urlImage .= $value->store('profile', 'public') .'|';
         }
         $urlImage = substr($urlImage, 0, strlen($urlImage) - 1);
-        $id_category = $productRequest->route()->parameter('id_category');
-        $data['image'] = $urlImage;
+        $data['image'] = $urlImage; //Save image in storage
         $data += [
             'product_code' => "MSSP" .$productRequest->route()->parameter('id_category') .floor(rand(1, $id_category * 10000)),
             'unsold_quantity' => 0,
@@ -90,7 +94,7 @@ class ProductController extends Controller
 
     public function show(string $id_category, string $id)
     {
-        //Hello 
+        //Hello
     }
 
     public function edit(string $id_category, string $id)

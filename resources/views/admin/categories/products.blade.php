@@ -34,7 +34,7 @@ Mô tả sản phẩm: ...
                         <div class="image-product">
                             <p>Hình ảnh sản phẩm</p>
                             <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
-                            <input type="file" id="upload-photo" name="image[]" multiple required/>
+                            <input type="file" id="upload-photo" name="image[]" accept="image/*" multiple required/>
                             <div id="preview"></div>
                             <script>
                                 document.getElementById('upload-photo').addEventListener('change', function(event) {
