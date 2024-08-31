@@ -1,0 +1,26 @@
+/*setting swiper start*/
+
+.swiper-container {
+    position: relative;
+    display: block;
+    overflow-x: hidden;
+}
+
+.swiper-container .swiper-swap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.swiper-container .swiper-slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-pagination {
+    bottom: -20px;
+}
+
+/*setting swiper end*/

@@ -14,6 +14,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\User\ProductUIController;
+use App\Http\Controllers\User\ProductsUIController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
@@ -67,7 +69,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
     Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
-    //categories - products excel
+    //categories - excel
     Route::post('/categories/{id_category}/products/import', [ExcelController::class, 'import'])->name('category.products.import');
     Route::get('/categories/{id_category}/products/export', [ExcelController::class, 'export'])->name('category.products.export');
 
@@ -94,13 +96,8 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
     //Product
-    Route::get('/products', function() {
-        return view('user.products');
-    })->name('products.home');
-
-    Route::get('/products/id', function() {
-        return view('user.product');
-    })->name('product.id');
+    Route::get('/products',[ProductUIController::class, 'index'])->name('products.home');
+    Route::get('/products/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
 
     //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');

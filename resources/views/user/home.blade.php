@@ -3,6 +3,7 @@
 @push('head')
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/home.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>

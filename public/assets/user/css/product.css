@@ -178,6 +178,7 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
 }
 
 .seen-product .seen {

@@ -3,6 +3,7 @@
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/product-id.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/product.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -19,19 +20,47 @@
             <div class="information-product">
                 <div class="images-product">
                     <div class="img-main">
-                        <img src="{{asset('assets/user/img/box.png')}}" alt="">
+                        <img src=" {{ $product->image[0] }} " alt="">
                     </div>
                     <div class="sub-img">
-                        @for ($i = 0; $i < 2; $i++)
-                            <img src="{{asset('assets/user/img/box.png')}}" alt="">
-                        @endfor
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                @for ($i = 1; $i < count($product->image); $i++)
+                                    <div class="swiper-slide"><a href="#"><img src="{{ $product->image[$i] }}" alt="promotion-program"></a></div>
+                                @endfor
+                            </div>
+                            <!-- Add Pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                        <script>
+                            const swiper = new Swiper('.swiper-container', {
+                                spaceBetween: 10,
+                                loop: true, // Cho phép vòng lặp qua các slide
+                                slidesPerView: 2, // Hiển thị 2 slide cùng lúc
+                                centeredSlides: true, // Đặt slide đang xem ở giữa
+                                slidesPerGroup: 1, // Di chuyển từng slide một
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                },
+                                autoplay: {
+                                    delay: 1000,
+                                    disableOnInteraction: false,
+                                },
+                            });
+            
+                        </script>
                     </div>
                 </div>
                 <div class="information">
                     <h1 id="title title_product">Thông tin sản phẩm</h1>
-                    <h2 class="product_name">Áo ba lỗ thể thao</h2>
-                    <p class="price" name='price'> Giá: 199.000  -  100.000 VNĐ - Giảm giá 20%</p>
-                    <p class="product_code"> Mã sản phẩm: XL932-o2 </p>
+                    <h2 class="product_name">{{ $product->product_name }}</h2>
+                    <p class="price" name='price'> Giá: {{ $product->price }}</p>
+                    <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
                     <p class=""> Màu sắc: Đen, Trắng, Xám </p>
                     <p class=""> Kích thước: S, M, L, XL </p>
@@ -52,7 +81,10 @@
             <div class="details-product" >
                 <h1 id="title title_product">Thông tin chi tiết</h1>
                 <ul class="detail">
-                    <li><strong>Kiểu dáng:</strong> Đơn giản, ôm sát cơ thể, cổ tròn</li>
+                    @foreach ($product->description as $item)
+                        <li>{{$item}}</li>
+                    @endforeach
+                    {{-- <li><strong>Kiểu dáng:</strong> Đơn giản, ôm sát cơ thể, cổ tròn</li>
                     <li><strong>Chất liệu:</strong> 100% Cotton thoáng mát, thấm hút mồ hôi</li>
                     <li><strong>Đặc điểm nổi bật:</strong>
                         <ul style="list-style: none;margin-left:20px;">
@@ -61,7 +93,7 @@
                             <li>Đường may chắc chắn, tỉ mỉ</li>
                             <li>Thích hợp cho các hoạt động thể thao hoặc mặc hàng ngày</li>
                         </ul>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </div>
