@@ -63,6 +63,12 @@ h1 {
     gap: 10px;
 }
 
+#container .list-products .information-product {
+    position: relative;
+    display: block;
+    font-size: 20px;
+}
+
 .information-product .images-product {
     display: block;
     width: calc(100% / 2);

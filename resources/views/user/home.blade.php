@@ -158,7 +158,7 @@
         </div>
 
         <div class="products" id="products">
-            <div class="nav-bar man" onclick="alert('hello')">
+            <div class="nav-bar man">
                 <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
                     <h2> Thời trang nam </h2>
                 </div>
@@ -178,11 +178,11 @@
                                 </div>
                                 <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
                                 <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                            </div>  
+                            </div>
                         @endfor
                     </div>
                     <div class="info" style="display: block; float: right;">
-                        <a href="#" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="{{route('products.id', 10)}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -210,7 +210,7 @@
                         @endfor
                     </div>
                     <div class="info" style="display: block; float: right;">
-                        <a href="#" style="text-decoration: none; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="{{route('products.id', 11)}}" style="text-decoration: none; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

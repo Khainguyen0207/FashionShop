@@ -12,7 +12,7 @@
     @include('layouts.user.header')
     <div id="container">
         <div class="header">
-            <div class="title"><h1>Thời trang nam</h1></div>
+            <div class="title"><h1>{{ $category_name }}</h1></div>
             <div class="fill">
                 <a href="#" class="fill-item">Giá thấp ->cao <i class="fa-solid fa-arrow-down-short-wide"></i></a>
                 <a href="#" class="fill-item"> Giá cao->thấp <i class="fa-solid fa-arrow-down-wide-short"></i></a>
@@ -23,7 +23,7 @@
             <div class="products">
                 @foreach ($products as $product)
                     <div class="product">
-                        <a href="{{ route('product.id', $product->id) }}" class="image" style="width: 100%">
+                        <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
                             <img class="img img-product-sale" src="{{ $product->image[0] }}" alt="review">
                             <div class="animation-img">
                                 <p style="color: black">Chi tiết sản phẩm</p>
@@ -40,7 +40,10 @@
             </div>
         </div>
         <div class="seen-product">
-            <a href="#" class="seen">Xem thêm</a>
+            @if (count($products) >= 10)
+                <a href="#" class="seen">Xem thêm</a> 
+                {{-- Sài ajax or jQuery --}}
+            @endif
         </div>
         <div class="events-vouchers">
             <div class="events">
@@ -52,7 +55,7 @@
                 </a>
             </div>
             <div class="content" style="margin: 10px;">
-                <p href="#" class="seen">Nhận ngay vouchers giảm giá đến 50% khi tham gia sự kiện cùng cô bé quàng khăn đỏ nào <a href="#" style="color: red">Đến ngay</a></p>   
+                <p class="seen">Nhận ngay vouchers giảm giá đến 50% khi tham gia sự kiện cùng cô bé quàng khăn đỏ nào <a href="?hi" style="color: red">Đến ngay</a></p>   
             </div>
         </div>
 

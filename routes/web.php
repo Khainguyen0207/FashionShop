@@ -95,9 +95,14 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     Route::get('/', [UserController::class, 'home'])->name('user.home');
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
-    //Product
+    //Products
     Route::get('/products',[ProductUIController::class, 'index'])->name('products.home');
-    Route::get('/products/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
+    Route::get('/products/{category_id}',[ProductUIController::class, 'show_products'])->name('products.id');
+    Route::get('/products/{category_id}/product',[ProductUIController::class, 'show_products']);
+
+    //Product
+    Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
+    Route::get('/render', [ProductUIController::class, 'render']);
 
     //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');

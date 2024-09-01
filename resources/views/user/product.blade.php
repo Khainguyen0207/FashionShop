@@ -13,7 +13,7 @@
 @section('content')
     @include('layouts.user.header')
     <div class="back">
-        <a href="{{route('products.home')}}"> <i class="fa-solid fa-arrow-left"></i> Quay lại</a>
+        <a href="{{ $url_back }}"> <i class="fa-solid fa-arrow-left"></i> Quay lại</a>
     </div>
     <div id="container">
         <div class="data-table">
@@ -59,7 +59,7 @@
                 <div class="information">
                     <h1 id="title title_product">Thông tin sản phẩm</h1>
                     <h2 class="product_name">{{ $product->product_name }}</h2>
-                    <p class="price" name='price'> Giá: {{ $product->price }}</p>
+                    <p class="price" name='price'> Giá: {{ $product->price }} <span class="sale" style="color: red"></span> VNĐ </p>
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
                     <p class=""> Màu sắc: Đen, Trắng, Xám </p>
@@ -84,16 +84,6 @@
                     @foreach ($product->description as $item)
                         <li>{{$item}}</li>
                     @endforeach
-                    {{-- <li><strong>Kiểu dáng:</strong> Đơn giản, ôm sát cơ thể, cổ tròn</li>
-                    <li><strong>Chất liệu:</strong> 100% Cotton thoáng mát, thấm hút mồ hôi</li>
-                    <li><strong>Đặc điểm nổi bật:</strong>
-                        <ul style="list-style: none;margin-left:20px;">
-                            <li>Thiết kế trẻ trung, năng động</li>
-                            <li>Chất liệu vải co giãn, thoáng mát</li>
-                            <li>Đường may chắc chắn, tỉ mỉ</li>
-                            <li>Thích hợp cho các hoạt động thể thao hoặc mặc hàng ngày</li>
-                        </ul>
-                    </li> --}}
                 </ul>
             </div>
         </div>
