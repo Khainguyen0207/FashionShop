@@ -19,31 +19,32 @@
                 <a href="#" class="fill-item">Mua nhiều <i class="fa-solid fa-sort"></i></a>
             </div>
         </div>
-        <div class="list-products">
-            <div class="products">
-                @foreach ($products as $product)
-                    <div class="product">
-                        <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
-                            <img class="img img-product-sale" src="{{ $product->image[0] }}" alt="review">
-                            <div class="animation-img">
-                                <p style="color: black">Chi tiết sản phẩm</p>
+        <div id="hidden-list">
+            <div class="list-products">
+                <div class="products">
+                    @foreach ($products as $product)
+                        <div class="product">
+                            <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
+                                <img class="img img-product-sale" src="{{ $product->image[0] }}" alt="review">
+                                <div class="animation-img">
+                                    <p style="color: black">Chi tiết sản phẩm</p>
+                                </div>
+                            </a>
+                            <div class="informations information-product ">
+                                <div class="truncate-1"><p class="product_name">{{ $product->product_name }}</p> </div>
+                                <p class="sale-price">{{ $product->price }} VNĐ</p>
                             </div>
-                        </a>
-                        <div class="informations information-product ">
-                            <div class="truncate-1"><p class="product_name">{{ $product->product_name }}</p> </div>
-                            <p class="sale-price">{{ $product->price }} VNĐ</p>
+                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
                         </div>
-                        <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-        <div class="seen-product">
-            @if (count($products) >= 10)
-                <a href="#" class="seen">Xem thêm</a> 
-                {{-- Sài ajax or jQuery --}}
-            @endif
+            <div class="seen-product">
+                @if ((count($products) / 10) < $max_page )
+                    <a href="#" id="load_products" onclick="update(event)" data-url="{{ $url }}" class="seen">Xem thêm</a> 
+                @endif
+            </div>
         </div>
         <div class="events-vouchers">
             <div class="events">
@@ -87,4 +88,7 @@
         </div>
     </div>
     @include('layouts.user.footer')
+    <footer>
+        <script id="footer-data" src="{{asset('assets/user/js/products.js')}}"></script>
+    </footer>
 @endsection

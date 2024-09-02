@@ -13,12 +13,12 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         $skirt = ['Quần dài 3 lỗ', 'Áo 5 dây', 'Áo con khỉ', 'Áo thun xịn', 'Áo thỏ 7 màu', 'Áo cúp'];
-        for($i = 404; $i < 500; $i++) {
+        for($i = 10; $i < 20; $i++) {
             $data = [
                 'product_code' => 'MSSPN' .$i,
                 'product_name' => $skirt[random_int(0, count($skirt) - 1)],
                 'category_id' => 11,
-                'price' => 45000,
+                'price' => 30000,
                 'description' => "Kiểu dáng: Đơn giản, ôm sát cơ thể
 Chất liệu: 100% Cotton thoáng mát, thấm hút mồ hôi
 Đặc điểm nổi bật:

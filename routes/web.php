@@ -97,9 +97,10 @@ Route::prefix('/user')->middleware('auth')->group(function () {
 
     //Products
     Route::get('/products',[ProductUIController::class, 'index'])->name('products.home');
+    Route::post('/products',[ProductUIController::class, 'store'])->name('products.home.post');
     Route::get('/products/{category_id}',[ProductUIController::class, 'show_products'])->name('products.id');
     Route::get('/products/{category_id}/product',[ProductUIController::class, 'show_products']);
-
+    
     //Product
     Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
     Route::get('/render', [ProductUIController::class, 'render']);
@@ -110,7 +111,6 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
     
-
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 });
