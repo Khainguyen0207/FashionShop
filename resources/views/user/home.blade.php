@@ -158,62 +158,36 @@
         </div>
 
         <div class="products" id="products">
-            <div class="nav-bar man">
-                <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
-                    <h2> Thời trang nam </h2>
-                </div>
-                <div class="list-products">
-                    <div class="products">
-                        @for ($i = 0; $i < 5; $i++)
-                            <div class="product">
-                                <a href="" class="image" style="width: 100%">
-                                    <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                    <div class="animation-img">
-                                        <p style="color: black">Chi tiết sản phẩm</p>
+            @foreach ($categories as $category)
+                <div class="nav-bar">
+                    <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
+                        <h2> {{ $category['name_category'] }} </h2>
+                    </div>
+                    <div class="list-products">
+                        <div class="products">
+                            @foreach ($category['products'] as $product)
+                                <div class="product">
+                                    <a href="" class="image" style="width: 100%">
+                                        <img class="img img-product-sale" src="{{ $product['image'][0] }}" alt="review">
+                                        <div class="animation-img">
+                                            <p style="color: black">Chi tiết sản phẩm</p>
+                                        </div>
+                                    </a>
+                                    <div class="informations information-product ">
+                                        <div class="truncate-1"><p class="product_name">{{ $product['product_name'] }}</p> </div>
+                                        <p class="sale-price">{{ $product['price'] }}</p>
                                     </div>
-                                </a>
-                                <div class="informations information-product ">
-                                    <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                                    <p class="sale-price">129.000 VNĐ</p>
+                                    <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
+                                    <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
                                 </div>
-                                <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                                <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                            </div>
-                        @endfor
-                    </div>
-                    <div class="info" style="display: block; float: right;">
-                        <a href="{{route('products.id', 10)}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                            @endforeach
+                        </div>
+                        <div class="info" style="display: block; float: right;">
+                            <a href="{{route('products.id', $category['id'] )}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="nav-bar woman">
-                <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
-                    <h2>Thời trang nữ</h2>
-                </div>
-                <div class="list-products">
-                    <div class="products">
-                        @for ($i = 0; $i < 5; $i++)
-                        <div class="product">
-                            <a href="" class="image" style="width: 100%">
-                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                <div class="animation-img">
-                                    <p style="color: black">Chi tiết sản phẩm</p>
-                                </div>
-                            </a>
-                            <div class="informations information-product ">
-                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                                <p class="sale-price">129.000 VNĐ</p>
-                            </div>
-                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
-                        </div>  
-                        @endfor
-                    </div>
-                    <div class="info" style="display: block; float: right;">
-                        <a href="{{route('products.id', 11)}}" style="text-decoration: none; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     @include('layouts.user.footer')
