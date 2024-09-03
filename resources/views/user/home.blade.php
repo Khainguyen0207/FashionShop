@@ -167,7 +167,7 @@
                         <div class="products">
                             @foreach ($category['products'] as $product)
                                 <div class="product">
-                                    <a href="" class="image" style="width: 100%">
+                                    <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
                                         <img class="img img-product-sale" src="{{ $product['image'][0] }}" alt="review">
                                         <div class="animation-img">
                                             <p style="color: black">Chi tiết sản phẩm</p>
@@ -175,7 +175,7 @@
                                     </a>
                                     <div class="informations information-product ">
                                         <div class="truncate-1"><p class="product_name">{{ $product['product_name'] }}</p> </div>
-                                        <p class="sale-price">{{ $product['price'] }}</p>
+                                        <p class="sale-price">{{ $product['price'] }} VNĐ</p>
                                     </div>
                                     <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
                                     <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
