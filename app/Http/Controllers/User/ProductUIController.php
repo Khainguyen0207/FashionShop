@@ -24,6 +24,7 @@ class ProductUIController extends Controller
             'url' => route('products.home.post', ['product' => count($products)]),
             'max_page' => $max_page 
         ];
+        Session::flash('url_back', url()->current());
         return view('user.products', $render);
     }
 
@@ -72,7 +73,7 @@ class ProductUIController extends Controller
             'url' => route('products.home.post', ['product' => count($products), 'i' => $category_id]),
             'max_page' => $max_page
         ];
-
+        Session::flash('url_back', url()->current());
         return view('user.products', $render);
     }
 
@@ -92,7 +93,7 @@ class ProductUIController extends Controller
         $product['image'] = $data_image;
         $product['price'] = number_format( $product['price'], 0, ',', '.');
         $product['description'] = explode("\n", $product['description']);
-        $url_back = $_SERVER['HTTP_REFERER'];
+        $url_back = url()->previous();
         $render = [
             'product' => $product,
             'url_back' => $url_back,

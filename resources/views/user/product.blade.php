@@ -67,14 +67,14 @@
                     <div class="quantity">
                         <span>Số lượng</span>
                         <div class="quantity-func">
-                            <a href="?" onclick="decrease(event)"><i class="fa-solid fa-minus increase"></i></a>
+                            <a href="#" onclick="decrease(event)"><i class="fa-solid fa-minus increase"></i></a>
                             <span class="quantity-product-buy" name="quantity-product-buy"> 19 </span>
-                            <a href="?" onclick="increase(event)"><i class="fa-solid fa-plus"></i></a>
+                            <a href="#" onclick="increase(event)"><i class="fa-solid fa-plus"></i></a>
                         </div>
                     </div>
                     <div class="button-action">
-                        <a href="" class="btn btn-buy">Mua ngay</a>
-                        <a href="" class="btn btn-cart">Thêm vào giỏ hàng</a>
+                        <a href="#" class="btn btn-buy">Mua ngay</a>
+                        <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
             <div class="products">
                 @for ($i = 0; $i < 10; $i++)
                 <div class="product">
-                    <a href="" class="image" style="width: 100%">
+                    <a href="#" class="image" style="width: 100%">
                         <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
                         <div class="animation-img">
                             <p style="color: black">Chi tiết sản phẩm</p>
