@@ -11,7 +11,9 @@
         @stack('head')
     </head>
     <body>
-        @include('common.error')
+        <div id="alert">
+            @include('common.error')
+        </div>
         @yield('content')
     </body>
     <footer>

@@ -183,7 +183,7 @@
                             @endforeach
                         </div>
                         <div class="info" style="display: block; float: right;">
-                            <a href="{{route('products.id', $category['id'] )}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="{{ route('products.id', $category['id'] )}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

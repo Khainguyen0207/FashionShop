@@ -35,7 +35,7 @@
                                 <p class="sale-price">{{ $product->price }} VNĐ</p>
                             </div>
                             <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                            <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                            <a href="" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
                         </div>
                     @endforeach
                 </div>
@@ -90,6 +90,6 @@
     </div>
     @include('layouts.user.footer')
     <footer>
-        <script id="footer-data" src="{{asset('assets/user/js/products.js')}}"></script>
+        <script src="{{asset('assets/user/js/products.js')}}"></script>
     </footer>
 @endsection

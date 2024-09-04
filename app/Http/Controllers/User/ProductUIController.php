@@ -127,4 +127,3 @@ class ProductUIController extends Controller
         return $products;
     }
 }
-

@@ -74,7 +74,7 @@
                     </div>
                     <div class="button-action">
                         <a href="#" class="btn btn-buy">Mua ngay</a>
-                        <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
+                        <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
@@ -115,4 +115,7 @@
         </div>
     </div>
     @include('layouts.user.footer')
+    <footer>
+        <script src="{{ asset('assets/js/cart.js') }}"></script>
+    </footer>
 @endsection 

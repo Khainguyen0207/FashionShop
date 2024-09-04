@@ -107,6 +107,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
 
     //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
+    Route::post('/cart/{product_id}', [CartController::class, 'store'])->name('user.cart.post');
 
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
