@@ -38,6 +38,7 @@
                             </div>
                             <p class="total">Thành tiền:  <span class="sum-price">{{ $item['price'] }}</span> VNĐ</p>
                             <a href="{{route('product.id', [$item['category_id'], $item['id']])}}" class="seen-product">Xem chi tiết sản phẩm</a>
+                            <a href="" onclick="del_cart(event)" id="del_cart" data-url="{{route('user.cart.del',[$item['id']])}}" class="seen-product">Xóa sản phẩm</a>
                         </div>
                     </div>
                 @endforeach

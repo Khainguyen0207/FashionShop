@@ -108,6 +108,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
     Route::post('/cart/{product_id}', [CartController::class, 'store'])->name('user.cart.post');
+    Route::delete('/cart/{product_id}/del', [CartController::class, 'destroy'])->name('user.cart.del');
 
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');

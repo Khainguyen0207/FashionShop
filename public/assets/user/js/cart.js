@@ -37,8 +37,6 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
             });
         }
     });
-    console.log(sum);
-    
     document.querySelector('span.total').innerHTML = formatter.format(sum);
 }
 
@@ -106,7 +104,7 @@ function decrease(event) {
 
 function increase(event) {
     event.preventDefault();
-    const formatter = new Intl.NumberFormat('vi-VN', { 
+    const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'decimal',
         currency: 'VND'
       });
@@ -121,6 +119,21 @@ function increase(event) {
     number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
     product.getElementsByClassName('sum-price')[0].innerText = formatter.format(price * number * 1000);
 }
-document.querySelector('table#bill').addEventListener('change', function(event) {
-    console.log(event.currentTarget);
-});
+
+function del_cart(event) {
+    event.preventDefault()
+    let url = event.currentTarget.dataset.url
+    $.ajax({
+        url: url,
+        method: 'DELETE',
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
+        },
+        error: function(xhr, status, error) {
+            console.log('Error');
+            window.location.reload();   
+        }
+    }).then(function(data) {
+        window.location.reload();   
+    })
+}

@@ -41,4 +41,14 @@ class CartController extends Controller
 
         return redirect(url()->previous())->with('success', 'Sản phẩm được thêm vào giỏ hàng');
     }
+    
+
+    public function destroy($id) {
+        $cart = session()->get('cart', []);
+        if (isset($cart[$id])) {
+            unset($cart[$id]);
+        }
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', __('Xoá thành công sản phẩm khỏi giỏ hàng'));
+    }
 }
