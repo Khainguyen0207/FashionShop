@@ -5,23 +5,43 @@ const formatter = new Intl.NumberFormat('vi-VN', {
 const products = document.querySelectorAll('#select-product');
 //Tạo một đối tượng MutationObservers MutationObservers: hàm để theo dõi sự thay đổi nội dung
 const observer = new MutationObserver((mutations) => {
-    
     mutations.forEach((mutation) => {
         try {
             const func = mutation.target.parentElement;
-            const func1 = func.parentNode.getElementsByClassName('code')[0];
+            const code = func.parentNode.getElementsByClassName('code')[0]; //id hàng table         
+
             var quantity_change = func.parentNode.getElementsByClassName('quantity-product-buy')[0].textContent;
-            var table = document.getElementById(func1.textContent);
-            table.childNodes[1].innerHTML = quantity_change;
-            
-        } catch (error) {
-            // console.log("Log" + error);
-        }
+            var table = document.getElementById(code.textContent);
+
+            table.childNodes[1].innerHTML = quantity_change;  //Xử lí thay đổi số lượng
+            setSumTotalForTable()
+        } catch (error) {}
     });
 });
 
+function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
+    var sum = 0;
+    const table = document.getElementById('bill');
+    table.childNodes.forEach(element => {
+        if (element instanceof HTMLTableRowElement) {
+            const code = element.id; //id hàng table         
+            const quantity = element.querySelector('td#quantity'); //giá trị của 1 sản trên hàng
+            const products = document.querySelectorAll('span.code');
+            products.forEach(element => {
+                if (element.textContent === code) {
+                    while (element.parentNode.className != "product") {
+                        element = element.parentNode
+                    }
+                    sum += parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
+                }
+            });
+        }
+    });
+    console.log(sum);
+    
+    document.querySelector('span.total').innerHTML = formatter.format(sum);
+}
 
-// Bước 2: Cấu hình để theo dõi thay đổi nội dung
 const config = { 
     attributes: true,
     attributeOldValue: true,
@@ -32,7 +52,6 @@ const config = {
     characterDataOldValue: true
 };
 
-// Bước 3: Chọn phần tử và bắt đầu theo dõi
 products.forEach(element => {
     element.addEventListener('click', function(event) {
         if (event.target.checked) {
@@ -50,8 +69,8 @@ products.forEach(element => {
             
 
             let sum = document.querySelector('span.total');
-            a = parseFloat(document.querySelector('span.total').textContent)
-            a += parseFloat(event.currentTarget.parentNode.getElementsByClassName('sum-price')[0].textContent);
+            a = parseInt(document.querySelector('span.total').textContent)
+            a += parseInt(event.currentTarget.parentNode.getElementsByClassName('sum-price')[0].textContent);
             sum.innerText = formatter.format(a * 1000);
 
             
@@ -59,11 +78,9 @@ products.forEach(element => {
             observer.observe(targetNode, config);
         } else {
             observer.disconnect()
-            let sum = document.querySelector('span.total');
-            a = parseFloat(document.querySelector('span.total').textContent)
-            a -= parseFloat(event.currentTarget.parentNode.getElementsByClassName('sum-price')[0].textContent);
-            sum.innerText = a;
             document.getElementById(event.currentTarget.parentNode.getElementsByClassName('code')[0].textContent).remove()
+            setSumTotalForTable()
+
         }
     })
 });
