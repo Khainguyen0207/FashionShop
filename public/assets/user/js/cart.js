@@ -2,7 +2,6 @@ const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'decimal',
     currency: 'VND'
   });
-const products = document.querySelectorAll('#select-product');
 //Tạo một đối tượng MutationObservers MutationObservers: hàm để theo dõi sự thay đổi nội dung
 const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
@@ -19,27 +18,6 @@ const observer = new MutationObserver((mutations) => {
     });
 });
 
-function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
-    var sum = 0;
-    const table = document.getElementById('bill');
-    table.childNodes.forEach(element => {
-        if (element instanceof HTMLTableRowElement) {
-            const code = element.id; //id hàng table         
-            const quantity = element.querySelector('td#quantity'); //giá trị của 1 sản trên hàng
-            const products = document.querySelectorAll('span.code');
-            products.forEach(element => {
-                if (element.textContent === code) {
-                    while (element.parentNode.className != "product") {
-                        element = element.parentNode
-                    }
-                    sum += parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
-                }
-            });
-        }
-    });
-    document.querySelector('span.total').innerHTML = formatter.format(sum);
-}
-
 const config = { 
     attributes: true,
     attributeOldValue: true,
@@ -49,6 +27,8 @@ const config = {
     characterData: true,
     characterDataOldValue: true
 };
+
+const products = document.querySelectorAll('#select-product');
 
 products.forEach(element => {
     element.addEventListener('click', function(event) {
@@ -82,6 +62,28 @@ products.forEach(element => {
         }
     })
 });
+
+function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
+    var sum = 0;
+    const table = document.getElementById('bill');
+    table.childNodes.forEach(element => {
+        if (element instanceof HTMLTableRowElement) {
+            const code = element.id; //id hàng table         
+            const quantity = element.querySelector('td#quantity'); //giá trị của 1 sản trên hàng
+            const products = document.querySelectorAll('span.code');
+            products.forEach(element => {
+                if (element.textContent === code) {
+                    while (element.parentNode.className != "product") {
+                        element = element.parentNode
+                    }
+                    sum += parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
+                }
+            });
+        }
+    });
+    document.querySelector('span.total').innerHTML = formatter.format(sum);
+}
+
 function decrease(event) {
     event.preventDefault();
     const formatter = new Intl.NumberFormat('vi-VN', { 
@@ -129,11 +131,13 @@ function del_cart(event) {
         headers: {
             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
         },
-        error: function(xhr, status, error) {
-            console.log('Error');
-            window.location.reload();   
+        error: function(status) {
+            console.log(status);
         }
     }).then(function(data) {
-        window.location.reload();   
+        const html = document.createElement('div')
+        html.innerHTML = data
+        const hi = html.getElementsByClassName('products-info')[0];
+        $('.products-info').html(hi)
     })
 }

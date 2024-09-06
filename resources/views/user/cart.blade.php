@@ -14,7 +14,8 @@
     <div id="container">
         <div class="products">
             <h1 style="border-bottom: 2px lightgray solid;">Giỏ hàng</h1>
-            @if (session()->get('cart') != null)
+            <div class="products-info">
+                @if (session()->get('cart') != null)
                 @foreach (session()->get('cart') as $item)
                     <div class="product">
                         <input style="width: 10%;max-width: 30px;" type="checkbox" name="select-product" id="select-product">
@@ -37,14 +38,19 @@
                                 </div>
                             </div>
                             <p class="total">Thành tiền:  <span class="sum-price">{{ $item['price'] }}</span> VNĐ</p>
-                            <a href="{{route('product.id', [$item['category_id'], $item['id']])}}" class="seen-product">Xem chi tiết sản phẩm</a>
-                            <a href="" onclick="del_cart(event)" id="del_cart" data-url="{{route('user.cart.del',[$item['id']])}}" class="seen-product">Xóa sản phẩm</a>
+                            <div class="nav" style="display:flex; width:100%; justify-content: space-between">
+                                <a href="{{route('product.id', [$item['category_id'], $item['id']])}}" class="seen-product">Chi tiết</a>
+                                <a href="" onclick="del_cart(event)" id="del_cart" data-url="{{route('user.cart.del',[$item['id']])}}" class="seen-product">Xóa</a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
             @else
-                
+                <div class="empty">
+                    <h3>Bạn chưa có sản phẩm nào trong giỏ hàng</h3>
+                </div>
             @endif
+            </div>
         </div>
         <div class="pay">
             <div class="header">

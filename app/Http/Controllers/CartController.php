@@ -49,6 +49,6 @@ class CartController extends Controller
             unset($cart[$id]);
         }
         session()->put('cart', $cart);
-        return redirect()->back()->with('success', __('Xoá thành công sản phẩm khỏi giỏ hàng'));
+        return $this->index();
     }
 }
