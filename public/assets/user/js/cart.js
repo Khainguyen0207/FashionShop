@@ -88,7 +88,7 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
                         id: code,
                         quantity: parseInt(quantity.textContent),
                         name: element.getElementsByClassName('name')[0].textContent,
-                        price_product: price_product,
+                        price_product: formatter.format(price_product),
                     }
                     bill_cart.push(product)
                 }

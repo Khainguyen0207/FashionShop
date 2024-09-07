@@ -65,8 +65,7 @@ body {
 }
 
 .form-order .content .order-information tr {
-    display: flex;
-    justify-content: space-between;
+    text-align: left;
 }
 
 .form-order .content .information input:focus {

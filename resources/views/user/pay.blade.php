@@ -39,7 +39,7 @@
                             <tr>
                                 <td>{{ $info_product_bill['name'] }}</td>
                                 <td>{{ $info_product_bill['quantity'] }}</td>
-                                <td>{{ $info_product_bill['price_product'] }}</td>
+                                <td>{{ $info_product_bill['price_product'] }} VNĐ</td>
                             </tr>
                         @endforeach
                     </table>
@@ -48,25 +48,27 @@
                     <h3 class="item">Phương thức thanh toán</h3>
                     <h5>Chọn phương thức thanh toán</h5>
                     <form action="" method="GET" class="select-banking">
-                        <a href="#momo" class="banking" onclick="select(this)"><img src="{{asset('assets/img/momo.png')}}" alt="momo"></a>
-                        <a href="#mbbank" class="banking" onclick="select(this)"><img src="{{asset('assets/img/mbbank.png')}}" alt="mbbank"></a>
-                        <a href="#vietcombank" class="banking" onclick="select(this)"><img src="{{asset('assets/img/vietcombank.png')}}" alt="vietcombank"></a>
-                        <a href="#home-bank" class="banking" onclick="select(this)"><img src="{{asset('assets/img/home-bank.png')}}" alt="home-bank"></a>
+                        <a href="" class="banking" title="Ví điện tử Momo" onclick="select(event)"><img src="{{asset('assets/img/momo.png')}}" alt="momo"></a>
+                        <a href="" class="banking" title="Ngân hàng MBank" onclick="select(event)"><img src="{{asset('assets/img/mbbank.png')}}" alt="mbbank"></a>
+                        <a href="" class="banking" title="Ngân hàng Vietcombank" onclick="select(event)"><img src="{{asset('assets/img/vietcombank.png')}}" alt="vietcombank"></a>
+                        <a href="" class="banking action-select-banking" title="Thanh toán sau khi nhận hàng" onclick="select(event)"><img src="{{asset('assets/img/home-bank.png')}}" alt="home-bank"></a>
                         <script>
-                            function select(element) {
+                            function select(event) {
+                                event.preventDefault();
                                 const radio = document.querySelectorAll('.banking');
                                 radio.forEach(input => {
                                     input.classList.remove('action-select-banking')
                                 });  
-                                element.classList.add('action-select-banking');
+                                event.currentTarget.classList.add('action-select-banking');
+                                document.getElementById('payment-method').innerHTML = event.currentTarget.title
                             }
                         </script>
                     </form>
                 </div>
             </div>
             <div class="footer">
-                <h3>Tổng tiền: <span class="total-number">300.000</span> <span>VNĐ</span></h3>
-                <h3>Phương thức thanh toán: <span style="color: red">Momo</span></h3>
+                <h3>Tổng tiền: <span class="total-number">{{$sum_total  }}</span> <span>VNĐ</span></h3>
+                <h3>Phương thức thanh toán: <span style="color: red" id="payment-method">Thanh toán sau khi nhận hàng</span></h3>
                 <a href="" class="btn btn-order">Đặt hàng</a>
             </div>
         </div>
