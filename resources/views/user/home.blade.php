@@ -147,7 +147,7 @@
                                 <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
                             </div>
                             <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                            {{-- <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}>Thêm vào giỏ hàng</a> --}}
+                            <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
                         </div>  
                     @endfor
                 </div>

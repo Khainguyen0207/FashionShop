@@ -20,9 +20,12 @@ use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
+Route::get('/error', function() {
+    return redirect()->back();
+});
 Route::get('/welcome', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome');    
 
 Route::get('hi',function() {
     $token = Hash::make("tkhai12386@gmail.com");
@@ -103,15 +106,16 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     
     //Product
     Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
-    Route::get('/render', [ProductUIController::class, 'render']);
 
     //Cart
     Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
     Route::post('/cart/{product_id}', [CartController::class, 'store'])->name('user.cart.post');
     Route::delete('/cart/{product_id}/del', [CartController::class, 'destroy'])->name('user.cart.del');
-
+    
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
+    Route::post('/pay', [PayController::class, 'store'])->name('user.pay.post');
+    // Route::get('/pay', [PayController::class, 'show'])->name('user.pay.show');
     
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');

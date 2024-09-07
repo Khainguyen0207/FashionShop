@@ -20,7 +20,7 @@
                     <h3 class="item">Thông tin người nhận</h3>
                     <form action="?" method="get" class="information">
                         <label for="recipient-name">Tên người nhận</label>
-                        <input type="text" name="recipient-name" id="recipient-name" spellcheck="false" max="255" maxlength="100">
+                        <input type="text" name="recipient-name" id="recipient-name" spellcheck="false" max="255" maxlength="100" required="required">
                         <label for="number-phone" >Số điện thoại</label>
                         <input type="number" name="numberphone" id="number-phone" max="255"  spellcheck="false" maxlength="100">
                         <label for="address">Địa chỉ nhận hàng</label>
@@ -33,13 +33,15 @@
                         <tr>
                             <th>Sản phẩm</th>
                             <th>Số lượng</th>
+                            <th>Tổng tiền</th>
                         </tr>
-                        @for ($i = 0; $i < 1; $i++)
+                        @foreach ($products as $info_product_bill)
                             <tr>
-                                <td>1. Quần da đen  - 3 lỗ</td>
-                                <td>10</td>
+                                <td>{{ $info_product_bill['name'] }}</td>
+                                <td>{{ $info_product_bill['quantity'] }}</td>
+                                <td>{{ $info_product_bill['price_product'] }}</td>
                             </tr>
-                        @endfor
+                        @endforeach
                     </table>
                 </div>
                 <div class="payment-method">
@@ -64,6 +66,7 @@
             </div>
             <div class="footer">
                 <h3>Tổng tiền: <span class="total-number">300.000</span> <span>VNĐ</span></h3>
+                <h3>Phương thức thanh toán: <span style="color: red">Momo</span></h3>
                 <a href="" class="btn btn-order">Đặt hàng</a>
             </div>
         </div>

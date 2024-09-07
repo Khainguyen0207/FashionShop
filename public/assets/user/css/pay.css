@@ -125,3 +125,7 @@ body {
     text-decoration: none;
     color: white;
 }
+
+.form-order .footer .btn:hover {
+    background-color: gray;
+}

@@ -17,12 +17,11 @@ class CartController extends Controller
     }
 
     public function store(Request $request, $product_id) {
-
         if (session()->get('cart') !=null && key_exists($product_id, session()->get('cart'))) {
             return redirect(url()->previous())->with('error', 'Sản phẩm đã được thêm vào trước đó');
         }
         $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
-
+        
         $data_image = [];
         foreach (explode('|', $product['image']) as $key => $value) {
             if (Storage::disk('public')->exists($value)) {
@@ -41,7 +40,6 @@ class CartController extends Controller
 
         return redirect(url()->previous())->with('success', 'Sản phẩm được thêm vào giỏ hàng');
     }
-    
 
     public function destroy($id) {
         $cart = session()->get('cart', []);

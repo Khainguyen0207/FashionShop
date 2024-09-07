@@ -1,4 +1,4 @@
-const btn_carts = document.querySelectorAll('.btn-cart');
+const btn_carts = document.querySelectorAll('.btn-cart'); //Sự kiện click button thêm vào giỏ hàng
 btn_carts.forEach(element => {
     element.addEventListener('click', function(event) {
         event.preventDefault();    
@@ -14,9 +14,8 @@ btn_carts.forEach(element => {
             }
         }).then(function(data) {
             const $html = $(data);
-            const idValue = $html.find('#alert').html(); 
+            const idValue = $html.find('#alert').html();
             $('#alert').html(idValue);
         })
     });
 });
-

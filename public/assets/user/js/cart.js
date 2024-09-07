@@ -1,3 +1,5 @@
+var bill_cart = [];
+
 const formatter = new Intl.NumberFormat('vi-VN', { 
     style: 'decimal',
     currency: 'VND'
@@ -28,10 +30,17 @@ const config = {
     characterDataOldValue: true
 };
 
+document.querySelector('.btn-pay').addEventListener('click', function(event) { //Sự kiện click button thanh toán
+    event.preventDefault();   
+    let url = event.currentTarget.dataset.url
+    url_link = JSON.stringify(bill_cart);
+    window.location.href = url + "?products=" + encodeURIComponent(url_link);
+});
+
 const products = document.querySelectorAll('#select-product');
 
 products.forEach(element => {
-    element.addEventListener('click', function(event) {
+    element.addEventListener('click', function(event) {  //Sự kiện click checkbox view Cart
         if (event.target.checked) {
             var table = document.getElementById('bill');
             var tr = document.createElement('tr');
@@ -44,27 +53,23 @@ products.forEach(element => {
             tr.appendChild(td_name)
             tr.appendChild(td_quantity)
             table.appendChild(tr)
-            
 
-            let sum = document.querySelector('span.total');
-            a = parseInt(document.querySelector('span.total').textContent)
-            a += parseInt(event.currentTarget.parentNode.getElementsByClassName('sum-price')[0].textContent);
-            sum.innerText = formatter.format(a * 1000);
-
-            
             const targetNode = event.currentTarget.parentNode;
             observer.observe(targetNode, config);
         } else {
             observer.disconnect()
             document.getElementById(event.currentTarget.parentNode.getElementsByClassName('code')[0].textContent).remove()
-            setSumTotalForTable()
-
         }
+
+        setSumTotalForTable()
+
     })
 });
 
 function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
     var sum = 0;
+    bill_cart = []
+
     const table = document.getElementById('bill');
     table.childNodes.forEach(element => {
         if (element instanceof HTMLTableRowElement) {
@@ -76,7 +81,16 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
                     while (element.parentNode.className != "product") {
                         element = element.parentNode
                     }
-                    sum += parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
+                    let price_product = parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
+                    sum += price_product
+                    
+                    let product = {
+                        id: code,
+                        quantity: parseInt(quantity.textContent),
+                        name: element.getElementsByClassName('name')[0].textContent,
+                        price_product: price_product,
+                    }
+                    bill_cart.push(product)
                 }
             });
         }
@@ -94,7 +108,7 @@ function decrease(event) {
     for (let index = 0; index < 2; index++) {
         product = product.parentNode;
     }
-    let price = parseFloat(product.getElementsByClassName('price')[0].innerHTML, 10);
+    let price = parseInt(product.getElementsByClassName('price')[0].innerHTML, 10);
     let number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
     if (number != 1) {
         product.getElementsByClassName('quantity-product-buy')[0].innerText = number - 1;
@@ -114,7 +128,7 @@ function increase(event) {
     for (let index = 0; index < 2; index++) {
         product = product.parentNode;
     }
-    let price = parseFloat(product.getElementsByClassName('price')[0].innerHTML, 10);
+    let price = parseInt(product.getElementsByClassName('price')[0].innerHTML, 10);
     let number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
 
     product.getElementsByClassName('quantity-product-buy')[0].innerText = number + 1;
