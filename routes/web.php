@@ -15,14 +15,15 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\ProductUIController;
-use App\Http\Controllers\User\ProductsUIController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
-Route::get('/error', function() {
-    return redirect()->back();
+
+Route::get('/test', function() {
+    return "Hello world";
 });
+//https://dkhp.huit.edu.vn/WebCommon/GetCaptcha getCapCha của trường
 Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');    
@@ -115,7 +116,6 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
     Route::post('/pay', [PayController::class, 'store'])->name('user.pay.post');
-    // Route::get('/pay', [PayController::class, 'show'])->name('user.pay.show');
     
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');

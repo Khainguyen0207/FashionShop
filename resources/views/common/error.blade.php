@@ -10,11 +10,11 @@
 @endif
 
 @if(session('error'))
-<div id="alert">
-    <div class="alert alert-danger my-animation-alert">
-        {{ session('error') }}
+    <div id="alert">
+        <div class="alert alert-danger my-animation-alert">
+            {{ session('error') }}
+        </div>
     </div>
-</div>
 @endif
 
 @session('success')

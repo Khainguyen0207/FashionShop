@@ -33,8 +33,25 @@ const config = {
 document.querySelector('.btn-pay').addEventListener('click', function(event) { //Sự kiện click button thanh toán
     event.preventDefault();   
     let url = event.currentTarget.dataset.url
-    url_link = JSON.stringify(bill_cart);
-    window.location.href = url + "?products=" + encodeURIComponent(url_link);
+    const form = document.createElement('form');
+    form.action = url
+    form.method = "post"
+
+    const methodInput = document.createElement('input');
+    methodInput.type = 'hidden';
+    methodInput.name = 'products';
+    methodInput.value = JSON.stringify(bill_cart);
+    
+    const tokenInput = document.createElement('input');
+    tokenInput.type = 'hidden';
+    tokenInput.name = '_token';
+    tokenInput.value = $('meta[name="csrf-token"]').attr('content');                   
+    
+    form.appendChild(methodInput);
+    form.appendChild(tokenInput);
+
+    event.currentTarget.appendChild(form);
+    form.submit()
 });
 
 const products = document.querySelectorAll('#select-product');
@@ -100,7 +117,7 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
 
 function decrease(event) {
     event.preventDefault();
-    const formatter = new Intl.NumberFormat('vi-VN', { 
+    const formatter = new Intl.NumberFormat('vi-VN', {
         style: 'decimal',
         currency: 'VND'
       });

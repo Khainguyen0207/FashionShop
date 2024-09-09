@@ -1,0 +1,106 @@
+:root {
+    --background-item: #fafcfc;
+    --background-product: #D5ED9F;
+    --background: #ffe0ae;
+    --color-text: #433D8B;
+}
+
+#banking {
+    position: relative;
+    width: 100%;
+    background-color: var(--background);
+}
+
+#banking .container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
+#banking .container .qr-banking-shop {
+    position: relative;
+    margin-left: 20px;
+    display: block;
+    padding: 20px 0;
+}
+
+#banking .container .qr-banking-shop img {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px solid black;
+}
+
+#banking .container .qr-banking-shop .button {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+}
+
+#banking .container .qr-banking-shop .btn {
+    display: inline-block;
+    text-decoration: none;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color:#603f26;
+    background-color: #d2e0fb;
+}
+
+#banking .container .qr-banking-shop .btn-scan:hover,
+#banking .container .qr-banking-shop .change-payment-method:hover {
+    background-color: #d49361;
+    transition: 0.3s ease-in-out;
+}
+
+#banking .bg {
+    position: absolute;
+    width: 100%;
+} 
+#banking .bg img {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+}   
+
+#banking .container .information-banking {
+    position: relative;
+    margin-left: 20px;
+    display: block;
+    padding: 20px 0;
+}
+
+
+#banking .container .information-banking .list-info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#banking .container .information-banking li {
+    position: relative;
+    display: block;
+    font-size: 20px;
+    list-style: none;
+    background-color: var(--background-item);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+#banking .container .information-banking .text {
+    color: var(--color-text);
+}
+
+#banking .footer {
+    
+}

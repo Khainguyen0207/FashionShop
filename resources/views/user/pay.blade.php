@@ -20,11 +20,11 @@
                     <h3 class="item">Thông tin người nhận</h3>
                     <form action="?" method="get" class="information">
                         <label for="recipient-name">Tên người nhận</label>
-                        <input type="text" name="recipient-name" id="recipient-name" spellcheck="false" max="255" maxlength="100" required="required">
+                        <input type="text" name="recipient-name" id="recipient-name" class="input_information" spellcheck="false" max="255" maxlength="100" required="required">
                         <label for="number-phone" >Số điện thoại</label>
-                        <input type="number" name="numberphone" id="number-phone" max="255"  spellcheck="false" maxlength="100">
+                        <input type="number" name="numberphone" id="number-phone" class="input_information" max="255"  spellcheck="false" maxlength="100">
                         <label for="address">Địa chỉ nhận hàng</label>
-                        <input type="text" name="address" id="address" spellcheck="false" max="255" maxlength="100">
+                        <input type="text" name="address" id="address" class="input_information" spellcheck="false" max="255" maxlength="100">
                     </form>
                 </div>
                 <div class="order-information">
@@ -69,9 +69,12 @@
             <div class="footer">
                 <h3>Tổng tiền: <span class="total-number">{{$sum_total  }}</span> <span>VNĐ</span></h3>
                 <h3>Phương thức thanh toán: <span style="color: red" id="payment-method">Thanh toán sau khi nhận hàng</span></h3>
-                <a href="" class="btn btn-order">Đặt hàng</a>
+                <a href="#" class="btn btn-order" onclick="checkEmptyInformation()">Đặt hàng</a>
             </div>
         </div>
     </div>
     @include('layouts.user.footer')
+    <footer>
+        <script src="{{asset('assets/user/js/pay.js')}}"></script>
+    </footer>
 @endsection

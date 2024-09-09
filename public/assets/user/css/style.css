@@ -1,6 +1,14 @@
+:root {
+    --background-item: #fff6ea;
+    --background-product: #D5ED9F;
+    --background: #ffe0ae ;
+    --text-color: #800000;
+}
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -47,7 +55,7 @@ body {
 #menu-bar {
     position: relative;
     display: flex;
-    background-color:initial;
+    background-color: var(--background);
     justify-content: space-between;
     align-items: center;
     z-index: 2;
