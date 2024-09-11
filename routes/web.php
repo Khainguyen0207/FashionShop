@@ -17,12 +17,15 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\ProductUIController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
+use Illuminate\Support\Facades\Http;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
-Route::get('/test', function() {
-    return "Hello world";
-});
+
+
+Route::get('/getData', function() {
+    
+})->name('getDataBanking');
 //https://dkhp.huit.edu.vn/WebCommon/GetCaptcha getCapCha của trường
 Route::get('/welcome', function () {
     return view('welcome');
@@ -116,7 +119,9 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
     Route::post('/pay', [PayController::class, 'store'])->name('user.pay.post');
-    
+    Route::post('/pay/123', [PayController::class, 'create'])->name('user.pay.show');
+    Route::post('/pay/success', [PayController::class, 'success'])->name('user.pay.success');
+
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 });
