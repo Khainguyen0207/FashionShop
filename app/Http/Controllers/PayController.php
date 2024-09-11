@@ -19,11 +19,11 @@ class PayController extends Controller
             return redirect()->back()->with('error','Vui lòng chọn sản phẩm thanh toán ở giỏ hàng');
         }
         foreach ($products as $key => $value) {
-            $sum += $value['price_product'] * 1000;
-        }
+            $sum += floatval($value['price_product']) * 1000;
+        };
         $render = [
             'products' => $products,
-            'sum_total' => number_format($sum, 0, ",", ".") 
+            'sum_total' => number_format($sum , 0, ",", ".")
         ];
         return view('user.pay', $render);
     }

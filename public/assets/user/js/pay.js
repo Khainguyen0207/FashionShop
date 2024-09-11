@@ -28,16 +28,17 @@ function checkEmptyInformation(event) {
         let url = event.currentTarget.dataset.url
         let url_cart = event.currentTarget.dataset.cart
         const form = document.createElement('form');
+        var ids = []
+        document.querySelectorAll("#id_table_product").forEach(element => {
+            var id = element.value
+            ids.push(id)
+        });
         if (method_payment == "homebank") {
-            var ids = []
-            document.querySelectorAll("#id_table_product").forEach(element => {
-                var id = element.value
-                ids.push(id)
-            });
-            form.action = url_cart + "?id_del=" + JSON.stringify(ids)
+            form.action = url_cart
         } else {
             form.action = url
         }
+        form.action += "?id_del=" + JSON.stringify(ids)
         form.method = "post"
         const methodInput = document.createElement('input');
         methodInput.type = 'hidden';

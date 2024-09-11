@@ -98,21 +98,21 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
                     while (element.parentNode.className != "product") {
                         element = element.parentNode
                     }
-                    let price_product = parseInt(element.getElementsByClassName('price')[0].textContent) * 1000 * parseInt(quantity.textContent)
+                    let price_product = parseInt(element.getElementsByClassName('price')[0].textContent) * parseInt(quantity.textContent)
                     sum += price_product
                     
                     let product = {
                         id: code,
                         quantity: parseInt(quantity.textContent),
                         name: element.getElementsByClassName('name')[0].textContent,
-                        price_product: formatter.format(price_product),
+                        price_product: price_product,
                     }
                     bill_cart.push(product)
                 }
             });
         }
     });
-    document.querySelector('span.total').innerHTML = formatter.format(sum);
+    document.querySelector('span.total').innerHTML = formatter.format(sum  * 1000);
 }
 
 function decrease(event) {
