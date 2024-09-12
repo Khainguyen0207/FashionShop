@@ -19,7 +19,7 @@ class PayController extends Controller
             return redirect()->back()->with('error','Vui lòng chọn sản phẩm thanh toán ở giỏ hàng');
         }
         foreach ($products as $key => $value) {
-            $sum += floatval($value['price_product']) * 1000;
+            $sum += floatval($value['price_product']);
         };
         $render = [
             'products' => $products,

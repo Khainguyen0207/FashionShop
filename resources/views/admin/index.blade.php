@@ -63,7 +63,7 @@
                                 data: [91, 22, 35, 7, 45, 57, 65, 12, 73, 97, 10],
                                 borderWidth: 2,
                             }, {
-                                label: 'Doanh thu ($)',
+                                label: 'Doanh thu (VNĐ)',
                                 backgroundColor: "#FDFFC2",
                                 borderColor: "#000000",
                                 data: [160, 102, 86, 39, 49, 147, 157, 116, 189, 155, 95],

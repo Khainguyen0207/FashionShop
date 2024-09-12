@@ -33,11 +33,9 @@ class CartController extends Controller
 
         $product['quantity'] = 1;
         $product['image'] = $data_image;
-        $product['price'] = number_format($product['price'], 0, ',', '.');
         $cart = session()->get('cart', []);
         $cart[$product_id] = $product;
         session()->put('cart', $cart);
-
         return redirect(url()->previous())->with('success', 'Sản phẩm được thêm vào giỏ hàng');
     }
 

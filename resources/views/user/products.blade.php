@@ -78,7 +78,7 @@
                             <p class="sale-price">129.000 VNĐ</p>
                         </div>
                         <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                        <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                        <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
                     </div>  
                     @endfor
                 </div>
@@ -92,5 +92,8 @@
     <footer>
         <script src="{{asset('assets/user/js/products.js')}}"></script>
         <script src="{{ asset('assets/js/cart.js') }}"></script>
+        <script>
+             seen()
+        </script>
     </footer>
 @endsection

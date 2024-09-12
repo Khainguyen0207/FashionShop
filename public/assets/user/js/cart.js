@@ -1,6 +1,6 @@
 var bill_cart = [];
 
-const formatter = new Intl.NumberFormat('vi-VN', { 
+const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'decimal',
     currency: 'VND'
   });
@@ -60,13 +60,20 @@ products.forEach(element => {
     element.addEventListener('click', function(event) {  //Sự kiện click checkbox view Cart
         if (event.target.checked) {
             var table = document.getElementById('bill');
+
             var tr = document.createElement('tr');
-            tr.id =  event.currentTarget.parentNode.getElementsByClassName('code')[0].textContent
+            id_tr = event.currentTarget.parentNode.getElementsByClassName('code')[0].textContent;
+            tr.id = id_tr
+
             var td_name = document.createElement('td');
-            td_name.textContent = table.childNodes.length - 1 + ". " + event.currentTarget.parentNode.getElementsByClassName('name')[0].textContent;
+            table_name = event.currentTarget.parentNode.getElementsByClassName('name')[0].textContent;
+            td_name.textContent = table_name;
+
             var td_quantity = document.createElement('td');
             td_quantity.id = 'quantity'
-            td_quantity.textContent = event.currentTarget.parentNode.getElementsByClassName('quantity-product-buy')[0].textContent;
+            number_product = event.currentTarget.parentNode.getElementsByClassName('quantity-product-buy')[0].textContent;
+            td_quantity.textContent = number_product;
+
             tr.appendChild(td_name)
             tr.appendChild(td_quantity)
             table.appendChild(tr)
@@ -90,7 +97,7 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
     const table = document.getElementById('bill');
     table.childNodes.forEach(element => {
         if (element instanceof HTMLTableRowElement) {
-            const code = element.id; //id hàng table         
+            const code = element.id; //id hàng table       
             const quantity = element.querySelector('td#quantity'); //giá trị của 1 sản trên hàng
             const products = document.querySelectorAll('span.code');
             products.forEach(element => {
@@ -98,7 +105,10 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
                     while (element.parentNode.className != "product") {
                         element = element.parentNode
                     }
-                    let price_product = parseInt(element.getElementsByClassName('price')[0].textContent) * parseInt(quantity.textContent)
+                    price = element.getElementsByClassName('price')[0].textContent.replace(/\./g, '');
+                    let price_product = parseInt(price)  * parseFloat(quantity.textContent)
+                    price = element.getElementsByClassName('price')[0].textContentconst 
+
                     sum += price_product
                     
                     let product = {
@@ -112,7 +122,7 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
             });
         }
     });
-    document.querySelector('span.total').innerHTML = formatter.format(sum  * 1000);
+    document.querySelector('span.total').innerHTML = formatter.format(sum);
 }
 
 function decrease(event) {
@@ -125,14 +135,13 @@ function decrease(event) {
     for (let index = 0; index < 2; index++) {
         product = product.parentNode;
     }
-    let price = parseInt(product.getElementsByClassName('price')[0].innerHTML, 10);
+    let price = product.getElementsByClassName('price')[0].textContent.replace(/\./g, '');
     let number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
     if (number != 1) {
         product.getElementsByClassName('quantity-product-buy')[0].innerText = number - 1;
     }
     number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
-    product.getElementsByClassName('sum-price')[0].innerText = formatter.format(price * number * 1000);
-
+    product.getElementsByClassName('sum-price')[0].innerText = formatter.format(price * number);
 }
 
 function increase(event) {
@@ -145,16 +154,19 @@ function increase(event) {
     for (let index = 0; index < 2; index++) {
         product = product.parentNode;
     }
-    let price = parseInt(product.getElementsByClassName('price')[0].innerHTML, 10);
+    let price = product.getElementsByClassName('price')[0].textContent.replace(/\./g, '');
     let number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
 
-    product.getElementsByClassName('quantity-product-buy')[0].innerText = number + 1;
-    number = parseInt(product.getElementsByClassName('quantity-product-buy')[0].innerHTML, 10);
-    product.getElementsByClassName('sum-price')[0].innerText = formatter.format(price * number * 1000);
+    number = number + 1;
+
+    product.getElementsByClassName('sum-price')[0].innerText = formatter.format(price * number);
+    product.getElementsByClassName('quantity-product-buy')[0].innerText = number
 }
 
 function del_cart(event) {
     event.preventDefault()
+    const div = event.currentTarget.parentElement.parentElement
+    const product_code = div.querySelector("span.code")
     let url = event.currentTarget.dataset.url
     $.ajax({
         url: url,
@@ -170,5 +182,10 @@ function del_cart(event) {
         html.innerHTML = data
         const hi = html.getElementsByClassName('products-info')[0];
         $('.products-info').html(hi)
+        const table = document.getElementById("bill");
+        if (table.querySelector("tr#" + product_code.textContent) != undefined) {
+            table.querySelector("tr#" + product_code.textContent).remove()
+        } 
+        setSumTotalForTable()
     })
 }
