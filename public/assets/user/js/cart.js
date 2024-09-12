@@ -20,7 +20,7 @@ const observer = new MutationObserver((mutations) => {
     });
 });
 
-const config = { 
+const config = {
     attributes: true,
     attributeOldValue: true,
     attributeFilter: ['class', 'p'],

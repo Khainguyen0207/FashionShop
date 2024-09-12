@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\OrderModel;
 use Illuminate\Http\Request;
-
-use function PHPSTORM_META\type;
+use App\Http\Requests\OrderRequest;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 
 class PayController extends Controller
 {
@@ -18,7 +21,7 @@ class PayController extends Controller
         if (empty($products)) {
             return redirect()->back()->with('error','Vui lòng chọn sản phẩm thanh toán ở giỏ hàng');
         }
-        foreach ($products as $key => $value) {
+        foreach ($products as $value) {
             $sum += floatval($value['price_product']);
         };
         $render = [
@@ -28,21 +31,21 @@ class PayController extends Controller
         return view('user.pay', $render);
     }
 
-    public function create(Request $request){
+    public function create(Request $request, $information_order) {
         // Lấy thông tin config: 
-        $vnp_TmnCode = "EJF9QZVP"; // Mã website của bạn tại VNPAY 
-        $vnp_HashSecret = "AE0970XU4RBOGJ5FFKHAUSG4VP8JX55Y"; // Chuỗi bí mật
+        $vnp_TmnCode = "EJF9QZVP"; // Mã website của bạn tại VNPAY
+        $vnp_HashSecret = env("VNP_HASHSECRET"); // Chuỗi bí mật
         $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html"; // URL thanh toán của VNPAY
         $vnp_ReturnUrl = route('getDataBanking'); // URL nhận kết quả trả về
 
         // Lấy thông tin từ đơn hàng phục vụ thanh toán 
         // Dưới đây là thông tin giả định, bạn có thể lấy thông tin đơn hàng của bạn  để thay thế
         $order = (object)[
-            "code" => 'ORDER' . rand(100000, 999999),  // Mã đơn hàng
-            "total" => $request->amount * 1000, // Số tiền cần thanh toán (VND)
+            "code" => $information_order['order_code'],  // Mã đơn hàng
+            "total" => $request->amount, // Số tiền cần thanh toán (VND)
             "bankCode" => 'NCB',   // Mã ngân hàng
             "type" => "billpayment", // Loại đơn hàng
-            "info" => "Thanh toán đơn hàng" // Thông tin đơn hàng
+            "info" => "Thanh toán đơn hàng " .$information_order['order_code'] // Thông tin đơn hàng
         ];
         
         // Thông tin đơn hàng, thanh toán
@@ -112,11 +115,9 @@ class PayController extends Controller
         }
         return redirect($vnp_Url);
     }
-    public function return(Request $request)    
-    {
+    public function return(Request $request) {
         $vnp_SecureHash = $request->vnp_SecureHash;
         $inputData = $request->all();
-
         unset($inputData['vnp_SecureHash']);
         ksort($inputData);
         $hashData = "";
@@ -124,35 +125,64 @@ class PayController extends Controller
             $hashData .= urlencode($key) . "=" . urlencode($value) . '&';
         }
         $hashData = rtrim($hashData, '&');
-
-        $secureHash = hash_hmac('sha512', $hashData, config('vnpay.vnp_HashSecret'));
+        $secureHash = hash_hmac('sha512', $hashData, env('VNP_HASHSECRET'));
 
         if ($secureHash === $vnp_SecureHash) {
             if ($request->vnp_ResponseCode == '00') {
-                dd(compact('inputData'));
-                view('payment_success', compact('inputData'));
+                try {
+                    OrderModel::query()->create(session("order"));
+                } catch (\Throwable $th) {
+                    return redirect(route('user.home'))->with('error','Lỗi hệ thống: Vui lòng liên hệ admin để xử lí');
+                }
+                session()->put("cart", session("bill"));
+                return redirect(route("user.home"))->with('success', "Đơn hàng được đặt thành công và chờ người bán chuẩn bị");
             } else {
-                // Thanh toán không thành công
-                view('faie', compact('inputData'));
+                return redirect(route("user.home"))->with('error', "Thanh toán không thành công");
             }
         } else {
-            // Dữ liệu không hợp lệ
-            return view('payment_failed');
+            
+            return redirect(route("user.home"))->with('error', "Đặt hàng thất bại");
         }
     }
 
-    public function success() {
+    public function order(Request $request) {
         $cart = session()->get('cart', []);
-        $ids = json_decode(request()->query("id_del"), true);
+        $ids = json_decode(request()->query("id_order"), true);
         foreach ($cart as $key => $product) {
             $id_product = $key;
             foreach ($ids as $id) {
-                if ($product['product_code'] == $id) {
+                if ($product['product_code'] == $id['id']) {
                     unset($cart[$id_product]);
                 }
             }
         }
-        session()->put('cart', $cart);
-        return redirect(route('user.home'))->with('success','Đơn hàng được đặt thành công và chờ người bán xét duyệt');
+        $date = Carbon::now();
+        $order_code = "FSCO" .$date->year .$date->month .$date->day .$date->hour .$date->minute .$date->second .rand(0, 100);
+        //Nhập liệu đơn hàng
+        $information_order = [
+            'order_code' => $order_code, //Fashion code order
+            'recipient_name' => $request->query("recipient_name"),
+            'number_phone' => $request->query("number_phone"),
+            'address' => $request->query("address"),
+            'order_information' => json_encode($request->query("id_order"), true),
+            'status' => "00",
+            'expired_at' => Carbon::now()->toDateTime()
+        ];
+
+        //kiểm tra số lượng tồn kho của đơn hàng nếu số lượng hết thì báo error và kèm LH: với người bán
+        if ($request->query('method_payment') == "homebank") {
+            try {
+                OrderModel::query()->create($information_order);
+            } catch (\Throwable $th) {
+                return redirect(route('user.home'))->with('error','Đơn hàng đặt thất bại');
+            }
+            session()->put("cart", $cart);
+            return redirect(route('user.home'))->with('success','Đơn hàng được đặt thành công và chờ người bán xét duyệt');
+        } else {
+            $information_order['status'] = "01";
+            session()->flash("order", $information_order);
+            session()->flash("bill", $cart);
+            return $this->create($request, $information_order);
+        }
     }
 }

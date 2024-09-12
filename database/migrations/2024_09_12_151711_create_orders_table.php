@@ -8,11 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('banking_online', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('order_code');
-            $table->string('products');
-            $table->integer('number_phone');
+            $table->string('order_code')->unique();
+            $table->string('recipient_name', 255);
+            $table->integer('number_phone')->max(10);
+            $table->string('address', 255);
+            $table->string('order_information');
+            $table->string('status', 255); 
             $table->dateTime('expired_at');
             $table->timestamps();
         });
@@ -23,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banking_online');
+        Schema::dropIfExists('orders');
     }
 };

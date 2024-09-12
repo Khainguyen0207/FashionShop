@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'vnpay' => [
+        'vnp_HashSecret' => env('VNP_HASHSECRET')
+    ],
 ];

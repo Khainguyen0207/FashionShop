@@ -21,20 +21,14 @@ use Illuminate\Support\Facades\Http;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
+Route::get('/getData', [PayController::class, "return"])->name('getDataBanking');
 
-
-Route::get('/getData', function() {
-    
-})->name('getDataBanking');
-//https://dkhp.huit.edu.vn/WebCommon/GetCaptcha getCapCha của trường
 Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');    
 
 Route::get('hi',function() {
-    $token = Hash::make("tkhai12386@gmail.com");
-    Mail::to("cudaimst1@gmail.com") ->send(new UserActivationEmail("Mã khôi phục - Fashion Store", floor(rand(1000, 9999))));
-    return redirect(route('auth.forgetPassword'))->with('success', 'Mã xác thực được gửi vào mail của bạn');
+    dd(session());
 });
 
 Route::prefix('/auth')->middleware('guest')->group(function () {
@@ -119,8 +113,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
     Route::post('/pay', [PayController::class, 'store'])->name('user.pay.post');
-    Route::post('/pay/123', [PayController::class, 'create'])->name('user.pay.show');
-    Route::post('/pay/success', [PayController::class, 'success'])->name('user.pay.success');
+    Route::post('/pay/success', [PayController::class, 'order'])->name('user.pay.order');
 
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
