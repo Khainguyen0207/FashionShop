@@ -56,6 +56,7 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
             $.ajax({
                 url: url,
             }).then((data)=> {
+                console.log(data);
                 $('#addCategoryForm').html(data)
             });
         });

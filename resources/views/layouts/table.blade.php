@@ -63,4 +63,3 @@
         <a class="num-page"  onmouseover="window.status='your text';" href="{{ $url }}?page={{ $maxPage }}"><i class="fa-solid fa-arrow-right"></i></a>
     @endif
 </div>
-

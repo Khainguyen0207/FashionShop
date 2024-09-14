@@ -1,13 +1,13 @@
 ##### Comming soon - Fashion shop
 ##### **Setup**
-###### Chạy lệnh 
+###### Run command
 ###### composer u
-###### php artisan queue:work để khởi tạo hàng đợi
-###### php artisan storage:link để setup link ảnh
+###### php artisan queue:work initialize the queue
+###### php artisan storage:link setup image link
 #
 ##### **Test card master**
-###### Ngân hàng: NCB
-###### Số thẻ: 9704198526191432198
-###### Tên chủ thẻ: NGUYEN VAN A
-###### Ngày phát hành: 07/15
-###### Mật khẩu OTP: 123456
+###### Bank: NCB
+###### Card number: 9704198526191432198
+###### Cardholder name: NGUYEN VAN A
+###### Release date: 07/15
+###### OTP Password: 123456

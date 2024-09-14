@@ -34,7 +34,6 @@
                 <li>
                     <p><a href="{{ route("order.orders") }}"><i class="fa-solid fa-list"></i> Kiểm tra đơn hàng</a></p>
                 </li>
-                
             </ul>
         </li>
         <li>
