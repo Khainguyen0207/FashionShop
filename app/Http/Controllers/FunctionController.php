@@ -8,11 +8,11 @@ class FunctionController extends Controller
     public static function table($name_table, $key) {
         $table_customers = ['Tên', 'Mã Khách Hàng', 'Email', 'Quyền'];
         $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng tồn kho'];
-        $table_ordercheck = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
+        $table_order = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
         switch ($name_table) {
             case 'customer': return array_combine($key, $table_customers);
             case 'product': return array_combine($key, $table_products);
-            case 'ordercheck': return array_combine($key, $table_ordercheck);
+            case 'order': return array_combine($key, $table_order);
             default: return null;
         }
     }

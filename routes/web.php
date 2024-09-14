@@ -91,6 +91,8 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //Order
     Route::get('/order', [OrderController::class, 'index'])->name('order.home');
     Route::get('/order/confirmation-order', [OrderController::class, 'pending_confirmation_orders'])->name('order.pending');
+    Route::get('/order/order_in_transit-order', [OrderController::class, 'order_in_transit'])->name('order.order_in_transit');
+    Route::get('/order/orders', [OrderController::class, 'orders'])->name('order.orders');
 
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');

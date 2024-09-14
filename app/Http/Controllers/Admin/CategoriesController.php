@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Category;
+use App\Models\OrderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,14 @@ class CategoriesController extends Controller
         $render = [
             'title' => 'Hello',
             'categories' => $data->toArray(),
+        ];
+        $quantity = OrderModel::query()->get();
+        $quantity_order_confirmation = $quantity->where('status', '00')->count();
+        $number_of_order_in_transit = $quantity->where('status', '01')->count();
+        $render['quantity'] = [
+            'sum' => $quantity_order_confirmation + $number_of_order_in_transit,
+            'quantity_order_confirmation' => $quantity_order_confirmation,
+            'number_of_order_in_transit' =>  $number_of_order_in_transit 
         ];
         return view('admin.categories', $render);
     }

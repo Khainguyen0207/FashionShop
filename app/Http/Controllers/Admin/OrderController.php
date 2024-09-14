@@ -24,22 +24,33 @@ class OrderController extends Controller
                             ->paginate(15);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
-        return view("admin.orderscheck", RenderController::render('ordercheck', $render));
+        return view("admin.orderscheck", RenderController::render('order', $render));
+    }
+
+    public function order_in_transit() {
+        $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
+        $render = $this->render_data_table($getOrders);
+        $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
+        return view("admin.orderscheck", RenderController::render('order', $render));
     }
 
     public function orders() {
-        
+        $getOrders = OrderModel::query()->paginate(15);
+        $render = $this->render_data_table($getOrders);
+        $render['icon'] = null;
+        return view("admin.orderscheck", RenderController::render('order', $render));
     }
 
     public function render_data_table(LengthAwarePaginator $getOrders) : array {
         $keyTable = ['order_code','recipient_name','number_phone', 'status', 'expired_at'];
-        $table = FunctionController::table('ordercheck', $keyTable); //Setting table
+        $table = FunctionController::table('order', $keyTable); //Setting table
         $orders = $getOrders->items();
         foreach ($orders as $key => $item) {
             $orders[$key] = collect($orders[$key])->toArray();
             $orders[$key]['status'] = FunctionController::status_order($orders[$key]['status']);
             $orders[$key]['expired_at'] = Carbon::instance($getOrders->items()[$key]['expired_at'])->format('Y-m-d H:i:s');
         }
+        
         $render = [
             'table' => $table,
             'orders' => $orders,

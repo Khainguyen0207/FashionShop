@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
 use App\Models\Product;
+use App\Models\OrderModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
-use Illuminate\Http\Request;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -61,7 +62,6 @@ class ProductController extends Controller
             'maxPage' => $getProducts->lastPage(),
             'url' => $getProducts->path()
         ];
-       
         return $render;
     }
 
