@@ -31,9 +31,19 @@
                         @endforeach
                     <td>
                         <div class="btn">
-                            <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#">
+                                @if (isset($icon))
+                                    <i class="{{$icon[0]}}"></i>
+                                @else
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                @endif
+                            </a>
                             <a class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#">
-                                <i class="fa-solid fa-trash-can" ></i>
+                                @if (isset($icon))
+                                    <i class="{{$icon[1]}}"></i>
+                                @else
+                                    <i class="fa-solid fa-trash-can" ></i>
+                                @endif
                             </a>
                         </div>
                     </td>

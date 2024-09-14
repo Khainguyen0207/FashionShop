@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use id;
 use Carbon\Carbon;
 use App\Models\Product;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Excel\ExcelController;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller

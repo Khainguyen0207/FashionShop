@@ -9,45 +9,50 @@ class RenderController extends Controller
 {
 
     private static function error_render($line_num) {
-        throw new Exception('Thiếu giá trị render tại line: ' . $line_num); 
+        throw new Exception('Thiếu giá trị function: ' . $line_num); 
     }
 
     public static function render($view, $data) {
+        $render_data = self::render_data_table($view);
         switch ($view) {
             case 'home':
-                $home = [   
-                    'number_customers', 
-                    'number_products', 
-                    'number_checking',
-                    'total',
-                ];
-
-                if (count($home) == count($data)) {
-                    return array_combine($home, $data);
+                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($render_data, $data);
                 } else {
-                    return self::error_render(28);
+                    return self::error_render(15 ."|" .$view);
                 }
             case 'customer':
-                $customers = [
-                    'header',
-                    'body',
-                    'key',
-                    'number',
-                    'maxPage',
-                    'url'
-                ];//Set key = $customers
-                if (count($customers) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return array_combine($customers, $data); 
+                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($render_data, $data); 
                 } else {
-                    return self::error_render(41);
+                    return self::error_render(15 ."|" .$view);
                 }
             case 'product':
-                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage', 'url']; //Set key = $products
-                if (count($products) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return array_combine($products, $data);
+                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($render_data, $data);
                 } else {
-                    return self::error_render(48);
+                    return self::error_render(15 ."|" .$view);
                 }
+            case 'ordercheck':
+                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+                    return array_combine($render_data, $data);
+                } else {
+                    return self::error_render(15 ."|" .$view);
+                }
+        }
+    }
+
+    private static function render_data_table(string $template) {
+        switch ($template) {
+            case 'home':
+                $home = ['number_customers', 'number_products', 'number_checking', 'total']; return $home;
+            case 'customer':
+                $customers = ['header', 'body', 'key', 'number', 'maxPage', 'url']; return $customers;
+            case 'product':
+                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage', 'url']; return $products;
+            case 'ordercheck':
+                $ordercheck = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon']; return $ordercheck;
+            default: self::error_render("Lỗi hệ thống - 59");
         }
     }
 }

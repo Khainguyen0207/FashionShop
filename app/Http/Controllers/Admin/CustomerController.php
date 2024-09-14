@@ -78,8 +78,7 @@ class CustomerController extends Controller
     }
 
     private function getCustomers() {
-        $getCustomers = DB::table('users')
-            ->paginate(15);
+        $getCustomers = DB::table('users')->paginate(15);
         $keyTable = ['name','id','email', 'role'];
         $table = FunctionController::table('customer', $keyTable); //Setting table
         $users = $getCustomers->items();
