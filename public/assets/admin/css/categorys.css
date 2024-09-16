@@ -17,7 +17,6 @@
     display: block;
     padding: 12px 24px;
     background-color: rgba(128, 255, 0, 0.278);
-    border-radius: 10px;
     float: right;
     transition: 0.7s;
 }
@@ -82,7 +81,7 @@
     display: block;
     z-index: 2;
     background-color: red;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     padding: 10px;
     transition: 0.5s;
     text-align: center;

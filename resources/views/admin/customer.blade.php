@@ -28,4 +28,7 @@
     <div class="footer">
     </div>
 </div>
+@push('footer')
+    <script src="{{ asset('assets/js/table.js') }}"></script> 
+@endpush
 @endsection

@@ -119,7 +119,7 @@ a {
 }
 
 .menu-bar .menu .quantity {
-    background-color: darkgray;
+    background-color: red;
     padding: 0px 5px;
     border-radius: 100%;
 }
@@ -139,7 +139,6 @@ a {
     border-left: 4px solid red;
     transition: 0.2s;
 }
-
 
 .menu-bar .footer-slider {
     position: absolute;

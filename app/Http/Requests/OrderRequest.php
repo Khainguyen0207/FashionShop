@@ -10,7 +10,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'recipient_name' => 'required|email|max:255',
-            'number_phone' => 'required|max:10|min:10',
+            'number_phone' => 'required',
         ];
     }
 }

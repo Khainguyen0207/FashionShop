@@ -13,6 +13,7 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -89,10 +90,17 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/categories/{id_category}/vouchers', [ProductController::class, 'index'])->name('category.vouchers.home');
 
     //Order
-    Route::get('/order', [OrderController::class, 'index'])->name('order.home');
-    Route::get('/order/confirmation-order', [OrderController::class, 'pending_confirmation_orders'])->name('order.pending');
-    Route::get('/order/order_in_transit-order', [OrderController::class, 'order_in_transit'])->name('order.order_in_transit');
-    Route::get('/order/orders', [OrderController::class, 'orders'])->name('order.orders');
+    Route::prefix('/order')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('order.home');
+        Route::get('/confirmation-order', [OrderController::class, 'pending_confirmation_orders'])->name('order.pending');
+        Route::post('/confirmation-order/edit/{order_id}', [OrderController::class, 'edit'])->name('order.pending.edit');
+        Route::delete('/confirmation-order/del/{order_id}', [OrderController::class, 'destroy'])->name('order.pending.destroy');
+       
+        Route::get('/order_in_transit', [OrderController::class, 'order_in_transit'])->name('order.order_in_transit');
+        Route::post('/order_in_transit/edit/{order_id}', [OrderController::class, 'edit'])->name('order.order_in_transit.edit');
+        Route::delete('/order_in_transit/del/{order_id}', [OrderController::class, 'destroy'])->name('order.order_in_transit.del');
+        Route::get('/orders', [OrderController::class, 'orders'])->name('order.orders');
+    });
 
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
@@ -102,6 +110,10 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Home
     Route::get('/', [UserController::class, 'home'])->name('user.home');
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
+
+    //Profile
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.home');
+    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.post');
 
     //Products
     Route::get('/products',[ProductUIController::class, 'index'])->name('products.home');

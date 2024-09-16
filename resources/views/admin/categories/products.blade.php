@@ -100,3 +100,7 @@
         </section>
     </div>
 @endsection
+    
+@push('footer')
+    <script src="{{ asset('assets/js/table.js') }}"></script> 
+@endpush

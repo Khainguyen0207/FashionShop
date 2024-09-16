@@ -29,14 +29,14 @@ class FunctionController extends Controller
                 return "Đang chờ xác nhận";
             case '01':
                 return "Đang giao";
-            case '03':
+            case '02':
                 return "Đã giao thành công";
             case '10':
-                return "Đơn hàng bị hủy bởi người bán";
+                return "Bị hủy bởi người bán";
             case '20':
-                return "Đơn hàng bị hủy bởi người nhận";
+                return "Bị hủy bởi người nhận";
             case '30':
-                return "Đơn hàng bị lỗi khi vận chuyển";
+                return "Bị lỗi khi vận chuyển";
             default:
                 return "Lỗi hệ thông";
         }

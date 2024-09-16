@@ -18,6 +18,5 @@
     </body>
     <footer>
         @stack('footer')
-        <script src="{{ asset('assets/js/table.js') }}"></script>
     </footer>
 </html>

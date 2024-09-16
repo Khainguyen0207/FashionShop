@@ -11,11 +11,11 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('order_code')->unique();
-            $table->string('recipient_name', 255);
-            $table->integer('number_phone')->max(10);
-            $table->string('address', 255);
+            $table->string('recipient_name');
+            $table->string('number_phone');
+            $table->string('address');
             $table->string('order_information');
-            $table->string('status', 255); 
+            $table->string('status');
             $table->dateTime('expired_at');
             $table->timestamps();
         });

@@ -2,7 +2,14 @@
     <a href="#"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
     <div class="bar">
         <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
-        <a href="#" class="login" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa-solid fa-user"></i> Đăng xuất</a>
+        <div class="login">
+            <a href="#"><i class="fa-solid fa-user"></i> Người dùng</a>
+            <ul class="nav">
+                <li><a href="{{route("profile.home")}}"><i class="fa-solid fa-info"></i> Thông tin</a></li>
+                <li><a href="#" onclick="document.getElementById('logout').submit()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
+            </ul>
+        </div>
+        
         <form id="logout" action="{{ route('user.logout') }}" method="POST" style="display: none;">
             @csrf
             @method('DELETE')

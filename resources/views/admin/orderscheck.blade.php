@@ -23,4 +23,7 @@
     <div class="footer">
     </div>
 </div>
+<footer>
+    <script src="{{asset("assets/admin/js/order.js")}}"></script>
+</footer>
 @endsection

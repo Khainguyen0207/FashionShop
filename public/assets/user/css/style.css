@@ -29,6 +29,12 @@ body {
     padding: 10px;
 }
 
+#header .bar {
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+
 #header img {
     position: relative;
     display: block;
@@ -37,20 +43,53 @@ body {
 }
 
 #header .bar a {
-    display: inline-block;
+    display: block;
     text-decoration: none;
     background-color: #ffedf2;
     padding: 9px 12px;
     font-size: 16px;
     color: black;
-    border-radius: 20px;
+    border-radius: 10px;
 }
+
 
 #header .bar a:hover {
     background-color: aquamarine;
     transition: 0.6s;
 }
 
+#header .login {
+    position: relative;
+    display: block;
+}
+
+#header .login:hover > a {
+    background-color: aquamarine;
+}
+
+#header .login .nav {
+    position: absolute;
+    display: none;
+    list-style: none;
+    z-index: 2;
+}
+
+#header .login .nav a {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#header .login:hover .nav {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+    transition: 0.6s;
+}
+
+#header .login .nav li:hover {
+    background: #404040;
+    border-radius: 10px;
+}
 
 #menu-bar {
     position: relative;
@@ -58,7 +97,7 @@ body {
     background-color: var(--background);
     justify-content: space-between;
     align-items: center;
-    z-index: 2;
+    z-index: 1;
     background-color: var(--background);
 }
 
@@ -77,6 +116,7 @@ body {
     color: black;
     padding: 12px 24px; 
     font-size: 20px;
+
 }
 
 #menu-bar .menu li:hover {

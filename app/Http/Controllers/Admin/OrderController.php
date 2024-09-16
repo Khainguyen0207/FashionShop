@@ -10,6 +10,7 @@ use App\Http\Controllers\RenderController;
 
 use App\Http\Controllers\FunctionController;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Stmt\Return_;
 
 class OrderController extends Controller
@@ -18,27 +19,66 @@ class OrderController extends Controller
         return redirect(route("order.pending"));
     }
 
+    
+    //Pending
     public function pending_confirmation_orders() {
         $getOrders = OrderModel::query()
                             ->where("status", "00")
                             ->paginate(15);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
+        session()->flash('status', '00');
         return view("admin.orderscheck", RenderController::render('order', $render));
     }
 
+    //order_in_transit
     public function order_in_transit() {
         $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
+        session()->flash('status', '01');
         $render = $this->render_data_table($getOrders);
         $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
         return view("admin.orderscheck", RenderController::render('order', $render));
     }
 
+
+    //orders
     public function orders() {
         $getOrders = OrderModel::query()->paginate(15);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;
         return view("admin.orderscheck", RenderController::render('order', $render));
+    }
+
+    public function edit(Request $request, $order_id) {
+        $status_order = $this->status_order("edit");
+        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
+        return redirect()->back()->with('success', "Đã duyệt đơn hàng");
+    }
+
+
+    public function destroy($order_id) {
+        $status_order = $this->status_order("destroy");
+        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
+        return redirect()->back()->with('success', "Đã hủy đơn hàng");
+    }
+
+    private function status_order($info) {
+        $status = session()->get('status');
+        if ($info == 'edit') {
+            switch ($status) {
+                case '00': return '01';
+                case '01': return '02';
+                case '02': return '03';
+                default: return '404';
+            }
+        } else {
+            switch ($status) {
+                case '00': return '10';
+                case '01': return '20';
+                case '02': return '30';
+                default: return '404';
+            }
+        }
     }
 
     public function render_data_table(LengthAwarePaginator $getOrders) : array {
