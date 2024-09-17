@@ -112,8 +112,15 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
     //Profile
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.home');
-    Route::post('/profile', [ProfileController::class, 'store'])->name('profile.post');
+    Route::prefix('/profile')->group(function () {
+        //Profile
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.home');
+        Route::post('/', [ProfileController::class, 'store'])->name('profile.post');
+        //Order
+        Route::get('/order', [ProfileController::class, 'index'])->name('profile.order.home');
+        Route::post('/order', [ProfileController::class, 'store'])->name('profile.order.post');
+    });
+    
 
     //Products
     Route::get('/products',[ProductUIController::class, 'index'])->name('products.home');

@@ -44,31 +44,37 @@
     width: 100%;
     background-color: #ffffff;
     height: 100%;
-    border: 2px solid lightgreen;
     border-radius: 50%;
+    cursor: pointer;
     object-fit: cover;
 }
 
 #container .avatar-menu .avatar .animation-img {
-    display: none;
-    background-color: red;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    text-align: center;
+    inset: 70% 0;
+    width: 100%;
+    height: 50%;
+    transition: 0.3s ease-in-out;
+    bottom: 0;
+    background-color: rgba(213, 237, 201, 0.2);
+    transform: translatey(100px);
+}
+
+#container .avatar-menu .img-avt:hover img {
+    filter: blur(2px);
 }
 
 #container .avatar-menu .img-avt:hover .animation-img {
-    position: absolute;
-    display: block;
-    inset: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
+    opacity: 1;
+    transform: translatey(0);
+    transition: 0.3s ease-in-out;
 }
 
-#container .avatar-menu .img-avt:hover p{
-    text-align: center;
-    height: 100%;
-    bottom:  0;
+#container .avatar-menu .img-avt:hover p {
+    cursor: pointer;
 }
 
 
@@ -111,4 +117,16 @@
     margin-left: 10px;
     padding: 20px;
     border-radius: 5px;
+}
+
+@keyframes animation-profile-img {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    100% {
+        opacity: 1;
+        z-index: 2;
+    }
 }

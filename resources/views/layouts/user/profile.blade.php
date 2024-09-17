@@ -12,17 +12,17 @@
             <div class="avt">
                 <div class="avatar">
                     <div class="img-avt">
-                        <img src="{{ asset("assets/user/img/box.png") }}" alt="">
+                        <a href="#hello"><img src="{{ asset("assets/user/img/box.png") }}" id="avt-profile" alt=""></a>
                         <div class="animation-img">
-                            <p style="color: black">Edit</p>
+                            <p style="color: black">Chỉnh sửa</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="menu">
                 <ul style="">
-                    <a href="#"><li>Thông tin</li></a>
-                    <a href="#"><li>Đơn hàng của bạn</li></a>
+                    <a href="{{route('profile.home')}}"><li>Thông tin</li></a>
+                    <a href="{{route("profile.order.home")}}"><li>Đơn hàng của bạn</li></a>
                     <a href="#"><li>Voucher Giảm giá</li></a>
                     <a href="#"><li>Hạng thành viên</li></a>
                     <a href="#" onclick="document.getElementById('logout').submit()"><li>Đăng xuất</li></a>
