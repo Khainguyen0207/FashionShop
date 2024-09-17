@@ -9,19 +9,30 @@
     @include('layouts.user.header')
     <div id="container">
         <div class="avatar-menu">
-            <div class="avatar">
-                <img src="{{ asset("assets/img/bg-banking.png") }}" alt="">
+            <div class="avt">
+                <div class="avatar">
+                    <div class="img-avt">
+                        <img src="{{ asset("assets/user/img/box.png") }}" alt="">
+                        <div class="animation-img">
+                            <p style="color: black">Edit</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="menu">
-                <ul>
-                    <li>Thông tin người dùng</li>
-                    <li>Đơn hàng của bạn</li>
-                    <li>Voucher Giảm giá</li>
-                    <li>Hạng thành viên</li>
-                    <li>Đăng xuất</li>
+                <ul style="">
+                    <a href="#"><li>Thông tin</li></a>
+                    <a href="#"><li>Đơn hàng của bạn</li></a>
+                    <a href="#"><li>Voucher Giảm giá</li></a>
+                    <a href="#"><li>Hạng thành viên</li></a>
+                    <a href="#" onclick="document.getElementById('logout').submit()"><li>Đăng xuất</li></a>
                 </ul>
             </div>
         </div>
+        <form id="logout" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+            @csrf
+            @method('DELETE')
+        </form>
         <div class="information">
             @yield('information')
         </div>
