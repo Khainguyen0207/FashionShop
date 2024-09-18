@@ -40,6 +40,20 @@
 
 .title-information .form-information input {
     display: block;
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-weight: 800;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid lightgray;
+    width: 100%;
+    max-width: 400px;
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+.title-information .form-information select {
+    display: block;
+    font-family: "Saira Semi Condensed", sans-serif;
+    font-weight: 800;
     background-color: rgba(0, 0, 0, 0);
     border: 2px solid lightgray;
     width: 100%;
