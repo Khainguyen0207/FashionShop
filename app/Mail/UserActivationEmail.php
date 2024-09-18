@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -17,7 +16,9 @@ class UserActivationEmail extends Mailable
      * Create a new message instance.
      */
     private string $title;
+
     private int $code;
+
     public function __construct(string $title, int $code)
     {
         $this->title = $title;
@@ -42,9 +43,9 @@ class UserActivationEmail extends Mailable
         return new Content(
             view: 'mail.send-code',
             with: [
-                'title' => $this->title, 
+                'title' => $this->title,
                 'code' => $this->code,
-                'mail_contact' => "name.fashion.store@gmail.com",
+                'mail_contact' => 'name.fashion.store@gmail.com',
                 'name' => 'JSON',
             ],
         );
@@ -58,7 +59,7 @@ class UserActivationEmail extends Mailable
     public function attachments(): array
     {
         return [
-            
+
         ];
     }
 }

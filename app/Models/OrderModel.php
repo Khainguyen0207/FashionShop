@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class OrderModel extends Model
 {
     use HasFactory;
+
     protected $table = 'orders';
-    
+
     protected $fillable = [
         'order_code',
         'recipient_name',
@@ -17,7 +18,7 @@ class OrderModel extends Model
         'address',
         'order_information',
         'status',
-        'expired_at'
+        'expired_at',
     ];
 
     protected function casts(): array

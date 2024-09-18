@@ -1,6 +1,7 @@
 @extends('layouts.user.profile')
 @push('head')
     <link rel="stylesheet" href="{{asset('assets/user/css/information.css')}}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 @endpush
 @section('information')
     <div class="title-information">
@@ -23,7 +24,7 @@
                         <option value="0">Nam</option>
                         <option value="1">Nữ</option>
                         <script>
-                            document.getElementById("sex").value = {{$sex}};
+                            document.getElementById("sex").value = {{ $sex }};
                         </script>
                     </select>
                 </div>
@@ -55,9 +56,8 @@
     <div class="title-information late">
         <h2 class="title">Bảo mật</h2>
         <div class="form-information">
-            <a href="">Đổi mật khẩu</a>
-            <a href="">Quên mật khẩu</a>
+            <a href="{{url()->current()}}" onclick="auth(event)" id="change_password">Đổi mật khẩu</a>
+            <a href="{{url()->current()}}" onclick="auth(event)" id="forget_password">Quên mật khẩu</a>
         </div>
     </div>
-    
 @endsection

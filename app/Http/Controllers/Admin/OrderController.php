@@ -1,68 +1,74 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Carbon\Carbon;
-use App\Models\OrderModel;
-use Illuminate\Http\Request;
-use function PHPSTORM_META\type;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\RenderController;
 
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\FunctionController;
+use App\Http\Controllers\RenderController;
+use App\Models\OrderModel;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Session;
-use PhpParser\Node\Stmt\Return_;
 
 class OrderController extends Controller
 {
-    public function index() {
-        return redirect(route("order.pending"));
+    public function index()
+    {
+        return redirect(route('order.pending'));
     }
 
-    
     //Pending
-    public function pending_confirmation_orders() {
+    public function pending_confirmation_orders()
+    {
         $getOrders = OrderModel::query()
-                            ->where("status", "00")
-                            ->paginate(15);
+            ->where('status', '00')
+            ->paginate(15);
         $render = $this->render_data_table($getOrders);
-        $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
+        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark'];
         session()->flash('status', '00');
-        return view("admin.orderscheck", RenderController::render('order', $render));
+
+        return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
     //order_in_transit
-    public function order_in_transit() {
+    public function order_in_transit()
+    {
         $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
         session()->flash('status', '01');
         $render = $this->render_data_table($getOrders);
-        $render['icon'] = ["fa-solid fa-check", 'fa-solid fa-xmark'];
-        return view("admin.orderscheck", RenderController::render('order', $render));
+        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark'];
+
+        return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
-
     //orders
-    public function orders() {
+    public function orders()
+    {
         $getOrders = OrderModel::query()->paginate(15);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;
-        return view("admin.orderscheck", RenderController::render('order', $render));
+
+        return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
-    public function edit(Request $request, $order_id) {
-        $status_order = $this->status_order("edit");
+    public function edit(Request $request, $order_id)
+    {
+        $status_order = $this->status_order('edit');
         OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
-        return redirect()->back()->with('success', "Đã duyệt đơn hàng");
+
+        return redirect()->back()->with('success', 'Đã duyệt đơn hàng');
     }
 
-
-    public function destroy($order_id) {
-        $status_order = $this->status_order("destroy");
+    public function destroy($order_id)
+    {
+        $status_order = $this->status_order('destroy');
         OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
-        return redirect()->back()->with('success', "Đã hủy đơn hàng");
+
+        return redirect()->back()->with('success', 'Đã hủy đơn hàng');
     }
 
-    private function status_order($info) {
+    private function status_order($info)
+    {
         $status = session()->get('status');
         if ($info == 'edit') {
             switch ($status) {
@@ -81,8 +87,9 @@ class OrderController extends Controller
         }
     }
 
-    public function render_data_table(LengthAwarePaginator $getOrders) : array {
-        $keyTable = ['order_code','recipient_name','number_phone', 'status', 'expired_at'];
+    public function render_data_table(LengthAwarePaginator $getOrders): array
+    {
+        $keyTable = ['order_code', 'recipient_name', 'number_phone', 'status', 'expired_at'];
         $table = FunctionController::table('order', $keyTable); //Setting table
         $orders = $getOrders->items();
         foreach ($orders as $key => $item) {
@@ -90,15 +97,16 @@ class OrderController extends Controller
             $orders[$key]['status'] = FunctionController::status_order($orders[$key]['status']);
             $orders[$key]['expired_at'] = Carbon::instance($getOrders->items()[$key]['expired_at'])->format('Y-m-d H:i:s');
         }
-        
+
         $render = [
             'table' => $table,
             'orders' => $orders,
             'key_table' => $keyTable,
             'number' => $getOrders->currentPage(),
             'maxNumberPage' => $getOrders->lastPage(),
-            'url' => $getOrders->path()
+            'url' => $getOrders->path(),
         ];
+
         return $render;
     }
 }

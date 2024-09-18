@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -20,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'role',
-        'birthday'
+        'birthday',
     ];
 
     /**
@@ -45,5 +46,14 @@ class User extends Authenticatable
             'password' => 'hashed',
             'birthday' => 'datetime',
         ];
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        if (Storage::exists($this->avatar)) {
+            return Storage::url($this->avatar);
+        }
+
+        return asset('assets/user/img/box.png');
     }
 }

@@ -63,7 +63,7 @@
 }
 
 .title-information .form-information input:focus-visible {
-    border: none;
+    border-color: transparent;
     outline: none;
     box-shadow: 0 0 5px 5px #6dbdf2;
 }

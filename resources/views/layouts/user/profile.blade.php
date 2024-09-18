@@ -3,6 +3,7 @@
 @push('head')
     <link rel="stylesheet" href="{{asset("assets/user/css/profile.css")}}">
     <link rel="stylesheet" href="{{asset("assets/user/css/style.css")}}">
+   
 @endpush
 
 @section('content')
@@ -12,7 +13,7 @@
             <div class="avt">
                 <div class="avatar">
                     <div class="img-avt">
-                        <a href="#hello"><img src="{{ asset("assets/user/img/box.png") }}" id="avt-profile" alt=""></a>
+                        <a href="#" id="avatar" data-url="{{ route("profile.post") }}"><img id="avt-profile" src="{{ $avatar }}"  alt=""></a>
                         <div class="animation-img">
                             <p style="color: black">Chỉnh sửa</p>
                         </div>
@@ -38,4 +39,7 @@
         </div>
     </div>
     @include('layouts.user.footer')
+    <footer>
+       <script src="{{asset("assets/user/js/profile.js")}}"></script>
+    </footer>
 @endsection

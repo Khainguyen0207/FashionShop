@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ProductsExportExample;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ExcelController extends Controller
 {

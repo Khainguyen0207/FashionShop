@@ -1,0 +1,33 @@
+#auth {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    input {
+        display: block;
+        font-family: "Saira Semi Condensed", sans-serif;
+        font-weight: 800;
+        background-color: rgba(0, 0, 0, 0);
+        border: 2px solid lightgray;
+        width: 100%;
+        max-width: 400px;
+        padding-left: 5px;
+        font-size: 16px;
+
+        &:focus-visible {
+            border: none;
+            outline: none;
+            box-shadow: 0 0 5px 5px #6dbdf2;
+        }
+    }
+
+    #change_password {
+        // position: absolute;
+        display: block;
+        width: 100%;
+        background-color: lightblue;
+    }
+}
+

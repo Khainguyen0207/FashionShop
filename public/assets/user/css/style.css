@@ -97,7 +97,7 @@ body {
     background-color: var(--background);
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 0;
     background-color: var(--background);
 }
 
@@ -141,7 +141,7 @@ body {
 #menu-bar .search .icon {
     position: absolute;
     margin: 13px 20px; 
-    z-index: 1;
+    z-index: 0;
 }
 
 #menu-bar .search input:focus-visible {

@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers;
 
 class FunctionController extends Controller
 {
-    public static function table($name_table, $key) {
+    public static function table($name_table, $key)
+    {
         $table_customers = ['Tên', 'Mã Khách Hàng', 'Email', 'Quyền'];
         $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng tồn kho'];
         $table_order = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
@@ -17,7 +17,8 @@ class FunctionController extends Controller
         }
     }
 
-    public static function status_order($status) {
+    public static function status_order($status)
+    {
         //Mã thành công => 0
         //Mã lỗi từ người bán => 1
         //Mã lỗi từ người nhận => 2
@@ -26,19 +27,19 @@ class FunctionController extends Controller
         //Mã lỗi từ hệ thống => 5
         switch ($status) {
             case '00':
-                return "Đang chờ xác nhận";
+                return 'Đang chờ xác nhận';
             case '01':
-                return "Đang giao";
+                return 'Đang giao';
             case '02':
-                return "Đã giao thành công";
+                return 'Đã giao thành công';
             case '10':
-                return "Bị hủy bởi người bán";
+                return 'Bị hủy bởi người bán';
             case '20':
-                return "Bị hủy bởi người nhận";
+                return 'Bị hủy bởi người nhận';
             case '30':
-                return "Bị lỗi khi vận chuyển";
+                return 'Bị lỗi khi vận chuyển';
             default:
-                return "Lỗi hệ thông";
+                return 'Lỗi hệ thống';
         }
     }
 }

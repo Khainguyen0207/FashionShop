@@ -1,4 +1,4 @@
-<?php include "includes/header.php" ?>
+<?php include 'includes/header.php' ?>
 
 <head>
     <link rel="stylesheet" href="../assets/Dashboard/css/statistics.css">
@@ -11,7 +11,7 @@
     <section>
         <div id="container">
             <div class="menu-bar">
-                <?php include "includes/menubar.php" ?>
+                <?php include 'includes/menubar.php' ?>
             </div>
 
             <div class="overview">

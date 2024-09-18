@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 class SendMailController extends Controller
 {
-    public function forgetPassword() {
+    public function forgetPassword()
+    {
         return view('');
     }
 }

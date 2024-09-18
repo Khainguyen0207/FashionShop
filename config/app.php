@@ -124,6 +124,6 @@ return [
     ],
 
     'vnpay' => [
-        'vnp_HashSecret' => env('VNP_HASHSECRET')
+        'vnp_HashSecret' => env('VNP_HASHSECRET'),
     ],
 ];

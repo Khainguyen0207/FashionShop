@@ -18,7 +18,7 @@ class User_otp extends Model
         'token',
         'email',
         'code',
-        'expired_at'
+        'expired_at',
     ];
 
     protected function casts(): array

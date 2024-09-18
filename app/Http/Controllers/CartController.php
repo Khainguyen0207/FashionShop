@@ -9,25 +9,28 @@ use Illuminate\Support\Facades\Storage;
 
 class CartController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $render = [
             'products' => Session::get('cart'),
         ];
+
         return view('user.cart', $render);
     }
 
-    public function store(Request $request, $product_id) {
-        if (session()->get('cart') !=null && key_exists($product_id, session()->get('cart'))) {
+    public function store(Request $request, $product_id)
+    {
+        if (session()->get('cart') != null && array_key_exists($product_id, session()->get('cart'))) {
             return redirect(url()->previous())->with('error', 'Sản phẩm đã được thêm vào trước đó');
         }
         $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
-        
+
         $data_image = [];
         foreach (explode('|', $product['image']) as $key => $value) {
             if (Storage::disk('public')->exists($value)) {
-                $data_image += array($key => Storage::url($value));
+                $data_image += [$key => Storage::url($value)];
             } else {
-                $data_image += array(asset('assets/user/img/box.png'));
+                $data_image += [asset('assets/user/img/box.png')];
             }
         }
 
@@ -36,15 +39,18 @@ class CartController extends Controller
         $cart = session()->get('cart', []);
         $cart[$product_id] = $product;
         session()->put('cart', $cart);
+
         return redirect(url()->previous())->with('success', 'Sản phẩm được thêm vào giỏ hàng');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $cart = session()->get('cart', []);
         if (isset($cart[$id])) {
             unset($cart[$id]);
         }
         session()->put('cart', $cart);
+
         return $this->index();
     }
 }

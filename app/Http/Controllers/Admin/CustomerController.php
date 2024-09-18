@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\FunctionController;
+use App\Http\Controllers\RenderController;
 use Carbon\Carbon;
-use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\RenderController;
-use App\Http\Controllers\FunctionController;
 
 const MAX_PAGE = 15;
 
@@ -20,8 +19,6 @@ class CustomerController extends Controller
 
         return view('admin.customer', RenderController::render('customer', $render));
     }
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -42,10 +39,7 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        
-    }
+    public function show(string $id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -74,19 +68,21 @@ class CustomerController extends Controller
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete account: $info \nIn table 'users' =>  Time $date\n");
         }
+
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
-    private function getCustomers() {
+    private function getCustomers()
+    {
         $getCustomers = DB::table('users')->paginate(15);
-        $keyTable = ['name','id','email', 'role'];
+        $keyTable = ['name', 'id', 'email', 'role'];
         $table = FunctionController::table('customer', $keyTable); //Setting table
         $users = $getCustomers->items();
         foreach ($users as $key => $item) {
             $users[$key] = collect($users[$key])->toArray();
             if ($users[$key]['role'] == 1) {
                 $users[$key]['role'] = 'admin';
-            } else if ($users[$key]['role'] == 0) {
+            } elseif ($users[$key]['role'] == 0) {
                 $users[$key]['role'] = 'user';
             }
         }
@@ -96,8 +92,9 @@ class CustomerController extends Controller
             $keyTable,
             'number' => $getCustomers->currentPage(),
             'maxNumberPage' => $getCustomers->lastPage(),
-            'url' => $getCustomers->path()
+            'url' => $getCustomers->path(),
         ];
+
         return $render;
     }
 }
