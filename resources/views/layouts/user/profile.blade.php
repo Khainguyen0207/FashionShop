@@ -21,10 +21,10 @@
             </div>
             <div class="menu">
                 <ul style="">
-                    <a href="{{route('profile.home')}}"><li>Thông tin</li></a>
-                    <a href="{{route("profile.order.home")}}"><li>Đơn hàng của bạn</li></a>
-                    <a href="#"><li>Voucher Giảm giá</li></a>
-                    <a href="#"><li>Hạng thành viên</li></a>
+                    <a href="{{ route('profile.home') }}"><li>Thông tin</li></a>
+                    <a href="{{ route("profile.order.home") }}"><li>Đơn hàng của bạn</li></a>
+                    <a href="{{ route("profile.voucher.home") }}"><li>Voucher Giảm giá</li></a>
+                    <a href="{{ route("profile.rank.home") }}"><li>Hạng thành viên</li></a>
                     <a href="#" onclick="document.getElementById('logout').submit()"><li>Đăng xuất</li></a>
                 </ul>
             </div>

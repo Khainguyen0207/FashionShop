@@ -13,11 +13,15 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\RankUIController;
+use App\Http\Controllers\User\OrderUIController;
 use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\VoucherController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\ProductUIController;
+use App\Http\Controllers\User\VoucherUIController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
@@ -117,8 +121,14 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.home');
         Route::post('/', [ProfileController::class, 'store'])->name('profile.post');
         //Order
-        Route::get('/order', [ProfileController::class, 'index'])->name('profile.order.home');
-        Route::post('/order', [ProfileController::class, 'store'])->name('profile.order.post');
+        Route::get('/order', [OrderUIController::class, 'index'])->name('profile.order.home');
+        Route::post('/order', [OrderUIController::class, 'store'])->name('profile.order.post');
+        //Voucher
+        Route::get('/voucher', [VoucherUIController::class, 'index'])->name('profile.voucher.home');
+        Route::post('/voucher', [VoucherUIController::class, 'store'])->name('profile.voucher.post');
+        //Rank
+        Route::get('/rank', [RankUIController::class, 'index'])->name('profile.rank.home');
+        Route::post('/rank', [RankUIController::class, 'store'])->name('profile.rank.post');
     });
     
 

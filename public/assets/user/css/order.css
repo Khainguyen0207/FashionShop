@@ -1,0 +1,41 @@
+.title-information {
+    position: relative;
+    display: block;
+}
+
+.title-information {
+    border-bottom: 2px lightgray solid;
+}
+
+.late {
+    border: none;
+}
+
+.title-information .order-bar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.title-information .order-bar .order {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.title-information .order-bar img {
+    display: block;
+    width: 100%;
+    max-width: 150px;
+    align-items: center;
+}
+
+
+.title-information .order-bar p {
+    text-align: center;
+}
+

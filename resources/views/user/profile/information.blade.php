@@ -43,7 +43,7 @@
             </form>
         </div>
     </div>
-    <div class="title-information">
+    <div class="title-information late">
         <h2 class="title">Bảo mật</h2>
         <div class="form-information">
             <a href="">Đổi mật khẩu</a>
