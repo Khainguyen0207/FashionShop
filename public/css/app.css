@@ -1,9 +1,13 @@
-#auth {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  right: 0;
+:root {
+  --background-item: #fff6ea;
+  --background-product: #D5ED9F;
+  --background: #ffe0ae ;
+  --text-color: #800000;
+}
+
+#auth input::-webkit-inner-spin-button,
+#auth input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
 #auth input {
   display: block;
@@ -17,12 +21,57 @@
   font-size: 16px;
 }
 #auth input:focus-visible {
-  border: none;
+  border: 2px solid transparent;
   outline: none;
-  box-shadow: 0 0 5px 5px #6dbdf2;
+  box-shadow: 0 0 5px 5px #8accfb;
 }
-#auth #change_password {
+#auth a {
+  position: relative;
+  display: inline-block;
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: white;
+  text-decoration: none;
+  background-color: red;
+}
+#auth a:hover {
+  background-color: rgb(153, 1, 1);
+}
+#auth button {
   display: block;
-  width: 100%;
-  background-color: lightblue;
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 5px 8px;
+  background-color: var(--background-btn);
+  border: 1px solid var(--background-btn);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#auth button:hover {
+  background-color: #83abfc;
+  transition: 0.3s ease-in-out;
+}
+
+#auth #forget_password form {
+  display: block;
+}
+#auth #forget_password form .mail {
+  display: flex;
+  gap: 20px;
+  max-height: 100px;
+  margin-bottom: 10px;
+}
+#auth #forget_password form .code {
+  display: flex;
+  margin: 10px 0;
+  gap: 20px;
+}
+#auth #forget_password form .code input {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  text-align: center;
 }

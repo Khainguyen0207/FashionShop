@@ -39,7 +39,7 @@
         </div>
     </div>
     @include('layouts.user.footer')
-    <footer>
+    @push('footer')
        <script src="{{asset("assets/user/js/profile.js")}}"></script>
-    </footer>
+    @endpush
 @endsection

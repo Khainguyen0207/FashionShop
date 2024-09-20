@@ -96,11 +96,12 @@ body {
 }
 
 .payment-method .select-banking .action-select-banking {
-    border: 2px solid lightgray;
+    border: 2px solid lightgray !important;
     border-radius: 10px;
 }
 
 .payment-method .select-banking .banking {
+    border: 2px solid transparent;
     max-height: 100px;
 }
 

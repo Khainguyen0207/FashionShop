@@ -117,5 +117,6 @@
     @include('layouts.user.footer')
     <footer>
         <script src="{{ asset('assets/js/cart.js') }}"></script>
+        <script>seen()</script>
     </footer>
 @endsection 

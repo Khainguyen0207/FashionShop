@@ -40,10 +40,31 @@ function auth(event) {
             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
         },
     }).then(function(data) {
-        const div = document.createElement("div");
-        div.setAttribute('id', 'auth'); 
-        document.body.appendChild(div);
-    
-        $("#auth").html(data)
+        $(".information").html(data)
     })
+}
+
+function updateEventChange() {
+    document.getElementById("btn_code_confirm").disabled = true
+    const inputs = document.querySelectorAll("#code");
+    inputs.forEach(element => {
+        element.addEventListener("input", function (event) {
+            const node = event.currentTarget;
+            const input = event.currentTarget.value;
+            if (!isNaN(input) && input.trim() !== '') {
+                if (node.nextElementSibling) {
+                    node.nextElementSibling.focus()
+                }
+            }
+            var data = []
+            inputs.forEach(element => {
+                data += element.value.trim()
+            })
+            if (data.length >= 4) {
+                document.getElementById("btn_code_confirm").disabled = false
+            } else {
+                document.getElementById("btn_code_confirm").disabled = true
+            }
+        })
+    });
 }

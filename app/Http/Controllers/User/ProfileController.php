@@ -61,9 +61,10 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         $query = $request->query()['auth'];
+
         if ($query == 'change_password') {
             return view('layouts.components.change_password');
-        } elseif ($request->query() == 'forget_password') {
+        } elseif ($query == 'forget_password') {
             return view('layouts.components.forget_password');
         }
     }
