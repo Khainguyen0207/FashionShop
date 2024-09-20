@@ -60,11 +60,34 @@ function updateEventChange() {
             inputs.forEach(element => {
                 data += element.value.trim()
             })
-            if (data.length >= 4) {
+            if (data.length >= 6) {
                 document.getElementById("btn_code_confirm").disabled = false
             } else {
                 document.getElementById("btn_code_confirm").disabled = true
             }
         })
     });
+
+    document.querySelector(".btn-sendmail").addEventListener("click", function(event){
+        event.preventDefault()
+        const email = document.querySelector("#email").value;
+        const btn = event.currentTarget;
+        const url = event.currentTarget.dataset.url + "?email=" + email
+        $.ajax({
+            url: url,
+            method: 'post',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
+            },
+            success: (function (event) {
+                event.currentTarget.style.display = "none"; // Ẩn phần tử
+            })
+        }).then(function(data) {
+            const $html = $(data);
+            const idValue = $html.find('#alert').html();
+            console.log(idValue);
+            $('#alert').html(idValue);
+        })
+    })
 }
+

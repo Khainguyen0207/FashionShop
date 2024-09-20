@@ -115,6 +115,11 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.home');
         Route::post('/', [ProfileController::class, 'store'])->name('profile.post');
         Route::post('/show', [ProfileController::class, 'show'])->name('profile.show');
+        Route::post('/sendmail', [ProfileController::class, 'edit'])->name('profile.sendmail');
+
+        Route::get('/confirm/{token}', [ProfileController::class, 'reset_password'])->name('profile.reset_password');
+        Route::post('/confirm', [ProfileController::class, 'confirm'])->name('profile.confirm');
+        Route::post('/change', [ProfileController::class, 'change_password'])->name('profile.change');
         //Order
         Route::get('/order', [OrderUIController::class, 'index'])->name('profile.order.home');
         Route::post('/order', [OrderUIController::class, 'store'])->name('profile.order.post');

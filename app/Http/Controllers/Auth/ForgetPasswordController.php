@@ -33,7 +33,7 @@ class ForgetPasswordController extends Controller
                 'code' => $code,
                 'expired_at' => now()->addMinutes(10),
             ];
-        if (! User::query()->where('email', $data['email'])->exists()) {
+        if (!User::query()->where('email', $data['email'])->exists()) {
             return back()->withErrors(['errors' => __('Địa chỉ email không tồn tại')]);
         }
         $send = User_otp::query()->where('email', $data['email'])->exists();
@@ -42,7 +42,6 @@ class ForgetPasswordController extends Controller
             if (Carbon::now()->diffInMinutes($expired_time->expired_at) < 8) {
                 User_otp::query()->where('email', $data['email'])->update($request);
                 Mail::to($data['email'])->queue(new UserActivationEmail('Mã khôi phục - Fashion Store', $code));
-
                 return redirect(route('password.reset', ['token' => $token, 'email' => $data['email']]))->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);
             } else {
                 return back()->withErrors(['errors' => 'Thử lại sau vài phút']);
@@ -77,7 +76,6 @@ class ForgetPasswordController extends Controller
                 'token' => $token,
             ];
             User_otp::query()->update($update);
-
             return redirect(route('password.change', ['token' => $token, 'email' => $request->email]));
         }
 
@@ -86,7 +84,7 @@ class ForgetPasswordController extends Controller
 
     public function edit_password(Request $request)
     {
-        if (! User_otp::query()->where('token', $request->token)->exists()) {
+        if (!User_otp::query()->where('token', $request->token)->exists()) {
             abort(404);
         }
         $token = $request->token;
