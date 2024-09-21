@@ -25,7 +25,7 @@
     <div class="title-information late">
         <h2 class="title">Thông tin đơn hàng</h2>
         <p>Chọn vào biểu tượng để hiển thị thông tin đơn hàng</p>
-        @include('layouts.components.product_ui_in_cart')
+        @include('layouts.components.order-in-profile')
     </div>
 @endsection
 

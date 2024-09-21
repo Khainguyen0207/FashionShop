@@ -87,113 +87,57 @@
     }
 }
 
-#products-info {
+#products {
     .product {
         position: relative;
         display: flex;
-        background-color: var(--background-product);
-        text-align: center;
-        width: 100%;
-        margin-top: 10px;
-        gap: 10px;
-        padding: 10px;
+        background-color: #f1eae1;
+        border: 2px solid #89ccff;
+        box-shadow: 1px 1px 12px #d4cec6;
+        padding: 5px 10px;
+        flex-direction: column;
         border-radius: 10px;
+        font-size: 16px;
+        max-width: 600px;
+        margin-bottom: 10px;
+        li {
+            list-style: none;
+        }
 
-        .seen-product {
-            text-decoration: none; 
-            color: red;
+        a {
+            text-decoration: none;
+        }
+
+        .order_details {
+            color: #914f1e;
 
             &:hover {
-                color: #ffa384;
-            }
-        }
-
-        .information-product {
-            display: flex;
-            font-size: 20px;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-around;
-
-            .quantity {
-                position: relative;
-                display: flex;
-                gap: 20px;
-                align-items: center;
-
-                .quantity-func {
-                    position: relative;
-                    display: flex;
-                    gap: 20px;
-                    color: var(--text-color);
-                    background-color: #d5edcc;
-                    padding: 5px;
-                    border-radius: 10px;
-
-                    a {
-                        color: var(--text-color);
-
-                        &:hover {
-                            color: rgb(252, 0, 0);
-                        }
-                    }
-                }
-            }
-        }
-
-        .image {
-            position: relative;
-            display: inline-block;
-
-            .img {
-                position: relative;
-                display: block;
-                width: 100%;
-                max-width: 250px;
-                max-height: 200px;
-                border-radius: 20px;
-                object-fit: contain;
-            }
-
-            .animation-img {
-                position: absolute;
-                display: inline-block;
-                opacity: 0;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                max-height: 100px;
-                padding: 10px;
-                border-radius: 20px;
-                height: 100px;
-                background-color: rgba(0, 0, 0, 0.104);
-                transform: translateY(100%);
+                color: #563012;
                 transition: 0.3s ease-in-out;
-                z-index: -1;
-
-                // Hiệu ứng hover cho animations-img
-                &:hover {
-                    opacity: 1;
-                    transform: translateY(0%);
-                    z-index: 1;
-                }
             }
+        }
 
-            // Hiệu ứng hover cho img
-            &:hover .img {
-                filter: blur(4px);
+        .cancel_order {
+            position: relative;
+            display: block;
+            padding: 6px 9px;
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            float: right;
+
+            &:hover {
+                background-color: rgb(102, 0, 0);
                 transition: 0.3s ease-in-out;
             }
         }
     }
-}
-
-// Truncate class
-.truncate-1 {
-    display: -webkit-box;  
-    color: var(--text-color);
-    -webkit-line-clamp: 1;      
-    -webkit-box-orient: vertical; 
-    overflow: hidden;            
-    text-overflow: ellipsis;   
+    // Truncate class
+    .truncate-1 {
+        display: -webkit-box;  
+        -webkit-line-clamp: 1;      
+        -webkit-box-orient: vertical; 
+        overflow: hidden;            
+        text-overflow: ellipsis;   
+    }
 }
