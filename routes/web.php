@@ -122,7 +122,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         Route::post('/change', [ProfileController::class, 'change_password'])->name('profile.change');
         //Order
         Route::get('/order', [OrderUIController::class, 'index'])->name('profile.order.home');
-        Route::post('/order', [OrderUIController::class, 'store'])->name('profile.order.post');
+        Route::post('/order', [OrderUIController::class, 'show'])->name('profile.order.show');
         //Voucher
         Route::get('/voucher', [VoucherUIController::class, 'index'])->name('profile.voucher.home');
         Route::post('/voucher', [VoucherUIController::class, 'store'])->name('profile.voucher.post');

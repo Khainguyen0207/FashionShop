@@ -71,7 +71,6 @@ function updateEventChange() {
     document.querySelector(".btn-sendmail").addEventListener("click", function(event){
         event.preventDefault()
         const email = document.querySelector("#email").value;
-        const btn = event.currentTarget;
         const url = event.currentTarget.dataset.url + "?email=" + email
         $.ajax({
             url: url,
@@ -91,3 +90,25 @@ function updateEventChange() {
     })
 }
 
+function order_function(event) {
+    event.preventDefault()
+    const node = event.currentTarget;
+    console.log(node.name);
+    event.preventDefault()
+    url = event.currentTarget.getAttribute('href');
+    query = event.currentTarget.getAttribute('name');
+    
+    $.ajax({
+        url: url + "?status=" + query,
+        method: 'POST',
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
+        },
+    }).then(function(data) {
+        const div = document.createElement("div");
+        div.classList.add = "information-orders";
+        const $html = $(data);
+        div.appendChild($html);
+        $(".late").html(div)
+    })
+}

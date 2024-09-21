@@ -2,23 +2,25 @@
 
 namespace App\Http\Controllers\User;
 
+use Exception;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\User_otp;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Return_;
 use App\Mail\UserActivationEmail;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ChangePasswordRequest;
-use Exception;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use function Laravel\Prompts\password;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
-use PhpParser\Node\Stmt\Return_;
 
 use function PHPUnit\Framework\returnSelf;
+use App\Http\Requests\ChangePasswordRequest;
+use Illuminate\Validation\ValidationException;
 
 class ProfileController extends Controller
 {
@@ -46,8 +48,14 @@ class ProfileController extends Controller
             if ($key == '_token') {
                 continue;
             }
+
+            if ($key == 'password') {
+                $data += [$key => Hash::make($value)];
+                continue;
+            }
             $data += [$key => $value];
         }
+
         $avatar = $request->file('avatar');
         if (isset($avatar)) {
             $url_old = User::query()->where('id', Auth::id())->first()->avatar;
@@ -55,6 +63,7 @@ class ProfileController extends Controller
             $url = $avatar->store('avatar', 'public');
             $data += ['avatar' => $url];
         }
+
         try {
             User::query()->where('id', Auth::id())->update($data);
         } catch (\Throwable $th) {
@@ -91,11 +100,12 @@ class ProfileController extends Controller
             Mail::to($request->email)->queue(new UserActivationEmail('Mã khôi phục - Fashion Store', $code));
             return redirect()->back()->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);
         }
+
         $expired_time = $otp->where('email', $request->email)->first();
         if ($expired_time->expired_at->diffInMinutes(Carbon::now()) <= 10) {
             return back()->withErrors(['errors' => 'Thử lại sau vài phút']);
         } else {
-            $otp->where('email', $request->email)->update(['expired_at' => Carbon::now(), 'token' => $token]);
+            $otp->where('email', $request->email)->update(['expired_at' => Carbon::now(), 'token' => $token, 'code' => $code]);
             Mail::to($request->email)->queue(new UserActivationEmail('Mã khôi phục - Fashion Store', $code));
             return redirect()->back()->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);   
         }
@@ -110,14 +120,16 @@ class ProfileController extends Controller
         return abort(404);
     }
 
-    public function change_password(ChangePasswordRequest $request) {
+    public function change_password(ChangePasswordRequest $request) { //So sánh và thay đổi mật khẩu trên profile user
         $user = User::query()->where('id', Auth::id());
         $information = $user->first();
-        if ($information->password !== $request->old_password) {
+
+        if (!Hash::check($request->old_password, $information->password)) {
             return redirect()->back()->with("error", "Mật khẩu cũ không chính xác!");
         }
+
         try {
-            $user->update(['password'=> $request->password]);
+            User::query()->where('id', Auth::id())->update(['password' => Hash::make($request->password)]);
         } catch (\Throwable $th) {
             Log::error('Database error occurred', [
                 'message' => $th->getMessage(),

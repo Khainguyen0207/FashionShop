@@ -53,7 +53,6 @@
   background-color: #83abfc;
   transition: 0.3s ease-in-out;
 }
-
 #auth #forget_password form {
   display: block;
 }
@@ -74,4 +73,99 @@
   height: 50px;
   border-radius: 10px;
   text-align: center;
+}
+
+#products-info .product {
+  position: relative;
+  display: flex;
+  background-color: var(--background-product);
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+#products-info .product .seen-product {
+  text-decoration: none;
+  color: red;
+}
+#products-info .product .seen-product:hover {
+  color: #ffa384;
+}
+#products-info .product .information-product {
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+#products-info .product .information-product .quantity {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+#products-info .product .information-product .quantity .quantity-func {
+  position: relative;
+  display: flex;
+  gap: 20px;
+  color: var(--text-color);
+  background-color: #d5edcc;
+  padding: 5px;
+  border-radius: 10px;
+}
+#products-info .product .information-product .quantity .quantity-func a {
+  color: var(--text-color);
+}
+#products-info .product .information-product .quantity .quantity-func a:hover {
+  color: rgb(252, 0, 0);
+}
+#products-info .product .image {
+  position: relative;
+  display: inline-block;
+}
+#products-info .product .image .img {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  max-height: 200px;
+  border-radius: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#products-info .product .image .animation-img {
+  position: absolute;
+  display: inline-block;
+  opacity: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-height: 100px;
+  padding: 10px;
+  border-radius: 20px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.104);
+  transform: translateY(100%);
+  transition: 0.3s ease-in-out;
+  z-index: -1;
+}
+#products-info .product .image .animation-img:hover {
+  opacity: 1;
+  transform: translateY(0%);
+  z-index: 1;
+}
+#products-info .product .image:hover .img {
+  filter: blur(4px);
+  transition: 0.3s ease-in-out;
+}
+
+.truncate-1 {
+  display: -webkit-box;
+  color: var(--text-color);
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
