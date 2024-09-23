@@ -93,13 +93,14 @@
         display: flex;
         background-color: #f1eae1;
         border: 2px solid #89ccff;
-        box-shadow: 1px 1px 12px #d4cec6;
+        box-shadow: 3px 3px 4px #d4cec6;
         padding: 5px 10px;
         flex-direction: column;
         border-radius: 10px;
         font-size: 16px;
         max-width: 600px;
         margin-bottom: 10px;
+
         li {
             list-style: none;
         }
@@ -107,6 +108,64 @@
         a {
             text-decoration: none;
         }
+
+        .information_product_details {
+            position: relative;
+            .info {
+                display: flex;
+                gap: 20px;
+                margin: 5px 0px;
+                border-bottom: 1px solid rgb(167, 167, 167);
+                
+                .image_product {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    max-width: 150px;
+                    border-radius: 10px;
+
+                    .screen {
+                        position: absolute;
+                        width: 100%;
+                        max-height: 150px;
+                        background-color: rgba(0, 0, 0, 0.1);
+                        height: 50%;
+                        padding: 5px;
+                        border-radius: 10px;
+                        padding-top: -100%;
+                        inset: 50% 0 50%;
+                        margin-bottom: 10px;
+                        opacity: 0;
+                        transform: translateY(50%);
+                    }
+
+                    &:hover {
+                        .image {
+                            filter: blur(4px);
+                        }
+                        .screen {
+                            opacity: 1;
+                            cursor: pointer;
+                            transform: translateY(-7px);
+                            transition: 0.3s ease-in-out;
+                        }
+                    }
+
+                }
+    
+                .information_product {
+                    font-size: 16px;
+                    a {
+                        color: rgb(167, 33, 33);
+                        &:hover {
+                            color: rgb(15, 52, 235);
+                            transition: 0.3s ease-in-out;
+                        }
+                    }
+                    
+                }
+            }
+        }   
 
         .order_details {
             color: #914f1e;

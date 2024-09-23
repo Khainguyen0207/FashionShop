@@ -12,7 +12,7 @@
             <div class="input-information">
                 <div class="input-user input">
                     <label for="">Email</label> <br>
-                    <input id="email" type="email" name="email" spellcheck="false" require="require" value="admin@admin.vn"><br>
+                    <input id="email" type="email" name="email" spellcheck="false" require="require" value="tkhai12386@gmail.com"><br>
                 </div>
                 <div class="input-pass input">
                     <label for="">Password</label><br>
