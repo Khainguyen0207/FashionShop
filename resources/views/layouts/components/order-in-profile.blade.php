@@ -4,13 +4,14 @@
 
 <div id="products">
     <h3 class="title">Đơn đang chờ xác nhận từ người bán</h3>
-    @for ($i = 0; $i < 1; $i++)
+    @for ($product = 0; $product < 2; $product++)
         <div class="product">
             <ul>
                 <li class="truncate-1">Mã đơn hàng: <span class="order_code">FDHSJNVK</span></li>
                 <li class="truncate-1 num_product">Số sản phẩm: <span class="quantity_products">3</span></li>
                 <div class="information_product_details">
-                    @for ($i = 0; $i < 5; $i++)
+                    <li>Chi tiết đơn hàng</li>
+                    @for ($i = 0; $i < 2; $i++)
                         <div class="info" id="{{$i}}">
                             <div class="image_product">
                                 <a href=""><img class="image" style="width: 100%; border-radius: 10px;padding-top: 5px;" src="{{asset("assets/user/img/box.png")}}" alt="anh_san_pham">
@@ -28,13 +29,11 @@
                     @endfor
                 </div>
                 <li class="">Thành tiền: <span class="total">180.000 VNĐ</span></li>
-                <li><a href="#" class="order_details">Nhấn để xem chi tiết đơn hàng</a></li>
-                <li><a href="#" class="cancel_order">Hủy đơn hàng</a></li>
+                <li><a href="#" class="order_details" onclick="hidden_product_order(event)">Nhấn để xem chi tiết đơn hàng</a></li>
+                @if (true)
+                    <li><a href="#" class="cancel_order">Hủy đơn hàng</a></li>
+                @endif
             </ul>
         </div>
     @endfor
 </div>
-
-@push('footer')
-    
-@endpush

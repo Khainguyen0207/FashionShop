@@ -27,10 +27,15 @@
 
 }
 
+.title-information .order-bar a {
+    display: flex;
+    justify-content: center;
+}
+
 .title-information .order-bar img {
     display: block;
     width: 100%;
-    max-width: 150px;
+    max-width: 100px;
     align-items: center;
 }
 

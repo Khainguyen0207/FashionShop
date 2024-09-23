@@ -110,7 +110,11 @@
         }
 
         .information_product_details {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
             .info {
+                position: relative;
                 display: flex;
                 gap: 20px;
                 margin: 5px 0px;
@@ -164,6 +168,14 @@
                 }
             }
         }   
+
+        .details_animation {
+            animation-name: slow;
+            animation-duration: 1s; /* Thời gian animation */
+            animation-timing-function: ease-in-out; /* Tốc độ chuyển đổi */
+            opacity: 1;
+            height: 100%;
+        }
 
         .order_details {
             color: #914f1e;

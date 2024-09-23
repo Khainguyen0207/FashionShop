@@ -29,8 +29,35 @@ document.querySelector("#avatar").addEventListener('click', function(event) {
     })
 })
 
-function name() {
-    
+function hidden_product_order(event) {
+    event.preventDefault()
+    const animation = document.styleSheets[6];
+    const li = event.currentTarget.parentNode;
+    const ul = li.parentNode;
+    const node = ul.querySelector(".details_animation");
+    ul.querySelector(".information_product_details").style.animation = null;
+   
+    if (node) {
+        ul.querySelector(".information_product_details").classList.remove('details_animation')
+        event.currentTarget.innerHTML = "Nhấn để xem chi tiết đơn hàng"
+    } else {
+        ul.querySelector(".information_product_details").classList.add('details_animation')
+            const newKeyframes = `
+            @keyframes slow {
+                0% {
+                    opacity: 0;
+                    max-height: 0px;
+                }
+                100% {
+                    opacity: 1;
+                    max-height: ${ul.querySelector(".details_animation").scrollHeight}px;
+                }
+            }
+        `;
+        animation.insertRule(newKeyframes, animation.cssRules.length);
+        ul.querySelector(".information_product_details").style.animation = 'slow 1s forwards';
+        event.currentTarget.innerHTML = "Nhấn để ẩn chi tiết đơn hàng"
+    }
 }
 
 function auth(event) {

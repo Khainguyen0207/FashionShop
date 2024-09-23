@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderModel;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class PayController extends Controller
 {
@@ -156,8 +159,9 @@ class PayController extends Controller
         $ids = json_decode(request()->query('id_order'), true);
         foreach ($cart as $key => $product) {
             $id_product = $key;
-            foreach ($ids as $id) {
+            foreach ($ids as $key_ids => $id) {
                 if ($product['product_code'] == $id['id']) {
+                    $ids[$key_ids]['price_product'] = $product['price'] * $id['quantity'];
                     unset($cart[$id_product]);
                 }
             }
@@ -167,6 +171,7 @@ class PayController extends Controller
         //Nhập liệu đơn hàng
         $information_order = [
             'order_code' => $order_code, //Fashion code order
+            'customer_id' => Auth::id(),
             'recipient_name' => $request->query('recipient_name'),
             'number_phone' => $request->query('number_phone'),
             'address' => $request->query('address'),
@@ -179,7 +184,8 @@ class PayController extends Controller
         if ($request->query('method_payment') == 'homebank') {
             try {
                 OrderModel::query()->create($information_order);
-            } catch (\Throwable $th) {
+            } catch (\Throwable $e) {
+                Log::error('Có lỗi xảy ra', ['error' => $e->getMessage()]);
                 return redirect(route('user.home'))->with('error', 'Đơn hàng đặt thất bại');
             }
             session()->put('cart', $cart);

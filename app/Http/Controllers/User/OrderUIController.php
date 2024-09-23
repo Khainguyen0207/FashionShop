@@ -38,7 +38,7 @@ class OrderUIController extends Controller
     public function show(Request $request) {
         $status = $this->getCodeStatus($request->status);
         $products = OrderModel::query()->where(['customer_id' => Auth::id(), 'status' => $status])->get();
-        dd(json_decode($products->toArray()[0]['order_information'], true));
+        dd(json_decode($products->toArray()[1]['order_information']));
     }
 
     private function getCodeStatus(string $status) : string {
