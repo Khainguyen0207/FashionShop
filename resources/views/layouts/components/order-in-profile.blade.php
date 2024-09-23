@@ -20,14 +20,14 @@
                             </div>
                             <div class="information_product">
                                 <li>Tên sản phẩm: <span class="name_product">Áo 3 lỗ có cổ</span></li>
-                                <li>Thành tiền:  <span class="total-product">400.000 VNĐ</span></li>
+                                <li style="border-top: 10px;">Thành tiền:  <span class="total-product">400.000 VNĐ</span></li>
                                 <li>Số lượng : <span class="quantity-product">9</span></li>
                                 <li><a href="#">Xem chi tiết sản phẩm</a></li>
                             </div>
                         </div>
                     @endfor
                 </div>
-                <li class="truncate-1">Thành tiền: <span class="total">180.000 VNĐ</span></li>
+                <li class="">Thành tiền: <span class="total">180.000 VNĐ</span></li>
                 <li><a href="#" class="order_details">Nhấn để xem chi tiết đơn hàng</a></li>
                 <li><a href="#" class="cancel_order">Hủy đơn hàng</a></li>
             </ul>
