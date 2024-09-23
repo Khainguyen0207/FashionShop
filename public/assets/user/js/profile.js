@@ -29,6 +29,10 @@ document.querySelector("#avatar").addEventListener('click', function(event) {
     })
 })
 
+function name() {
+    
+}
+
 function auth(event) {
     event.preventDefault()
     url = event.currentTarget.getAttribute('href');

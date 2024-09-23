@@ -34,3 +34,7 @@
         </div>
     @endfor
 </div>
+
+@push('footer')
+    
+@endpush
