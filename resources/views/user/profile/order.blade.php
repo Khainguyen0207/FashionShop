@@ -2,6 +2,8 @@
 
 @push('head')
     <link rel="stylesheet" href="{{asset("assets/user/css/order.css")}}"> 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 @endpush
 
 @section('information')
@@ -22,10 +24,9 @@
             </div>
         </div>
     </div>
+    <h2 class="title">Thông tin đơn hàng</h2>
     <div class="title-information late">
-        <h2 class="title">Thông tin đơn hàng</h2>
         <p>Chọn vào biểu tượng để hiển thị thông tin đơn hàng</p>
-        @include('layouts.components.order-in-profile')
     </div>
 @endsection
 

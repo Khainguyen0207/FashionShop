@@ -139,7 +139,6 @@ function order_function(event) {
         const div = document.createElement("div");
         div.classList.add = "information-orders";
         const $html = $(data);
-        div.appendChild($html);
-        $(".late").html(div)
+        $(".late").html($html)
     })
 }
