@@ -157,6 +157,7 @@ class PayController extends Controller
     {
         $cart = session()->get('cart', []);
         $ids = json_decode(request()->query('id_order'), true);
+        dd($ids);
         foreach ($cart as $key => $product) {
             $id_product = $key;
             foreach ($ids as $key_ids => $id) {

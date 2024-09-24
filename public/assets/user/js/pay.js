@@ -41,7 +41,7 @@ function checkEmptyInformation(event) {
                     "id": id, //Lấy id từ table 
                     "name": element.parentElement.childNodes[3].textContent, //Lấy name từ table 
                     "quantity": element.parentElement.childNodes[5].textContent, //Lấy quantity từ table
-                    "price_product": element.parentElement.childNodes[7].textContent, //Lấy price_product từ table
+                    "price_product": parseInt(element.parentElement.childNodes[7].querySelector(".total").textContent.replace(/\./g, '')), //Lấy price_product từ table
                 }
             )
         });

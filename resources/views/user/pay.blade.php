@@ -42,7 +42,7 @@
                                 <input type="hidden" id="id_table_product" name="id" value="{{ $info_product_bill['id'] }}">
                                 <td>{{ $info_product_bill['name'] }}</td>
                                 <td>{{ $info_product_bill['quantity'] }}</td>
-                                <td>{{ number_format($info_product_bill['price_product'] , 0, ",", ".") }} VNĐ</td>
+                                <td><span class="total">{{ number_format($info_product_bill['price_product'] , 0, ",", ".") }}</span> VNĐ</td>
                             </tr>
                         @endforeach
                     </table>

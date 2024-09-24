@@ -30,14 +30,14 @@
             </a>
             <ul class="list-small">
                 <li>
-                    <p><a href="{{ route("order.home") }}"><i class="fa-solid fa-list"></i> Đơn hàng chờ duyệt 
+                    <p><a href="{{ route("order.home") }}"><i class="fa-solid fa-list"></i> Chờ duyệt 
                         @if ($quantity['quantity_order_confirmation'] != 0)
                             <span class="quantity">{{ $quantity['quantity_order_confirmation'] }}</span>
                         @endif
                     </a></p>
                 </li>
                 <li>
-                    <p><a href="{{ route("order.order_in_transit") }}"><i class="fa-solid fa-list"></i> Đơn hàng đang giao 
+                    <p><a href="{{ route("order.order_in_transit") }}"><i class="fa-solid fa-list"></i> Đang giao 
                         @if ($quantity['number_of_order_in_transit'] != 0)
                             <span class="quantity">{{ $quantity['number_of_order_in_transit'] }}</span>
                         @endif
