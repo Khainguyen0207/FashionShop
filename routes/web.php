@@ -1,23 +1,25 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Auth\ForgetPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\PayController;
-use App\Http\Controllers\User\OrderUIController;
-use App\Http\Controllers\User\ProductUIController;
-use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\RankUIController;
-use App\Http\Controllers\User\VoucherUIController;
-use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayController;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\RankUIController;
+use App\Http\Controllers\User\OrderUIController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\User\ProductUIController;
+use App\Http\Controllers\User\VoucherUIController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
@@ -28,7 +30,10 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 Route::get('hi', function () {
-    dd(session());
+    $filename = 'profile/' . uniqid() . '.jpg';
+    $req = Http::get('https://picsum.photos/200');
+    Storage::disk('public')->put($filename, $req->body());
+    dd(Storage::url($filename));
 });
 
 Route::prefix('/auth')->middleware('guest')->group(function () {

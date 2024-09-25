@@ -159,6 +159,7 @@
 
         <div class="products" id="products">
             @foreach ($categories as $category)
+                @if (!empty($category['products']))
                 <div class="nav-bar">
                     <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
                         <h2> {{ $category['name_category'] }} </h2>
@@ -182,12 +183,14 @@
                                     {{-- Thêm data-url --}}
                                 </div>
                             @endforeach
+                            
                         </div>
                         <div class="info" style="display: block; float: right;">
                             <a href="{{ route('products.id', $category['id'] )}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>
+                </div>       
+                @endif
             @endforeach
         </div>
     </div>

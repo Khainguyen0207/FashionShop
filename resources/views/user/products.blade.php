@@ -41,6 +41,7 @@
                 </div>
             </div>
             <div class="seen-product">
+                {{-- @dd($products,  $max_page) --}}
                 @if ((count($products) / 10) < $max_page)
                     <a href="#" id="load_products" onclick="update(event)" data-url="{{ $url }}" class="seen">Xem thêm</a> 
                 @endif
@@ -79,7 +80,7 @@
                         </div>
                         <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
                         <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
-                    </div>  
+                    </div>
                     @endfor
                 </div>
             </div>
