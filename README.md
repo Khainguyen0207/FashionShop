@@ -5,6 +5,9 @@
 ###### php artisan queue:work initialize the queue
 ###### php artisan storage:link setup image link
 #
+##### **Seeder Data**
+###### php artisan db:seed
+#
 ##### **Test card master**
 ###### Bank: NCB
 ###### Card number: 9704198526191432198
