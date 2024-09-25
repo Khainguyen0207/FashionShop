@@ -123,6 +123,7 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         //Order
         Route::get('/order', [OrderUIController::class, 'index'])->name('profile.order.home');
         Route::post('/order', [OrderUIController::class, 'show'])->name('profile.order.show');
+        Route::delete('/order', [OrderUIController::class, 'destroy'])->name('profile.order.destroy');
         //Voucher
         Route::get('/voucher', [VoucherUIController::class, 'index'])->name('profile.voucher.home');
         Route::post('/voucher', [VoucherUIController::class, 'store'])->name('profile.voucher.post');

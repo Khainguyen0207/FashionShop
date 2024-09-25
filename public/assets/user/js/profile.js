@@ -115,7 +115,6 @@ function updateEventChange() {
         }).then(function(data) {
             const $html = $(data);
             const idValue = $html.find('#alert').html();
-            console.log(idValue);
             $('#alert').html(idValue);
         })
     })
@@ -124,7 +123,6 @@ function updateEventChange() {
 function order_function(event) {
     event.preventDefault()
     const node = event.currentTarget;
-    console.log(node.name);
     event.preventDefault()
     url = event.currentTarget.getAttribute('href');
     query = event.currentTarget.getAttribute('name');
@@ -140,5 +138,23 @@ function order_function(event) {
         div.classList.add = "information-orders";
         const $html = $(data);
         $(".late").html($html)
+    })
+}
+
+function destroy(event) {
+    event.preventDefault();
+    const node = event.currentTarget
+    
+    $.ajax({
+        url: node.dataset.url,
+        method: "delete",
+        headers: {
+            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (event) {
+            node.parentElement.parentElement.parentElement.remove()
+        }
+    }).then(function(data) {
+        $('#alert').html(data);
     })
 }
