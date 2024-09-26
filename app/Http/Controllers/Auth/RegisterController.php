@@ -5,10 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
-use Error;
-use Illuminate\Http\Request;
-
-use function Laravel\Prompts\error;
 
 class RegisterController extends Controller
 {
@@ -26,6 +22,7 @@ class RegisterController extends Controller
         $data = $request->validated();
         $data += ['role' => 0];
         User::query()->create($data);
+
         return redirect()->route('login')->with(['success' => 'Đăng ký thành công']);
     }
 }

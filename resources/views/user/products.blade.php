@@ -14,40 +14,15 @@
         <div class="header">
             <div class="title"><h1>{{ $category_name }}</h1></div>
             <div class="fill">
-                <a href="#" class="fill-item">Giá thấp ->cao <i class="fa-solid fa-arrow-down-short-wide"></i></a>
-                <a href="#" class="fill-item"> Giá cao->thấp <i class="fa-solid fa-arrow-down-wide-short"></i></a>
-                <a href="#" class="fill-item">Mua nhiều <i class="fa-solid fa-sort"></i></a>
+                <a href="#" class="fill-item" onclick="update(event)" data-url="{{ route("products.home.arrange", ['arrange' => 'asc']) }}">Giá thấp->cao <i class="fa-solid fa-arrow-down-short-wide"></i></a>
+                <a href="#" class="fill-item" onclick="update(event)" data-url="{{ route("products.home.arrange", ['arrange' => 'desc']) }}">Giá cao->thấp <i class="fa-solid fa-arrow-down-wide-short"></i></a>
+                <a href="#" class="fill-item" onclick="update(event)" data-url="{{ route("products.home.arrange", ['arrange' => 'buy_much']) }}">Mua nhiều <i class="fa-solid fa-sort"></i></a>
             </div>
         </div>
         <div id="hidden-list">
-            <div class="list-products">
-                <div class="products">
-                    @foreach ($products as $product)
-                        <div class="product">
-                            <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
-                                <img class="img img-product-sale" src="{{ $product->image[0] }}" alt="review">
-                                <div class="animation-img">
-                                    <p style="color: black">Chi tiết sản phẩm</p>
-                                </div>
-                            </a>
-                            <div class="informations information-product ">
-                                <div class="truncate-1"><p class="product_name">{{ $product->product_name }}</p> </div>
-                                <p class="sale-price">{{ $product->price }} VNĐ</p>
-                            </div>
-                            <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                            <a href="" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="seen-product">
-                {{-- @dd($products,  $max_page) --}}
-                @if ((count($products) / 10) < $max_page)
-                    <a href="#" id="load_products" onclick="update(event)" data-url="{{ $url }}" class="seen">Xem thêm</a> 
-                @endif
-            </div>
+            @include("layouts.user.list-products")
         </div>
-        <div class="events-vouchers">
+        <div class="events-vouchers" id="sale">
             <div class="events">
                 <h2 style="margin-bottom: 5px;">Mua sắm thả ga cùng sự kiện giảm giá cực sốc</h2>
                 <a href="#" class="event-link">
@@ -85,16 +60,11 @@
                 </div>
             </div>
         </div>
-        <div class="seen-product">
-            <a href="#" class="seen">Xem thêm</a>
-        </div>
     </div>
     @include('layouts.user.footer')
     <footer>
         <script src="{{asset('assets/user/js/products.js')}}"></script>
         <script src="{{ asset('assets/js/cart.js') }}"></script>
-        <script>
-             seen()
-        </script>
+        <script>seen()</script>
     </footer>
 @endsection

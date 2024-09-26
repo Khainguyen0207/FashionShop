@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderModel;
-use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -133,7 +132,6 @@ class PayController extends Controller
         }
         $hashData = rtrim($hashData, '&');
         $secureHash = hash_hmac('sha512', $hashData, env('VNP_HASHSECRET'));
-
         if ($secureHash === $vnp_SecureHash) {
             if ($request->vnp_ResponseCode == '00') {
                 try {
@@ -175,7 +173,7 @@ class PayController extends Controller
             'recipient_name' => $request->query('recipient_name'),
             'number_phone' => $request->query('number_phone'),
             'address' => $request->query('address'),
-            'order_information' => json_encode($request->query('id_order'), true),
+            'order_information' => $request->query('id_order'),
             'status' => '00',
             'expired_at' => Carbon::now()->toDateTime(),
         ];
@@ -186,6 +184,7 @@ class PayController extends Controller
                 OrderModel::query()->create($information_order);
             } catch (\Throwable $e) {
                 Log::error('Có lỗi xảy ra', ['error' => $e->getMessage()]);
+
                 return redirect(route('user.home'))->with('error', 'Đơn hàng đặt thất bại');
             }
             session()->put('cart', $cart);

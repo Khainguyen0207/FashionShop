@@ -18,6 +18,7 @@ class ProductUIController extends Controller
             ->paginate(10);
         $max_page = $products->lastPage();
         $products = $this->getUrlForImage($products->items());
+
         $render = [
             'products' => $products,
             'category_name' => 'Sản phẩm',
@@ -33,7 +34,6 @@ class ProductUIController extends Controller
     {
         $products_hided = Session::get('products_hided'); //Lấy các product đã hiện
         $id_products_hided = Session::get('id_products_hided'); //Lấy các product đã hiện
-
         $products = Product::query()
             ->whereNotIn('id', $id_products_hided)
             ->inRandomOrder();
@@ -47,6 +47,7 @@ class ProductUIController extends Controller
         Session::flash('products_hided', array_merge($products_hided, Session::get('products_hided')));
 
         $products = array_merge($products_hided, $products);
+
         $render = [
             'products' => $products,
             'url' => route('products.home.post', ['product' => count($products), 'i' => $request->i]),
@@ -97,7 +98,7 @@ class ProductUIController extends Controller
             }
         }
         $product['image'] = $data_image;
-        $product['price'] = number_format($product['price'], 0, ',', '.');
+        $product['price'] = $product['price'];
         $product['description'] = explode("\n", $product['description']);
         $url_back = url()->previous();
         $render = [
@@ -108,7 +109,33 @@ class ProductUIController extends Controller
         return view('user.product', $render);
     }
 
-    public function render() {}
+    public function arrange(Request $request)
+    {
+        $products = Session::get('products_hided');
+        Session::reflash();
+        $prices = array_column($products, 'price'); // Lấy cột giá
+        $status_sort = strtoupper('SORT_'.$request->arrange);
+        array_multisort($prices, $this->getCodeSort($status_sort), $products); // Sắp xếp sản phẩm theo giá tăng dần
+
+        $render = [
+            'products' => $products,
+            'url' => route('products.home.post', ['product' => count($products)]),
+            'max_page' => $request->max_page,
+        ];
+
+        return view('layouts.user.list-products', $render);
+    }
+
+    private function getCodeSort($status_sort)
+    {
+        if ($status_sort == 'SORT_DESC') {
+            return SORT_DESC;
+        } elseif ($status_sort == 'SORT_ASC') {
+            return SORT_ASC;
+        }
+
+        return 0;
+    }
 
     private function getUrlForImage($products)
     {
@@ -124,7 +151,6 @@ class ProductUIController extends Controller
                 }
             }
             $product['image'] = $data_image;
-            $product['price'] = number_format($product['price'], 0, ',', '.');
             array_push($products_hide, $product);
             array_push($id_products_hide, $product->id);
         }

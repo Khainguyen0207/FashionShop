@@ -50,6 +50,7 @@ class CartController extends Controller
             unset($cart[$id]);
         }
         session()->put('cart', $cart);
+
         return $this->index();
     }
 }

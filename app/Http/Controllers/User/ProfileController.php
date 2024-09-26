@@ -2,25 +2,19 @@
 
 namespace App\Http\Controllers\User;
 
-use Exception;
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Mail\UserActivationEmail;
 use App\Models\User;
 use App\Models\User_otp;
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
-use App\Mail\UserActivationEmail;
-use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use function Laravel\Prompts\password;
 use Illuminate\Support\Facades\Storage;
-
-use function PHPUnit\Framework\returnSelf;
-use App\Http\Requests\ChangePasswordRequest;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -51,6 +45,7 @@ class ProfileController extends Controller
 
             if ($key == 'password') {
                 $data += [$key => Hash::make($value)];
+
                 continue;
             }
             $data += [$key => $value];
@@ -70,8 +65,10 @@ class ProfileController extends Controller
             Log::error('Database error occurred', [
                 'message' => $th->getMessage(),
             ]);
+
             return redirect(route('profile.home'))->with('error', 'Cập nhật thông tin thất bại');
         }
+
         return redirect(route('profile.home'))->with('success', 'Cập nhật thông tin thành công');
     }
 
@@ -84,20 +81,23 @@ class ProfileController extends Controller
         } elseif ($query == 'forget_password') {
             $email = User::query()->where('id', Auth::id())->first();
             $data = [
-                'email' => $email->email
+                'email' => $email->email,
             ];
+
             return view('layouts.components.forget_password', $data);
         }
     }
 
-    public function edit(Request $request) {
+    public function edit(Request $request)
+    {
         $code = floor(rand(100000, 999999));
         $token = hash('sha256', Str::uuid());
         $otp = User_otp::query();
         $sendmail = $otp->where('email', $request->email)->first();
-        if (!isset($sendmail)) {
+        if (! isset($sendmail)) {
             $otp->create(['email' => $request->email, 'code' => $code, 'token' => $token, 'expired_at' => Carbon::now()]);
             Mail::to($request->email)->queue(new UserActivationEmail('Mã khôi phục - Fashion Store', $code));
+
             return redirect()->back()->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);
         }
 
@@ -107,25 +107,29 @@ class ProfileController extends Controller
         } else {
             $otp->where('email', $request->email)->update(['expired_at' => Carbon::now(), 'token' => $token, 'code' => $code]);
             Mail::to($request->email)->queue(new UserActivationEmail('Mã khôi phục - Fashion Store', $code));
-            return redirect()->back()->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);   
+
+            return redirect()->back()->with(['success' => __('Chúng tôi đã gửi mã xác thực đến email của bạn')]);
         }
     }
 
-    public function reset_password($token) {
+    public function reset_password($token)
+    {
         $token_real = User_otp::query()->where('email', request()->email)->first('token');
         if ($token_real->token == $token) {
             $user = User::query()->where('id', Auth::id())->first('avatar');
+
             return view('layouts.components.reset_password', ['avatar' => Storage::url($user->avatar)]);
-        } 
+        }
+
         return abort(404);
     }
 
-    public function change_password(ChangePasswordRequest $request) { //So sánh và thay đổi mật khẩu trên profile user
-        $user = User::query()->where('id', Auth::id());
+    public function change_password(ChangePasswordRequest $request) //So sánh và thay đổi mật khẩu trên profile user
+    {$user = User::query()->where('id', Auth::id());
         $information = $user->first();
 
-        if (!Hash::check($request->old_password, $information->password)) {
-            return redirect()->back()->with("error", "Mật khẩu cũ không chính xác!");
+        if (! Hash::check($request->old_password, $information->password)) {
+            return redirect()->back()->with('error', 'Mật khẩu cũ không chính xác!');
         }
 
         try {
@@ -134,22 +138,27 @@ class ProfileController extends Controller
             Log::error('Database error occurred', [
                 'message' => $th->getMessage(),
             ]);
-            return redirect()->back()->with("error", "Đổi mật khẩu thất bại!");
-        };
-        return redirect()->back()->with("success", "Mật khẩu đã được thay đổi!");
+
+            return redirect()->back()->with('error', 'Đổi mật khẩu thất bại!');
+        }
+
+        return redirect()->back()->with('success', 'Mật khẩu đã được thay đổi!');
     }
 
-    public function confirm(Request $request) {
-        $code = "";
+    public function confirm(Request $request)
+    {
+        $code = '';
         foreach ($request->code as $value) {
             $code .= $value;
         }
         $token = hash('sha256', Str::uuid());
-        $data = User_otp::query()->where("email", $request->email)->first();
+        $data = User_otp::query()->where('email', $request->email)->first();
         if ($data->code == $code) {
             User_otp::query()->where('email', $request->email)->update(['token' => $token]);
+
             return redirect(route('profile.reset_password', [$token, 'email' => $request->email]));
         }
+
         return redirect()->back()->with(['error' => __('Sai mã')]);
     }
 }
