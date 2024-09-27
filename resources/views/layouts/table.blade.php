@@ -22,11 +22,11 @@
                 @endphp
                 <tr class="body">
                     <td><input type="checkbox"></td>
-                        @foreach ($key as $key_data)
+                        @foreach ($key as $k => $key_data)
                             @if (isset($item[$key_data]))
-                                <td class="table-info">{{ $item[$key_data] }}</td>
+                                <td class="table-info" name="{{$key_data}}">{{ $item[$key_data] }}</td>
                             @else
-                                <td class="table-info">Không xác định</td>
+                                <td class="table-info" name="{{$key_data}}">Không xác định</td>
                             @endif
                         @endforeach
                     <td>

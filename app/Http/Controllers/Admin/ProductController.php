@@ -10,6 +10,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Type\Integer;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -24,20 +25,18 @@ class ProductController extends Controller
     public function index(string $id_category)
     {
         $products = $this->getProducts($id_category);
-
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
     public function page(string $id_category, string $page)
     {
         $products = $this->getProducts($id_category);
-
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
     private function getProducts(string $id_category)
     {
-        $getProducts = DB::table('products')
+        $getProducts = Product::query()
             ->where('category_id', $id_category)
             ->paginate(15);
         $keyTable = ['product_name', 'product_code', 'price', 'category_name', 'number_items'];
@@ -52,7 +51,7 @@ class ProductController extends Controller
             $products[$key] = collect($products[$key])->toArray();
             $products[$key] += [
                 'category_name' => $this->name_category,
-                'number_items' => $products[$key]['sold_quantity'] - $products[$key]['unsold_quantity'],
+                'number_items' => $products[$key]['unsold_quantity'] - $products[$key]['sold_quantity'],
             ];
         }
         $render = [

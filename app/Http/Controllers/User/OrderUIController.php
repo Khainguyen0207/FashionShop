@@ -77,7 +77,7 @@ class OrderUIController extends Controller
     public function destroy(Request $request)
     {
         try {
-            OrderModel::query()->where('order_code', $request->id)->delete();
+            OrderModel::query()->where('order_code', $request->id)->update(['status' => "20"]);
         } catch (\Throwable $th) {
             Log::error('Error Database SQL', ['messgae' => $th->getMessage()]);
 

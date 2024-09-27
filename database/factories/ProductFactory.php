@@ -19,25 +19,8 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-
         return [
-            'product_code' => 'MSSP'.$this->faker->unique()->randomNumber(),
-            'product_name' => $this->faker->userName(),
-            'category_id' => Category::inRandomOrder()->take(1)->first('id')->id,
-            'price' => $this->faker->randomNumber(),
-            'image' => $this->getImage(),
-            'unsold_quantity' => $this->faker->randomNumber(),
-            'sold_quantity' => 0,
-            'description' => $this->faker->text(),
+            
         ];
-    }
-
-    public function getImage()
-    {
-        $filename = 'profile/'.uniqid().'.jpg';
-        $req = Http::get('https://picsum.photos/200');
-        Storage::disk('public')->put($filename, $req->body());
-
-        return $filename;
     }
 }

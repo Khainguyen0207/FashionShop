@@ -24,7 +24,7 @@
         </div>
         <div class="events-vouchers" id="sale">
             <div class="events">
-                <h2 style="margin-bottom: 5px;">Mua sắm thả ga cùng sự kiện giảm giá cực sốc</h2>
+                <h2 style="margin-bottom: 5px;">Sự kiện giảm giá cô bé quàng khăng đỏ</h2>
                 <a href="#" class="event-link">
                     <video class="img img-product-sale" autoplay muted loop>
                         <source src="{{ asset('assets/user/video/videoplayback.webm') }}" type="video/mp4">

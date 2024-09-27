@@ -18,10 +18,10 @@
             <p><i class="fa-solid fa-bars fa-xl"></i></p>
         </div>
         <div class="search">
-            <input id="text" type="text" placeholder="Mã khách hàng"> 
-            <input id="text" type="text" placeholder="Tên khách hàng"> 
-            <input id="text" type="email" placeholder="Email"> 
-            <a href="#" onclick="alert(document.getElementById('text').value)">Tìm kiếm</a>
+            <input id="customer_code" type="text" name="customer_code" placeholder="Mã khách hàng"> 
+            <input id="customer_name" type="text" name="customer_name" placeholder="Tên khách hàng"> 
+            <input id="email" type="email" name="email"placeholder="Email"> 
+            <a href="#" onclick="" id="find" name="find">Tìm kiếm</a>
         </div>
     </div> 
     @include('layouts.table')
@@ -30,5 +30,6 @@
 </div>
 @push('footer')
     <script src="{{ asset('assets/js/table.js') }}"></script> 
+    <script src="{{ asset('assets/admin/js/customer.js') }}"></script> 
 @endpush
 @endsection

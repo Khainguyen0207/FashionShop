@@ -17,8 +17,6 @@ body {
     font-style: normal;
 }
 
-
-
 #container {
     background-color: var(--background);
     display: block;
@@ -51,8 +49,6 @@ body {
     position: relative;
     display: block;
     width: calc(100% / 4);
-    height: 250px;
-    display: block;
     text-align: center;
     background-color: #fff6ea;
     border-radius: 24px;
@@ -70,7 +66,6 @@ body {
    text-decoration: none;
    color: black;
 }
-
 
 .nav-bar .list-bar .small-bar p {
     text-align: center;

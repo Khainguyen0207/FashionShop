@@ -59,7 +59,7 @@
                 <div class="information">
                     <h1 id="title title_product">Thông tin sản phẩm</h1>
                     <h2 class="product_name">{{ $product->product_name }}</h2>
-                    <p class="price" name='price'> Giá: {{ $product->price }} <span class="sale" style="color: red"></span> VNĐ </p>
+                    <p class="price" name='price'> Giá: {{ number_format($product->price, 0, ",", ".") }} <span class="sale" style="color: red"></span> VNĐ </p>
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
                     <p class=""> Màu sắc: Đen, Trắng, Xám </p>

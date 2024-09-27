@@ -17,6 +17,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\RankUIController;
 use App\Http\Controllers\User\VoucherUIController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
@@ -28,7 +29,11 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 Route::get('hi', function () {
-    dd();
+    $query = "https://shopee.vn/search?keyword=";
+    $query .= urldecode("Áo ba lỗ");
+    $req = Http::get($query);
+    dd($req->body());
+    // picture-wrapper
 });
 
 Route::prefix('/auth')->middleware('guest')->group(function () {

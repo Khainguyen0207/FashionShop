@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\OrderModel;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,11 +66,12 @@ class CategoriesController extends Controller
     {
         $info = DB::table('categories')->where('id', $id_category)->get();
         $deleted = DB::table('categories')->where('id', $id_category)->delete();
+        Product::query()->where('category_id',$id_category)->delete();
         $date = Carbon::now();
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete categories: $info \nIn table 'categories' =>  Time $date\n");
         }
 
-        return redirect(route('categories.home'));
+        return redirect(route('categories.home'))->with('success',"Đã xóa thành công danh mục");
     }
 }

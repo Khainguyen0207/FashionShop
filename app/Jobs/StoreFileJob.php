@@ -2,22 +2,22 @@
 
 namespace App\Jobs;
 
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
 
 class StoreFileJob implements ShouldQueue
 {
     use Queueable;
+    use Dispatchable;
 
     protected $filename;
 
-    protected $content;
-
-    public function __construct($filename, $content)
+    public function __construct($filename)
     {
         $this->filename = $filename;
-        $this->content = $content;
     }
 
     /**
@@ -25,6 +25,7 @@ class StoreFileJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Storage::disk('public')->put($this->filename, $this->content);
+        $req = Http::get('https://picsum.photos/200');
+        Storage::disk('public')->put($this->filename, $req->body());
     }
 }

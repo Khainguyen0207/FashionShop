@@ -75,7 +75,6 @@
     border: none;
     font-size: 18px;
     border-radius: 20px;
-    transition: 0.6s;
     background-color: rgb(255, 154, 0);
 }
 
@@ -83,9 +82,12 @@
     display: block;
     cursor: pointer;
     background-color: rgb(0, 154, 255);
-    transition: 0.6s ;
+    transition: 0.3s ease-in-out ;
 }
 
+.form .btn-login button:focus {
+    background-color: gray;
+}
 
 .form .information-support {
     position: relative;
