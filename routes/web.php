@@ -1,24 +1,29 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Auth\ForgetPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\PayController;
-use App\Http\Controllers\User\OrderUIController;
-use App\Http\Controllers\User\ProductUIController;
-use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\RankUIController;
-use App\Http\Controllers\User\VoucherUIController;
-use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
+use Symfony\Component\DomCrawler\Crawler;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\RankUIController;
+use App\Http\Controllers\User\OrderUIController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\User\ProductUIController;
+use App\Http\Controllers\User\VoucherUIController;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
@@ -29,12 +34,24 @@ Route::get('/welcome', function () {
 })->name('welcome');
 
 Route::get('hi', function () {
-    $query = "https://shopee.vn/search?keyword=";
-    $query .= urldecode("Áo ba lỗ");
-    $req = Http::get($query);
-    dd($req->body());
-    // picture-wrapper
+    $query = ["Áo ba lỗ", "Quần sịp", "Quần thun", "Giày bata", "ÁO hoddi"];
+    $url = 'https://www.pinterest.com/search/pins/?q=' .urlencode($query[floor(rand(0, 4))]);
+    $client = new Client();
+    // Send a GET request to the URL
+    $response = $client->request('GET', $url);
+    // Get the body content as a string
+    $html = $response->getBody()->getContents();
+    dd( $html);
+    // You can use DOMCrawler to parse the HTML
+    $crawler = new Crawler($html);
+    // Example: Crawl specific data like titles
+    $titles = $crawler->filter('a')->each(function (Crawler $node) {
+        return $node->attr('href');
+    });
+    dd($titles, $url);
 });
+
+
 
 Route::prefix('/auth')->middleware('guest')->group(function () {
 
