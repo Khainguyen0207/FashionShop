@@ -18,7 +18,7 @@ class HomeController extends Controller
         $totalOrders = OrderModel::query()->where('status', '00')->count();
         $data = [count($users), count($products), $totalOrders, 0];
 
-        return view('admin.index', RenderController::render('home', $data));
+        return view('admin.home', RenderController::render('home', $data));
     }
 
     public function customer($name)

@@ -49,8 +49,9 @@
         </section>
         <section>
             <div class="chart">
-                <canvas id="myChart" width="400" height="200"></canvas>
+                <canvas id="myChart" width="100%"></canvas>
                 <script>
+                    const currentYear = new Date().getFullYear();
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                         type: 'bar',
@@ -78,7 +79,7 @@
                                 x: {
                                     title: {
                                         display: true,
-                                        text: 'Bảng thống kê số lượng sản phẩm bán ra và doanh thu theo tháng'
+                                        text: 'Bảng thống kê số lượng sản phẩm bán ra và doanh thu theo từng tháng năm ' + currentYear
                                     }
                                 }
                             },
