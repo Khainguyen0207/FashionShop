@@ -50,14 +50,12 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
         });
     } else if (button.classList[0] == 'btn-edit') {
         button.addEventListener("click", function(event) {
-            clickAddCategory(event);
             const url = event.currentTarget.dataset.url;
-            console.log(url);
             $.ajax({
                 url: url,
             }).then((data)=> {
-                console.log(data);
-                $('#addCategoryForm').html(data)
+                clickAddCategory(event)
+                $('#addCategory').html(data)
             });
         });
     }

@@ -6,7 +6,7 @@
 @endpush
 
 @section('overview')
-<div id="addCategory" >
+<div id="addCategory">
 </div>
 <div class="overview">
     <div id="header">

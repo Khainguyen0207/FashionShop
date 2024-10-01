@@ -1,7 +1,6 @@
 @extends('layouts.categories.products')
 @push('head')
     <link rel="stylesheet" href="{{ asset('assets/admin/css/categorys.css') }}">
-    <script src="{{asset('assets/admin/js/category.js')}}"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,422&family=Roboto+Condensed:wght@504&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
@@ -102,5 +101,6 @@
 @endsection
     
 @push('footer')
+    <script src="{{asset('assets/admin/js/category.js')}}"></script>
     <script src="{{ asset('assets/js/table.js') }}"></script> 
 @endpush

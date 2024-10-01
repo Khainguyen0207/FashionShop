@@ -120,6 +120,14 @@
     width: 100%;
 }
 
+.addCategory {
+    display: none !important;
+}
+
+.addCategory-hide {
+    display: block !important;
+}
+
 #addCategory .screen {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.5);
