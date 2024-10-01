@@ -12,8 +12,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderController extends Controller
 {
-    private $title_table = "Đơn hàng";
-
     public function index()
     {
         return redirect(route('order.pending'));
@@ -25,9 +23,10 @@ class OrderController extends Controller
         $getOrders = OrderModel::query()
             ->where('status', '00')
             ->paginate(15);
-        $render = $this->render_data_table($getOrders);
-        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark', 'info' => 'fa-solid fa-info'];
         session()->flash('status', '00');
+        $render = $this->render_data_table($getOrders);
+        $render['icon'] = null;
+        $render['custom_button'] = ['info' => 'fa-solid fa-info', 'edit' => 'fa-solid fa-check', 'del' => 'fa-solid fa-xmark'];
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
@@ -37,8 +36,8 @@ class OrderController extends Controller
         $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
         session()->flash('status', '01');
         $render = $this->render_data_table($getOrders);
-        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark', 'info' => 'fa-solid fa-info'];
-
+        $render['icon'] = null;
+        $render['custom_button'] = ['info' => 'fa-solid fa-info','edit' => 'fa-solid fa-check', 'del' => 'fa-solid fa-xmark'];
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
@@ -46,9 +45,10 @@ class OrderController extends Controller
     public function orders()
     {
         $getOrders = OrderModel::query()->paginate(15);
+        session()->flash('seen', true);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;
-
+        $render['custom_button'] = ['info' => 'fa-solid fa-info'];
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
@@ -60,6 +60,7 @@ class OrderController extends Controller
         $collection = collect($information_order['order_information']);
         $total= $collection->sum('price_product');
         $information_order['expired_at'] = Carbon::parse($information_order['expired_at']);
+        session()->reflash();
         return view("layouts.admin.order_seen_info", [
             ...$information_order,
             'id' => $order_id,

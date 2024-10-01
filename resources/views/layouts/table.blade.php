@@ -31,25 +31,14 @@
                         @endforeach
                     <td>
                         <div class="btn">
-                            @if (isset($icon['info']))
-                                <a class="btn-info btn-action" title="button" data-url="{{ $url }}/info/{{ $item['id'] }}" href="#">
-                                    <i class="fa-solid fa-info"></i>
-                                </a>
+                            @if (isset($custom_button))
+                                @foreach ($custom_button as $item_key => $item_value)
+                                    <a class="btn-{{$item_key}} btn-action" title="button" data-url="{{ $url }}/{{$item_key}}/{{ $item['id'] }}" href="#"><i class="{{$item_value}}"></i></a>
+                                @endforeach
+                            @else
+                                <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#"><i class="fa-solid fa-trash-can" ></i></a> 
                             @endif
-                            <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#">
-                                @if (isset($icon))
-                                    <i class="{{ $icon[0] }}"></i>
-                                @else
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                @endif
-                            </a>
-                            <a class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#">
-                                @if (isset($icon))
-                                    <i class="{{ $icon[1] }}"></i>
-                                @else
-                                    <i class="fa-solid fa-trash-can" ></i>
-                                @endif
-                            </a>
                         </div>
                     </td>
                 </tr>

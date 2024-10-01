@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="footer">    
-                    @if (!isset($seen))
+                    @if (!session()->get('seen'))
                         <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i>Xác nhận đơn hàng</button>
                     @endif
                     <button ype="submit" class="btn-close btn" onclick="clickAddCategory(event)"><i class="fa-solid fa-xmark"></i>Đóng</button>

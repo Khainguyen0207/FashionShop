@@ -25,6 +25,8 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 
+use function Laravel\Prompts\alert;
+
 Route::get('/', [LoginController::class, 'index'])->name('home');
 
 Route::get('/getData', [PayController::class, 'return'])->name('getDataBanking');
@@ -123,8 +125,15 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
         Route::post('/order_in_transit/info/{order_id}', [OrderController::class, 'show'])->name('order.order_in_transit.show');
         Route::delete('/order_in_transit/del/{order_id}', [OrderController::class, 'destroy'])->name('order.order_in_transit.del');
 
-        
+        //orders
         Route::get('/orders', [OrderController::class, 'orders'])->name('order.orders');
+        Route::post('/orders/edit/{order_id}',function() {
+             
+        });
+        Route::post('/orders/info/{order_id}', [OrderController::class, 'show'])->name('order.orders.show');
+        Route::delete('/orders/del/{order_id}', function($id) {
+            return redirect()->back()->with('error', "Không thể xóa đơn hàng");
+        });
     });
 
     //Logout
