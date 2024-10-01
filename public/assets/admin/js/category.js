@@ -1,9 +1,10 @@
 var clickCategory = true;
-
 function clickAddCategory(event) {
     event.preventDefault();
     var category = document.getElementById('addCategory')
-
+    console.log(clickCategory);
+    console.log(category);
+    
     var form = document.getElementById('addCategoryForm')
     var tittle = form.querySelector('.tittle');
     tittle.innerHTML = "Thêm sản phẩm"

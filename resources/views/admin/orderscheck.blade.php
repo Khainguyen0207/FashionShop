@@ -6,9 +6,11 @@
 @endpush
 
 @section('overview')
+<div id="addCategory" >
+</div>
 <div class="overview">
     <div id="header">
-        <h1>Danh sách khách hàng</h1>
+        <h1>Đơn hàng</h1>
     </div>
     <div class="toolbar">
         <div class="menu">

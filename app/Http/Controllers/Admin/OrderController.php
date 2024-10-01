@@ -12,6 +12,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderController extends Controller
 {
+    private $title_table = "Đơn hàng";
+
     public function index()
     {
         return redirect(route('order.pending'));
@@ -24,9 +26,8 @@ class OrderController extends Controller
             ->where('status', '00')
             ->paginate(15);
         $render = $this->render_data_table($getOrders);
-        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark'];
+        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark', 'info' => 'fa-solid fa-info'];
         session()->flash('status', '00');
-
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
@@ -36,7 +37,7 @@ class OrderController extends Controller
         $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
         session()->flash('status', '01');
         $render = $this->render_data_table($getOrders);
-        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark'];
+        $render['icon'] = ['fa-solid fa-check', 'fa-solid fa-xmark', 'info' => 'fa-solid fa-info'];
 
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
@@ -51,11 +52,26 @@ class OrderController extends Controller
         return view('admin.orderscheck', RenderController::render('order', $render));
     }
 
+    public function show(Request $request, $order_id) {
+        $information_order = OrderModel::query()->where('id', $order_id)->first()->attributesToArray();
+        $information_order['order_information'] = json_decode($information_order['order_information'], true);
+        $information_order['status'] = FunctionController::status_order($information_order['status']);
+       // Chuyển đổi mảng thành Collection
+        $collection = collect($information_order['order_information']);
+        $total= $collection->sum('price_product');
+        $information_order['expired_at'] = Carbon::parse($information_order['expired_at']);
+        return view("layouts.admin.order_seen_info", [
+            ...$information_order,
+            'id' => $order_id,
+            'expired_at' => $information_order['expired_at']->format('Y-m-d H:i:s'),
+            'total' => $total,
+        ]);
+    }
+
     public function edit(Request $request, $order_id)
     {
         $status_order = $this->status_order('edit');
         OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
-
         return redirect()->back()->with('success', 'Đã duyệt đơn hàng');
     }
 

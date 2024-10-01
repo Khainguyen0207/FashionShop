@@ -50,5 +50,32 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
             document.body.appendChild(form);
             form.submit();
         })
+    } else if (button.classList[0] == 'btn-info') {
+        button.addEventListener('click', function(event) {
+            clickAddCategory(event);
+            const url = event.currentTarget.dataset.url;
+            console.log(url);
+            $.ajax({
+                url: url,  // Địa chỉ API hoặc route
+                method: 'POST',  // Hoặc 'POST' tùy vào yêu cầu của bạn
+                headers: {
+                    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content'), // Thêm CSRF token
+                },
+            }).then(function(data) {
+                $("#addCategory").html(data)
+            })
+        })
     }
 })
+
+var clickCategory = true;
+function clickAddCategory(event) {
+    event.preventDefault();
+    var category = document.getElementById('addCategory')
+    if (clickCategory) {
+        category.style.display = 'block'
+    } else {
+        category.style.display = 'none'
+    }
+    clickCategory = !clickCategory;
+}

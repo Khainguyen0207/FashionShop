@@ -45,7 +45,7 @@ td, th {
 
 .body .btn-edit {
     padding: 6px 12px;
-    background-color: yellow;
+    background-color: #34ff34;
     border-radius: 10px;
 }
 
@@ -53,9 +53,16 @@ td, th {
     padding: 6px 12px;
     background-color: red;
     border-radius: 10px;
-} 
+}
+
+.body .btn-info {
+    padding: 6px 12px;
+    background-color: yellow;
+    border-radius: 10px;
+}
 
 .body .btn-edit:hover,
+.body .btn-info:hover,
 .body .btn-del:hover {
     background-color: lightgray;
     transition: 0.3s;

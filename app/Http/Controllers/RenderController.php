@@ -62,12 +62,14 @@ class RenderController extends Controller
                 $ordercheck = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon'];
 
                 return $ordercheck;
-            default: self::error_render('Lỗi hệ thống - 59');
+            default: self::error_render('Lỗi hệ thống - 68');
         }
     }
 
     public static function dataExceptionRender($render_data, $data) //Xử lí thêm data ngoại lệ
-    {$quantity = OrderModel::query()->get();
+    {
+        //Render data: Khóa key cho template, Data là value của template
+        $quantity = OrderModel::query()->get();
         $quantity_order_confirmation = $quantity->where('status', '00')->count();
         $number_of_order_in_transit = $quantity->where('status', '01')->count();
         $render_data['quantity'] = 'quantity';
@@ -76,7 +78,6 @@ class RenderController extends Controller
             'quantity_order_confirmation' => $quantity_order_confirmation,
             'number_of_order_in_transit' => $number_of_order_in_transit,
         ];
-
         return array_combine($render_data, $data);
     }
 }
