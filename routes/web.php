@@ -1,8 +1,6 @@
 <?php
 
 use GuzzleHttp\Client;
-use Illuminate\Http\Request;
-use Facebook\WebDriver\WebDriverBy;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PayController;
 use App\Http\Controllers\CartController;
@@ -11,7 +9,6 @@ use App\Http\Controllers\ExcelController;
 use Symfony\Component\DomCrawler\Crawler;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Auth\LoginController;
-use Facebook\WebDriver\Remote\RemoteWebDriver;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\RankUIController;
 use App\Http\Controllers\User\OrderUIController;
@@ -21,7 +18,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\ProductUIController;
 use App\Http\Controllers\User\VoucherUIController;
-use Facebook\WebDriver\Remote\DesiredCapabilities;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 

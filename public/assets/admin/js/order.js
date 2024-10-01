@@ -1,8 +1,8 @@
+var clickCategory = true;
 document.querySelectorAll(".btn-action").forEach(function(button) {
     if (button.classList[0] == 'btn-del') {
         button.addEventListener("click", function(event) {
             const url = event.currentTarget.dataset.url;
-            console.log(url);
             Swal.fire({
                 title: 'Thông báo!',
                 text: 'Bạn thực sự muốn hủy đơn hàng',
@@ -52,9 +52,7 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
         })
     } else if (button.classList[0] == 'btn-info') {
         button.addEventListener('click', function(event) {
-            clickAddCategory(event);
             const url = event.currentTarget.dataset.url;
-            console.log(url);
             $.ajax({
                 url: url,  // Địa chỉ API hoặc route
                 method: 'POST',  // Hoặc 'POST' tùy vào yêu cầu của bạn
@@ -63,19 +61,25 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
                 },
             }).then(function(data) {
                 $("#addCategory").html(data)
+                var category = document.getElementById("addCategory");
+                if (clickCategory) {
+                    category.className = "addCategory-hide"
+                } else {
+                    category.className = "addCategory";
+                }
+                clickCategory = !clickCategory;
             })
         })
     }
 })
 
-var clickCategory = true;
 function clickAddCategory(event) {
     event.preventDefault();
-    var category = document.getElementById('addCategory')
+    var category = document.getElementById("addCategory");
     if (clickCategory) {
-        category.style.display = 'block'
+        category.className = "addCategory-hide"
     } else {
-        category.style.display = 'none'
+        category.className = "addCategory";
     }
     clickCategory = !clickCategory;
 }

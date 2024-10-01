@@ -5,7 +5,7 @@ document.querySelector("#find").addEventListener("click", function(event){
     tool_bar.childNodes.forEach(element => {
         if (element instanceof HTMLInputElement) {
             if (element.value.trim() != "") {
-                
+                console.log(element.value);
             }
         }
     });
@@ -13,4 +13,5 @@ document.querySelector("#find").addEventListener("click", function(event){
 
 function find_information(value) {
     const node = document.querySelectorAll(".table-form");
+    console.log(node);
 }
