@@ -79,6 +79,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
 
     //customer
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
+    Route::post('/customer', [CustomerController::class, 'show'])->name('admin.customer.show');
     Route::delete('/customer/del/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.del');
 
     //categories

@@ -11,9 +11,6 @@ function update(event) {
         data: {
             max_page: document.querySelector("#max_page").value,
             url: document.querySelector(".seen").getAttribute("data-url"),
-        },
-        error: function(xhr, status, error) {
-            console.log('Error');
         }
     }).then(function(data) {
         $('#hidden-list').html(data);

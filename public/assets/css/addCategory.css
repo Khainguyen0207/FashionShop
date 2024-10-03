@@ -1,6 +1,10 @@
+#addCategory {
+    display: none;
+}
+
 .addCategory {
     position: absolute;
-    display: none;
+    display: none !important;
     z-index: 10;
     height: 100vh;
     width: 100%;
@@ -8,7 +12,7 @@
 
 .addCategory-hide {
     position: absolute;
-    display: block;
+    display: block !important;
     width: 100%;
     height: 100vh;
 }

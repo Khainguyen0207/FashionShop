@@ -35,7 +35,6 @@ function checkEmptyInformation(event) {
         var ids = []
         document.querySelectorAll("#id_table_product").forEach(element => {
             var id = element.value
-            console.log( element.parentElement.childNodes);
             ids.push(
                 {
                     "id": id, //Lấy id từ table 

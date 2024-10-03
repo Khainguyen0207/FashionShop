@@ -59,6 +59,6 @@
         </li>
     </div>
     <div class="footer-slider">
-        <p><a target="_blank" href="https://www.facebook.com/ntkhai2005">KhaiNguyen0207</a></p>
+        <p><a target="_blank" href="https://www.facebook.com/ntkhai2005"><span style="color: #A66E38">Designer:</span> KhaiNguyen0207</a></p>
     </div>
 </ul>

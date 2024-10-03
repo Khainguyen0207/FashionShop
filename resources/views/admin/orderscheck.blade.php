@@ -18,7 +18,7 @@
         </div>
         <div class="search">
             <input id="text" type="text" placeholder="Mã đơn hàng">
-            <a href="#" onclick="alert(document.getElementById('text').value)">Tìm kiếm</a>
+            <a href="#" onclick="alert(document.getElementById('text').value)" id="find">Tìm kiếm</a>
         </div>
     </div> 
     @include('layouts.table')

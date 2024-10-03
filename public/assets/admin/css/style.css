@@ -32,16 +32,16 @@ a {
 
 .menu-bar {
     position: relative;
-    display: block;
+    display: block;    
+    background-color: var(--background);
     height: 99vh;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 .menu-bar .list-menu {
     position: relative;
     display: inline-block;
-    background-color: var(--background);
-    margin: 5px 5px 5px 10px;
-    border-radius: 10px;
     height: 99vh;
 }
 
@@ -152,7 +152,7 @@ a {
 
 .menu-bar .footer-slider a {
     position: relative;
-    color: #FFA62F;
+    color: #FFAD60;
     text-decoration: none;
 }
 
@@ -184,7 +184,7 @@ a {
     width: 100%;
     background-color: var(--background);
     border-radius: 10px;
-    margin: 5px 5px 5px 10px;
+    margin: 5px;
     padding: 20px;
 }
 

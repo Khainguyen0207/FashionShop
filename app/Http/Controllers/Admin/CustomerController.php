@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\FunctionController;
-use App\Http\Controllers\RenderController;
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Query\Builder;
+use App\Http\Controllers\RenderController;
+use App\Http\Controllers\FunctionController;
 
 const MAX_PAGE = 15;
 
@@ -15,51 +17,28 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $render = $this->getCustomers();
-
+        $getCustomers = User::paginate(15);
+        if ($getCustomers->currentPage() > $getCustomers->lastPage()) {
+            abort(404);
+        }
+        $render = $this->getCustomers($getCustomers);
         return view('admin.customer', RenderController::render('customer', $render));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function show(Request $request) {
+        $keywords = $request->query();
+        $users = User::where(function($query) use ($keywords) {
+            foreach ($keywords as $key => $value) {
+                if ($key == "_token") {
+                    continue;
+                }
+                $query->orWhere($key, 'LIKE', '%' . $value . '%');
+            }
+        })->paginate(15);
+        $render = $this->getCustomers($users);
+        return view('admin.customer', RenderController::render('customer', $render));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id) {}
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         $info = DB::table('users')->where('id', $id)->get();
@@ -68,13 +47,11 @@ class CustomerController extends Controller
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete account: $info \nIn table 'users' =>  Time $date\n");
         }
-
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
-    private function getCustomers()
+    private function getCustomers($getCustomers)
     {
-        $getCustomers = DB::table('users')->paginate(15);
         $keyTable = ['name', 'id', 'email', 'role'];
         $table = FunctionController::table('customer', $keyTable); //Setting table
         $users = $getCustomers->items();
@@ -91,10 +68,9 @@ class CustomerController extends Controller
             $users,
             $keyTable,
             'number' => $getCustomers->currentPage(),
-            'maxNumberPage' => $getCustomers->lastPage(),
+            'maxPage' => $getCustomers->lastPage(),
             'url' => $getCustomers->path(),
         ];
-
         return $render;
     }
 }

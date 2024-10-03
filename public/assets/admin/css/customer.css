@@ -41,16 +41,28 @@
     margin-right: 10px;
 }
 
-.toolbar .search a {
+.toolbar .search #find {
     position: relative;
     background-color: #13ee6b;
     height: 35px;
     padding: 7px;
+    margin: 0px 5px;
     transition: 0.6s;
 }
 
+.toolbar .search #cancel {
+    position: relative;
+    background-color: #ee1313;
+    color: #ffffff;
+    height: 35px;
+    padding: 7px;
+    margin: 0px 5px;
+    transition: 0.6s;
+}
+
+
 .toolbar .search a:hover {
-    background-color: #ea6161;
+    background-color: gray !important;
     transform: translateY(5px);
     transition: 0.6s;
 }

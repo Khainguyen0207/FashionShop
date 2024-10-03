@@ -174,9 +174,6 @@ function del_cart(event) {
         headers: {
             'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),  
         },
-        error: function(status) {
-            console.log(status);
-        }
     }).then(function(data) {
         const html = document.createElement('div')
         html.innerHTML = data

@@ -4,7 +4,6 @@ function clickAddCategory(event) {
     var category = document.getElementById('addCategory')
 
     var form = document.getElementById('addCategoryForm')
-    console.log(form);
     
     var tittle = form.querySelector('.tittle');
     tittle.innerHTML = "Thêm sản phẩm"
