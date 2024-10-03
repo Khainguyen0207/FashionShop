@@ -22,14 +22,14 @@ class ProfileController extends Controller
     {
         $user = User::query()->where('id', Auth::id())->first();
         $information = $user->attributesToArray();
+        if (!empty($information['avatar']) && Storage::exists($information['avatar'])) {
+            $information['avatar'] = Storage::url($information['avatar']);
+        } else {
+            $information['avatar'] = asset('assets/user/img/box.png');
+        }
         $render = [
-            'avatar' => $user->avatar_url,
-            'name' => $information['name'],
+            ...$information,
             'birthday' => Carbon::parse($user->birthday)->format('Y-m-d'),
-            'sex' => $information['sex'],
-            'address' => $information['address'],
-            'number_phone' => $information['number_phone'],
-            'email' => $information['email'],
         ];
 
         return view('user.profile.information', $render);
@@ -45,16 +45,18 @@ class ProfileController extends Controller
 
             if ($key == 'password') {
                 $data += [$key => Hash::make($value)];
-
                 continue;
             }
             $data += [$key => $value];
         }
 
         $avatar = $request->file('avatar');
+
         if (isset($avatar)) {
             $url_old = User::query()->where('id', Auth::id())->first()->avatar;
-            Storage::delete($url_old);
+            if (!empty($url_old)) {
+                Storage::delete($url_old);
+            }
             $url = $avatar->store('avatar', 'public');
             $data += ['avatar' => $url];
         }

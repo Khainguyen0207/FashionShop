@@ -19,13 +19,13 @@ class OrderUIController extends Controller
     {
         $user = User::query()->where('id', Auth::id())->first();
         $information = $user->attributesToArray();
-        if (Storage::exists($information['avatar'])) {
+        if (!empty($information['avatar']) && Storage::exists($information['avatar'])) {
             $information['avatar'] = Storage::url($information['avatar']);
         } else {
             $information['avatar'] = asset('assets/user/img/box.png');
         }
         $render = [
-            'avatar' => $information['avatar'],
+            ...$information,
             'products' => Session::get('cart'),
         ];
 
@@ -48,7 +48,7 @@ class OrderUIController extends Controller
             $total = 0;
             foreach ($product as $product_key => $product_value) {
                 $image = Product::query()->where('product_code', $product_value['id'])->first('image');
-                if (! is_null($image) && Storage::exists($image->image)) {
+                if (!is_null($image) && Storage::exists($image->image)) {
                     $product[$product_key]['image'] = Storage::url($image->image);
                 } else {
                     $product[$product_key]['image'] = asset('assets/user/img/box.png');

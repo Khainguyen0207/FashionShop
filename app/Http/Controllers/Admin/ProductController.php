@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\FunctionController;
-use App\Http\Controllers\RenderController;
-use App\Http\Requests\ProductRequest;
-use App\Models\Product;
 use Carbon\Carbon;
+use App\Models\Product;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\RenderController;
+use App\Http\Controllers\FunctionController;
+use Illuminate\Http\Request;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -23,23 +25,28 @@ class ProductController extends Controller
 
     public function index(string $id_category)
     {
-        $products = $this->getProducts($id_category);
-
+        $search = request()->query();
+        foreach ($search as $key => $value) {
+            if (empty($value)) {
+                unset($search[$key]);
+            }
+        }
+        $getProducts = Product::where(function ($query) use ($search) {
+            foreach ($search as $key => $value) {
+                if (Schema::hasColumn('products', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
+                }
+            }
+        })->where("category_id", $id_category)->paginate(15);
+        if ($getProducts->currentPage() > $getProducts->lastPage()) {
+            abort(404);
+        }
+        $products = $this->getProducts($id_category, $getProducts);
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
-    public function page(string $id_category, string $page)
+    private function getProducts(string $id_category, $getProducts)
     {
-        $products = $this->getProducts($id_category);
-
-        return view('admin.categories.products', RenderController::render('product', $products));
-    }
-
-    private function getProducts(string $id_category)
-    {
-        $getProducts = Product::query()
-            ->where('category_id', $id_category)
-            ->paginate(15);
         $keyTable = ['product_name', 'product_code', 'price', 'category_name', 'number_items'];
         $table = FunctionController::table('product', $keyTable);
         $products = $getProducts->items();
@@ -96,10 +103,22 @@ class ProductController extends Controller
         return redirect(route('category.products.home', $id_category))->with(['success' => 'Thêm sản phẩm thành công']);
     }
 
-    public function show(string $id_category, string $id)
-    {
-        //Hello
-    }
+    // public function show(Request $request)
+    // {
+    //     $search = request()->query();
+    //     $getProducts = Product::where(function ($query) use ($search) {
+    //         foreach ($search as $key => $value) {
+    //             if (Schema::hasColumn('products', $key)) {
+    //                 $query->orWhere($key, 'LIKE', '%'.$value.'%');
+    //             }
+    //         }
+    //     })->where("category_id", $id_category)->paginate(15);
+    //     if ($getProducts->currentPage() > $getProducts->lastPage()) {
+    //         abort(404);
+    //     }
+    //     $products = $this->getProducts($id_category, $getProducts);
+    //     return view('admin.categories.products', RenderController::render('product', $products));
+    // }
 
     public function edit(string $id_category, string $id)
     {

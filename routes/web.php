@@ -108,6 +108,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('order.home');
         //confirmation-order
         Route::get('/confirmation-order', [OrderController::class, 'pending_confirmation_orders'])->name('order.pending');
+        Route::post('/confirmation-order', [OrderController::class, 'store'])->name('order.pending');
         Route::post('/confirmation-order/edit/{order_id}', [OrderController::class, 'edit'])->name('order.pending.edit');
         Route::post('/confirmation-order/info/{order_id}', [OrderController::class, 'show'])->name('order.pending.show');
         Route::delete('/confirmation-order/del/{order_id}', [OrderController::class, 'destroy'])->name('order.pending.destroy');

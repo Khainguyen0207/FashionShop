@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,422&family=Roboto+Condensed:wght@504&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 @endpush
 @section('overview')
-    <div id="addCategory" >
+    <div id="addCategory">
         <div class="screen" onclick="clickAddCategory(event)"></div>
         <div id="addCategoryForm">
             <form action="{{route('category.products.store', $id)}}"  class="my-animation" method="POST" enctype="multipart/form-data">
@@ -78,10 +78,12 @@
             <div class="tool-bar">
                 <div class="interact_product">  <!-- interact_product: tương tác sản phẩm -->
                     <div class="search_product">
-                        <input type="search" name="find_product" id="" placeholder="ID Sản Phẩm" >
-                        <input type="search" name="find_product" id="" placeholder="Mã Sản Phẩm" >
-                        <input type="search" name="find_product" id="" placeholder="Tên Sản Phẩm" >
-                        <a href="#" onclick="updating()">Tìm kiếm</a>
+                        <form action="" method="get" id="form_search">
+                            <input type="text" id="product_code" name="product_code" placeholder="Mã Sản Phẩm" >
+                            <input type="text" name="product_name" placeholder="Tên Sản Phẩm" >
+                        </form>
+                        <a href="{{ request()->fullUrl() }}" id="find" data-url="">Tìm kiếm</a>
+                        <a href="{{ $url }}" id="cancel" data-url="">Huỷ</a>
                     </div>
                     <div class="fill_product">
                         <!-- Hàm hiển thị số sản phẩm  -->
@@ -102,5 +104,6 @@
     
 @push('footer')
     <script src="{{asset('assets/admin/js/category.js')}}"></script>
+    <script src="{{ asset('assets/admin/js/find.js') }}"></script> 
     <script src="{{ asset('assets/js/table.js') }}"></script> 
 @endpush

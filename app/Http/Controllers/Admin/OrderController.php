@@ -2,28 +2,36 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\FunctionController;
-use App\Http\Controllers\RenderController;
-use App\Models\OrderModel;
 use Carbon\Carbon;
+use App\Models\OrderModel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\RenderController;
+use App\Http\Controllers\FunctionController;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderController extends Controller
 {
     public function index()
     {
-
         return redirect(route('order.pending'));
     }
 
     //Pending
     public function pending_confirmation_orders()
     {
-        $getOrders = OrderModel::query()
-            ->where('status', '00')
-            ->paginate(15);
+        $search = request()->query();
+        $getOrders = OrderModel::where(function ($query) use ($search) {
+            foreach ($search as $key => $value) {
+                if (Schema::hasColumn('orders', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
+                }
+            }
+        })->where("status", "00")->paginate(15);
+        if ($getOrders->currentPage() > $getOrders->lastPage()) {
+            abort(404);
+        }
         session()->flash('status', '00');
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;
@@ -35,7 +43,17 @@ class OrderController extends Controller
     //order_in_transit
     public function order_in_transit()
     {
-        $getOrders = OrderModel::query()->where('status', '01')->paginate(15);
+        $search = request()->query();
+        $getOrders = OrderModel::where(function ($query) use ($search) {
+            foreach ($search as $key => $value) {
+                if (Schema::hasColumn('orders', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
+                }
+            }
+        })->where("status", "01")->paginate(15);
+        if ($getOrders->currentPage() > $getOrders->lastPage()) {
+            abort(404);
+        }
         session()->flash('status', '01');
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;
@@ -47,7 +65,17 @@ class OrderController extends Controller
     //orders
     public function orders()
     {
-        $getOrders = OrderModel::query()->paginate(15);
+        $search = request()->query();
+        $getOrders = OrderModel::where(function ($query) use ($search) {
+            foreach ($search as $key => $value) {
+                if (Schema::hasColumn('orders', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
+                }
+            }
+        })->paginate(15);
+        if ($getOrders->currentPage() > $getOrders->lastPage()) {
+            abort(404);
+        }
         session()->flash('seen', true);
         $render = $this->render_data_table($getOrders);
         $render['icon'] = null;

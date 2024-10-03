@@ -34,7 +34,7 @@
     </div>
 </div>
 @push('footer')
-    <script src="{{ asset('assets/admin/js/customer.js') }}"></script> 
+    <script src="{{ asset('assets/admin/js/find.js') }}"></script> 
     <script src="{{ asset('assets/js/table.js') }}"></script> 
 @endpush
 @endsection

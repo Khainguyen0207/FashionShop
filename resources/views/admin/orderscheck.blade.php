@@ -17,8 +17,11 @@
             <p><i class="fa-solid fa-bars fa-xl"></i></p>
         </div>
         <div class="search">
-            <input id="text" type="text" placeholder="Mã đơn hàng">
-            <a href="{{ request()->fullUrl() }}" id="find">Tìm kiếm</a>
+            <form action="" method="get" id="form_search">
+                <input type="text" name="order_code" placeholder="Mã đơn hàng">
+            </form>
+            <a href="{{ request()->fullUrl() }}" data-url="" id="find">Tìm kiếm</a>
+            <a href="{{ $url }}" data-url="" id="cancel">Hủy</a>
         </div>
     </div> 
     @include('layouts.table')
@@ -27,5 +30,6 @@
 </div>
 <footer>
     <script src="{{asset("assets/admin/js/order.js")}}"></script>
+    <script src="{{asset("assets/admin/js/find.js")}}"></script>
 </footer>
 @endsection

@@ -4,6 +4,7 @@ document.querySelector("#find").addEventListener("click", function(event){
     const tool_bar = document.querySelector("#form_search"); //Get Seach in customer dashboard
     
     let url = node.dataset.url
+    
     let query = ""
     tool_bar.childNodes.forEach(element => {
         if (element instanceof HTMLInputElement) {
@@ -15,10 +16,10 @@ document.querySelector("#find").addEventListener("click", function(event){
         }
     });
     query = query.slice(0, -1);
+
     if (query.length != 0) {
         url = url + "?" + query
-        const form = document.querySelector("#form_search")
-        form.action = url
-        form.submit();
+        tool_bar.action = url
+        tool_bar.submit();
     }
 })
