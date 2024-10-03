@@ -8,11 +8,13 @@ document.querySelector("#find").addEventListener("click", function(event){
     tool_bar.childNodes.forEach(element => {
         if (element instanceof HTMLInputElement) {
             if (element.value.trim() != "") {
-                query += element.name + "=" + element.value + "&"
+                if (element.name != "_token") {
+                    query += element.name + "=" + element.value + "&"
+                }
             }
         }
     });
-    console.log(query);
+    query = query.slice(0, -1);
     if (query.length != 0) {
         url = url + "?" + query
         const form = document.querySelector("#form_search")

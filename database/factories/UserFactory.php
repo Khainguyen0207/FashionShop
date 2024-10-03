@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'avatar' => null,
             'birthday' => now(),
             'sex' => random_int(0, 1),
-            'address'=> $this->faker->address(),
+            'address' => $this->faker->address(),
             'remember_token' => Str::random(10),
             'role' => 0,
         ];

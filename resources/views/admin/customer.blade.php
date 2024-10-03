@@ -25,16 +25,16 @@
                 <input id="customer_name" type="text" name="name" placeholder="Tên khách hàng"> 
                 <input id="email" type="email" name="email"placeholder="Email">
             </form>
-            <a href="#" onclick="" id="find" name="find" data-url="{{ route("admin.customer.show") }}">Tìm kiếm</a>
-            <a href="" onclick="" id="cancel" name="find">Huỷ</a>
+            <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url="">Tìm kiếm</a>
+            <a href="{{$url}}" onclick="" id="cancel" name="find">Huỷ</a>
         </div>
     </div> 
-    @include('layouts.table')
-    
+    @include('layouts.table') 
     <div class="footer">
     </div>
 </div>
 @push('footer')
     <script src="{{ asset('assets/admin/js/customer.js') }}"></script> 
+    <script src="{{ asset('assets/js/table.js') }}"></script> 
 @endpush
 @endsection

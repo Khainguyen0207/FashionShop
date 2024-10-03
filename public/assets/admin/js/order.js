@@ -3,6 +3,7 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
     if (button.classList[0] == 'btn-del') {
         button.addEventListener("click", function(event) {
             const url = event.currentTarget.dataset.url;
+            
             Swal.fire({
                 title: 'Thông báo!',
                 text: 'Bạn thực sự muốn hủy đơn hàng',
@@ -53,6 +54,7 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
     } else if (button.classList[0] == 'btn-info') {
         button.addEventListener('click', function(event) {
             const url = event.currentTarget.dataset.url;
+            console.log(url);
             $.ajax({
                 url: url,  // Địa chỉ API hoặc route
                 method: 'POST',  // Hoặc 'POST' tùy vào yêu cầu của bạn

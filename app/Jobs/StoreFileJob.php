@@ -2,16 +2,16 @@
 
 namespace App\Jobs;
 
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Foundation\Queue\Queueable;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 
 class StoreFileJob implements ShouldQueue
 {
-    use Queueable;
     use Dispatchable;
+    use Queueable;
 
     protected $filename;
 

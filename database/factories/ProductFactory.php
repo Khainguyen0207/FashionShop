@@ -2,10 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
@@ -20,7 +17,7 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            
+
         ];
     }
 }

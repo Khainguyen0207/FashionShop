@@ -60,6 +60,7 @@ class RenderController extends Controller
                 return $products;
             case 'order':
                 $ordercheck = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon', 'custom_button'];
+
                 return $ordercheck;
             default: self::error_render('Lỗi hệ thống - 68');
         }
@@ -77,6 +78,7 @@ class RenderController extends Controller
             'quantity_order_confirmation' => $quantity_order_confirmation,
             'number_of_order_in_transit' => $number_of_order_in_transit,
         ];
+
         return array_combine($render_data, $data);
     }
 }

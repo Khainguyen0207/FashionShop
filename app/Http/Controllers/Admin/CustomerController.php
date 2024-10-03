@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\FunctionController;
+use App\Http\Controllers\RenderController;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Database\Query\Builder;
-use App\Http\Controllers\RenderController;
-use App\Http\Controllers\FunctionController;
+use Illuminate\Support\Facades\Schema;
 
 const MAX_PAGE = 15;
 
@@ -17,25 +17,35 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $getCustomers = User::paginate(15);
+        $search = request()->query();
+        $getCustomers = User::where(function ($query) use ($search) {
+            foreach ($search as $key => $value) {
+                if (Schema::hasColumn('users', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
+                }
+            }
+        })->paginate(15);
         if ($getCustomers->currentPage() > $getCustomers->lastPage()) {
             abort(404);
         }
         $render = $this->getCustomers($getCustomers);
+
         return view('admin.customer', RenderController::render('customer', $render));
     }
 
-    public function show(Request $request) {
+    public function show(Request $request)
+    {
         $keywords = $request->query();
-        $users = User::where(function($query) use ($keywords) {
+        unset($keywords['_token']);
+        $users = User::where(function ($query) use ($keywords) {
             foreach ($keywords as $key => $value) {
-                if ($key == "_token") {
-                    continue;
+                if (Schema::hasColumn('users', $key)) {
+                    $query->orWhere($key, 'LIKE', '%'.$value.'%');
                 }
-                $query->orWhere($key, 'LIKE', '%' . $value . '%');
             }
         })->paginate(15);
         $render = $this->getCustomers($users);
+
         return view('admin.customer', RenderController::render('customer', $render));
     }
 
@@ -47,6 +57,7 @@ class CustomerController extends Controller
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete account: $info \nIn table 'users' =>  Time $date\n");
         }
+
         return redirect($_SERVER['HTTP_REFERER']);
     }
 
@@ -71,6 +82,7 @@ class CustomerController extends Controller
             'maxPage' => $getCustomers->lastPage(),
             'url' => $getCustomers->path(),
         ];
+
         return $render;
     }
 }

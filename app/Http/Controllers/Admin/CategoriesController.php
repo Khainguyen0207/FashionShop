@@ -41,7 +41,8 @@ class CategoriesController extends Controller
     }
 
     public function store(Request $request) //Request để ý bảo mật cao hơn
-    {$urlImage = $request->image->store('profile', 'public');
+    {
+        $urlImage = $request->image->store('profile', 'public');
         $nameCategory = $request->input('name_category');
         $description = $request->input('description');
         if (isset($nameCategory)) {
@@ -66,12 +67,12 @@ class CategoriesController extends Controller
     {
         $info = DB::table('categories')->where('id', $id_category)->get();
         $deleted = DB::table('categories')->where('id', $id_category)->delete();
-        Product::query()->where('category_id',$id_category)->delete();
+        Product::query()->where('category_id', $id_category)->delete();
         $date = Carbon::now();
         if ($deleted) {
             fwrite(fopen('UpdateDataBase.txt', 'a'), "Delete categories: $info \nIn table 'categories' =>  Time $date\n");
         }
 
-        return redirect(route('categories.home'))->with('success',"Đã xóa thành công danh mục");
+        return redirect(route('categories.home'))->with('success', 'Đã xóa thành công danh mục');
     }
 }

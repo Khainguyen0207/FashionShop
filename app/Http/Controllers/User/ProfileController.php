@@ -125,7 +125,8 @@ class ProfileController extends Controller
     }
 
     public function change_password(ChangePasswordRequest $request) //So sánh và thay đổi mật khẩu trên profile user
-    {$user = User::query()->where('id', Auth::id());
+    {
+        $user = User::query()->where('id', Auth::id());
         $information = $user->first();
 
         if (! Hash::check($request->old_password, $information->password)) {

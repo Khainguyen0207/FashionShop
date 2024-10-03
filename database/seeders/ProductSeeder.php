@@ -2,14 +2,10 @@
 
 namespace Database\Seeders;
 
-use Carbon\Carbon;
-use App\Models\Product;
 use App\Jobs\StoreFileJob;
-use Illuminate\Support\Str;
-use Illuminate\Queue\Jobs\Job;
+use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Storage;
 
 class ProductSeeder extends Seeder
 {
@@ -22,9 +18,9 @@ class ProductSeeder extends Seeder
         $products = $this->products_Seeder();
         $data = [];
         foreach ($products as $value) {
-            $data[] =  [
+            $data[] = [
                 'product_code' => 'MSSP'.fake()->unique()->randomNumber(),
-                'product_name' => $value[1], 
+                'product_name' => $value[1],
                 'category_id' => $value[7],
                 'price' => $value[5],
                 'image' => $this->getImage(),
@@ -37,7 +33,7 @@ class ProductSeeder extends Seeder
         }
         Product::query()->insert($data);
     }
-    
+
     /*
         0 => id
         1 => name
@@ -53,10 +49,12 @@ class ProductSeeder extends Seeder
     {
         $filename = 'profile/'.uniqid().'.jpg';
         StoreFileJob::dispatch($filename);
+
         return $filename;
     }
 
-    private function products_Seeder() {
+    private function products_Seeder()
+    {
         $products = [
             '1, Áo Khoác Dạ Nữ, 100% polyester, Đen - Xám - Kem, S - M - L - XL,1200000, Áo khoác dạ ấm áp thanh lịch., 11',
             '2, Quần Jean Nam, Vải jeans, Xanh - Đen - Xám, M - L - XL - XXL,850000, Quần jean thời trang cho nam., 10',
@@ -142,11 +140,11 @@ class ProductSeeder extends Seeder
             '82, Giày Da Nữ, Da thật, Nâu - Đen, 36 - 37, 1200000, Giày da thời trang cho nữ., 11',
             '83, Áo Croptop Nữ, Vải cotton, Hồng - Trắng, S - M, 400000, Áo croptop thời trang., 11',
         ];
-        
+
         foreach ($products as $key => $value) {
-            $products[$key] = explode(",", $value);
+            $products[$key] = explode(',', $value);
         }
+
         return $products;
     }
-    
 }

@@ -10,7 +10,6 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Ramsey\Uuid\Type\Integer;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -25,12 +24,14 @@ class ProductController extends Controller
     public function index(string $id_category)
     {
         $products = $this->getProducts($id_category);
+
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
     public function page(string $id_category, string $page)
     {
         $products = $this->getProducts($id_category);
+
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
