@@ -103,23 +103,6 @@ class ProductController extends Controller
         return redirect(route('category.products.home', $id_category))->with(['success' => 'Thêm sản phẩm thành công']);
     }
 
-    // public function show(Request $request)
-    // {
-    //     $search = request()->query();
-    //     $getProducts = Product::where(function ($query) use ($search) {
-    //         foreach ($search as $key => $value) {
-    //             if (Schema::hasColumn('products', $key)) {
-    //                 $query->orWhere($key, 'LIKE', '%'.$value.'%');
-    //             }
-    //         }
-    //     })->where("category_id", $id_category)->paginate(15);
-    //     if ($getProducts->currentPage() > $getProducts->lastPage()) {
-    //         abort(404);
-    //     }
-    //     $products = $this->getProducts($id_category, $getProducts);
-    //     return view('admin.categories.products', RenderController::render('product', $products));
-    // }
-
     public function edit(string $id_category, string $id)
     {
         $information_product = Product::query()->where('id', $id)->first();

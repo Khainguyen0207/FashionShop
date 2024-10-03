@@ -106,15 +106,14 @@ class OrderController extends Controller
     public function edit(Request $request, $order_id)
     {
         $status_order = $this->status_order('edit');
-        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
-
+        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order, 'expired_at' => now()]);
         return redirect()->back()->with('success', 'Đã duyệt đơn hàng');
     }
 
     public function destroy($order_id)
     {
         $status_order = $this->status_order('destroy');
-        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order]);
+        OrderModel::query()->where('id', $order_id)->update(['status' => $status_order, 'expired_at' => now()]);
 
         return redirect()->back()->with('success', 'Đã hủy đơn hàng');
     }

@@ -18,6 +18,12 @@ class OrderUIController extends Controller
     public function index(?array $products = null)
     {
         $user = User::query()->where('id', Auth::id())->first();
+        $query = OrderModel::where('customer_id', Auth::id());
+
+        $confirm = (clone $query)->where('status', '00')->count();
+        $transit = (clone $query)->where('status', '01')->count();
+        $delivered = (clone $query)->where('status', '02')->count();
+
         $information = $user->attributesToArray();
         if (!empty($information['avatar']) && Storage::exists($information['avatar'])) {
             $information['avatar'] = Storage::url($information['avatar']);
@@ -26,6 +32,9 @@ class OrderUIController extends Controller
         }
         $render = [
             ...$information,
+            'confirm' => $confirm,
+            'transit' => $transit,
+            'delivered' => $delivered,
             'products' => Session::get('cart'),
         ];
 
