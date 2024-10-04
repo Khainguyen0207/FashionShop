@@ -20,10 +20,14 @@
         </form>
     </div>
 </div>
-<div id="message">
-    <a href="https://www.facebook.com/messages/t/61558234972871">
-        <img src="{{asset("assets/img/message.png")}}" style="width:100%" alt="zalo">
-    </a>
+<div id="contact">
+    <div class="test">
+        <div class="contact">
+            <a href="https://www.facebook.com/messages/t/61558234972871" class="message">
+                <img src="{{asset("assets/img/message.png")}}" style="width:100%" alt="zalo">
+            </a>
+        </div>
+    </div>
 </div>
 <div id="menu-bar">
     <div class="menu">
