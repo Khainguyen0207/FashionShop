@@ -11,7 +11,32 @@
     box-sizing: border-box;
 }
 
+#message {
+    position: absolute;
+    display: block;
+    background: url();
+    background-repeat: no-repeat;
+    z-index: 10;
 
+}
+
+#message a {
+    position: fixed;
+    max-width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    background: antiquewhite;
+}
+
+#message a img {
+    animation-name: animation_message;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
 
 body {
     position: relative;
@@ -132,19 +157,56 @@ section {
 
 #menu-bar .search {
     position: relative;
-    display: block;
+    display: flex;
+    gap: 10px;
+    padding-right: 20px;
+    align-items: center;
 }
 
 #menu-bar .search input {
     position: relative;
+    display: block;
     border: none;
-    padding: 9px 12px 9px 50px;
-    font-size: 20px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    color: black;
     background-color: transparent;
     margin-right: 10px;
-    border-radius: 20px;
-    outline: 2px solid #ffffff;
+    outline: 2px solid lightcyan;
 }
+
+#menu-bar .search input:focus-visible {
+    border-color: transparent;
+    outline: none;
+    box-shadow: 0 0 5px 5px #6dbdf2;
+}
+
+#menu-bar .search #cancel,
+#menu-bar .search #find {
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+#menu-bar .search #find {
+    background-color: #13ee6b;
+}
+
+#menu-bar .search #cancel {
+    background-color: red;
+    color: white;
+}
+
+#menu-bar .search #cancel:hover,
+#menu-bar .search #find:hover {
+    background-color: #ffa384;
+    transform: translateY(5px);
+    transition: 0.3s ease-in-out;
+
+}
+
 #menu-bar .search .icon {
     position: absolute;
     margin: 13px 20px; 
@@ -173,4 +235,12 @@ section {
 
 #footer h1 {
     color: #a52a2a;
+}
+
+@keyframes animation_message {
+    0% {
+        transform: rotate(300deg);
+    }  100% {
+        transform: rotate(390deg);
+    }
 }

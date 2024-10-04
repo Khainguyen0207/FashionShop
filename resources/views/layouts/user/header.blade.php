@@ -20,6 +20,11 @@
         </form>
     </div>
 </div>
+<div id="message">
+    <a href="https://www.facebook.com/messages/t/61558234972871">
+        <img src="{{asset("assets/img/message.png")}}" style="width:100%" alt="zalo">
+    </a>
+</div>
 <div id="menu-bar">
     <div class="menu">
         <li class="content-menu"><a href="{{route('user.home')}}"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
@@ -28,7 +33,11 @@
         <li class="content-menu"><a href="#footer"><i class="fa-solid fa-headset"></i> Liên hệ</a></li>
     </div>
     <div class="search">
-        <i class="icon fa-solid fa-magnifying-glass"></i>
-        <input type="search" name="search" placeholder="Tìm kiếm"> 
+        <form action="" id="form_search" method="POST">
+            @csrf
+            <input id="customer_code" type="text" name="id" placeholder="Tìm kiếm"> 
+        </form>
+        <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url="">Tìm kiếm</a>
+        <a href="" onclick="" id="cancel" name="find">Huỷ</a>
     </div>
 </div>
