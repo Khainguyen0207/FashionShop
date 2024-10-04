@@ -18,13 +18,11 @@ class LoginController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return redirect(route('user.home'));
+            dd(1);
+            //return redirect(route('user.home'));
         }
-
         return redirect(route('login'));
     }
-
-    public function create() {}
 
     public function store(LoginRequest $request)
     {
@@ -36,25 +34,5 @@ class LoginController extends Controller
         }
 
         return redirect(route('user.home'));
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
     }
 }

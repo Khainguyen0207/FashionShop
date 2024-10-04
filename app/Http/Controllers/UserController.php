@@ -21,11 +21,14 @@ class UserController extends Controller
         $render = [
             'title' => 'Trang chủ',
             'categories' => $categories,
-            'name' => $account->name,
-            'role' => $account->role,
-
         ];
 
+        if (!empty($account)) {
+            $render += [
+                'name' => $account->name,
+                'role' => $account->role,
+            ];
+        }
         return view('user.home', $render);
     }
 
@@ -37,8 +40,7 @@ class UserController extends Controller
     public function destroy()
     {
         Auth::logout();
-
-        return redirect('auth');
+        return redirect(route("user.home"));
     }
 
     private function getUrlForImage($products)

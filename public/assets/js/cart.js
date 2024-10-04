@@ -26,6 +26,7 @@ function seen() {
         element.addEventListener('click', function(event) {
             event.preventDefault();
             let url = event.currentTarget.dataset.url
+            let href = event.currentTarget.href
             $.ajax({
                 url: url,
                 method: 'POST',
@@ -39,7 +40,7 @@ function seen() {
                 const $html = $(data);
                 const idValue = $html.find('#alert').html();
                 $('#alert').html(idValue);
-                location.href = "/user/cart";
+                location.href = href;
             })
         });
     });

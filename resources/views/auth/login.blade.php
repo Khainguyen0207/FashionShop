@@ -39,6 +39,11 @@
                 <span><a href="{{ route('auth.register') }}">Register</a></span>
             </div>
         </form>
+        <a href="{{route("user.home")}}" style="    display: inline-block;
+    text-decoration: none;
+    color: #970101;
+    margin-top: 5px;
+    border-bottom: 2px solid;">Quay về shop</a>
     </div>
 </div>
 @endsection

@@ -17,11 +17,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\RankUIController;
 use App\Http\Controllers\User\VoucherUIController;
 use App\Http\Controllers\UserController;
-use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
-use Symfony\Component\DomCrawler\Crawler;
-
-Route::get('/', [LoginController::class, 'index'])->name('home');
 
 Route::get('/getData', [PayController::class, 'return'])->name('getDataBanking');
 
@@ -29,27 +25,27 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('hi', function () {
-    $query = ['Áo ba lỗ', 'Quần sịp', 'Quần thun', 'Giày bata', 'ÁO hoddi'];
-    $url = 'https://www.pinterest.com/search/pins/?q='.urlencode($query[floor(rand(0, 4))]);
-    $client = new Client;
-    // Send a GET request to the URL
-    $response = $client->request('GET', $url);
-    // Get the body content as a string
-    $html = $response->getBody()->getContents();
-    dd($html);
-    // You can use DOMCrawler to parse the HTML
-    $crawler = new Crawler($html);
-    // Example: Crawl specific data like titles
-    $titles = $crawler->filter('a')->each(function (Crawler $node) {
-        return $node->attr('href');
-    });
-    dd($titles, $url);
-});
+Route::get('/', [UserController::class, 'home'])->name('user.home');
+Route::post('/', [UserController::class, 'store'])->name('user.home.post');
+
+//Cart
+Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
+Route::post('/cart/{product_id}', [CartController::class, 'store'])->name('user.cart.post');
+Route::delete('/cart/{product_id}/del', [CartController::class, 'destroy'])->name('user.cart.del');
+
+//Products
+Route::get('/products', [ProductUIController::class, 'index'])->name('products.home');
+Route::post('/products', [ProductUIController::class, 'store'])->name('products.home.post');
+Route::post('/products/arrange', [ProductUIController::class, 'arrange'])->name('products.home.arrange');
+Route::get('/products/{category_id}', [ProductUIController::class, 'show_products'])->name('products.id');
+Route::get('/products/{category_id}/product', [ProductUIController::class, 'show_products']);
+
+//Product
+Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
 
 Route::prefix('/auth')->middleware('guest')->group(function () {
-
     Route::get('/', [LoginController::class, 'showFormLogin'])->name('login');
+
     //login
     Route::get('/login', [LoginController::class, 'showFormLogin'])->name('auth.login');
     Route::post('/login', [LoginController::class, 'store'])->name('auth.login.post');
@@ -131,11 +127,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });
 
-Route::prefix('/user')->middleware('auth')->group(function () {
-    //Home
-    Route::get('/', [UserController::class, 'home'])->name('user.home');
-    Route::post('/', [UserController::class, 'store'])->name('user.home.post');
-
+Route::prefix('/user')->middleware('CheckAuth')->group(function () {
     //Profile
     Route::prefix('/profile')->group(function () {
         //Profile
@@ -159,21 +151,6 @@ Route::prefix('/user')->middleware('auth')->group(function () {
         Route::post('/rank', [RankUIController::class, 'store'])->name('profile.rank.post');
     });
 
-    //Products
-    Route::get('/products', [ProductUIController::class, 'index'])->name('products.home');
-    Route::post('/products', [ProductUIController::class, 'store'])->name('products.home.post');
-    Route::post('/products/arrange', [ProductUIController::class, 'arrange'])->name('products.home.arrange');
-    Route::get('/products/{category_id}', [ProductUIController::class, 'show_products'])->name('products.id');
-    Route::get('/products/{category_id}/product', [ProductUIController::class, 'show_products']);
-
-    //Product
-    Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
-
-    //Cart
-    Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
-    Route::post('/cart/{product_id}', [CartController::class, 'store'])->name('user.cart.post');
-    Route::delete('/cart/{product_id}/del', [CartController::class, 'destroy'])->name('user.cart.del');
-
     //Pay
     Route::get('/pay', [PayController::class, 'index'])->name('user.pay.home');
     Route::post('/pay', [PayController::class, 'store'])->name('user.pay.post');
@@ -182,3 +159,4 @@ Route::prefix('/user')->middleware('auth')->group(function () {
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 });
+
