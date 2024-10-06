@@ -16,8 +16,3 @@ function update(event) {
         $('#hidden-list').html(data);
     })
 }
-let currentPage = 1;
-
-window.addEventListener('scroll', () => {
-    
-});

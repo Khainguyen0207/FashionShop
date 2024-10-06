@@ -41,7 +41,7 @@
             @csrf
             <input id="customer_code" type="text" name="search" placeholder="Tìm kiếm"> 
         </form>
-        <a href="{{ request()->fullUrl() }}" onclick="" id="find">Tìm kiếm</a>
-        <a href="" onclick="" id="cancel" name="cancel">Huỷ</a>
+        <a href="{{ route("user.home.post") }}" onclick="" id="find">Tìm kiếm</a>
+        <a href="{{ url()->current()}}" onclick="" id="cancel" name="cancel">Huỷ</a>
     </div>
 </div>

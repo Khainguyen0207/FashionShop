@@ -43,10 +43,13 @@ class UserController extends Controller
         $render = [
             'products' => $products,
             'category_name' => 'Sản phẩm',
-            'url' => route('products.home.post', ['product' => count($products)]),
+            'url' => route('products.home.post', ['product' => count($products), 'search' => $request->query('search')]),
             'max_page' => $max_page,
         ];
         Session::flash('url_back', url()->current());
+        if (empty($products)) {
+            return view('user.products', $render)->with("error", "Không có sản phẩm nào bạn có thể xem sản phẩm khacs");
+        }
         return view('user.products', $render);
     }
 

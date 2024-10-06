@@ -16,7 +16,7 @@ document.querySelector("#find").addEventListener("click", function(event) {
     query = query.slice(0, -1);
     console.log(query, url);
     if (query.length != 0) {
-        url = "?" + query
+        url = url + "?" + query
         tool_bar.action = url
         tool_bar.submit();
     }
