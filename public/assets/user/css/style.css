@@ -14,7 +14,6 @@
 #contact {
     position: absolute;
     display: block;
-    background: url();
     background-repeat: no-repeat;
     z-index: 10;
 }
@@ -22,8 +21,8 @@
 #contact .test {
     position: fixed;
     display: flex;
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     bottom: 10px;
     right: 10px;
     justify-content: center;
@@ -44,16 +43,24 @@
 
 #contact .contact .message {
     position: relative;
-    display: block;
-    max-width: 50px;
+    display: flex;
+    width: 50px;
     height: 50px;
     padding: 10px;
     border-radius: 50%;
-    background: antiquewhite;
+    background: #1e2f08;
+    animation-name: animation_message_a;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    align-items: center;
+    justify-content: center;
 }
 
 
 #contact .message img {
+    width: 30px;
+    height: 30px;
     animation-name: animation_message;
     animation-duration: 0.6s;
     animation-iteration-count: infinite;
@@ -261,17 +268,22 @@ section {
 
 @keyframes animation_message {
     0% {
-        transform: rotate(300deg);
-    } 20% {
-        transform: rotate(390deg);
-    } 40% {
-        transform: rotate(300deg);
-    } 60% {
-        transform: rotate(390deg);
-    } 80% {
-        transform: rotate(360deg);
+        transform: rotate(320deg);
     } 100% {
         transform: rotate(360deg);
+    } 
+}
+
+@keyframes animation_message_a {
+    0% {
+        width: 50px;
+        height: 50px;
+    } 50% {
+        width: 60px;
+        height: 60px;
+    } 100% {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -280,23 +292,23 @@ section {
         padding: 0px;
         border: 2px solid #00e900;
     }  20% {
-        padding: 4px;
+        padding: 2px;
         border: 2px solid #00e900b8;
 
     }  40% {
-        padding: 8px;
+        padding: 4px;
         border: 2px solid #00e9007e;
 
     }  60% {
-        padding: 12px;
+        padding: 6px;
         border: 2px solid #00e90046;
 
     }  80% {
-        padding: 14px;
+        padding: 8px;
         border: 2px solid #00e9002b;
 
     }  100% {
-        padding: 14px;
-        border: 1px solid red;
+        padding: 10px;
+        border: 2px solid #00e90000;
     }
 }

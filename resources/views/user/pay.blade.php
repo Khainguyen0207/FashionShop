@@ -21,12 +21,12 @@
                     <h3 class="item">Thông tin người nhận</h3>
                     <form action="?" method="get" class="information">
                         <label for="recipient-name">Tên người nhận</label>
-                        <input type="text" name="recipient_name" id="recipient-name" class="input_information" spellcheck="false" max="255" maxlength="100" required="required" value="12345">
+                        <input type="text" name="recipient_name" id="recipient-name" class="input_information" spellcheck="false" max="255" maxlength="100" required="required">
                         <label for="number-phone" >Số điện thoại</label>
-                        <input type="number" name="number_phone" id="number-phone" class="input_information" max="255"  spellcheck="false" maxlength="100" value="12345">
+                        <input type="number" name="number_phone" id="number-phone" class="input_information" max="255"  spellcheck="false" maxlength="100">
                         <input type="hidden" name="sum_price" id="sum_price" value="{{ $sum_total  }}">
                         <label for="address">Địa chỉ nhận hàng</label>
-                        <input type="text" name="address" id="address" class="input_information" spellcheck="false" max="255" maxlength="100" value="12345">
+                        <input type="text" name="address" id="address" class="input_information" spellcheck="false" max="255" maxlength="100">
                     </form>
                 </div>
                 <div class="order-information">

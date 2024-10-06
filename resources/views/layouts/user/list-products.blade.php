@@ -19,8 +19,8 @@
     </div>
 </div>
 <div class="seen-product">
-    <input type="hidden" value="{{ $max_page }}" id="max_page">
-    @if ((count($products) / 10) < $max_page)
+    <input type="hidden" value="{{ $max_page }}" id="max_page" name="{{count($products)}}">
+    @if ($max_page > 10)
         <a href="#" id="load_products" onclick="update(event)" data-url="{{ $url }}" class="seen">Xem thêm</a> 
     @endif
 </div>

@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Type\Integer;
 
 class ProductUIController extends Controller
 {
@@ -16,9 +17,8 @@ class ProductUIController extends Controller
         $products = Product::query()
             ->inRandomOrder()
             ->paginate(10);
-        $max_page = $products->lastPage();
+        $max_page = $products->total();
         $products = $this->getUrlForImage($products->items());
-
         $render = [
             'products' => $products,
             'category_name' => 'Sản phẩm',
@@ -26,7 +26,6 @@ class ProductUIController extends Controller
             'max_page' => $max_page,
         ];
         Session::flash('url_back', url()->current());
-
         return view('user.products', $render);
     }
 
@@ -34,26 +33,22 @@ class ProductUIController extends Controller
     {
         $products_hided = Session::get('products_hided'); //Lấy các product đã hiện
         $id_products_hided = Session::get('id_products_hided'); //Lấy các product đã hiện
-        $products = Product::query()
-            ->whereNotIn('id', $id_products_hided)
-            ->inRandomOrder();
+        $products = Product::whereNotIn('id', $id_products_hided)->inRandomOrder();
         if (isset($request->i)) {
-            $products->where('category_id', $request->i);
+            $products->where('category_id', $request->query('i'));
         }
-        $products = $products->paginate(10); // Lấy 10 sản phẩm
-        $max_page = $products->lastPage();
+        // Lấy 10 sản phẩm
+        $products = $products->paginate(10);
+        $max_page = $products->total();
         $products = $this->getUrlForImage($products->items());
         Session::flash('id_products_hided', array_merge($id_products_hided, Session::get('id_products_hided')));
         Session::flash('products_hided', array_merge($products_hided, Session::get('products_hided')));
-
         $products = array_merge($products_hided, $products);
-
         $render = [
             'products' => $products,
             'url' => route('products.home.post', ['product' => count($products), 'i' => $request->i]),
-            'max_page' => $max_page,
+            'max_page' =>  $max_page,
         ];
-
         return view('layouts.user.list-products', $render);
     }
 
@@ -63,13 +58,12 @@ class ProductUIController extends Controller
             ->where('category_id', $category_id)
             ->inRandomOrder()
             ->paginate(10);
-        $max_page = $products->lastPage();
+        $max_page = $products->total();
         $name_category = Category::query()->where('id', $category_id)->first('name_category');
 
         if (! isset($name_category)) {
             return abort(404);
         }
-
         $products = $this->getUrlForImage($products->items());
 
         $render = [
@@ -79,7 +73,6 @@ class ProductUIController extends Controller
             'max_page' => $max_page,
         ];
         Session::flash('url_back', url()->current());
-
         return view('user.products', $render);
     }
 
@@ -133,8 +126,7 @@ class ProductUIController extends Controller
         } elseif ($status_sort == 'SORT_ASC') {
             return SORT_ASC;
         }
-
-        return 0;
+        return abort(500);
     }
 
     private function getUrlForImage($products)
@@ -156,7 +148,6 @@ class ProductUIController extends Controller
         }
         Session::flash('products_hided', $products_hide);
         Session::flash('id_products_hided', $id_products_hide);
-
         return $products;
     }
 }

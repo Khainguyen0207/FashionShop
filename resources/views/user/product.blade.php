@@ -62,8 +62,8 @@
                     <p class="price" name='price'> Giá: {{ number_format($product->price, 0, ",", ".") }} <span class="sale" style="color: red"></span> VNĐ </p>
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
-                    <p class=""> Màu sắc: Đen, Trắng, Xám </p>
-                    <p class=""> Kích thước: S, M, L, XL </p>
+                    {{-- <p class=""> Màu sắc: Đen, Trắng, Xám </p>
+                    <p class=""> Kích thước: S, M, L, XL </p> --}}
                     <div class="quantity">
                         <span>Số lượng</span>
                         <div class="quantity-func">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="button-action">
-                        <a href="#" class="btn btn-buy">Mua ngay</a>
+                        <a href="{{route("user.cart.home")}}" class="btn btn-buy " style="margin-bottom: 5px;" data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
                         <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
                     </div>
                 </div>

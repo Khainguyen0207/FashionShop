@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -34,7 +36,18 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        return 'Hello';
+        $search = trim($request->query('search'));
+        $products = Product::where("product_name", 'LIKE', '%'.$search.'%')->paginate(10);
+        $max_page = $products->total();
+        $products = $this->getUrlForImage($products->items());
+        $render = [
+            'products' => $products,
+            'category_name' => 'Sản phẩm',
+            'url' => route('products.home.post', ['product' => count($products)]),
+            'max_page' => $max_page,
+        ];
+        Session::flash('url_back', url()->current());
+        return view('user.products', $render);
     }
 
     public function destroy()
@@ -45,6 +58,8 @@ class UserController extends Controller
 
     private function getUrlForImage($products)
     {
+        $products_hide = [];
+        $id_products_hide = [];
         foreach ($products as $key => $product) {
             $data_image = [];
             foreach (explode('|', $product['image']) as $key => $value) {
@@ -55,9 +70,11 @@ class UserController extends Controller
                 }
             }
             $product['image'] = $data_image;
-            $product['price'] = number_format($product['price'], 0, ',', '.');
+            array_push($products_hide, $product);
+            array_push($id_products_hide, $product->id);
         }
-
+        Session::flash('products_hided', $products_hide);
+        Session::flash('id_products_hided', $id_products_hide);
         return $products;
     }
 }
