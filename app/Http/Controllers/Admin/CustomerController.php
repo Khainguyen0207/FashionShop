@@ -11,8 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-const MAX_PAGE = 15;
-
 class CustomerController extends Controller
 {
     public function index()

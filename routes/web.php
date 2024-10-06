@@ -159,4 +159,3 @@ Route::prefix('/user')->middleware('CheckAuth')->group(function () {
     //Logout
     Route::delete('/logout', [UserController::class, 'destroy'])->name('user.logout');
 });
-

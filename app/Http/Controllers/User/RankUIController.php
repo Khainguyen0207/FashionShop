@@ -14,7 +14,7 @@ class RankUIController extends Controller
     {
         $user = User::query()->where('id', Auth::id())->first();
         $information = $user->attributesToArray();
-        if (!empty($information['avatar']) && Storage::exists($information['avatar'])) {
+        if (! empty($information['avatar']) && Storage::exists($information['avatar'])) {
             $information['avatar'] = Storage::url($information['avatar']);
         } else {
             $information['avatar'] = asset('assets/user/img/box.png');

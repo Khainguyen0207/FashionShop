@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\OrderModel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Schema;
-use App\Http\Controllers\RenderController;
 use App\Http\Controllers\FunctionController;
+use App\Http\Controllers\RenderController;
+use App\Models\OrderModel;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Schema;
 
 class OrderController extends Controller
 {
@@ -28,7 +28,7 @@ class OrderController extends Controller
                     $query->orWhere($key, 'LIKE', '%'.$value.'%');
                 }
             }
-        })->where("status", "00")->paginate(15);
+        })->where('status', '00')->paginate(15);
         if ($getOrders->currentPage() > $getOrders->lastPage()) {
             abort(404);
         }
@@ -50,7 +50,7 @@ class OrderController extends Controller
                     $query->orWhere($key, 'LIKE', '%'.$value.'%');
                 }
             }
-        })->where("status", "01")->paginate(15);
+        })->where('status', '01')->paginate(15);
         if ($getOrders->currentPage() > $getOrders->lastPage()) {
             abort(404);
         }
@@ -107,6 +107,7 @@ class OrderController extends Controller
     {
         $status_order = $this->status_order('edit');
         OrderModel::query()->where('id', $order_id)->update(['status' => $status_order, 'expired_at' => now()]);
+
         return redirect()->back()->with('success', 'Đã duyệt đơn hàng');
     }
 

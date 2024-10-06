@@ -18,8 +18,9 @@ class CheckAuth
     {
         $account = Auth::user();
         if (empty($account)) {
-            return back()->with("error", "Vui lòng đăng nhập");
+            return back()->with('error', 'Vui lòng đăng nhập');
         }
+
         return $next($request);
     }
 }

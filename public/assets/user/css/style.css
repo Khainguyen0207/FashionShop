@@ -202,7 +202,7 @@ section {
     color: black;
     background-color: transparent;
     margin-right: 10px;
-    outline: 2px solid lightcyan;
+    outline: 2px solid black;
 }
 
 #menu-bar .search input:focus-visible {

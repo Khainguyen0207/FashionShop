@@ -20,11 +20,15 @@
             </div>
         </div>
         <div id="hidden-list">
-            @include("layouts.user.list-products")
+            @if (count($products) > 0)
+                @include("layouts.user.list-products")
+            @else
+                <h3 style="padding: 10px 0">Sản phẩm hiện không có sẵn</h3>
+            @endif
         </div>
         <div class="events-vouchers" id="sale">
             <div class="events">
-                <h2 style="margin-bottom: 5px;">Sự kiện giảm giá cô bé quàng khăng đỏ</h2>
+                <h2 style="margin-bottom: 5px;">Sự kiện giảm giá cô bé quàng khăn đỏ</h2>
                 <a href="#" class="event-link">
                     <video class="img img-product-sale" autoplay muted loop>
                         <source src="{{ asset('assets/user/video/videoplayback.webm') }}" type="video/mp4">

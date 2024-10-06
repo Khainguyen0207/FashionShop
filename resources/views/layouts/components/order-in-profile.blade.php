@@ -33,6 +33,7 @@
                 <li class="">Thành tiền: <span class="total">{{number_format($order['total']), 0 , '.', '.'}} VNĐ</span></li>
                 <li><a href="#" class="order_details" onclick="hidden_product_order(event)">Nhấn để xem chi tiết đơn hàng</a></li>
                 @if ($status == "00")
+                    <li><a href="#" class="cancel_order" onclick="" data-url="" style="margin-left: 5px ">Chỉnh sửa đơn hàng</a></li>
                     <li><a href="#" class="cancel_order" onclick="destroy(event)" data-url="{{ route("profile.order.destroy", ['id' => $order['order_code']]) }}">Hủy đơn hàng</a></li>
                 @endif
             </ul>

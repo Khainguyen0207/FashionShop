@@ -14,5 +14,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void {}
+    public function boot(): void
+    {
+        define('MAX_PAGE_LOAD', 30);
+    }
 }

@@ -54,7 +54,7 @@
         </div>
         <div class="pay">
             <div class="header">
-                <h1>Hóa đơn sản phẩm</h1>
+                <h1>Hóa đơn</h1>
             </div>
             <div class="content">
                 <div class="product-add">

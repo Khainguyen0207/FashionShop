@@ -62,20 +62,41 @@
                     <p class="price" name='price'> Giá: {{ number_format($product->price, 0, ",", ".") }} <span class="sale" style="color: red"></span> VNĐ </p>
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
-                    {{-- <p class=""> Màu sắc: Đen, Trắng, Xám </p>
-                    <p class=""> Kích thước: S, M, L, XL </p> --}}
-                    <div class="quantity">
-                        <span>Số lượng</span>
-                        <div class="quantity-func">
-                            <a href="#" onclick="decrease(event)"><i class="fa-solid fa-minus increase"></i></a>
-                            <span class="quantity-product-buy" name="quantity-product-buy"> 19 </span>
-                            <a href="#" onclick="increase(event)"><i class="fa-solid fa-plus"></i></a>
-                        </div>
+                    <div class="select_type">
+                        <p class=""> Màu sắc
+                            <div class="type color">
+                                <a href="#" class="information_btn btn_color">Đen</a>
+                                <a href="#" class="information_btn btn_color">Trắng</a>
+                                <a href="#" class="information_btn btn_color">Xám</a>
+                            </div> 
+                        </p>
+                        <p class=""> Kích thước
+                            <div class="type size">
+                                <a href="#" class="information_btn btn_size">S</a>
+                                <a href="#" class="information_btn btn_size">M</a>
+                                <a href="#" class="information_btn btn_size">L</a>
+                                <a href="#" class="information_btn btn_size">XL</a>
+                            </div> 
+                        </p>
                     </div>
                     <div class="button-action">
                         <a href="{{route("user.cart.home")}}" class="btn btn-buy " style="margin-bottom: 5px;" data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
                         <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
                     </div>
+                    <script>
+                        btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button mua
+                        btn_sizes.forEach(element => {
+                            element.addEventListener('click', function(event) {
+                                event.preventDefault();
+                                let classname = event.currentTarget.classList[1]
+                                
+                                document.querySelectorAll(`.${classname}`).forEach(element_del => {
+                                    element_del.classList.remove("action")
+                                });
+                                element.classList.add("action");
+                            });
+                        });
+                    </script>
                 </div>
             </div>
             <div class="details-product" >

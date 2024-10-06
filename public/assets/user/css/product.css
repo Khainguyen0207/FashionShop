@@ -116,7 +116,7 @@ body {
     border-radius: 20px;
     height: 100px;
     background-color: rgba(0, 0, 0, 0.104);
-    transform: translateY(100%);
+    transform: translateY(20px);
     transition: 0.3s ease-in-out;
     z-index: -1;
 }

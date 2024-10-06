@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -21,6 +20,7 @@ class LoginController extends Controller
             dd(1);
             //return redirect(route('user.home'));
         }
+
         return redirect(route('login'));
     }
 

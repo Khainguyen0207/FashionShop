@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Carbon\Carbon;
-use App\Models\Product;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FunctionController;
+use App\Http\Controllers\RenderController;
 use App\Http\Requests\ProductRequest;
+use App\Models\Product;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Controllers\RenderController;
-use App\Http\Controllers\FunctionController;
-use Illuminate\Http\Request;
 
 const MAX_PAGE = 15;
 class ProductController extends Controller
@@ -37,11 +36,12 @@ class ProductController extends Controller
                     $query->orWhere($key, 'LIKE', '%'.$value.'%');
                 }
             }
-        })->where("category_id", $id_category)->paginate(15);
+        })->where('category_id', $id_category)->paginate(15);
         if ($getProducts->currentPage() > $getProducts->lastPage()) {
             abort(404);
         }
         $products = $this->getProducts($id_category, $getProducts);
+
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 

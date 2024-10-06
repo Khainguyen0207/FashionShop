@@ -23,7 +23,7 @@
 <div id="contact">
     <div class="test">
         <div class="contact">
-            <a href="https://www.facebook.com/messages/t/61558234972871" class="message">
+            <a href="https://www.facebook.com/ntkhai2005" class="message">
                 <img src="{{asset("assets/img/message.png")}}" style="" alt="zalo">
             </a>
         </div>
@@ -39,9 +39,9 @@
     <div class="search">
         <form action="" id="form_search" method="POST">
             @csrf
-            <input id="customer_code" type="text" name="search" placeholder="Tìm kiếm"> 
+            <input id="customer_code" type="text" name="search" placeholder="Tìm kiếm"  value="{{request()->query("search")}}"> 
         </form>
         <a href="{{ route("user.home.post") }}" onclick="" id="find">Tìm kiếm</a>
-        <a href="{{ url()->current()}}" onclick="" id="cancel" name="cancel">Huỷ</a>
+        <a href="{{  url()->current() }}" onclick="" id="cancel" name="cancel">Huỷ</a>
     </div>
 </div>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,19 +24,20 @@ class UserController extends Controller
             'categories' => $categories,
         ];
 
-        if (!empty($account)) {
+        if (! empty($account)) {
             $render += [
                 'name' => $account->name,
                 'role' => $account->role,
             ];
         }
+
         return view('user.home', $render);
     }
 
     public function store(Request $request)
     {
         $search = trim($request->query('search'));
-        $products = Product::where("product_name", 'LIKE', '%'.$search.'%')->paginate(10);
+        $products = Product::where('product_name', 'LIKE', '%'.$search.'%')->paginate(MAX_PAGE_LOAD);
         $max_page = $products->total();
         $products = $this->getUrlForImage($products->items());
         $render = [
@@ -48,15 +48,17 @@ class UserController extends Controller
         ];
         Session::flash('url_back', url()->current());
         if (empty($products)) {
-            return view('user.products', $render)->with("error", "Không có sản phẩm nào bạn có thể xem sản phẩm khacs");
+            return view('user.products', $render)->with('error', 'Không có sản phẩm nào bạn có thể xem sản phẩm khacs');
         }
+
         return view('user.products', $render);
     }
 
     public function destroy()
     {
         Auth::logout();
-        return redirect(route("user.home"));
+
+        return redirect(route('user.home'));
     }
 
     private function getUrlForImage($products)
@@ -78,6 +80,7 @@ class UserController extends Controller
         }
         Session::flash('products_hided', $products_hide);
         Session::flash('id_products_hided', $id_products_hide);
+
         return $products;
     }
 }
