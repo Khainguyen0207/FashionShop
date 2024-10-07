@@ -6,7 +6,9 @@
 @endpush
 
 @section('overview')
-    
+    <div class="overview">
+        <h1>Cài đặt giao diện trang</h1>
+    </div>
 @endsection
 @push('footer')
 @endpush

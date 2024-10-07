@@ -15,31 +15,10 @@ class RenderController extends Controller
     public static function render($view, $data)
     {
         $render_data = self::render_data_table($view);
-        switch ($view) {
-            case 'home':
-                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return self::dataExceptionRender($render_data, $data);
-                } else {
-                    return self::error_render(15 .'|'.$view);
-                }
-            case 'customer':
-                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return self::dataExceptionRender($render_data, $data);
-                } else {
-                    return self::error_render(15 .'|'.$view);
-                }
-            case 'product':
-                if (count($render_data) == count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return self::dataExceptionRender($render_data, $data);
-                } else {
-                    return self::error_render(15 .'|'.$view);
-                }
-            case 'order':
-                if (count($render_data) <= count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
-                    return self::dataExceptionRender($render_data, $data);
-                } else {
-                    return self::error_render(15 .'|'.$view);
-                }
+        if (count($render_data) <= count($data)) { //Kiểm tra số lượng key và value phải bắt buộc bằng nhau
+            return self::dataExceptionRender($render_data, $data);
+        } else {
+            return self::error_render(15 .'|'.$view);
         }
     }
 
@@ -62,6 +41,9 @@ class RenderController extends Controller
                 $ordercheck = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon', 'custom_button'];
 
                 return $ordercheck;
+            case 'settup':
+                $settup = [];
+                return $settup;
             default: self::error_render('Lỗi hệ thống - 68');
         }
     }

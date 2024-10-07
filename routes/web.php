@@ -1,23 +1,24 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Auth\ForgetPasswordController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ExcelController;
-use App\Http\Controllers\PayController;
-use App\Http\Controllers\User\OrderUIController;
-use App\Http\Controllers\User\ProductUIController;
-use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\User\RankUIController;
-use App\Http\Controllers\User\VoucherUIController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PayController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\User\RankUIController;
+use App\Http\Controllers\Admin\SettupController;
+use App\Http\Controllers\User\OrderUIController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\User\ProductUIController;
+use App\Http\Controllers\User\VoucherUIController;
+use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 
 Route::get('/getData', [PayController::class, 'return'])->name('getDataBanking');
 
@@ -122,6 +123,9 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
             return redirect()->back()->with('error', 'Không thể xóa đơn hàng');
         });
     });
+
+    //Setting
+    Route::get("/setting", [SettupController::class, "home"])->name("admin.setting.home");
 
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
