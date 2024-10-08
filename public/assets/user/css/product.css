@@ -147,6 +147,10 @@ body {
     background-color: red;
 }
 
+.list-products .products .product .btn-seen {
+    background-color: red;
+}
+
 .list-products .products .product .btn-cart {
     background-color: #89af7d;
 }

@@ -20,8 +20,13 @@ class CartController extends Controller
 
     public function store(Request $request, $product_id)
     {
+        if (empty($request->query("color")) || empty($request->query("size"))) {
+            session()->flash("error", "Vui lòng chọn kích thước và màu sắc");
+            return url()->previous();
+        }
         if (session()->get('cart') != null && array_key_exists($product_id, session()->get('cart'))) {
-            return redirect(url()->previous())->with('error', 'Sản phẩm đã được thêm vào trước đó');
+            session()->flash('error', 'Sản phẩm đã được thêm vào trước đó');
+            return url()->previous();
         }
         $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
 
@@ -35,14 +40,15 @@ class CartController extends Controller
         }
 
         $product['quantity'] = 1;
+        $product['color'] = $request->query("color");
+        $product['size'] = $request->query("size");
+
         $product['image'] = $data_image;
         $cart = session()->get('cart', []);
         $cart[$product_id] = $product;
         session()->put('cart', $cart);
-
-        return redirect(url()->previous())->with('success', 'Sản phẩm được thêm vào giỏ hàng');
+        return session()->flash('success', 'Tuyệt vời! Sản phẩm được thêm vào giỏ hàng');
     }
-
     public function destroy($id)
     {
         $cart = session()->get('cart', []);

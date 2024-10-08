@@ -63,14 +63,14 @@
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
                     <div class="select_type">
-                        <p class=""> Màu sắc
+                        <p class="">Chọn màu sắc
                             <div class="type color">
                                 <a href="#" class="information_btn btn_color">Đen</a>
                                 <a href="#" class="information_btn btn_color">Trắng</a>
                                 <a href="#" class="information_btn btn_color">Xám</a>
                             </div> 
                         </p>
-                        <p class=""> Kích thước
+                        <p class=""> Chọn kích thước
                             <div class="type size">
                                 <a href="#" class="information_btn btn_size">S</a>
                                 <a href="#" class="information_btn btn_size">M</a>
@@ -81,19 +81,25 @@
                     </div>
                     <div class="button-action">
                         <a href="{{route("user.cart.home")}}" class="btn btn-buy " style="margin-bottom: 5px;" data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
-                        <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
+                        <a href="#" id="cart" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}" data-option="">Thêm vào giỏ hàng</a>
                     </div>
                     <script>
-                        btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button mua
+                        btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button_buy
                         btn_sizes.forEach(element => {
                             element.addEventListener('click', function(event) {
                                 event.preventDefault();
                                 let classname = event.currentTarget.classList[1]
-                                
                                 document.querySelectorAll(`.${classname}`).forEach(element_del => {
                                     element_del.classList.remove("action")
                                 });
                                 element.classList.add("action");
+                                const button = document.querySelector("#cart");
+                                color = document.querySelector(`.btn_color.action`)
+                                size = document.querySelector(`.btn_size.action`)
+                                if (color !== null && size !== null) {
+                                    url = button.getAttribute("data-option");
+                                    button.setAttribute("data-option", `color=${color.text}&size=${size.text}`);
+                                }
                             });
                         });
                     </script>
