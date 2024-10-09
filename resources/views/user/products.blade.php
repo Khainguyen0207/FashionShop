@@ -3,6 +3,7 @@
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/product.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <title>Sản phẩm</title>
@@ -10,6 +11,55 @@
 
 @section('content')
     @include('layouts.user.header')
+    <div id="hide_option">
+        <div class="hide_option_hidden">
+            <div class="screen"></div>
+            <div class="select_type">
+                <h1 id="title title_product">Thông tin sản phẩm</h1>
+                <h2 class="product_name"></h2>
+                <p> Giá: <span class="price" name="price"></span> <span class="sale" style="color: red"></span></p>
+                
+                <p class="">Chọn màu sắc
+                    <div class="type color">
+                        <a href="#" class="information_btn btn_color">Đen</a>
+                        <a href="#" class="information_btn btn_color">Trắng</a>
+                        <a href="#" class="information_btn btn_color">Xám</a>
+                    </div> 
+                <p>
+                <p class=""> Chọn kích thước
+                    <div class="type size">
+                        <a href="#" class="information_btn btn_size">S</a>
+                        <a href="#" class="information_btn btn_size">M</a>
+                        <a href="#" class="information_btn btn_size">L</a>
+                        <a href="#" class="information_btn btn_size">XL</a>
+                    </div> 
+                <p>
+                <div class="button-action">
+                    <a href="" id="cart" class="btn btn-cart" data-url="" data-option="">Thêm vào giỏ hàng</a>
+                </div>
+            </div>
+        </div>  
+        <script>
+            btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button_buy
+            btn_sizes.forEach(element => {
+                element.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    let classname = event.currentTarget.classList[1]
+                    document.querySelectorAll(`.${classname}`).forEach(element_del => {
+                        element_del.classList.remove("action")
+                    });
+                    element.classList.add("action");
+                    const button = document.querySelector("#cart");
+                    color = document.querySelector(`.btn_color.action`)
+                    size = document.querySelector(`.btn_size.action`)
+                    if (color !== null && size !== null) {
+                        url = button.getAttribute("data-option");
+                        button.setAttribute("data-option", `color=${color.text}&size=${size.text}`);
+                    }
+                });
+            });
+        </script>
+    </div>
     <div id="container">
         <div class="header">
             <div class="title"><h1>{{ $category_name }}</h1></div>
@@ -68,6 +118,8 @@
     @include('layouts.user.footer')
     <footer>
         <script src="{{asset('assets/user/js/products.js')}}"></script>
+        <script>cart()</script>
+        <script src="{{asset('assets/user/js/cart.js')}}"></script>
         <script>seen()</script>
     </footer>
 @endsection

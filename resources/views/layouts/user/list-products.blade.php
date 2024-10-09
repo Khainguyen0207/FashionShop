@@ -13,7 +13,7 @@
                     <p class="sale-price">{{ number_format($product->price, 0, ",", ".")}} VNĐ</p>
                 </div>
                 <a href="{{route('product.id', [$product->category_id , $product->id])}}" class="btn btn-seen " style="margin-bottom: 5px" data-url="{{ route('user.cart.post', $product->id) }}">Xem chi tiết</a>
-                <a href="{{route('product.id', [$product->category_id , $product->id])}}" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
+                <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
             </div>
         @endforeach
     </div>
@@ -24,4 +24,3 @@
         <a href="#" id="load_products" onclick="update(event)" data-url="{{ $url }}" class="seen">Xem thêm</a> 
     @endif
 </div>
-<script>seen()</script>

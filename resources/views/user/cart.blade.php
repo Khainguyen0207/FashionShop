@@ -28,6 +28,7 @@
                             <div class="informations information-product">
                                 <div class="truncate-1"><p class="product_name">Tên sản phẩm: <span class="name">{{ $item['product_name'] }}</span></p> </div>
                                 <div class="product_code"><p class="product_code">Mã sản phẩm: <span class="code">{{ $item['product_code'] }}</p> </div>
+                                <div class="option_products"><p class="product_code">Màu sắc và kích thước: <span class="color">{{ $item['product_color'] }} - <span class="code">{{ $item['product_size'] }}</p> </div>
                                 <p class="sale-price">Giá:  <span class="price">{{ number_format($item['price'], 0, ',', '.') }}</span> VNĐ </p>
                                 <div class="quantity">
                                     <span>Số lượng:</span>

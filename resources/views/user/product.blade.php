@@ -3,8 +3,8 @@
     <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/product-id.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/product.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <title>Sản phẩm</title>
@@ -132,7 +132,7 @@
                         <p class="sale-price">129.000 VNĐ</p>
                     </div>
                     <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                    <a href="#" class="btn btn-cart" >Thêm vào giỏ hàng</a>
+                    <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
                 </div>  
                 @endfor
             </div>
