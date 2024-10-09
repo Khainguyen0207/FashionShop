@@ -43,6 +43,7 @@ class RenderController extends Controller
                 return $ordercheck;
             case 'settup':
                 $settup = [];
+
                 return $settup;
             default: self::error_render('Lỗi hệ thống - 68');
         }
