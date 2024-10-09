@@ -19,6 +19,11 @@
                         @foreach ($order_information as $order_id => $order_value)
                             <p style=" padding: 5px 0px">Sản phẩm: <span>{{ $order_value['name'] }}</span></p>
                             <p style=" padding: 5px 0px">Thành tiền: <span>{{ number_format($order_value['price_product'], 0, ",", ".") }} VNĐ</span></p>
+                            @if (!empty($order_value['describe']))
+                                <p style="border-top: 10px;">Màu sắc và kích thước: <span class="describe">{{ $order_value['describe'] }}</span></p>
+                            @else
+                                <p style="border-top: 10px;">Màu sắc và kích thước: <span class="describe">Không có giá trị</span></p>
+                            @endif
                             <p style=" padding: 5px 0px">Số lượng: <span>{{ $order_value['quantity']}}</span></p>
                             <p style="border-bottom: 1px solid; margin-bottom: 10px;"></p>
                         @endforeach

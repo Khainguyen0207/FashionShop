@@ -177,7 +177,6 @@ class PayController extends Controller
             'status' => '00',
             'expired_at' => Carbon::now()->toDateTime(),
         ];
-
         //kiểm tra số lượng tồn kho của đơn hàng nếu số lượng hết thì báo error và kèm LH: với người bán
         if ($request->query('method_payment') == 'homebank') {
             try {

@@ -14,6 +14,7 @@
                         <li>Địa chỉ: <span class="address">{{ $order['address'] }}</span></li>
                     </div>
                     @foreach ($order['products'] as $product)
+                    @dd($product)
                         <div class="info" id="{{ $product['id'] }}">
                             <div class="image_product">
                                 <a href=""><img class="image" style="width: 100%; border-radius: 10px;padding-top: 5px;" src="{{ $product['image'] }}" alt="anh_san_pham">

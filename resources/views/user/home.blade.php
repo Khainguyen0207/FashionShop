@@ -175,11 +175,10 @@
                                     </a>
                                     <div class="informations information-product ">
                                         <div class="truncate-1"><p class="product_name">{{ $product['product_name'] }}</p> </div>
-                                        <p class="sale-price">{{ $product['price'] }} VNĐ</p>
+                                        <p class="sale-price">{{ number_format($product['price'], 0, ",", ".") }} VNĐ</p>
                                     </div>
                                     <a href="{{ route("user.cart.home") }}" class="btn btn-buy" style="margin-bottom: 5px;" data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
                                     <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a> 
-                                    {{-- Thêm data-url --}}
                                 </div>
                             @endforeach
                             

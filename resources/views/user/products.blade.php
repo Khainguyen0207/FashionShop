@@ -35,7 +35,8 @@
                     </div> 
                 <p>
                 <div class="button-action">
-                    <a href="" id="cart" class="btn btn-cart" data-url="" data-option="">Thêm vào giỏ hàng</a>
+                    <a href="#" class="btn btn-cancel" onclick="event.preventDefault(); document.querySelector('.screen').click();">Hủy</a>
+                    <a href="" id="cart" class="btn btn-cart" onclick="addCart(event)" data-option="">Thêm vào giỏ hàng</a>
                 </div>
             </div>
         </div>  
@@ -52,6 +53,7 @@
                     const button = document.querySelector("#cart");
                     color = document.querySelector(`.btn_color.action`)
                     size = document.querySelector(`.btn_size.action`)
+
                     if (color !== null && size !== null) {
                         url = button.getAttribute("data-option");
                         button.setAttribute("data-option", `color=${color.text}&size=${size.text}`);
@@ -119,7 +121,5 @@
     <footer>
         <script src="{{asset('assets/user/js/products.js')}}"></script>
         <script>cart()</script>
-        <script src="{{asset('assets/user/js/cart.js')}}"></script>
-        <script>seen()</script>
     </footer>
 @endsection

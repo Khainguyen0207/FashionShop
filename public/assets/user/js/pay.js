@@ -35,12 +35,15 @@ function checkEmptyInformation(event) {
         var ids = []
         document.querySelectorAll("#id_table_product").forEach(element => {
             var id = element.value
+            console.log(element.parentElement.childNodes);
+            
             ids.push(
                 {
                     "id": id, //Lấy id từ table 
-                    "name": element.parentElement.childNodes[3].textContent, //Lấy name từ table 
-                    "quantity": element.parentElement.childNodes[5].textContent, //Lấy quantity từ table
-                    "price_product": parseInt(element.parentElement.childNodes[7].querySelector(".total").textContent.replace(/\./g, '')), //Lấy price_product từ table
+                    "name": element.parentElement.childNodes[5].textContent, //Lấy name từ table
+                    "describe": element.parentElement.childNodes[3].value,
+                    "quantity": element.parentElement.childNodes[7].textContent, //Lấy quantity từ table
+                    "price_product": parseInt(element.parentElement.childNodes[9].querySelector(".total").textContent.replace(/\./g, '')), //Lấy price_product từ table
                 }
             )
         });

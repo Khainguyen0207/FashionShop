@@ -40,6 +40,7 @@
                         @foreach ($products as $info_product_bill)
                             <tr>
                                 <input type="hidden" id="id_table_product" name="id" value="{{ $info_product_bill['id'] }}">
+                                <input type="hidden" id="describe" name="describe" value="{{ $info_product_bill['describe'] }}">
                                 <td>{{ $info_product_bill['name'] }}</td>
                                 <td>{{ $info_product_bill['quantity'] }}</td>
                                 <td><span class="total">{{ number_format($info_product_bill['price_product'] , 0, ",", ".") }}</span> VNĐ</td>

@@ -114,6 +114,7 @@ function setSumTotalForTable() { //set lại giá trị sau khi thay đổi
                     let product = {
                         id: code,
                         quantity: parseInt(quantity.textContent),
+                        describe: element.getElementsByClassName('color')[0].textContent,
                         name: element.getElementsByClassName('name')[0].textContent,
                         price_product: price_product,
                     }
