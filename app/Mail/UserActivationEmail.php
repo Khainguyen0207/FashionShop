@@ -46,7 +46,7 @@ class UserActivationEmail extends Mailable
                 'title' => $this->title,
                 'code' => $this->code,
                 'mail_contact' => 'name.fashion.store@gmail.com',
-                'name' => 'JSON',
+                'name' => '',
             ],
         );
     }
