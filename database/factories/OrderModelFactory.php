@@ -12,7 +12,7 @@ class OrderModelFactory extends Factory
 {
     public function definition(): array
     {
-        $product = '[{"id":"MSSP1089986","name":"Áo thun hình thỏ 7 màu","quantity":"1","price_product":120000},{"id":"MSSPN5","name":"Áo cúp","quantity":"1","price_product":45000}]';
+        $product = '[{"id":"MSSP27","name":"Áo Phông Trơn","describe":"Trắng - L","quantity":"1","price_product":250000}, {"id":"MSSP27","name":"Áo Phông Trơn","describe":"Đen - S","quantity":"2","price_product":250000}]';
 
         return [
             'order_code' => 'FSCO'.$this->faker->unique()->randomNumber(),

@@ -14,7 +14,6 @@
                         <li>Địa chỉ: <span class="address">{{ $order['address'] }}</span></li>
                     </div>
                     @foreach ($order['products'] as $product)
-                    @dd($product)
                         <div class="info" id="{{ $product['id'] }}">
                             <div class="image_product">
                                 <a href=""><img class="image" style="width: 100%; border-radius: 10px;padding-top: 5px;" src="{{ $product['image'] }}" alt="anh_san_pham">
@@ -25,6 +24,7 @@
                             <div class="information_product">
                                 <li>Tên sản phẩm: <span class="name_product">{{ $product['name'] }}</span></li>
                                 <li style="border-top: 10px;">Thành tiền:  <span class="total-product">{{ number_format($product['price_product']), 0 , '.', '.' }} VNĐ</span></li>
+                                <li style="border-top: 10px;">Màu sắc và kích thước: <span class="describe">{{ $product['describe']}}</span></li>
                                 <li>Số lượng : <span class="quantity-product">{{ $product['quantity'] }}</span></li>
                                 <li><a href="#">Xem chi tiết sản phẩm</a></li>
                             </div>

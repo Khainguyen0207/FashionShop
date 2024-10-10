@@ -11,7 +11,7 @@
             <tr style="display: block;border-bottom: 1px solid gray;">
                 <td style="height: 30px;">
                     <table style="position: relative; display: block;">
-                        <tr style="position: relative;display: flex; justify-content: space-between;">
+                        <tr style="position: relative;display: flex; align-items: center;">
                             <td>
                                 <img style="display:block; width: 20%;" src="{{ $message->embed(asset('assets/img/logo-2.png')) }}" alt="logo">
                             </td>
