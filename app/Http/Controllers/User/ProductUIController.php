@@ -126,9 +126,14 @@ class ProductUIController extends Controller
     {
         $products = Session::get('products_hided');
         Session::reflash();
-        $prices = array_column($products, 'price'); // Lấy cột giá
-        $status_sort = strtoupper('SORT_'.$request->arrange);
-        array_multisort($prices, $this->getCodeSort($status_sort), $products); // Sắp xếp sản phẩm theo giá tăng dần
+        
+        if ($request->arrange != "buy_much") {
+            $prices = array_column($products, 'price'); // Lấy cột giá
+            array_multisort($prices, $this->getCodeSort($request->arrange), $products); // Sắp xếp sản phẩm theo giá tăng dần or giảm dần
+        } else {
+            $prices = array_column($products, 'sold_quantity'); // Lấy cột giá
+            array_multisort($prices, SORT_DESC, $products); // Sắp xếp sản phẩm theo giá tăng dần or giảm dần
+        }
 
         $render = [
             'products' => $products,
@@ -141,12 +146,11 @@ class ProductUIController extends Controller
 
     private function getCodeSort($status_sort)
     {
-        if ($status_sort == 'SORT_DESC') {
+        if ($status_sort == 'desc') {
             return SORT_DESC;
-        } elseif ($status_sort == 'SORT_ASC') {
+        } elseif ($status_sort == 'asc') {
             return SORT_ASC;
         }
-
         return abort(500);
     }
 

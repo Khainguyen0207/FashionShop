@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderModel;
+use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,6 @@ class PayController extends Controller
         $vnp_ReturnUrl = route('getDataBanking'); // URL nhận kết quả trả về
 
         // Lấy thông tin từ đơn hàng phục vụ thanh toán
-        // Dưới đây là thông tin giả định, bạn có thể lấy thông tin đơn hàng của bạn  để thay thế
         $order = (object) [
             'code' => $information_order['order_code'],  // Mã đơn hàng
             'total' => $request->amount, // Số tiền cần thanh toán (VND)
@@ -134,20 +134,25 @@ class PayController extends Controller
         $secureHash = hash_hmac('sha512', $hashData, env('VNP_HASHSECRET'));
         if ($secureHash === $vnp_SecureHash) {
             if ($request->vnp_ResponseCode == '00') {
+                $information_order = session('order');
+                $order_information = json_decode($information_order['order_information'], true);
                 try {
-                    OrderModel::query()->create(session('order'));
+                    foreach ($order_information as $key => $value) {
+                        $sold = Product::query()->where('product_code', $order_information[$key]['id'])->first()->sold_quantity;
+                        Product::query()->where('product_code', $order_information[$key]['id'])->update(["sold_quantity" => $sold + $order_information[$key]['quantity']]);
+                    }
+                    OrderModel::query()->create($information_order);
                 } catch (\Throwable $th) {
                     return redirect(route('user.home'))->with('error', 'Lỗi hệ thống: Vui lòng liên hệ admin để xử lí');
                 }
                 session()->put('cart', session('bill'));
-
                 return redirect(route('user.home'))->with('success', 'Đơn hàng được đặt thành công và chờ người bán chuẩn bị');
             } else {
                 return redirect(route('user.home'))->with('error', 'Thanh toán không thành công');
             }
         } else {
 
-            return redirect(route('user.home'))->with('error', 'Đặt hàng thất bại');
+            return redirect(route('user.home'));
         }
     }
 
@@ -165,7 +170,7 @@ class PayController extends Controller
             }
         }
         $date = Carbon::now();
-        $order_code = 'FSCO'.$date->year.$date->month.$date->day.$date->hour.$date->minute.$date->second.rand(0, 100);
+        $order_code = ''.$date->year.$date->month.$date->day.$date->hour.$date->minute.$date->second.rand(0, 100);
         //Nhập liệu đơn hàng
         $information_order = [
             'order_code' => $order_code, //Fashion code order
@@ -180,6 +185,10 @@ class PayController extends Controller
         //kiểm tra số lượng tồn kho của đơn hàng nếu số lượng hết thì báo error và kèm LH: với người bán
         if ($request->query('method_payment') == 'homebank') {
             try {
+                foreach ($ids as $key => $value) {
+                    $sold = Product::query()->where('product_code', $ids[$key]['id'])->first()->sold_quantity;
+                    Product::query()->where('product_code', $ids[$key]['id'])->update(["sold_quantity" => $sold + $ids[$key]['quantity']]);
+                }
                 OrderModel::query()->create($information_order);
             } catch (\Throwable $e) {
                 Log::error('Có lỗi xảy ra', ['error' => $e->getMessage()]);
