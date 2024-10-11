@@ -7,7 +7,13 @@
 
 @section('overview')
     <div class="overview">
-        <h1>Cài đặt giao diện trang</h1>
+        <h1 class="title">Cài đặt giao diện trang</h1>
+        <div class="setup-admin">
+            
+        </div>
+        <div class="setup-user">
+            
+        </div>
     </div>
 @endsection
 @push('footer')

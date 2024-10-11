@@ -40,8 +40,8 @@
                             <img  style="width: 64px; height: 64px; justify-content: center;" src="{{asset('assets/admin/img/money.png')}}" alt="">
                         </div>
                         <div class="content-box">
-                            <li>Tổng doanh thu 2024</li>
-                            <li><i class="fa-solid fa-dollar-sign"></i> {{ $total}}</li>
+                            <li>Doanh thu tháng <span id="month"></span></li>
+                            <li><i class="fa-solid fa-dollar-sign"></i> {{ number_format($total, 0, ",", ".") }}</li>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,8 @@
             <div class="chart">
                 <canvas id="myChart" width="100%"></canvas>
                 <script>
-                    const currentYear = new Date().getFullYear();
+                    const currentYear = new Date();
+                    document.querySelector("#month").textContent = currentYear.getMonth() + 1;
                     const ctx = document.getElementById('myChart');
                     new Chart(ctx, {
                         type: 'bar',
@@ -79,7 +80,7 @@
                                 x: {
                                     title: {
                                         display: true,
-                                        text: 'Bảng thống kê số lượng sản phẩm bán ra và doanh thu theo từng tháng năm ' + currentYear
+                                        text: 'Bảng thống kê số lượng sản phẩm bán ra và doanh thu theo từng tháng năm ' + currentYear.getFullYear()
                                     }
                                 }
                             },

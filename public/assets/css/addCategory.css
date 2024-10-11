@@ -68,9 +68,10 @@
     font-size: 16px;
     padding: 9px 12px;
     width: 100%;
-    border: 1px solid lightgray;
+    border: 1px solid transparent;
     border-radius: 5px;
     outline: 0;
+    box-shadow: 0px 0px 4px 2px #bababad6;
 }
 
 #addCategory .container .input:focus {

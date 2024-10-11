@@ -3,7 +3,7 @@
         <form action="{{ route('order.pending.edit', $id) }}"  class="my-animation" method="POST" enctype="multipart/form-data">
             @csrf
                 <div class="header">
-                    <h2 class="tittle">Xem thông tin đơn hàng</h2>
+                    <h2 class="tittle">Thông tin đơn hàng</h2>
                 </div>
                 <div class="container">
                     <div class="information-product">
@@ -17,7 +17,7 @@
                         <input type="text" name="address" class="input" spellcheck="false" value="{{ $address   }}" disabled>
                         <h4 style="padding: 5px 0px">Chi tiết đơn hàng</h4>
                         @foreach ($order_information as $order_id => $order_value)
-                            <p style=" padding: 5px 0px">Sản phẩm: <span>{{ $order_value['name'] }}</span></p>
+                            <p style=" padding: 5px 0px"><span style="color: rgb(0, 0, 0)">Sản phẩm</span>: <span>{{ $order_value['name'] }}</span></p>
                             <p style=" padding: 5px 0px">Thành tiền: <span>{{ number_format($order_value['price_product'], 0, ",", ".") }} VNĐ</span></p>
                             @if (!empty($order_value['describe']))
                                 <p style="border-top: 10px;">Màu sắc và kích thước: <span class="describe">{{ $order_value['describe'] }}</span></p>
