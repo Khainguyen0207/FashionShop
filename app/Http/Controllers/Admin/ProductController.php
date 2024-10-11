@@ -110,16 +110,11 @@ class ProductController extends Controller
         $images = [];
         foreach ($information_product->image as $key => $value) {
             $images[] = Storage::url($value);
+            $information_product->image = $images;
         }
         $render = [
             'title' => 'Chỉnh sửa sản phẩm',
-            'product_name' => $information_product->product_name,
-            'price' => $information_product->price,
-            'sold_quantity' => $information_product->sold_quantity,
-            'description' => $information_product->description,
-            'images' => $images,
-            'id_category' => $id_category,
-            'product_id' => $id,
+            ...$information_product->toArray(),
         ];
 
         return view('layouts.categories.product-add', $render);

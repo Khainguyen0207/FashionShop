@@ -1,6 +1,6 @@
 <div class="screen" onclick="clickAddCategory(event)"></div>
 <div id="addCategoryForm">
-    <form action="{{ route('category.products.update', [$id_category, $product_id])}}"  class="my-animation" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('category.products.update', [$category_id, $id])}}"  class="my-animation" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="header">
             <h2 class="tittle">{{ $title }}</h2>
@@ -13,15 +13,52 @@
                 <input type="number" class="input" name="price" id="" value="{{ $price }}" placeholder="Giá sản phẩm" required>
                 <p style="font-size: 20px; padding: 5px 0px">Số lượng</p>
                 <input type="number" class="input" name="sold_quantity" id="" value="{{ $sold_quantity }}"  placeholder="Số lượng sản phẩm" required>
+                <h3 style="font-size: 20px; padding: 5px 0px">Tùy chọn</h3>
+                <p style="font-size: 20px; padding: 5px 0px">Màu sắc</p>
+                <div class="color">
+                    <div class="option">
+                        <div class="name">
+                            <label for="">Tên</label>
+                            <input type="text" class="input">
+                        </div>
+                        <div class="price">
+                            <label for="">Giá trị</label>
+                            <input type="number" class="input">
+                        </div>
+                        <div class="action">
+                            <a href="" class="btn btn_action" title="delete"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <a href="" class="add_new">Thêm cột mới</a>
+                    <a href="" class="add_new">Sử dụng tùy chọn có sẵn</a>
+                </div>
+                <p style="font-size: 20px; padding: 5px 0px">Kích thước</p>
+                <div class="size">
+                    <div class="option">
+                        <div class="name">
+                            <label for="">Tên</label>
+                            <input type="text" class="input" >
+                        </div>
+                        <div class="price">
+                            <label for="">Giá trị</label>
+                            <input type="number" class="input" >
+                        </div>
+                        <div class="btn_action">
+                            <a href="" class="delete" title="delete"><i class="fa-solid fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <a href="" class="add_new">Thêm cột mới</a>
+                    <a href="" class="add_new" option="size">Sử dụng tùy chọn có sẵn</a>
+                </div>
                 <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
                 <textarea maxlength="5000" class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " value="" spellcheck="false" placeholder="Mô tả sản phẩm của bạn"  name="description" required>{{ $description }}</textarea>
             </div>
             <div class="image-product">
                 <p>Hình ảnh sản phẩm</p>
-                <label for="upload-photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
+                <label for="upload-photo" id="label_photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
                 <input type="file" id="upload-photo" name="image[]" multiple/>
                 <div id="preview">
-                    @foreach ($images as $item)
+                    @foreach ($image as $item)
                         <div style="display: inline-block;"><img src="{{ $item }}" style="height: 100px; max-width: 200px; display: block; margin-right: 5px; margin-bottom: 5px;"></div>
                     @endforeach
                 </div>

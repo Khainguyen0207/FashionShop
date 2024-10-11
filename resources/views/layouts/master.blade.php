@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         @stack('head')
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="alert">

@@ -81,7 +81,6 @@ a {
 
 .list-menu li:hover > a {
     background-color: lightgray;
-    border-radius: 0px 10px 10px 0px;
     border-left: 4px solid red;
     padding-left: 10px;
 }

@@ -24,13 +24,15 @@ class ProductSeeder extends Seeder
                 'category_id' => $value[7],
                 'price' => $value[5],
                 'image' => $this->getImage(),
+                'options' => "$value[3]|$value[4]",
                 'unsold_quantity' => floor(rand(0, 1000)),
                 'sold_quantity' => 0,
                 'description' => $value[6],
-                'created_at' => Carbon::now(),
+                'created_at' => Carbon::now(), 
                 'updated_at' => Carbon::now(),
             ];
         }
+
         Product::query()->insert($data);
     }
 
