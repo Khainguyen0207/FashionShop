@@ -27,6 +27,7 @@ body {
     width: 100%;
     gap: 15px;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .products {
@@ -34,7 +35,7 @@ body {
     display: block;
     background-color: var(--background-item);
     gap: 20px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     width: 70%;
 }
@@ -68,10 +69,10 @@ body {
 
 .products .product .information-product {
     display: flex;
-    font-size: 20px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
+    text-align: left;
 }
 
 .truncate-1 {
@@ -195,13 +196,14 @@ body {
     display: block;
     padding: 9px 12px;
     text-decoration: none;
-    border-radius: 20px;
+    border-radius: 15px;
     color: white;
     text-align: center;
 }
 
 .pay .footer .btn-pay {
     background-color: red;
+    display: inline-block;
 }
 
 .pay .footer .btn-voucher {

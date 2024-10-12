@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="footer">
-                <a href="#" class="btn btn-voucher" style="margin-bottom: 5px;">Voucher giảm giá</a>
+                {{-- <a href="#" class="btn btn-voucher" style="margin-bottom: 5px;">Voucher giảm giá</a> --}}
                 <a href="#" data-url="{{ route('user.pay.post') }}" class="btn btn-pay">Thanh toán</a>
             </div>
         </div>

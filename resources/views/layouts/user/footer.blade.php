@@ -16,6 +16,6 @@
         </div>
     </div>
     <h1>Cảm ơn</h1>
-        <li>Cảm ơn quý khách đã ghé thăm và mua sắm tại FashionStore. Chúng tôi luôn nỗ lực để mang đến cho quý khách trải nghiệm mua sắm tốt nhất!</li>
-    <p style="display:block;color: gray;float:right;">@Bản quyền thuộc về Fashionstore</p>
+    <li>Cảm ơn quý khách đã ghé thăm và mua sắm tại FashionStore. Chúng tôi luôn nỗ lực để mang đến cho quý khách trải nghiệm mua sắm tốt nhất!</li>
+    <p class="copy_right">@Bản quyền thuộc về Fashionstore</p>
 </div>

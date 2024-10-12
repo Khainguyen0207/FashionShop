@@ -75,10 +75,6 @@ body {
     text-align: center;
 }
 
-.products .product .information-product {
-    font-size: 20px;
-}
-
 .truncate-1 {
     display: -webkit-box;        
     -webkit-line-clamp: 1;      

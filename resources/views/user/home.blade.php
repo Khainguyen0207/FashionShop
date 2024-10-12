@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="events">
-                    <h2>Sự kiện và voucher</h2>
+                    <h2>Sự kiện</h2>
                     <div class="img img-events">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
@@ -145,8 +145,10 @@
                                 <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
                                 <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
                             </div>
-                            <a href="" class="btn btn-buy" style="margin-bottom: 5px;" >Mua ngay</a>
-                            <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
+                            <div class="action">
+                                <a href="" class="btn btn-buy">Mua ngay</a>
+                                <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
+                            </div>
                         </div>  
                     @endfor
                 </div>
@@ -177,8 +179,10 @@
                                         <div class="truncate-1"><p class="product_name">{{ $product['product_name'] }}</p> </div>
                                         <p class="sale-price">{{ number_format($product['price'], 0, ",", ".") }} VNĐ</p>
                                     </div>
-                                    <a href="{{ route("user.cart.home") }}" class="btn btn-buy" style="margin-bottom: 5px;" data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
-                                    <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a> 
+                                    <div class="action">
+                                        <a href="{{ route("user.cart.home") }}" class="btn btn-buy"  data-url="{{ route('user.cart.post', $product->id) }}">Mua ngay</a>
+                                        <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a> 
+                                    </div>    
                                 </div>
                             @endforeach
                             

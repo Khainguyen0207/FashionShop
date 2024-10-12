@@ -1,5 +1,5 @@
 <div id="header">
-    <a href="#"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
+    <a href="/"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
     <div class="bar">
         <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
         <div class="login">
@@ -36,12 +36,13 @@
         <li class="content-menu"><a href="#sale"><i class="fa-solid fa-ticket"></i> Khuyến mãi</a></li>
         <li class="content-menu"><a href="#footer"><i class="fa-solid fa-headset"></i> Liên hệ</a></li>
     </div>
+    <div class="menu_icon"><i class="fa-solid fa-bars fa-2xl"></i></div>
     <div class="search">
         <form action="" id="form_search" method="POST">
             @csrf
             <input id="customer_code" type="text" name="search" placeholder="Tìm kiếm"  value="{{request()->query("search")}}"> 
         </form>
-        <a href="{{ route("user.home.post") }}" onclick="" id="find">Tìm kiếm</a>
-        <a href="{{  url()->current() }}" onclick="" id="cancel" name="cancel">Huỷ</a>
+        <a href="{{ route("user.home.post") }}" onclick="" id="find"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <a href="{{  url()->current() }}" onclick="" id="cancel" name="cancel"><i class="fa-solid fa-x"></i></a>
     </div>
 </div>
