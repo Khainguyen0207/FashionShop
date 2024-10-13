@@ -23,14 +23,14 @@ body {
 #container {
     position: relative;
     background-color: var(--background);
-    padding: 20px;
+    padding: 10px;
 }
 
 #container .form-order {
     position: relative;
     display: block;
     background-color: var(--background-item);
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
 }
 
@@ -38,7 +38,7 @@ body {
     border-bottom: 2px lightgray solid;
 }
 
-.form-order .content form {
+.form-order .content .information {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -92,27 +92,24 @@ body {
     display: flex;
     width: auto;
     flex-direction: row;
-    gap: 20px;
+    gap: 10px;
 }
 
-.payment-method .select-banking .action-select-banking {
-    border: 2px solid lightgray !important;
+.payment-method .select-banking .action-select-banking img {
+    outline: 2px solid lightgray !important;
     border-radius: 10px;
 }
 
 .payment-method .select-banking .banking {
-    border: 2px solid transparent;
+    outline: 2px solid transparent;
     max-height: 100px;
 }
 
 .form-order .content .payment-method img {
     position: relative;
     width: auto;
-    width: 100%;
-    max-height: 100px;
-    max-width: 100px;
-    height: 100%;
-    width: auto;
+    height: 100px;
+    width: 100px;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -126,7 +123,7 @@ body {
     display: inline-block;
     padding: 9px 12px;
     background-color: red;
-    border-radius: 20px;
+    border-radius: 10px;
     text-decoration: none;
     color: white;
 }

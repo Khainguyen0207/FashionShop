@@ -26,7 +26,7 @@ h1 {
 .back {
     position: relative;
     background-color: var(--background);
-    padding: 20px;
+    padding: 10px;
 }
 
 .back a {
@@ -47,27 +47,27 @@ h1 {
 #container {
     width: 100%;
     background-color: var(--background);
-    padding: 20px;
+    padding: 10px;
 }
 
 #container .data-table {
     background-color: var(--background-item);
-    padding: 20px;
-    border-radius: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    word-wrap: break-word;
+
 }
 
 #container .information-product {
     position: relative;
     display: flex;
-    font-size: 20px;
     gap: 10px;
 }
 
 #container .list-products .information-product {
     position: relative;
     display: block;
-    font-size: 20px;
-}
+    }
 
 .information-product .images-product {
     display: block;
@@ -207,5 +207,4 @@ h1 {
 
 .data-table .details-product .detail {
     list-style: none;
-    font-size: 20px;
 }

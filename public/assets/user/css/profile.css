@@ -9,12 +9,14 @@
     box-sizing: border-box;
     background-color: var(--background);
     padding: 10px;
-    
+    gap: 10px;
 }
 
 #container .avatar-menu {
     position: relative;
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #container .avatar-menu .avt {
@@ -22,7 +24,6 @@
     background-color: #d5edcc;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
     height: 200px;
     align-items: center;
     justify-content: center;
@@ -96,7 +97,6 @@
 
 #container .menu li {
     display: block;
-    font-size: 20px;
     font-weight: 600;
     background-color: var(--background-btn);
     border-radius: 10px;
@@ -114,8 +114,7 @@
     display: block;
     width: 100%;
     background-color: var(--background-item);
-    margin-left: 10px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 5px;
 }
 

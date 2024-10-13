@@ -29,7 +29,7 @@ body {
     background-color: #f6ebeb;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     overflow: auto;
 }
 
@@ -86,7 +86,7 @@ body {
     gap: 10px;
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     overflow: hidden;
 }
 

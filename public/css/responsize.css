@@ -1,4 +1,21 @@
+@media (max-width: 390px) {
+  body #container .avatar-menu {
+    flex-direction: row;
+  }
+  body #container .products {
+    width: 100%;
+  }
+  body #container .products .products-info .product .img {
+    display: none;
+  }
+}
 @media (max-width: 576px) {
+  body #header {
+    height: 10vh;
+  }
+  body #header .bar a {
+    padding: 5px 10px;
+  }
   body #menu-bar {
     font-size: 14px;
     padding: 5px 10px 0 10px;
@@ -13,9 +30,22 @@
   body #menu-bar .menu {
     display: none;
   }
+  body #menu-bar .search #find, body #menu-bar .search #cancel {
+    padding: 5px 10px;
+  }
+  body #menu-bar .search input {
+    padding: 5px;
+  }
   body #container {
     flex-wrap: wrap;
     padding: 10px;
+    font-size: 14px;
+  }
+  body #container .avatar-menu {
+    flex-direction: row;
+  }
+  body #container a.btn {
+    padding: 5px 10px;
   }
   body #container .promotions {
     flex-direction: column;
@@ -51,12 +81,9 @@
     gap: 5px;
     flex-direction: column;
   }
-  body #container .sale .products-sale .product-sale .action .btn-cart {
-    white-space: nowrap;
-    font-size: 13px;
-  }
   body #container .sale .products-sale .product-sale .action a {
     width: 100%;
+    padding: 5px 10px;
   }
   body #container .list-products .products .product {
     width: calc(50% - 5px);
@@ -66,24 +93,73 @@
     gap: 5px;
     flex-direction: column;
   }
-  body #container .list-products .products .product .action .btn-cart {
-    white-space: nowrap;
-    font-size: 13px;
-  }
   body #container .list-products .products .product .action a {
     width: 100%;
+    padding: 5px 10px;
   }
   body #container .products {
     width: 100%;
   }
+  body #container .products .product #select-product {
+    max-width: 20px;
+  }
+  body #container .products .product .btn {
+    width: 100%;
+    padding: 5px 10px;
+  }
+  body #container .products .products-info .product .img {
+    max-width: 200px;
+    min-width: 100px;
+  }
   body #container .pay {
     width: 100%;
+  }
+  body #container .header {
+    flex-wrap: wrap;
+  }
+  body #container .header .fill .fill-item {
+    padding: 5px 10px;
+  }
+  body #container .data-table .information-product {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  body #container .data-table .information-product .images-product {
+    width: 100%;
+  }
+  body #container .data-table .information-product .information {
+    width: 100%;
+  }
+  body #container .form-order .content .recipient-information input {
+    width: 100%;
+  }
+  body #container .form-order .content .order-information {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  body #container .form-order .content .order-information table {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method .select-banking {
+    flex-wrap: wrap;
+  }
+  body #footer {
+    font-size: 14px;
+  }
+  body .back a {
+    padding: 5px 10px;
   }
 }
 @media (min-width: 577px) and (max-width: 768px) {
+  body .back a {
+    padding: 5px 10px;
+  }
   body #menu-bar {
-    font-size: 14px;
-    padding: 5px 10px 0 10px;
+    padding: 5px 10px;
   }
   body #menu-bar input {
     font-size: 14px;
@@ -95,9 +171,21 @@
   body #menu-bar .menu {
     display: none;
   }
+  body #header .bar a {
+    padding: 5px 10px;
+  }
   body #container {
     flex-wrap: wrap;
     padding: 10px;
+  }
+  body #container .avatar-menu {
+    flex-direction: row;
+  }
+  body #container .header {
+    flex-wrap: wrap;
+  }
+  body #container .header .fill .fill-item {
+    padding: 5px 10px;
   }
   body #container .promotions {
     flex-direction: column;
@@ -138,6 +226,7 @@
   }
   body #container .sale .products-sale .product-sale .action a {
     width: 100%;
+    padding: 5px 10px;
   }
   body #container .list-products .products .product {
     width: calc(33.3333333333% - 10px);
@@ -151,8 +240,9 @@
     white-space: nowrap;
     font-size: 13px;
   }
-  body #container .list-products .products .product .action a {
+  body #container .list-products .products .product a.btn {
     width: 100%;
+    padding: 5px 10px;
   }
   body #container .products {
     width: 100%;
@@ -163,24 +253,44 @@
   body #container .pay {
     width: 100%;
   }
+  body #container .form-order .content .recipient-information input {
+    width: 100%;
+  }
+  body #container .form-order .content .order-information {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  body #container .form-order .content .order-information table {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method .select-banking {
+    flex-wrap: wrap;
+  }
 }
 @media (min-width: 769px) and (max-width: 992px) {
+  body #header .bar a {
+    padding: 6px 12px;
+  }
   body #menu-bar {
     font-size: 14px;
-    padding: 5px 10px 0 10px;
+    padding-right: 10px;
   }
   body #menu-bar input {
     font-size: 14px;
   }
   body #menu-bar .menu_icon {
-    display: block;
+    display: none;
     width: 100%;
   }
-  body #menu-bar .menu {
-    display: none;
+  body #menu-bar li a {
+    padding: 8px 12px !important;
+    font-size: 16px;
   }
   body #container {
-    flex-wrap: wrap;
     padding: 10px;
   }
   body #container .promotions {
@@ -209,6 +319,12 @@
   body #container .promotions .events-new_products img {
     height: 150px;
   }
+  body #container .header {
+    flex-wrap: wrap;
+  }
+  body #container .header .fill .fill-item {
+    padding: 6px 12px;
+  }
   body #container .sale .products-sale .product-sale {
     width: calc(25% - 10px);
   }
@@ -222,6 +338,7 @@
   }
   body #container .sale .products-sale .product-sale .action a {
     width: 100%;
+    padding: 6px 12px;
   }
   body #container .list-products .products .product {
     width: calc(25% - 10px);
@@ -234,8 +351,9 @@
   body #container .list-products .products .product .action .btn-cart {
     white-space: nowrap;
   }
-  body #container .list-products .products .product .action a {
+  body #container .list-products .products .product a.btn {
     width: 100%;
+    padding: 6px 12px;
   }
   body #container .products {
     width: 100%;
@@ -245,40 +363,146 @@
   }
   body #container .pay {
     width: 100%;
+  }
+  body #container .data-table .information-product .information .button-action a.btn {
+    padding: 6px 12px;
   }
 }
 @media (min-width: 993px) and (max-width: 1200px) {
   body {
-    font-size: 14px;
+    font-size: 16px;
+  }
+  body #menu-bar {
+    font-size: 16px;
+    padding-right: 10px;
   }
   body #menu-bar .menu_icon {
     display: none;
     width: 100%;
+  }
+  body #menu-bar li a {
+    font-size: 20px;
+    padding: 12px 20px !important;
+  }
+  body #container {
+    padding: 20px;
+    flex-wrap: unset;
+  }
+  body #container .header {
+    flex-wrap: wrap;
+  }
+  body #container .header .fill .fill-item {
+    padding: 6px 12px;
+  }
+  body #container .sale .products-sale .product-sale {
+    width: calc(20% - 10px);
+  }
+  body #container .sale .products-sale .product-sale .action {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  body #container .sale .products-sale .product-sale .action .btn-cart {
+    white-space: nowrap;
+  }
+  body #container .sale .products-sale .product-sale .action a {
+    width: 100%;
+    padding: 6px 12px;
+  }
+  body #container .list-products .products .product {
+    width: calc(20% - 10px);
+  }
+  body #container .list-products .products .product .action {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  body #container .list-products .products .product .action .btn-cart {
+    white-space: nowrap;
+  }
+  body #container .list-products .products .product a.btn {
+    width: 100%;
+    padding: 6px 10px;
+  }
+  body #container .products .product .img {
+    max-width: 200px;
+  }
+  body #container .form-order .content .recipient-information input {
+    width: 100%;
+  }
+  body #container .form-order .content .order-information {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  body #container .form-order .content .order-information table {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method {
+    width: 100%;
+  }
+  body #container .form-order .content .payment-method .select-banking {
+    flex-wrap: wrap;
   }
 }
 @media (min-width: 1201px) {
   body #menu-bar {
     font-size: 20px;
-    padding-right: 24px;
-  }
-  body #menu-bar input {
-    font-size: 20px;
+    padding-right: 10px;
   }
   body #menu-bar .menu_icon {
     display: none;
     width: 100%;
   }
-  body #menu-bar .menu {
-    display: flex;
-  }
   body #container {
-    flex-wrap: nowrap;
+    flex-wrap: unset;
+    padding: 10px;
+  }
+  body #container .interview {
     font-size: 20px;
   }
-  body #container .sale .products-sale {
-    justify-content: space-between;
+  body #container .header {
+    flex-wrap: wrap;
   }
-  body #container .list-products .products {
-    justify-content: space-between;
+  body #container .header .fill .fill-item {
+    padding: 6px 12px;
+  }
+  body #container .sale .products-sale .product-sale {
+    width: calc(20% - 10px);
+  }
+  body #container .sale .products-sale .product-sale .action {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  body #container .sale .products-sale .product-sale .action .btn-cart {
+    white-space: nowrap;
+  }
+  body #container .sale .products-sale .product-sale .action a {
+    width: 100%;
+    padding: 6px 12px;
+  }
+  body #container .list-products .products .product {
+    width: calc(20% - 10px);
+  }
+  body #container .list-products .products .product .action {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+  }
+  body #container .list-products .products .product a.btn {
+    display: block;
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+  body #container .list-products .products .product .image {
+    display: flex;
+    justify-content: center;
+  }
+  body #container .products .product .img {
+    max-width: 200px;
+  }
+  body #container .data-table .information-product .information .button-action a.btn {
+    padding: 6px 12px;
   }
 }

@@ -62,17 +62,19 @@ body {
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     justify-content: space-evenly;
 }
 
 .list-products .products .product {
     position: relative;
-    display: block;
+    display: flex;
     background-color: var(--background-item);
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .truncate-1 {

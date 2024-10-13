@@ -18,7 +18,7 @@
                 @if ($products != null)
                     @foreach ($products as $item)
                         <div class="product">
-                            <input style="width: 10%;max-width: 30px;" type="checkbox" name="select-product" id="select-product">
+                            <input style="width: 10%;" type="checkbox" name="select-product" id="select-product">
                             <a href="{{route('product.id', [$item['category_id'], $item['id']])}}" class="image">
                                 <img class="img img-product-sale" src="{{ $item['image'][0] }}" alt="review">
                                 <div class="animation-img">
@@ -26,7 +26,7 @@
                                 </div>
                             </a>
                             <div class="informations information-product">
-                                <div class="truncate-1"><p class="product_name">Tên sản phẩm: <span class="name">{{ $item['product_name'] }}</span></p> </div>
+                                <div><p class="product_name" style="color: brown;">Sản phẩm: <span style="color: black;" class="name">{{ $item['product_name'] }}</span></p> </div>
                                 <div class="product_code"><p class="product_code">Mã sản phẩm: <span class="code">{{ $item['product_code'] }}</p> </div>
                                 <div class="option_products"><p class="product_code">Màu sắc và kích thước: <span class="color">{{ $item['product_color'] }} - <span class="size">{{ $item['product_size'] }}</p> </div>
                                 <p class="sale-price">Giá:  <span class="price">{{ number_format($item['price'], 0, ',', '.') }}</span> VNĐ </p>
