@@ -30,13 +30,13 @@
     </div>
 </div>
 <div id="menu-bar">
+    <div class="menu_icon" tabindex="0"><i class="fa-solid fa-bars fa-2xl"></i></div>
     <div class="menu">
         <li class="content-menu"><a href="{{route('user.home')}}"><i class="fa-solid fa-house"></i> Trang chủ</a></li>
         <li class="content-menu"><a href="{{route('products.home')}}"><i class="fa-solid fa-box-open"></i> Sản phẩm</a></li>
         <li class="content-menu"><a href="#sale"><i class="fa-solid fa-ticket"></i> Khuyến mãi</a></li>
         <li class="content-menu"><a href="#footer"><i class="fa-solid fa-headset"></i> Liên hệ</a></li>
     </div>
-    <div class="menu_icon"><i class="fa-solid fa-bars fa-2xl"></i></div>
     <div class="search">
         <form action="" id="form_search" method="POST">
             @csrf

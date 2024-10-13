@@ -34,7 +34,7 @@ body {
     position: relative;
     display: block;
     background-color: var(--background-item);
-    gap: 20px;
+    gap: 10px;
     padding: 10px;
     border-radius: 10px;
     width: 70%;
@@ -92,14 +92,14 @@ body {
 .information-product .quantity {
     position: relative;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
 }
 
 .quantity .quantity-func {
     position: relative;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     color: var(--text-color);
     background-color: #d5edcc;
     padding: 5px;

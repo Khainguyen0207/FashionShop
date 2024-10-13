@@ -38,7 +38,7 @@
                                         <a href="#" onclick="increase(event)"><i class="fa-solid fa-plus increase"></i></a>
                                     </div>
                                 </div>
-                                <p class="total">Thành tiền:  <span class="sum-price">{{ number_format($item['price'], 0, ',', '.') }}</span> VNĐ</p>
+                                <p class="total">Tổng:  <span class="sum-price">{{ number_format($item['price'], 0, ',', '.') }}</span> VNĐ</p>
                                 <div class="nav" style="display:flex; width:100%; justify-content: space-between">
                                     <a href="{{route('product.id', [$item['category_id'], $item['id']])}}" class="seen-product">Chi tiết</a>
                                     <a href="" onclick="del_cart(event)" id="del_cart" data-url="{{route('user.cart.del',[$item['id']])}}" class="seen-product">Xóa</a>

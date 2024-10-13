@@ -31,18 +31,35 @@
         #menu-bar {
             font-size: 14px;
             padding: 5px 10px 0 10px;
-
+            z-index: 1;
             input {
                 font-size: 14px;
+            }
+            .menu {
+                display: none; // Ẩn menu mặc định
+                position: absolute; // Để menu có thể nằm bên dưới menu_icon
+                top: 0; // Định vị menu ngay bên dưới menu_icon
+                left: 0;
+                background: #cecece30; // Màu nền cho menu
+                backdrop-filter: blur(2px);
+                z-index: 100; // Đảm bảo menu nằm trên các phần tử khác
+                border-radius: 10px;
+                box-shadow: 0px 0px 4px 5px #ffffff;
+                &:hover {
+                    display: block; // Hiển thị menu khi hover hoặc focus
+                    li:hover,li:focus    {
+                        background-color: #9cf8d6;
+                    }
+                }
             }
 
             .menu_icon {
                 display: block;
-                width: 100%;
-            }
+                cursor: pointer;
 
-            .menu {
-                display: none;
+                &:focus + .menu {
+                    display: block ; // Hiển thị menu khi hover hoặc focus
+                }
             }
 
             .search {
@@ -213,16 +230,36 @@
         }
         #menu-bar {
             padding: 5px 10px;
+            z-index: 1;
             input {
                 font-size: 14px;
             }
+
+            .menu {
+                display: none; // Ẩn menu mặc định
+                position: absolute; // Để menu có thể nằm bên dưới menu_icon
+                top: 0; // Định vị menu ngay bên dưới menu_icon
+                left: 0;
+                background: #cecece30; // Màu nền cho menu
+                backdrop-filter: blur(2px);
+                z-index: 100; // Đảm bảo menu nằm trên các phần tử khác
+                border-radius: 10px;
+                box-shadow: 0px 0px 4px 5px #ffffff;
+                &:hover {
+                    display: block; // Hiển thị menu khi hover hoặc focus
+                    li:hover,li:focus    {
+                        background-color: #9cf8d6;
+                    }
+                }
+            }
+
             .menu_icon {
                 display: block;
-                width: 100%;
-            }
-    
-            .menu {
-                display: none;
+                cursor: pointer;
+
+                &:focus + .menu {
+                    display: block; // Hiển thị menu khi hover hoặc focus
+                }
             }
         }
         #header {

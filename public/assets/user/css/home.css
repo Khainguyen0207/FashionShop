@@ -163,11 +163,13 @@ body {
 .list-products-sale .products-sale .product-sale,
 .list-products .products .product {
     position: relative;
-    display: block;
+    display: flex;
     background-color: #fff6ea;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .truncate-1 {
