@@ -13,15 +13,12 @@
         <h1>Đơn hàng</h1>
     </div>
     <div class="toolbar">
-        <div class="menu">
-            <p><i class="fa-solid fa-bars fa-xl"></i></p>
-        </div>
         <div class="search">
             <form action="" method="get" id="form_search">
                 <input type="text" name="order_code" placeholder="Mã đơn hàng">
             </form>
-            <a href="{{ request()->fullUrl() }}" data-url="" id="find">Tìm kiếm</a>
-            <a href="{{ $url }}" data-url="" id="cancel">Hủy</a>
+            <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url=""><i class="fa-solid fa-magnifying-glass fa-xl"></i></a>
+            <a href="{{$url}}" onclick="" id="cancel" name="find"><i class="fa-solid fa-x fa-xl"></i></a>
         </div>
     </div> 
     @include('layouts.table')

@@ -35,10 +35,11 @@
     color: black;
     background-color: #ffffff;
     height: auto;
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     border-radius: 10px;
     left: 50%;
-    top: 10px;
+    top: 0;
     transform: translateX(-50%);
     transition: 1s;
     padding: 20px;
@@ -139,8 +140,8 @@ label {
     position: fixed;
     opacity: 1;
     display: inline-block;
-    animation-name: my-keyframes;
-    animation-duration: 0.5s;
+    /* animation-name: my-keyframes; */
+    animation-duration: 0.1s;
     animation-timing-function: ease-in-out;
     animation-delay: 0s;
     animation-iteration-count: 1;

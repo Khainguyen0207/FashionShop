@@ -87,7 +87,7 @@
                 <ul class="nav">
                     <li>{{ $category->name_category }} <span>| <i class="icon-edit fa-solid fa-pen-to-square"></i></span></li>
                     <li class="sub-menu">
-                        <a href="{{route('category.products.home', $category->id)}}">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
+                        <a href="#">Các sản phẩm <i class="icon-arrow fa-solid fa-caret-right"></i></a>
                         <ul class="list-small">
                             <li><a href="{{route('category.products.home', $category->id)}}">Sản phẩm</a></li>
                         </ul>

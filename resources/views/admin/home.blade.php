@@ -10,7 +10,7 @@
                 <div class="quantity-data">
                     <div class="customer box-quantity">
                         <div class="bg-box">
-                            <img  style="width: 64px; height: 64px; justify-content: center;" src="{{asset('assets/admin/img/user.png')}} " alt="user">
+                            <img src="{{asset('assets/admin/img/user.png')}} " alt="user">
                         </div>
                         <div class="content-box">
                             <li>Khách hàng</li>
@@ -19,7 +19,7 @@
                     </div>
                     <div class="product box-quantity">
                         <div class="bg-box">
-                            <img  style="width: 64px; height: 64px; justify-content: center;" src="{{asset('assets/admin/img/product-f')}}ashion.png" alt="">
+                            <img src="{{asset('assets/admin/img/product-f')}}ashion.png" alt="">
                         </div>
                         <div class="content-box">
                             <li>Sản phẩm</li>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="order-wait box-quantity">
                         <div class="bg-box">
-                            <img  style="width: 64px; height: 64px; justify-content: center;" src="{{asset('assets/admin/img/order.png')}}" alt="">
+                            <img src="{{asset('assets/admin/img/order.png')}}" alt="">
                         </div>
                         <div class="content-box">
                             <li>Đơn hàng chờ duyệt</li>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="sales box-quantity">
                         <div class="bg-box">
-                            <img  style="width: 64px; height: 64px; justify-content: center;" src="{{asset('assets/admin/img/money.png')}}" alt="">
+                            <img src="{{asset('assets/admin/img/money.png')}}" alt="">
                         </div>
                         <div class="content-box">
                             <li>Doanh thu tháng <span id="month"></span></li>
@@ -76,8 +76,10 @@
                             scales: {
                                 y: {
                                     beginAtZero: true,
+                                    
                                 },
                                 x: {
+                                    beginAtZero: true,
                                     title: {
                                         display: true,
                                         text: 'Bảng thống kê số lượng sản phẩm bán ra và doanh thu theo từng tháng năm ' + currentYear.getFullYear()

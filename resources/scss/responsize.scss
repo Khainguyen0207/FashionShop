@@ -71,11 +71,39 @@
                 }
             }
         }
-
         #container {
             flex-wrap: wrap;
             padding: 10px;
             font-size: 14px;
+            gap: 10px;
+            
+            .menu-bar {
+                display: none;
+                &:hover {
+                    display: block;
+                }
+                &:hover + .overview{
+                    display: none;
+                }
+            }
+
+            .menu-bar-icon {
+                display: block;
+                background-color: #FFFAE6;
+                padding: 10px;
+                border-radius: 10px;
+                height: min-content;
+
+                &:focus + .menu-bar {
+                    display: block;
+                }
+                
+                &:focus + .overview {
+                    display: none;
+                }
+            }
+
+            
             .avatar-menu {
                 flex-direction: row;
             }
@@ -159,7 +187,7 @@
                 .products-info {
                     .product {
                         .img {
-                            max-width: 200px;
+                            max-width: 150px;
                             min-width: 100px;
                         }
                     }
@@ -270,11 +298,7 @@
             }
         }
         #container {
-            flex-wrap: wrap;
             padding: 10px;
-            .avatar-menu {
-                flex-direction: row;
-            }
             .header {
                 flex-wrap: wrap;
                 .fill {

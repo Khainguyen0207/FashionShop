@@ -15,9 +15,6 @@
         <h1>Danh sách khách hàng</h1>
     </div>
     <div class="toolbar">
-        <div class="menu">
-            <p><i class="fa-solid fa-bars fa-xl"></i></p>
-        </div>
         <div class="search">
             <form action="" id="form_search" method="POST">
                 @csrf
@@ -25,8 +22,8 @@
                 <input id="customer_name" type="text" name="name" placeholder="Tên khách hàng"> 
                 <input id="email" type="email" name="email"placeholder="Email">
             </form>
-            <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url="">Tìm kiếm</a>
-            <a href="{{$url}}" onclick="" id="cancel" name="find">Huỷ</a>
+            <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url=""><i class="fa-solid fa-magnifying-glass fa-xl"></i></a>
+            <a href="{{$url}}" onclick="" id="cancel" name="find"><i class="fa-solid fa-x fa-xl"></i></a>
         </div>
     </div> 
     @include('layouts.table') 

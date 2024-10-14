@@ -8,35 +8,37 @@
     position: relative;
     display: flex;
     justify-content: space-around;
+    gap: 10px;
+    
+}   
+
+.statistics .quantity-data img {
+    position: relative;
+    display: block;
+    width: 100%;
 }
+
 
 .quantity-data .box-quantity {
     position: relative;
     display: flex;
     border-radius: 10px;
     background-color: #A6FF96;
-    width: 25%;
-    height: auto;
-    margin: 5px;
-    padding: 5px;
+    width: calc(100% / 4 - 10px);
     list-style: none;
     justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    gap: 10px;
 }
 
 .box-quantity .bg-box {
     position: relative;
-    width: 30%;
+    width: 50%;
 }
 
 .box-quantity .content-box {
     position: relative;
     font-family: "Urbanist", sans-serif;
-    font-size: 20px;
-    line-height: 200%;
-}
-
-#container .chart {
-    position: relative;
-    width: 100%;
 }
