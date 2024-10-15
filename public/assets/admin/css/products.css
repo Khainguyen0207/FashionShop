@@ -29,16 +29,14 @@ a {
     position: relative;
     display: inline-block;
     background-color: #FFFAE6;
-    margin: 5px 5px 5px 10px;
+    margin: 5px;
     border-radius: 10px;
-    height: 99vh;
 }
 
 .menu-bar .review p {
     position: relative;
     text-align: center;
     padding: 10px;
-    font-size: 20px;
     color: #FF0000;
 }
 
@@ -112,7 +110,7 @@ a {
     left: 0;
     right: 0;
     background-color: chartreuse;
-    padding: 12px 24px;
+    padding: 8px 10px;
     margin-bottom: 10px;
     border-radius: 10px;
     transition: 0.6s;
@@ -157,29 +155,23 @@ a {
     display: block;
     width: 100%;
     background-color: #FFFAE6;
-    z-index: -1;
     border-radius: 10px;
-    margin: 5px 5px 5px 10px;
-    height: 99vh;
-    padding: 20px;
-    overflow: auto;
-    max-height: 99vh;
+    padding: 10px;
+    margin: 5px;
 }
 
 .overview .tool-bar {
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
 }
 
 .tool-bar .interact_product .search_product {
     position: relative;
-    padding: 5px;
-    border-radius: 10px;
     display: flex;
     gap: 5px;
-    float: left;
+    padding: 5px;
+    align-items: flex-start;
 }
 
 .tool-bar .interact_product {
@@ -190,7 +182,7 @@ a {
 
 .interact_product .search_product a {
     background-color: chartreuse;
-    padding: 12px 24px; 
+    padding: 8px 10px;
     border-radius: 10px;
 }
 
@@ -199,11 +191,25 @@ a {
     transition: 0.3s;
 }
 
+#form_search {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
 .interact_product .search_product input {
     position: relative;
-    border: 1px solid rgb(208, 159, 159);
+    display: block;
+    border: 1px solid lightgray;
     border-radius: 10px;
-    padding: 12px 24px; 
+    padding: 8px 10px;
+}
+
+.interact_product .search_product input:focus-visible {
+    border: 1px solid transparent;
+    outline: none;
+    box-shadow: 0 0 10px 3px #6ef1ff;
 }
 
 .interact_product .fill_product {
@@ -228,11 +234,15 @@ a {
 
 .add_product .add_product_single a,
 .add_product .add_product_file a {
-    display: block;
+    display: flex;
     text-align: center;
     background-color: chartreuse;
     border-radius: 10px;
-    padding: 12px 24px;
+    padding: 8px 10px;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .add_product .add_product_single a:hover,

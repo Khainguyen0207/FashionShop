@@ -12,7 +12,6 @@
 table, th, td {
     position: relative;
     border-collapse: collapse;
-    font-size: 20px;
     width: 100%;
 }
 
@@ -93,9 +92,7 @@ td, th {
 }
 
 table {
-    display: block;
     border: 2px solid #70eb70;
-    border-radius: 7px;
 }
 
 .pages {

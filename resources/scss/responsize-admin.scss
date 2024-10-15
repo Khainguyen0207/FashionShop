@@ -1,12 +1,21 @@
 /* Khung chuẩn cho màn hình nhỏ (mobile) */
 @media (max-width: 576px) {
     body {
+        #addCategory {
+            form {
+                top: 0;
+                padding: 10px;
+                overflow: hidden;
+            }
+        }
         #container {
+            position: relative;
             flex-wrap: wrap;
             font-size: 14px;
             border-radius: 0;
+
             .menu-bar {
-                position: absolute;
+                position: fixed;
                 display: block;
                 left: -100%;
                 z-index: 100;
@@ -18,11 +27,18 @@
 
                 .list-menu {
                     height: 100vh;
+                    background-color: unset;
+                    .menu a{
+                        padding: 10px 5px;
+                    }
                 }
+
                 &:hover {
+                    
                     display: block;
                     left: 0;
                 }
+
                 &:hover + .overview{
                     display: none;
                 }
@@ -34,6 +50,7 @@
                 padding: 10px;
                 height: min-content;
                 width: 100%;
+
                 &:focus + .menu-bar {
                     display: block;
                     left: 0;
@@ -45,16 +62,15 @@
                     display: none;
                 }
             }
+
             .overview {
                 border-radius: 0;
+                padding: 5px;
+                margin: 0px;
                 #table {
                     width: 100%;
-                    overflow: auto;
                     .table-form {
-                        table {
-                            border: 1px solid #70eb70;
-                            border-radius: 0;
-                        }
+                        overflow-x: auto;
                     }
                 }
             }

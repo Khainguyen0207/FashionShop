@@ -4,8 +4,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,422&family=Roboto+Condensed:wght@504&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/responsize-admin.css') }}">
 @endpush
 @section('overview')
+
     <div id="addCategory">
         <div class="screen" onclick="clickAddCategory(event)"></div>
         <div id="addCategoryForm">
@@ -119,8 +121,8 @@
                             <input type="text" id="product_code" name="product_code" placeholder="Mã Sản Phẩm" >
                             <input type="text" name="product_name" placeholder="Tên Sản Phẩm" >
                         </form>
-                        <a href="{{ request()->fullUrl() }}" id="find" data-url="">Tìm kiếm</a>
-                        <a href="{{ $url }}" id="cancel" data-url="">Huỷ</a>
+                        <a href="{{ request()->fullUrl() }}" id="find" data-url=""><i class="fa-solid fa-magnifying-glass fa-xl"></i></a>
+                        <a href="{{ $url }}" id="cancel" data-url=""><i class="fa-solid fa-xmark fa-xl"></i></a>
                     </div>
                     <div class="fill_product">
                         <!-- Hàm hiển thị số sản phẩm  -->
@@ -138,7 +140,6 @@
         </section>
     </div>
 @endsection
-    
 @push('footer')
     <script src="{{asset('assets/admin/js/category.js')}}"></script>
     <script src="{{ asset('assets/admin/js/find.js') }}"></script> 

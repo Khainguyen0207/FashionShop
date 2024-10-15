@@ -43,6 +43,6 @@
             <input id="customer_code" type="text" name="search" placeholder="Tìm kiếm"  value="{{request()->query("search")}}"> 
         </form>
         <a href="{{ route("user.home.post") }}" onclick="" id="find"><i class="fa-solid fa-magnifying-glass"></i></a>
-        <a href="{{  url()->current() }}" onclick="" id="cancel" name="cancel"><i class="fa-solid fa-x"></i></a>
+        <a href="{{  url()->current() }}" onclick="" id="cancel" name="cancel"><i class="fa-solid fa-xmark"></i></a>
     </div>
 </div>

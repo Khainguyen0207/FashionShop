@@ -4,7 +4,6 @@
             <p>{{ $name_category }}</p>
             <a href="#logo"><img src="{{ asset('assets/admin/img/logo.png') }}" alt="logo"></a>
         </div>
-
         <div class="menu">
             <ul>
                 <li>

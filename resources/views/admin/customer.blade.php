@@ -23,7 +23,7 @@
                 <input id="email" type="email" name="email"placeholder="Email">
             </form>
             <a href="{{ request()->fullUrl() }}" onclick="" id="find" name="find" data-url=""><i class="fa-solid fa-magnifying-glass fa-xl"></i></a>
-            <a href="{{$url}}" onclick="" id="cancel" name="find"><i class="fa-solid fa-x fa-xl"></i></a>
+            <a href="{{$url}}" onclick="" id="cancel" name="find"><i class="fa-solid fa-xmark fa-xl"></i></a>
         </div>
     </div> 
     @include('layouts.table') 

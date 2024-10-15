@@ -24,7 +24,7 @@
                 </div>
                 <div class="image-product">
                     <p>Hình ảnh danh mục</p>
-                    <label for="upload-photo" ><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
+                    <label for="upload-photo" id="label_photo"><i class="fa-solid fa-cloud-arrow-up"></i> Upload image</label>
                     <input type="file" id="upload-photo" name="image" required/>
                     <div id="preview"></div>
                     <script>

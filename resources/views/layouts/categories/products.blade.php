@@ -7,6 +7,9 @@
 
 @section('content')
     <div id="container">
+        <div class="menu-bar-icon" tabindex="0">
+            <i class="fa-solid fa-bars fa-xl"></i>
+        </div>
         @include('layouts.categories.menubar')
         @yield('overview')
     </div>

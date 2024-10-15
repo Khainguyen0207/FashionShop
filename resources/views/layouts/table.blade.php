@@ -3,7 +3,7 @@
         <table>
             <thead> 
                 <tr class="head">
-                    <th></th>
+                    <th class="select"></th>
                     @foreach ($header as $item)
                         <th class="table-info">{{ $item }}</th>
                     @endforeach
@@ -16,7 +16,7 @@
                         $item = collect($item)->toArray()
                     @endphp
                     <tr class="body">
-                        <td><input type="checkbox"></td>
+                        <td class="select"><input type="checkbox"></td>
                             @foreach ($key as $k => $key_data)
                                 @if (isset($item[$key_data]))
                                     <td class="table-info" name="{{$key_data}}">{{ $item[$key_data] }}</td>
