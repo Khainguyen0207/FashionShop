@@ -42,8 +42,10 @@
     </style>
 </head>
 <body>
-    <div class="img-404">
+    {{-- <div class="img-404">
         <h1 class="notifition">Anh yêu em thì có chứ trang thì không tìm thấy</h1>
-    </div>
+    </div> --}}
+    Not found
+    <a href="/">Về trang đăng nhập</a>
 </body>
 </html>

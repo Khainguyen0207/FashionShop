@@ -29,8 +29,8 @@ a {
     position: relative;
     display: inline-block;
     background-color: #FFFAE6;
-    margin: 5px;
     border-radius: 10px;
+    height: 99vh;
 }
 
 .menu-bar .review p {
