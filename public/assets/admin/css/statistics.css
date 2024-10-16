@@ -35,7 +35,9 @@
 
 .box-quantity .bg-box {
     position: relative;
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    max-width: 50%;
 }
 
 .box-quantity .content-box {

@@ -96,8 +96,9 @@ table {
 }
 
 .pages {
+    position: relative;
     display: block;
-    float: right;
+    text-align: right;
     margin: 20px 0px;
 }
 
