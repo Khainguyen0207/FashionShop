@@ -126,8 +126,8 @@ class ProductUIController extends Controller
     {
         $products = Session::get('products_hided');
         Session::reflash();
-        
-        if ($request->arrange != "buy_much") {
+
+        if ($request->arrange != 'buy_much') {
             $prices = array_column($products, 'price'); // Lấy cột giá
             array_multisort($prices, $this->getCodeSort($request->arrange), $products); // Sắp xếp sản phẩm theo giá tăng dần or giảm dần
         } else {
@@ -151,6 +151,7 @@ class ProductUIController extends Controller
         } elseif ($status_sort == 'asc') {
             return SORT_ASC;
         }
+
         return abort(500);
     }
 

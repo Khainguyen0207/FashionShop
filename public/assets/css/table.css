@@ -75,6 +75,7 @@ td, th {
 
 .table-info {
     width: calc(90% / 4);
+    text-align: left;
 }
 
 .table-info input {

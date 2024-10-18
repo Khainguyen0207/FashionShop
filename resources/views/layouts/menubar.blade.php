@@ -49,7 +49,15 @@
             </ul>
         </li>
         <li>
-            <a href="{{route("admin.setting.home")}}" onclick="update()"><i class="fa-solid fa-gear"></i> Cài đặt </a>
+            <a href="#" onclick="update()"><i class="fa-solid fa-gear"></i> Cài đặt <i class="icon-arrow fa-solid fa-caret-right"></i></a>
+            <ul class="list-small">
+                <li>
+                    <p><a href="{{route("admin.setting.home", ['page' => "admin"])}}"><i class="fa-solid fa-headset"></i> Quản trị viên</a></p>
+                </li>
+                <li>
+                    <p><a href="{{route("admin.setting.home", ['page' => "user"])}}"><i class="fa-solid fa-home"></i> Trang chính</a></p>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="{{route('user.home')}}"><i class="fa-solid fa-circle-arrow-left"></i> Về giao diện shop</a>

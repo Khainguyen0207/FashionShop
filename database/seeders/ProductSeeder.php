@@ -28,7 +28,7 @@ class ProductSeeder extends Seeder
                 'unsold_quantity' => floor(rand(0, 1000)),
                 'sold_quantity' => 0,
                 'description' => $value[6],
-                'created_at' => Carbon::now(), 
+                'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ];
         }

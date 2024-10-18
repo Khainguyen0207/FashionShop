@@ -17,21 +17,24 @@ class HomeController extends Controller
         $orders = OrderModel::query();
         $users = DB::table('users')->select('id', 'name', 'email')->get();
         $products = DB::table('products')->select()->get();
-        $totalOrders = $orders->where('status', "00")->count();
-        $total_price = OrderModel::query()->where('status', "02")->whereMonth("expired_at", Carbon::now()->month)->get()->toArray();
+        $totalOrders = $orders->where('status', '00')->count();
+        $total_price = OrderModel::query()->where('status', '02')->whereMonth('expired_at', Carbon::now()->month)->get()->toArray();
         $data = [count($users), count($products), $totalOrders, $this->sum_price_month_current($total_price)];
+
         return view('admin.home', RenderController::render('home', $data));
     }
 
-    private function sum_price_month_current($total_price) {
+    private function sum_price_month_current($total_price)
+    {
         $sum = 0;
         foreach ($total_price as $key => $value) {
             $order = json_decode($value['order_information'], true);
-            
+
             foreach ($order as $key => $value) {
                 $sum += $order[$key]['quantity'] * $order[$key]['price_product'];
             }
         }
+
         return $sum;
     }
 

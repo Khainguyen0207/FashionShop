@@ -194,7 +194,7 @@ img {
                 padding: 5px;
                 margin: 5px 0px;
                 overflow: auto;
-                height: 100vh;
+                height: 99vh;
                 width: 100%;
                 #table {
                     width: 100%;
@@ -249,7 +249,7 @@ img {
                 padding: 5px;
                 margin: 5px 0px;
                 overflow: auto;
-                height: 100vh;
+                height: 99vh;
                 width: 100%;
                 
                 .tool-bar {
@@ -313,7 +313,7 @@ img {
                 margin: 5px 0px;
                 overflow: auto;
                 height: 99vh;
-                font-size: 20px;
+                font-size: 16px;
                 width: 100%;
 
                 .toolbar {
@@ -330,6 +330,7 @@ img {
                     }
                 }
                 #table {
+                    font-size: 20px;
                     width: 100%;
                     .table-form {
                         overflow-x: auto;

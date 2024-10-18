@@ -126,6 +126,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
 
     //Setting
     Route::get('/setting', [SettupController::class, 'home'])->name('admin.setting.home');
+    Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
 
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');

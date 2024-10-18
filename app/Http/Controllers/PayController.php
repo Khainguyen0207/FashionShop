@@ -139,13 +139,14 @@ class PayController extends Controller
                 try {
                     foreach ($order_information as $key => $value) {
                         $sold = Product::query()->where('product_code', $order_information[$key]['id'])->first()->sold_quantity;
-                        Product::query()->where('product_code', $order_information[$key]['id'])->update(["sold_quantity" => $sold + $order_information[$key]['quantity']]);
+                        Product::query()->where('product_code', $order_information[$key]['id'])->update(['sold_quantity' => $sold + $order_information[$key]['quantity']]);
                     }
                     OrderModel::query()->create($information_order);
                 } catch (\Throwable $th) {
                     return redirect(route('user.home'))->with('error', 'Lỗi hệ thống: Vui lòng liên hệ admin để xử lí');
                 }
                 session()->put('cart', session('bill'));
+
                 return redirect(route('user.home'))->with('success', 'Đơn hàng được đặt thành công và chờ người bán chuẩn bị');
             } else {
                 return redirect(route('user.home'))->with('error', 'Thanh toán không thành công');
@@ -187,7 +188,7 @@ class PayController extends Controller
             try {
                 foreach ($ids as $key => $value) {
                     $sold = Product::query()->where('product_code', $ids[$key]['id'])->first()->sold_quantity;
-                    Product::query()->where('product_code', $ids[$key]['id'])->update(["sold_quantity" => $sold + $ids[$key]['quantity']]);
+                    Product::query()->where('product_code', $ids[$key]['id'])->update(['sold_quantity' => $sold + $ids[$key]['quantity']]);
                 }
                 OrderModel::query()->create($information_order);
             } catch (\Throwable $e) {
