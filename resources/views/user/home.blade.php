@@ -11,6 +11,9 @@
 @endpush
 
 @section('content')
+    @php
+        $banner = getBanner();
+    @endphp
     @include('layouts.user.header')
     <div id="container">
         <div class="nav-bar interview">
@@ -44,9 +47,12 @@
         </div>
 
         <div class="shop-banner">
-            <img src="{{asset('assets/user/img/banner-shop.png')}}" class="image-banner" alt="banner-shop">
+            @if ($banner['banner'])
+                <a href="/"><img style="width: 100%;max-height: 70vh;object-fit: contain;border-radius: 10px;" src="{{ $banner['banner'] }}" alt="logo"></a>
+            @else
+                <a href="/"><img style="width: 100%;max-height: 70vh;object-fit: contain;border-radius: 10px;" src="{{asset('assets/user/img/banner-shop.png')}}" class="image-banner" alt="banner-shop"></a>
+            @endif
         </div>
-
         <div class="promotions">
             <div class="promotion">
                 <h2>Chương trình khuyến mãi</h2>
