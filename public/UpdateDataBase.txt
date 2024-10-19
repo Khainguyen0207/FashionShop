@@ -1,6 +1,0 @@
-Delete account: [{"id":911,"name":"Zander Hills","email":"haley.koch@example.com","number_phone":"1-212-367-4690","email_verified_at":"2024-10-03 16:35:07","password":"$2y$12$b6OL2OJd9srbZIU3v1idEenuitiNXDspVITiJGREphVkNsjzfgzcS","avatar":null,"birthday":"2024-10-03","sex":0,"address":"565 Kaylee Parks Apt. 120\nMackenziefurt, VT 33958","remember_token":"uI0YU5mw24","role":0,"created_at":"2024-10-03 16:35:07","updated_at":"2024-10-03 16:35:07"}] 
-In table 'users' =>  Time 2024-10-03 17:35:57
-Delete categories: [{"id":14,"name_category":"Ph\u1ee5 ki\u1ec7n th\u1eddi trang kh\u00e1c","description":null,"created_at":"2024-09-27 14:52:03","updated_at":"2024-09-27 14:52:03"}] 
-In table 'categories' =>  Time 2024-10-11 17:40:39
-Delete categories: [{"id":11,"name_category":"Th\u1eddi trang n\u1eef","description":null,"created_at":"2024-09-01 19:34:49","updated_at":"2024-09-01 19:34:49"}] 
-In table 'categories' =>  Time 2024-10-11 17:40:42

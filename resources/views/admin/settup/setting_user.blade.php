@@ -3,7 +3,7 @@
     <div class="logo">
         <h3>Logo</h3>
         <div class="image">
-            <a href="{{route("admin.setting.edit") }}" class="action_img"><img id="logo" src="{{ asset('assets/user/img/logo.png') }}" alt="logo_shop" srcset="">
+            <a href="{{route("admin.setting.edit") }}" class="action_img"><img id="logo" src="{{ $logo }}" alt="logo_shop" srcset="">
             <div class="animation">
                 <p style="color: white; text-align: center">Chỉnh sửa</p>
             </div>
@@ -13,7 +13,7 @@
     <div class="image_shop_banner">
         <h3>Ảnh giới thiệu về cửa hàng</h3>
         <div class="image">
-            <a href="{{route("admin.setting.edit") }}" class="action_img"><img id="banner" src="{{ asset('assets/user/img/banner-shop.png') }}" alt="banner-shop" srcset="">
+            <a href="{{route("admin.setting.edit") }}" class="action_img"><img id="banner" src="{{ $banner }}" alt="banner-shop" srcset="">
             <div class="animation" onclick="">
                 <p style="color: white; text-align: center">Chỉnh sửa</p>
             </div>
@@ -25,22 +25,22 @@
             <h3>Mạng xã hội</h3>
             <ul class="list">
                 <li>Facebook</li>
-                <li><input type="text" value="Hello world"></li>
+                <li><input type="text" value="{{ $social_network['facebook'] }}"></li>
                 <li>Instagram</li>
-                <li><input type="text" value="Hello world"></li>
+                <li><input type="text" value="{{$social_network['instagram']}}"></li>
                 <li>Tiktok</li>
-                <li><input type="text" value="Hello world"></li>
+                <li><input type="text" value="{{$social_network['tiktok']}}"></li>
             </ul>
         </div>
         <div class="contact information">
             <h3>Liên hệ</h3>
             <ul class="list">
                 <li>Số điện thoại</li>
-                <li> <input type="text" value="Hello world"> </li>
+                <li> <input type="text" value="{{$contact['hotline']}}"> </li>
                 <li>Email</li>
-                <li><input type="text" value="Hello world"></li>
+                <li><input type="text" value="{{$contact['email']}}"></li>
                 <li>Địa chỉ</li>
-                <li><input type="text" value="Hello world"></li>
+                <li><input type="text" value="{{$contact['address']}}"></li>
             </ul>
         </div>
     </div>

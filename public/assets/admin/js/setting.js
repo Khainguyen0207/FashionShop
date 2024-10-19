@@ -11,7 +11,7 @@ document.querySelectorAll(".action_img").forEach(element => {
         form.enctype= 'multipart/form-data'
 
         const input = document.createElement("input");
-        input.name = "avatar"
+        input.name = node.childNodes[0].id
         input.type = "file";
         input.accept = "image/*"
         input.click()

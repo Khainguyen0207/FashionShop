@@ -1,5 +1,9 @@
 <div id="header">
-    <a href="/"><img src="{{asset('assets/user/img/logo.png')}}" alt="logo"></a>
+    @if (isset($logo))
+        <a href="/"><img src="{{ $logo }}" alt="logo"></a>
+    @else
+        <a href="/"><img src="{{ asset('assets/user/img/box.png') }}" alt="logo"></a>
+    @endif
     <div class="bar">
         <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
         <div class="login">

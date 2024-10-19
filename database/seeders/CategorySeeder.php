@@ -12,6 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        Category::query()->delete();
         $data = [
             'name_category' => 'Thời trang cho nam',
         ];

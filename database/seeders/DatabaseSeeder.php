@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ProductSeeder::class,
+            AboutShopSeeder::class,
+          
             // Thêm các class seeder khác ở đây
         ]);
     }
