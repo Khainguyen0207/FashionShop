@@ -28,14 +28,30 @@ class SettupController extends Controller
 
     public function edit(Request $request)
     {
-        foreach ($request->file() as $key => $value) {
-            $name_file = $request->file($key)->store();
-            $request->file($key)->storeAs('/about_store',  $name_file);
-            AboutShopModel::query()->where('key', $key)->update([
-                'value' => $name_file,
-            ]);
+        $query = AboutShopModel::query();
+        $data = [];
+
+        foreach ($request->request as $key => $value) {
+            if ($key == "_token") {
+                continue;
+            }
+            if (collect($value)->map('trim') != null) {
+                AboutShopModel::query()->where('key', $key)->update([
+                    'value' => json_encode($value), 
+                ]);
+            }
         }
-        return redirect()->back()->with("Success", "Thanh cong");
+        if (!empty($request->file())) {
+            foreach ($request->file() as $key => $value) {
+                $old_value = $query->where('key', $key)->first()->value;
+                $name_file = $request->file($key)->store("/about_store");
+                $query->where('key', $key)->update([
+                    'value' => $name_file, 
+                ]);
+            }
+            Storage::delete($old_value);
+        }
+        return redirect()->back()->with("success", "Thay đổi thành công");
     }
 
     public static function getDataSettupController() {

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\AboutShopModel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getAboutShopData')) {
@@ -25,8 +27,13 @@ if (!function_exists('getAboutShopData')) {
 if (!function_exists('getHeader')) {
     function getHeader() {
         $data = getAboutShopData();
+        $role = User::query()->where("id", Auth::id())->first();
+        if (!isset($role->role)) {
+            $role = 0;
+        }
         $header = [
             "logo" => $data['logo'], 
+            "role" => $role
         ];
         return $header ?? null; // Return logo or null if not set
     }

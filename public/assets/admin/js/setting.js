@@ -27,8 +27,14 @@ document.querySelectorAll(".action_img").forEach(element => {
         input.addEventListener('change', function(event) {
             const url_img = URL.createObjectURL(event.currentTarget.files[0])
             node.childNodes[0].setAttribute('src', url_img);
-        document.body.appendChild(form)
+            document.body.appendChild(form)
             form.submit()
         })
     })
+})
+
+document.querySelector(".btn").addEventListener("click", function (event) {
+    event.preventDefault()
+    const node = event.currentTarget.parentElement.parentElement
+    node.querySelector("#information_shop").submit()
 })

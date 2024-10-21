@@ -86,6 +86,7 @@ input:focus-visible {
 
 .setup-user .information_shop {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
