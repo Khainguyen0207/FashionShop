@@ -10,15 +10,15 @@
     @endif
     
     <div class="bar">
+        @if (isset($role) && $role == 1)
+            <a href="{{route("admin.home")}}"><i class="fa-solid fa-headset"></i> Dashboard </a>
+        @endif
         <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
         <div class="login">
             @if (Auth::check())
                 <a href="#"><i class="fa-solid fa-user"></i> Người dùng</a>
                 <ul class="nav">
                     <li><a href="{{route("profile.home")}}"><i class="fa-solid fa-info"></i> Thông tin</a></li>
-                    @if ($role == 1)
-                        <li><a href="{{route("admin.home")}}"><i class="fa-solid fa-headset"></i> Dashboard </a></li>
-                    @endif
                     <li><a href="#" onclick="document.getElementById('logout').submit()"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</a></li>
                 </ul>
             @else

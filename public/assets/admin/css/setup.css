@@ -78,6 +78,7 @@ input:focus-visible {
 .setup-user .logo .image img,
 .setup-user .image_shop_banner .image img { 
     position: relative;
+    width: 100%;
     border-radius: 10px;
     height: 200px;
     background-color: #ffd6a0;
@@ -86,7 +87,7 @@ input:focus-visible {
 
 .setup-user .information_shop {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
     gap: 20px;
 }
 

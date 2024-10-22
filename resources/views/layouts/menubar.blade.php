@@ -49,7 +49,7 @@
             </ul>
         </li>
         <li>
-            <a href="#" onclick="update()"><i class="fa-solid fa-gear"></i> Cài đặt <i class="icon-arrow fa-solid fa-caret-right"></i></a>
+            <a href="#"><i class="fa-solid fa-gear"></i> Cài đặt <i class="icon-arrow fa-solid fa-caret-right"></i></a>
             <ul class="list-small">
                 <li>
                     <p><a href="{{route("admin.setting.home", ['page' => "admin"])}}"><i class="fa-solid fa-headset"></i> Quản trị viên</a></p>
