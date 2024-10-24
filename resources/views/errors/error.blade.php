@@ -15,7 +15,7 @@
         body {
             width: 100%;
             height: 100vh;
-            background-color: bisque;
+            /* background-color: bisque; */
         }
 
         .notifition {
@@ -45,7 +45,7 @@
     {{-- <div class="img-404">
         <h1 class="notifition">Anh yêu em thì có chứ trang thì không tìm thấy</h1>
     </div> --}}
-    Not found
-    <a href="/">Về trang đăng nhập</a>
+    <h1>Not found</h1>
+    <a href="/">Về trang chủ</a>
 </body>
 </html>

@@ -1,7 +1,14 @@
 @extends('layouts.user')
 
 @push('head')
-    <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
+    @php
+    $header = getHeader();
+    @endphp
+    @if (isset($header['logo']))
+    <link rel="shortcut icon" href="{{ $header['logo'] }}" type="image/x-icon">
+    @else
+    <link rel="shortcut icon" href="{{ asset('assets/user/img/box.png') }}" type="image/x-icon">
+    @endif
     <link rel="stylesheet" href="{{asset('assets/user/css/home.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">
@@ -76,10 +83,11 @@
                     <div class="img img-new-product">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                                @foreach ($products_new as $item)
+                                <div class="swiper-slide">
+                                    <a href="{{ route('product.id', [$item->category_id , $item->id]) }}"><img src="{{ $item['image'][0] }}" alt="promotion-program"></a>
+                                </div>
+                                @endforeach
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
@@ -91,10 +99,11 @@
                     <div class="img img-events">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
-                                <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                                @foreach ($products_new as $item)
+                                <div class="swiper-slide">
+                                    <a href="{{ route('product.id', [$item->category_id , $item->id]) }}"><img src="{{ $item['image'][0] }}" alt="promotion-program"></a>
+                                </div>
+                                @endforeach
                             </div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>

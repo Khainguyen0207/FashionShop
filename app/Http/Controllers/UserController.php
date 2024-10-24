@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -13,6 +14,9 @@ class UserController extends Controller
 {
     public function home()
     {
+        $product = Product::query();
+        $products_new = $product->latest()->whereMonth('created_at', Carbon::now()->monthOfYear())->paginate(10)->items();
+        $products_new = $this->getUrlForImage($products_new);
         $account = Auth::user();
         $categories = Category::query()->get(['id', 'name_category'])->toArray();
         foreach ($categories as $key => $value) {
@@ -22,6 +26,7 @@ class UserController extends Controller
         $render = [
             'title' => 'Trang chủ',
             'categories' => $categories,
+            'products_new' => $products_new
         ];
 
         if (! empty($account)) {

@@ -20,7 +20,6 @@ class HomeController extends Controller
         $totalOrders = $orders->where('status', '00')->count();
         $total_price = OrderModel::query()->where('status', '02')->whereMonth('expired_at', Carbon::now()->month)->get()->toArray();
         $data = [count($users), count($products), $totalOrders, $this->sum_price_month_current($total_price)];
-
         return view('admin.home', RenderController::render('home', $data));
     }
 

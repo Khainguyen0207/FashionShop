@@ -22,3 +22,4 @@
         @stack('footer')
     </footer>
 </html>
+

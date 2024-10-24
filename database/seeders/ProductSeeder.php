@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Jobs\StoreFileJob;
+use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -21,7 +22,7 @@ class ProductSeeder extends Seeder
             $data[] = [
                 'product_code' => 'MSSP'.fake()->unique()->randomNumber(),
                 'product_name' => $value[1],
-                'category_id' => $value[7],
+                'category_id' => Category::inRandomOrder()->first("id")->id,
                 'price' => $value[5],
                 'image' => $this->getImage(),
                 'options' => "$value[3]|$value[4]",

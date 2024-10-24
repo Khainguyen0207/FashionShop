@@ -60,6 +60,9 @@
             </ul>
         </li>
         <li>
+            <a href="{{route('admin.event.home')}}"><i class="fa-regular fa-calendar"></i> Sự kiện </a>
+        </li>
+        <li>
             <a href="{{route('user.home')}}"><i class="fa-solid fa-circle-arrow-left"></i> Về giao diện shop</a>
         </li>
         <li>

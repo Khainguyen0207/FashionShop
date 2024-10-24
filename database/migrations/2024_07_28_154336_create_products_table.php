@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price');
             $table->string('image', 255);
             $table->text("options", 65535);
+            $table->integer("sale")->nullable();
             $table->integer('unsold_quantity');
             $table->integer('sold_quantity');
             $table->string('description', 255)->nullable();
