@@ -1,4 +1,5 @@
 ##### Comming soon - Fashion shop
+##### Clone open php.ini change ";extension=zip" => "extension=zip"
 ##### **Setup**
 ###### Run command
 ###### composer u
