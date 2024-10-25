@@ -48,7 +48,7 @@
             </div>
         </section>
         <section>
-            <div class="chart">
+            <div class="chart" style="padding-top: 10px;">
                 <canvas id="myChart" width="100%"></canvas>
                 <script>
                     const currentYear = new Date();

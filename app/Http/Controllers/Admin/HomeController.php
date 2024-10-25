@@ -55,4 +55,11 @@ class HomeController extends Controller
 
         return redirect('auth');
     }
+
+    public function upload(Request $request) {
+        $data = [
+            "message" => "Success"
+        ];
+        return request()->json("Success", $data);
+    }
 }

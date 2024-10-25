@@ -4,9 +4,25 @@
     height: 15vh;
 }
 
+label {
+    display: inline-block;
+    background-color: lightgreen;
+    margin: 10px 0;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+label:hover,label:focus {
+    color: white;
+    background-color: #ff0000;
+    transition: 0.3s;
+}
+
 .tool-bar .function a {
     display: block;
-    padding: 12px 24px;
+    padding: 9px 12px;
     background-color: chartreuse;
     border-radius: 10px;
     float: right;
@@ -15,10 +31,10 @@
 
 .tool-bar .function a:hover {
     display: block;
-    padding: 12px 24px;
+    padding: 9px 12px;
     background-color: rgba(128, 255, 0, 0.278);
     float: right;
-    transition: 0.7s;
+    transition: 0.2s;
 }
 
 .overview .list-categorys {

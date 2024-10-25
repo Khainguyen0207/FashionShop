@@ -70,6 +70,8 @@ Route::prefix('/auth')->middleware('guest')->group(function () {
 Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     // Home
     Route::get('/', [HomeController::class, 'index'])->name('admin.home');
+    //Upload 
+    Route::post('/upload', [HomeController::class, 'upload'])->name('upload.home');
     //customer
     Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer.index');
     Route::post('/customer', [CustomerController::class, 'show'])->name('admin.customer.show');
@@ -128,7 +130,11 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //Setting
     Route::get('/setting', [SettupController::class, 'home'])->name('admin.setting.home');
     Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
+
+    //Event
     Route::get('/event', [EventController::class, 'home'])->name('admin.event.home');
+    Route::post('/event', [EventController::class, 'store'])->name('admin.event.store');
+
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });

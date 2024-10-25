@@ -42,7 +42,7 @@
                                 // Only process image files
                                 if (!file.type.match('image.*')) {
                                     continue;
-                                }
+                                }ư
                             
                                 var imgContainer = document.createElement('div');
                                 imgContainer.style.display = 'inline-block';

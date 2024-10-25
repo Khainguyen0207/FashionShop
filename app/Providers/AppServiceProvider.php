@@ -17,5 +17,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         define('MAX_PAGE_LOAD', 30);
+
+        
     }
 }

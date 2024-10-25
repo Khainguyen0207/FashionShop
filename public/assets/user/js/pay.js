@@ -72,3 +72,7 @@ function checkEmptyInformation(event) {
         form.submit()
     };
 }
+
+function name(params) {
+   
+}

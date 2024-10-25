@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Middleware\CheckAuth;
-use App\Http\Middleware\CheckRoleAccess;
 use Illuminate\Foundation\Application;
+use App\Http\Middleware\CheckRoleAccess;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
@@ -19,6 +20,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 'CheckAuth' => CheckAuth::class,
             ]
         );
+    })
+    ->withSchedule(function (Schedule $schedule) {
+        $schedule->command("php artisan storage:link")->everyFiveSeconds();
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
