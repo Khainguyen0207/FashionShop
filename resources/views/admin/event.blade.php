@@ -29,7 +29,7 @@
             </div>
             <div class="banner_event">
                 <label for="image_select">Tải ảnh sự kiện</label>
-                <input type="file" name="banner_event" id="image_select" style="display: none" accept="image/*" required>
+                <input type="file" name="banner_event" id="image_select" style="display: none" accept="image/*">
                 <div id="preview"></div>
                 <script>
                     document.querySelector("#image_select").addEventListener("change", function(event) {
@@ -65,8 +65,10 @@
                 <a href="/" onclick="clickAddCategory(event)"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
             </div>
         </div>
+        <div class="table">
+            @include("layouts.table")
+        </div>
     </div>
-    
 @endsection
 @push('footer')
     <script src="{{asset('assets/admin/js/event.js')}}"></script>

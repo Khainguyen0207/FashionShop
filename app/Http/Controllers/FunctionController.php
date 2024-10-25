@@ -9,7 +9,7 @@ class FunctionController extends Controller
         $table_customers = ['Tên', 'Mã Khách Hàng', 'Email', 'Quyền'];
         $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng tồn kho'];
         $table_order = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
-        $event = ['ID sự kiện', 'Tiêu đề', 'Bắt đầu', 'Kết thúc', 'Thông tin'];
+        $event = ['ID sự kiện', 'Tiêu đề', 'Bắt đầu', 'Kết thúc'];
         switch ($name_table) {
             case 'customer': return array_combine($key, $table_customers);
             case 'product': return array_combine($key, $table_products);

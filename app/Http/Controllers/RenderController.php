@@ -45,7 +45,7 @@ class RenderController extends Controller
                 $settup = ['logo', 'banner', 'social_network', 'contact'];
                 return $settup;
             case 'event':
-                $events = [];
+                $events = ['header', 'body', 'key', 'number', 'maxPage','icon', 'custom_button'];
                 return $events;
             default: self::error_render('Lỗi hệ thống - 68');
         }

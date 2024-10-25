@@ -46,7 +46,7 @@
             <a class="num-page" href="{{ request()->fullUrlWithQuery(['page' => 1]) }}"><i class="fa-solid fa-arrow-left"></i></a>
             <a class="num-page" href="{{ request()->fullUrlWithQuery(['page' => $number - 1]) }}">{{ $number - 1}}</a>
         @endif
-        <a class="num-page" style="background-color: #00d6eb; border-radius: 5px; color: white;"  href="">{{ $number }}</a>
+        <a class="num-page" style="display: inline-block;background-color: #00d6eb; border-radius: 5px; color: white;"  href="">{{ $number }}</a>
         @if ($number != $maxPage)
             <a class="num-page" href="{{ request()->fullUrlWithQuery(['page' => $number + 1]) }}">{{ $number + 1}}</a>
             <a class="num-page" href="{{ request()->fullUrlWithQuery(['page' => $maxPage]) }}"><i class="fa-solid fa-arrow-right"></i></a>
