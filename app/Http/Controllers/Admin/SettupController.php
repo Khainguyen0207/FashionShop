@@ -44,12 +44,14 @@ class SettupController extends Controller
         if (!empty($request->file())) {
             foreach ($request->file() as $key => $value) {
                 $old_value = $query->where('key', $key)->first()->value;
-                $name_file = $request->file($key)->store("/about_store");
+                $name_file = $request->file($key)->store('public/about_shop');
                 $query->where('key', $key)->update([
                     'value' => $name_file, 
                 ]);
             }
-            Storage::delete($old_value);
+            if (isset($old_value)) {
+                Storage::delete($old_value);
+            }
         }
         return redirect()->back()->with("success", "Thay đổi thành công");
     }

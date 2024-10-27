@@ -62,7 +62,7 @@
         </div>
         <div class="tool-bar">
             <div class="function">
-                <a href="/" onclick="clickAddCategory(event)"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
+                <a href="#" onclick="clickAddCategory(event)"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
             </div>
         </div>
         <div class="table">
