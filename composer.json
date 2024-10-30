@@ -15,6 +15,7 @@
         "symfony/dom-crawler": "^5.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.14",
         "fakerphp/faker": "^1.23",
         "laravel/dusk": "^8.2",
         "laravel/pint": "^1.13",

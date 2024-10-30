@@ -2,8 +2,12 @@
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css">
 @endpush
 <div class="text_area">
-    <div id="editor"></div>
-    <input type="hidden" id="editor_input_value" name="text_area_value">
+    <div id="editor">
+        @if (isset($information))
+            {!!$information!!}
+        @endif
+    </div>
+    <input type="hidden" class="input" id="information" name="information">
      {{-- script import ckeditor5 --}}
     <script type="importmap">
         {
@@ -24,7 +28,7 @@
             Font, Image, ImageUpload,FileRepository,SimpleUploadAdapter,ImageResize,ImageResizeEditing,ImageResizeButtons 
         } from 'ckeditor5';
 
-        let data
+        var data
         ClassicEditor
             .create( document.querySelector( '#editor' ), {
                 plugins: [Heading,ImageResize, Essentials, Paragraph, Bold, Italic, Font , Image, ImageUpload, FileRepository, SimpleUploadAdapter,ImageResizeEditing,ImageResizeButtons],
@@ -57,20 +61,27 @@
             .then(editor => {
                 data = editor; // -> '<p>Foo!</p>'
             })
+
             .catch( error => {
                 console.error( error );
             });
+
             function getDataText() {
                 return data.getData()
             }
+
+            function setDataText() {
+                return data.setData('');
+            }
+
             document.addEventListener("DOMContentLoaded", function() {
                 let element = document.querySelector("#editor");
                 do {
                     element = element.parentElement
                 } while (element && !(element instanceof HTMLFormElement));
-
-                element.addEventListener( 'submit', () => {
-                    document.querySelector("#editor_input_value").value = getDataText()
+                
+                element.addEventListener('submit', () => {
+                    document.querySelector("#information").value = getDataText()
                 });
             })
     </script>

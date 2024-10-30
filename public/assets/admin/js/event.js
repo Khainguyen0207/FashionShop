@@ -3,18 +3,15 @@ function clickAddCategory(event) {
     event.preventDefault();
     var category = document.getElementById('addCategory')
     
-    var preview = document.getElementById('preview')
+    var preview = document.querySelector("div.container")
     if (clickCategory) {
         category.className = "addCategory-hide"
     } else {
         category.className = "addCategory";
     }
-    let size = preview.childNodes.length
-    while (size != 0) {
-        preview.childNodes.forEach(element => {
-            element.remove()
-            size--;
-        });
-    }
+    document.querySelectorAll(".input").forEach(element => {
+        element.value = ""
+        data.setData('')
+    });
     clickCategory = !clickCategory;
 }

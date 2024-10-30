@@ -8,7 +8,7 @@
 @endpush
 @section('overview')
 
-    <div id="addCategory">
+    <div id="addCategory" class="addCategory">
         <div class="screen" onclick="clickAddCategory(event)"></div>
         <div id="addCategoryForm">
             <form action="{{route('category.products.store', $id)}}"  class="my-animation" method="POST" enctype="multipart/form-data">

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class EventModel extends Model
 {
@@ -16,5 +17,4 @@ class EventModel extends Model
         'start_time',
         'end_time'
     ];
-    
 }

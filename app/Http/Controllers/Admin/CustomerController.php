@@ -61,15 +61,19 @@ class CustomerController extends Controller
 
     private function getCustomers($getCustomers)
     {
-        $keyTable = ['name', 'id', 'email', 'role'];
+        $keyTable = ['id', 'name' , 'email', 'role'];
         $table = FunctionController::table('customer', $keyTable); //Setting table
         $users = $getCustomers->items();
         foreach ($users as $key => $item) {
             $users[$key] = collect($users[$key])->toArray();
             if ($users[$key]['role'] == 1) {
-                $users[$key]['role'] = 'admin';
+                $users[$key]['role'] = 'Quản trị viên';
             } elseif ($users[$key]['role'] == 0) {
-                $users[$key]['role'] = 'user';
+                $users[$key]['role'] = 'Người dùng';
+            } elseif ($users[$key]['role'] == 2) {
+                $users[$key]['role'] = 'Quyền quản trị viên';
+            } else {
+                $users[$key]['role'] = 'Tài khoản bị khóa';
             }
         }
         $render = [

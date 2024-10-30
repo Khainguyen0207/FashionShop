@@ -8,6 +8,7 @@ use App\Models\AboutShopModel;
 use App\Http\Controllers\getData;
 use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
 
@@ -44,7 +45,15 @@ class SettupController extends Controller
         if (!empty($request->file())) {
             foreach ($request->file() as $key => $value) {
                 $old_value = $query->where('key', $key)->first()->value;
-                $name_file = $request->file($key)->store('public/about_shop');
+                $name_file = $request->file($key)->store('public/about_store');
+
+                // Get the original filename
+                $originalFileName = basename($name_file);
+
+                // Define the destination path
+                $destinationPath = public_path('storage/about_store/' . $originalFileName);
+                // Copy the file to the new location
+                File::copy(storage_path('app/' . $name_file), $destinationPath);
                 $query->where('key', $key)->update([
                     'value' => $name_file, 
                 ]);

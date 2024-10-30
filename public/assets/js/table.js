@@ -11,6 +11,7 @@ function selectCheckBox(body) {
 }
 
 document.querySelectorAll(".btn-action").forEach(function(button) {
+    
     if (button.classList[0] == 'btn-del') {
         button.addEventListener("click", function(event) {
             const url = event.currentTarget.dataset.url;
@@ -56,5 +57,26 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
                 $('#addCategory').html(data)
             });
         });
+
+    } else if (button.classList[0] == 'btn-info') {
+        button.addEventListener('click', function(event) {
+            const url = event.currentTarget.dataset.url;
+            $.ajax({
+                url: url,  // Địa chỉ API hoặc route
+                method: 'POST',  // Hoặc 'POST' tùy vào yêu cầu của bạn
+                headers: {
+                    "X-CSRF-Token": $('meta[name="csrf-token"]').attr('content'), // Thêm CSRF token
+                },
+            }).then(function(data) {
+                $("#addCategory").html(data)
+                var category = document.getElementById("addCategory");
+                if (clickCategory) {
+                    category.className = "addCategory-hide"
+                } else {
+                    category.className = "addCategory";
+                }
+                clickCategory = !clickCategory;
+            })
+        })
     }
 });

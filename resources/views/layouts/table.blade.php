@@ -2,12 +2,16 @@
     <div class="table-form">
         <table>
             <thead> 
-                <tr class="head">
+                <tr class="head" style="white-space: nowrap;">
                     <th class="select"></th>
-                    @foreach ($header as $item)
-                        <th class="table-info">{{ $item }}</th>
-                    @endforeach
-                    <th>Thông tin</th>
+                        @foreach ($header as $key_header => $item)
+                            @if ($key_header == "id")
+                                <th class="table-info" style="width: 5%">{{ $item }}</th>
+                            @else
+                                <th class="table-info">{{ $item }}</th>
+                            @endif
+                        @endforeach
+                    <th style="white-space: nowrap;">Thông tin</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +23,13 @@
                         <td class="select"><input type="checkbox"></td>
                             @foreach ($key as $k => $key_data)
                                 @if (isset($item[$key_data]))
-                                    <td class="table-info" name="{{$key_data}}">{{ $item[$key_data] }}</td>
+                                    @if ($key_data == "image")
+                                        <td class="table-info" name="{{$key_data}}"><img src="{{$item[$key_data]}}" alt="{{$key_data}}" style="width: 100%: max-width: 100px; max-height: 100px" ></td>
+                                    @elseif($key_data == "id")
+                                        <td class="table-info" style="width: 5%" name="{{$key_data}}">{{ $item[$key_data] }}</td>
+                                    @else
+                                        <td class="table-info" name="{{$key_data}}">{{ $item[$key_data] }}</td>
+                                    @endif
                                 @else
                                     <td class="table-info" name="{{$key_data}}">Không xác định</td>
                                 @endif
@@ -28,11 +38,11 @@
                             <div class="btn">
                                 @if (isset($custom_button))
                                     @foreach ($custom_button as $item_key => $item_value)
-                                        <a class="btn-{{$item_key}} btn-action" title="button" data-url="{{ $url }}/{{$item_key}}/{{ $item['id'] }}" href="#"><i class="{{$item_value}}"></i></a>
+                                        <a href="#" class="btn-{{$item_key}} btn-action" title="button" data-url="{{ $url }}/{{$item_key}}/{{ $item['id'] }}" ><i class="{{$item_value}}"></i></a>
                                     @endforeach
                                 @else
-                                    <a class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" href="#"><i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" href="#"><i class="fa-solid fa-trash-can" ></i></a> 
+                                    <a href="#" class="btn-edit btn-action" title="Edit" data-url="{{ $url }}/edit/{{ $item['id'] }}" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="#" class="btn-del btn-action" title="Delete" data-url="{{ $url }}/del/{{ $item['id'] }}" ><i class="fa-solid fa-trash-can" ></i></a> 
                                 @endif
                             </div>
                         </td>
@@ -55,5 +65,6 @@
     @push('footer')
         <link rel="stylesheet" href="{{asset('assets/css/table.css')}}">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
     @endpush
 </div>

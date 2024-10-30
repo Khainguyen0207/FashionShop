@@ -6,10 +6,10 @@ class FunctionController extends Controller
 {
     public static function table($name_table, $key)
     {
-        $table_customers = ['Tên', 'Mã Khách Hàng', 'Email', 'Quyền'];
+        $table_customers = ['ID','Tên khách hàng',  'Email', 'Quyền'];
         $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng tồn kho'];
         $table_order = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
-        $event = ['ID sự kiện', 'Tiêu đề', 'Bắt đầu', 'Kết thúc'];
+        $event = ['ID', 'Hình ảnh',  'Tiêu đề', 'Bắt đầu', 'Kết thúc', 'Trạng thái'];
         switch ($name_table) {
             case 'customer': return array_combine($key, $table_customers);
             case 'product': return array_combine($key, $table_products);
@@ -17,6 +17,25 @@ class FunctionController extends Controller
             case 'event': return array_combine($key, $event);
             default: return null;
         }
+    }
+
+    public static function text_area() {
+        return view("");
+    }
+
+    public static function button(array $buttons)
+    {
+        $button = [
+            'info' => 'fa-solid fa-info', 
+            'edit' => 'fa-solid fa-edit', 
+            'cancel' => 'fa-solid fa-xmark',
+            'check' => 'fa-solid fa-check',
+            'del' => 'fa-solid fa-trash-can',
+        ];
+        
+        $btn_select = array_intersect_key($button, array_flip($buttons));
+        
+        return $btn_select;
     }
 
     public static function status_order($status)

@@ -21,13 +21,11 @@ class RenderController extends Controller
             return self::error_render(15 .'|'.$view);
         }
     }
-
     private static function render_data_table(string $template)
     {
         switch ($template) {
             case 'home':
                 $home = ['number_customers', 'number_products', 'number_checking', 'total'];
-
                 return $home;
             case 'customer':
                 $customers = ['header', 'body', 'key', 'number', 'maxPage', 'url'];
@@ -45,7 +43,7 @@ class RenderController extends Controller
                 $settup = ['logo', 'banner', 'social_network', 'contact'];
                 return $settup;
             case 'event':
-                $events = ['header', 'body', 'key', 'number', 'maxPage','icon', 'custom_button'];
+                $events = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon', 'custom_button'];
                 return $events;
             default: self::error_render('Lỗi hệ thống - 68');
         }

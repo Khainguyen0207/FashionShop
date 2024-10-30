@@ -100,7 +100,8 @@ section {
     position: relative;
     display: block;
     float: left;
-    width: 70px;
+    width: 100%;
+    max-width: 100px;
 }
 
 #header .bar a {

@@ -151,7 +151,6 @@ class ProductUIController extends Controller
         } elseif ($status_sort == 'asc') {
             return SORT_ASC;
         }
-
         return abort(500);
     }
 

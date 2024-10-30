@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -13,7 +12,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'publicS'),
+    'default' => env('FILESYSTEM_DISK', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,6 +28,7 @@ return [
     */
 
     'disks' => [
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

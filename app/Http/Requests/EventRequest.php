@@ -23,8 +23,8 @@ class EventRequest extends FormRequest
     {
         return [
             'title' => "required",
-            'text_area_value' => "required",
             'banner_event' => "required",
+            'information' => "required",
         ];
     }
 
@@ -34,8 +34,6 @@ class EventRequest extends FormRequest
             'title.required' => 'Tiêu đề không được để trống.',
             'text_area_value.required' => 'Thông tin sự kiện không được để trống.',
             'banner_event.required' => 'Yêu cầu ảnh sự kiện.',
-            // Add other custom messages as needed
         ];
     }
-
 }

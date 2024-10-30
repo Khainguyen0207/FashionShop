@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,422&family=Roboto+Condensed:wght@504&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     @endpush
 @section('overview')
-<div id="addCategory" >
+<div id="addCategory" class="addCategory">
     <div class="screen" onclick="clickAddCategory(event)"></div>
     <form action="{{route('categories.store')}}" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
         @csrf

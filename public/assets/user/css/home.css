@@ -79,6 +79,13 @@ body {
     background-repeat: no-repeat;
 }
 
+#container .shop-banner {
+    background: antiquewhite;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
 #container .promotions {
     position: relative;
     display: flex;

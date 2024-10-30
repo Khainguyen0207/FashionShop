@@ -134,7 +134,8 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //Event
     Route::get('/event', [EventController::class, 'home'])->name('admin.event.home');
     Route::post('/event', [EventController::class, 'store'])->name('admin.event.store');
-
+    Route::post('/event/info/{id}', [EventController::class, 'show'])->name('admin.event.show');
+    Route::delete('/event/del/{id}', [EventController::class, 'destroy'])->name('admin.event.destroy');
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');
 });

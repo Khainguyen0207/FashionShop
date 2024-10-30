@@ -1,8 +1,10 @@
 <?php
 
-use App\Models\AboutShopModel;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\AboutShopModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 
 if (!function_exists('getAboutShopData')) {
@@ -10,7 +12,6 @@ if (!function_exists('getAboutShopData')) {
         $data = AboutShopModel::all()->keyBy('key')->toArray();
         $formattedData = [];
         $imageKeys = ['logo', 'banner'];
-
         foreach ($data as $key => $value) {
             if (in_array($key, $imageKeys)) {
                 $formattedData[$key] = Storage::exists($value['value'])
