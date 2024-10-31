@@ -11,7 +11,12 @@ function clickAddCategory(event) {
     }
     document.querySelectorAll(".input").forEach(element => {
         element.value = ""
-        data.setData('')
     });
+    preview = event.currentTarget.parentElement.querySelector("#preview");
+    if (preview) {
+        preview.childNodes.forEach(element => {
+            element.remove();
+        })
+    }
     clickCategory = !clickCategory;
 }

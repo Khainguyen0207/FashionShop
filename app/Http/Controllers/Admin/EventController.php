@@ -18,6 +18,15 @@ class EventController extends Controller
         $keyTable = ['id','image', 'title' , 'start_time', 'end_time', 'status'];
         $table = FunctionController::table('event', $keyTable); //Setting table
         $body = EventModel::query()->paginate(10);
+        foreach ($body as $key => $value) {
+            if ($value->end_time > Carbon::now() && $value->start_time < Carbon::now()) {
+                $value->status = "Hoạt động";
+            } else if($value->start_time > Carbon::now()) {
+                $value->status = "Sắp diễn ra";
+            } else {
+                $value->status = "Hết hạn";
+            }
+        }
         foreach (collect($body->items()) as $key => $value) {
             $value->image = url(Storage::url($value->image) );
         }
@@ -46,16 +55,21 @@ class EventController extends Controller
             Log::error("SQL_eror", [
                 "message" => $th
             ]);
+        return redirect()->back()->with("error", "Thêm mới sự kiện thất bại");
         }
         return redirect()->back()->with("success", "Thêm mới sự kiện thành công");
     }
 
     public function show(Request $request, string $id) {
         $information = EventModel::query()->where('id', $id)->get();
+        $information->first()->start_time = Carbon::parse($information->first()->start_time)->format("Y-m-d");
+        $information->first()->end_time = Carbon::parse($information->first()->end_time )->format("Y-m-d");
+        
         return view('layouts.admin.event_seen_info', ...$information);
     }
 
     public function destroy($id) {
-        dd($id);
+        EventModel::query()->where('id', $id)->delete();
+        return redirect()->back()->with("success", "Sự kiện đã được xóa");
     }
 }

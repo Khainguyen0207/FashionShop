@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -11,8 +12,15 @@
         <link href="{{asset("assets/fontawesome/css/fontawesome.css")}}" rel="stylesheet" />
         <link href="{{asset("assets/fontawesome/css/brands.css")}}" rel="stylesheet" />
         <link href="{{asset("assets/fontawesome/css/solid.css")}}" rel="stylesheet" />
+        @php
+            $header = getHeader();
+        @endphp
+        @if (isset($header['logo']))
+            <link rel="shortcut icon" href="{{ $header['logo'] }}" style="width:100%;" type="image/x-icon">
+        @else
+            <link rel="shortcut icon" href="{{ asset('assets/user/img/box.png') }}" style="width: 32px; height: 32px;" type="image/x-icon">
+        @endif
         @stack('head')
-        
     </head>
     <body>
         <div id="alert">

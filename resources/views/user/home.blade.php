@@ -1,14 +1,6 @@
 @extends('layouts.user')
 
 @push('head')
-    @php
-    $header = getHeader();
-    @endphp
-    @if (isset($header['logo']))
-    <link rel="shortcut icon" href="{{ $header['logo'] }}" type="image/x-icon">
-    @else
-    <link rel="shortcut icon" href="{{ asset('assets/user/img/box.png') }}" type="image/x-icon">
-    @endif
     <link rel="stylesheet" href="{{asset('assets/user/css/home.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/swaper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">

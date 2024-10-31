@@ -58,8 +58,9 @@
                     }
                 },
             })
+
             .then(editor => {
-                data = editor; // -> '<p>Foo!</p>'
+               data = editor;
             })
 
             .catch( error => {
@@ -71,7 +72,7 @@
             }
 
             function setDataText() {
-                return data.setData('');
+                return data.setData("")
             }
 
             document.addEventListener("DOMContentLoaded", function() {
@@ -83,7 +84,11 @@
                 element.addEventListener('submit', () => {
                     document.querySelector("#information").value = getDataText()
                 });
+                
             })
+            document.querySelector("div.screen").addEventListener('click', function() {
+                setDataText()
+            });
     </script>
     {{-- script import ckeditor5 --}}
 </div>

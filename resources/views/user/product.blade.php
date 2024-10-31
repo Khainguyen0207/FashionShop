@@ -1,6 +1,5 @@
 @extends('layouts.user')
 @push('head')
-    <link rel="shortcut icon" href="{{asset('assets/user/img/logo.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('assets/user/css/product-id.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/product.css')}}">
     <link rel="stylesheet" href="{{asset('assets/user/css/style.css')}}">

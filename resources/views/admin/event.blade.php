@@ -25,9 +25,9 @@
                 </div>
                 <div class="timer_event">
                     <p style="font-size: 20px; padding: 5px 0px">Thời gian bắt đầu</p>
-                    <input type="datetime-local" style="color: red;" class="input" name="start_time" id="start_time" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d\TH:i:s') }}">
+                    <input type="date" style="color: red;" class="input" name="start_time" id="start_time" value="{{ old('date', \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d')) }}" placeholder="Thiết lập thời gian kết thúc">
                     <p style="font-size: 20px; padding: 5px 0px">Thời gian kết thúc</p>
-                    <input type="datetime-local" style="color: red;" class="input" name="end_time" id="end_time" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->addDay()->format('Y-m-d\TH:i:s') }}" placeholder="Thiết lập thời gian kết thúc">
+                    <input type="date" style="color: red;" class="input" name="end_time" id="end_time" min="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->addDay()->format('Y-m-d') }}" placeholder="Thiết lập thời gian kết thúc">
                 </div>
                 <p style="font-size: 20px; padding: 5px 0px">Thông tin sự kiện</p>
                 <div class="information_event">
@@ -58,7 +58,7 @@
             </div>
             <div class="footer" style="margin-top: 10px;">
                 <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i> Lưu</button>
-                <button type="submit" onclick="clickAddCategory(event)" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
+                <button type="submit" onclick="document.querySelector('div.screen').click()" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
             </div>
         </form>
     </div>

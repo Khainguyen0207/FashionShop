@@ -11,9 +11,9 @@
         </div>
         <div class="timer_event">
             <p style="font-size: 20px; padding: 5px 0px">Thời gian bắt đầu</p>
-            <input type="datetime-local" style="color: red;" class="input" name="start_time" id="start_time" value="{{ $start_time }}">
+            <input type="date" style="color: red;" class="input" name="start_time" id="start_time" value="{{ $start_time }}">
             <p style="font-size: 20px; padding: 5px 0px">Thời gian kết thúc</p>
-            <input type="datetime-local" style="color: red;" class="input" name="end_time" id="end_time" value="{{ $end_time }}" placeholder="Thiết lập thời gian kết thúc">
+            <input type="date" style="color: red;" class="input" name="end_time" id="end_time" value="{{ $end_time }}" placeholder="Thiết lập thời gian kết thúc">
         </div>
         <p style="font-size: 20px; padding: 5px 0px">Thông tin sự kiện</p>
         <div class="information_event">
@@ -43,6 +43,7 @@
         </div>
     </div>
     <div class="footer" style="margin-top: 10px;">
+        <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i> Lưu</button>
         <button type="submit" onclick="clickAddCategory(event)" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
     </div>
 </form>
