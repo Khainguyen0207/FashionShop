@@ -91,9 +91,9 @@
                     <div class="img img-events">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                @foreach ($products_new as $item)
+                                @foreach ($events as $item)
                                 <div class="swiper-slide">
-                                    <a href="{{ route('product.id', [$item->category_id , $item->id]) }}"><img src="{{ $item['image'][0] }}" alt="promotion-program"></a>
+                                    <a href="#"><img src="{{ url(Storage::url($item['image'])) }}" alt="promotion-program"></a>
                                 </div>
                                 @endforeach
                             </div>
