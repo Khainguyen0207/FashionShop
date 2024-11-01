@@ -16,7 +16,7 @@ class UserController extends Controller
     public function home()
     {
         $product = Product::query();
-        $products_new = $product->latest()->whereMonth('created_at', Carbon::now()->monthOfYear())->paginate(10)->items();
+        $products_new = $product->latest()->paginate(5)->items();
         $products_new = $this->getUrlForImage($products_new);
         $events = EventModel::query()->where('start_time',"<", Carbon::now())->where('end_time',">", Carbon::now())->get();
         // $events = $this->getUrlForImage($products_new);

@@ -1,0 +1,14 @@
+:root {
+    --background: #ffe0ae ;
+}
+#container {
+    background-color: antiquewhite;
+    
+}
+
+.main_content {
+    max-width: 800px;
+    margin-left: auto;
+    text-align: left;
+    margin-right: auto;
+}   

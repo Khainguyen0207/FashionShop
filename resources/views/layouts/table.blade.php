@@ -24,7 +24,7 @@
                             @foreach ($key as $k => $key_data)
                                 @if (isset($item[$key_data]))
                                     @if ($key_data == "image")
-                                        <td class="table-info" name="{{$key_data}}"><img src="{{$item[$key_data]}}" alt="{{$key_data}}" style="width: 100%: max-width: 100px; max-height: 100px" ></td>
+                                        <td class="table-info" name="{{$key_data}}"><img src="{{$item[$key_data]}}" alt="{{$key_data}}" style="width: 100%; max-width: 100px; max-height: 100px" ></td>
                                     @elseif($key_data == "id")
                                         <td class="table-info" style="width: 5%" name="{{$key_data}}">{{ $item[$key_data] }}</td>
                                     @else

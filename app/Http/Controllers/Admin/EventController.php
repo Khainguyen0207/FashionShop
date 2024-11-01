@@ -27,8 +27,8 @@ class EventController extends Controller
                 $value->status = "Hết hạn";
             }
         }
-        foreach (collect($body->items()) as $key => $value) {
-            $value->image = url(Storage::url($value->image) );
+        foreach (collect($body->items()) as $value) {
+            $value->image = url(Storage::url($value->image));
         }
         $render = [
             $table,
@@ -40,11 +40,12 @@ class EventController extends Controller
         ];
 
         $render['icon'] = null;
-        $render['custom_button'] = FunctionController::button(['info','del']);
+        $render['custom_button'] = FunctionController::button(['edit','del']);
         return view("admin.event", RenderController::render("event", $render));
     }
 
     public function store(EventRequest $request) {
+        dd($request);
         $render = [
             "image" => $request->file("banner_event")->store('public/events'),
             ...$request->input()
@@ -60,12 +61,20 @@ class EventController extends Controller
         return redirect()->back()->with("success", "Thêm mới sự kiện thành công");
     }
 
-    public function show(Request $request, string $id) {
-        $information = EventModel::query()->where('id', $id)->get();
-        $information->first()->start_time = Carbon::parse($information->first()->start_time)->format("Y-m-d");
-        $information->first()->end_time = Carbon::parse($information->first()->end_time )->format("Y-m-d");
-        
-        return view('layouts.admin.event_seen_info', ...$information);
+    public function edit(string $id) {
+        $information = EventModel::query()->where('id', $id)->first()->toArray();
+        $information['start_time'] = Carbon::parse($information['start_time'])->format("Y-m-d");
+        $information['end_time'] = Carbon::parse($information['end_time'] )->format("Y-m-d");
+        $information['image'] = url(Storage::url($information['image']));
+        return view('layouts.admin.event_seen_info', $information);
+    }
+
+    public function update(EventRequest $request, string $id) {
+        $information = EventModel::query()->where('id', $id)->first()->toArray();
+        $information['start_time'] = Carbon::parse($information['start_time'])->format("Y-m-d");
+        $information['end_time'] = Carbon::parse($information['end_time'] )->format("Y-m-d");
+        $information['image'] = url(Storage::url($information['image']));
+        return view('layouts.admin.event_seen_info', $information);
     }
 
     public function destroy($id) {

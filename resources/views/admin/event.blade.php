@@ -13,7 +13,7 @@
 @section('overview')
     <div id="addCategory" class="addCategory">
         <div class="screen" onclick="clickAddCategory(event)"></div>
-        <form action="{{route('admin.event.store')}}" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
+        <form action="#" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
             @csrf
             <div class="header">
                 <h2 class="tittle">Sự kiện</h2>
@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="footer" style="margin-top: 10px;">
-                <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i> Lưu</button>
+                <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i> Thêm</button>
                 <button type="submit" onclick="document.querySelector('div.screen').click()" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
             </div>
         </form>
@@ -68,7 +68,7 @@
         </div>
         <div class="tool-bar">
             <div class="function">
-                <a href="#" onclick="clickAddCategory(event) "> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
+                <a href="#" onclick="clear_text(event); clickAddCategory(event)" data-url="{{ route('admin.event.store') }}"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
             </div>
         </div>
         <div class="table">

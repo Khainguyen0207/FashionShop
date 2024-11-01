@@ -54,14 +54,15 @@
         </div>
         <div class="promotions">
             <div class="promotion">
-                <h2>Chương trình khuyến mãi</h2>
+                <h2>Khuyến mãi</h2>
                 <div class="img img-promotion">
                     <div class="swiper-container">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-0.png')}}" alt="promotion-program"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-1.png')}}" alt="promotion-program"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-2.png')}}" alt="promotion-program"></a></div>
-                            <div class="swiper-slide"><a href="#"><img src="{{asset('assets/user/img/event-3.png')}}" alt="promotion-program"></a></div>
+                            @foreach ($events as $item)
+                                <div class="swiper-slide">
+                                    <a href="#"><img src="{{ url(Storage::url($item['image'])) }}" alt="promotion-program"></a>
+                                </div>
+                            @endforeach
                         </div>
                         <!-- Add Pagination -->
                         <div class="swiper-pagination"></div>
@@ -93,7 +94,7 @@
                             <div class="swiper-wrapper">
                                 @foreach ($events as $item)
                                 <div class="swiper-slide">
-                                    <a href="#"><img src="{{ url(Storage::url($item['image'])) }}" alt="promotion-program"></a>
+                                    <a href="{{route("user.event.show", ['title_blog' => $item['title'], 'id' => $item['id']])}}"><img src="{{ url(Storage::url($item['image'] )) }}" alt="promotion-program"></a>
                                 </div>
                                 @endforeach
                             </div>

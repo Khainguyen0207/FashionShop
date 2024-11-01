@@ -1,5 +1,5 @@
 <div class="screen" onclick="clickAddCategory(event);"></div>
-<form action="{{route('admin.event.store')}}" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
+<form action="#" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
     @csrf
     <div class="header">
         <h2 class="tittle">Sự kiện</h2>
@@ -21,8 +21,8 @@
         </div>
         <div class="banner_event">
             <label for="image_select">Tải ảnh sự kiện</label>
-            <input type="file" name="banner_event" id="image_select" style="display: none" accept="image/*" value="{{ Storage::url($image) }}">
-            <div id="preview"><img src="{{ Storage::url($image) }}" style="width: 100%;max-width: 100px;" alt=""></div>
+            <input type="file" name="banner_event" id="image_select" style="display: none" accept="image/*" value="{{ $image }}">
+            <div id="preview"><img src="{{ $image }}" style="width: 100%;max-width: 100px;" alt=""></div>
             <script>
                 document.querySelector("#image_select").addEventListener("change", function(event) {
                     const file = event.currentTarget.files[0];
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="footer" style="margin-top: 10px;">
-        <button type="submit" class="btn-add btn"><i class="fa-solid fa-check"></i> Lưu</button>
+        <button type="submit" class="btn-add btn" data-url="{{ route('admin.event.edit', $id) }}"><i class="fa-solid fa-check"></i> Cập nhật</button>
         <button type="submit" onclick="clickAddCategory(event)" class="btn-close btn"><i class="fa-solid fa-xmark"></i> Hủy</button>
     </div>
 </form>

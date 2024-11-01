@@ -153,9 +153,6 @@ body {
 
 #container .promotions .img {
     position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
 }
 
 .list-products-sale .products-sale,

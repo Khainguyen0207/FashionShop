@@ -7,7 +7,7 @@ class FunctionController extends Controller
     public static function table($name_table, $key)
     {
         $table_customers = ['ID','Tên khách hàng',  'Email', 'Quyền'];
-        $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng tồn kho'];
+        $table_products = ['Tên sản phẩm', 'Mã sản phẩm', 'Giá', 'Danh mục', 'Số lượng'];
         $table_order = ['Mã đơn hàng', 'Tên người nhận', 'Số điện thoại', 'Trạng thái', 'Thời gian'];
         $event = ['ID', 'Hình ảnh',  'Tiêu đề', 'Bắt đầu', 'Kết thúc', 'Trạng thái'];
         switch ($name_table) {
@@ -17,10 +17,6 @@ class FunctionController extends Controller
             case 'event': return array_combine($key, $event);
             default: return null;
         }
-    }
-
-    public static function text_area() {
-        return view("");
     }
 
     public static function button(array $buttons)
