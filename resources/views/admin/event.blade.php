@@ -17,7 +17,7 @@
             @csrf
             <div class="header">
                 <h2 class="tittle">Sự kiện</h2>
-            </div>
+            </div> 
             <div class="container">
                 <div class="information-product" style="margin-bottom: 10px;">
                     <p style="font-size: 20px; padding: 5px 0px">Tiêu đề</p>
