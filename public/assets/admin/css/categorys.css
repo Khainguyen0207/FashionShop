@@ -1,7 +1,6 @@
 .overview .tool-bar {
     position: relative;
     display: block;
-    height: 15vh;
 }
 
 label {
@@ -19,21 +18,23 @@ label:hover,label:focus {
     background-color: #ff0000;
     transition: 0.3s;
 }
+.tool-bar .function {
+    text-align: right;
+    margin-bottom: 20px;
+}
 
 .tool-bar .function a {
-    display: block;
+    display: inline-block;
     padding: 9px 12px;
     background-color: chartreuse;
     border-radius: 10px;
-    float: right;
     transition: 0.7s;
 }
 
 .tool-bar .function a:hover {
-    display: block;
+    display: inline-block;
     padding: 9px 12px;
     background-color: rgba(128, 255, 0, 0.278);
-    float: right;
     transition: 0.2s;
 }
 

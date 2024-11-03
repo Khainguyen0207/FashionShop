@@ -26,8 +26,6 @@ class EventController extends Controller
             } else {
                 $value->status = "Hết hạn";
             }
-        }
-        foreach (collect($body->items()) as $value) {
             $value->image = url(Storage::url($value->image));
         }
         $render = [
@@ -45,9 +43,8 @@ class EventController extends Controller
     }
 
     public function store(EventRequest $request) {
-        dd($request);
         $render = [
-            "image" => $request->file("banner_event")->store('public/events'),
+            "image" => $request->file("image")->store('public/events'),
             ...$request->input()
         ];
         try {
@@ -62,19 +59,23 @@ class EventController extends Controller
     }
 
     public function edit(string $id) {
-        $information = EventModel::query()->where('id', $id)->first()->toArray();
-        $information['start_time'] = Carbon::parse($information['start_time'])->format("Y-m-d");
-        $information['end_time'] = Carbon::parse($information['end_time'] )->format("Y-m-d");
-        $information['image'] = url(Storage::url($information['image']));
+        $information = EventModel::query()->where('id',$id)->first();
+        $information->start_time = Carbon::parse($information->start_time)->format("Y-m-d");
+        $information->end_time = Carbon::parse($information->end_time )->format("Y-m-d");
+        $information->image = url(Storage::url($information->image));
         return view('layouts.admin.event_seen_info', $information);
     }
 
-    public function update(EventRequest $request, string $id) {
-        $information = EventModel::query()->where('id', $id)->first()->toArray();
-        $information['start_time'] = Carbon::parse($information['start_time'])->format("Y-m-d");
-        $information['end_time'] = Carbon::parse($information['end_time'] )->format("Y-m-d");
-        $information['image'] = url(Storage::url($information['image']));
-        return view('layouts.admin.event_seen_info', $information);
+    public function update(Request $request, string $id) {
+        $info = EventModel::findOrFail($id);  
+        $info->fill($request->all());
+        if ($info->isDirty()) {
+            if ($info->isDirty("image")) {
+                $info->image = $request->file("image")->store('public/events');
+            }
+            $info->save();
+        }
+        return back()->with("success", "Dữ liệu được cập nhật");
     }
 
     public function destroy($id) {

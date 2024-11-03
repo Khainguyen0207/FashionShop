@@ -102,6 +102,8 @@ section {
     float: left;
     width: 100%;
     max-width: 100px;
+    max-height: 12vh;
+    padding: 10px;
 }
 
 #header .bar a {

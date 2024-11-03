@@ -23,8 +23,9 @@ class EventRequest extends FormRequest
     {
         return [
             'title' => "required",
-            'banner_event' => "required",
+            'image' => "required",
             'information' => "required",
+            'end_time' => "required",
         ];
     }
 
@@ -33,7 +34,7 @@ class EventRequest extends FormRequest
         return [
             'title.required' => 'Tiêu đề không được để trống.',
             'text_area_value.required' => 'Thông tin sự kiện không được để trống.',
-            'banner_event.required' => 'Yêu cầu ảnh sự kiện.',
+            'image.required' => 'Yêu cầu ảnh sự kiện.',
         ];
     }
 }

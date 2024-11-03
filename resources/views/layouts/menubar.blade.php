@@ -1,7 +1,14 @@
 <ul class="list-menu">
     <div class="review">
         <p>Admin Fashion</p>
-        <a href="#logo"><img src="{{asset('assets/admin/img/logo.png')}}" alt="logo"></a>
+        @php
+            $header = getHeader();
+        @endphp
+        @if (isset($header['logo']))
+            <a href="#"><img src="{{ $header['logo'] }}" alt="logo"></a>
+        @else
+            <a href="#"><img src="{{ asset('assets/user/img/box.png') }}" alt="logo"></a>
+        @endif
     </div>
     <div class="menu">
         <li>

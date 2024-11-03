@@ -108,7 +108,7 @@
                 <h1 id="title title_product">Thông tin chi tiết</h1>
                 <ul class="detail">
                     @foreach ($product->description as $item)
-                        <li>{{$item}}></li>
+                        <li>{{$item}}</li>
                     @endforeach
                 </ul>
             </div>

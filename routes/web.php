@@ -24,9 +24,7 @@ use App\Http\Controllers\User\EventBlogController;
 
 Route::get('/getData', [PayController::class, 'return'])->name('getDataBanking');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-})->name('welcome');
+Route::view('/welcome', 'welcome')->name('welcome');
 
 Route::get('/', [UserController::class, 'home'])->name('user.home');
 Route::post('/', [UserController::class, 'store'])->name('user.home.post');
@@ -139,8 +137,10 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //Event
     Route::get('/event', [EventController::class, 'home'])->name('admin.event.home');
     Route::post('/event', [EventController::class, 'store'])->name('admin.event.store');
-    Route::post('/event/info/{id}', [EventController::class, 'show'])->name('admin.event.show');
+
     Route::get('/event/edit/{id}', [EventController::class, 'edit'])->name('admin.event.edit');
+    Route::patch('/event/edit/{id}', [EventController::class, 'update'])->name('admin.event.show');
+
     Route::delete('/event/del/{id}', [EventController::class, 'destroy'])->name('admin.event.destroy');
     //Logout
     Route::get('/logout', [UserController::class, 'destroy'])->name('admin.logout');

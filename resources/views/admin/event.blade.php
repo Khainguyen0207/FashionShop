@@ -11,13 +11,14 @@
     </style>
 @endpush
 @section('overview')
-    <div id="addCategory" class="addCategory">
+    <div id="addCategory" class="addCategory"></div>
+    <div id="frame_addCategory" style="display: none">
         <div class="screen" onclick="clickAddCategory(event)"></div>
-        <form action="#" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
+        <form action="{{ route("admin.event.store") }}" id="addCategoryForm" enctype="multipart/form-data" class="my-animation"  method="POST">
             @csrf
             <div class="header">
                 <h2 class="tittle">Sự kiện</h2>
-            </div> 
+            </div>
             <div class="container">
                 <div class="information-product" style="margin-bottom: 10px;">
                     <p style="font-size: 20px; padding: 5px 0px">Tiêu đề</p>
@@ -25,7 +26,7 @@
                 </div>
                 <div class="timer_event">
                     <p style="font-size: 20px; padding: 5px 0px">Thời gian bắt đầu</p>
-                    <input type="date" style="color: red;" class="input" name="start_time" id="start_time" value="{{ old('date', \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d')) }}" placeholder="Thiết lập thời gian kết thúc">
+                    <input type="date" style="color: red;" class="input" name="start_time" id="start_time" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}" placeholder="Thiết lập thời gian kết thúc">
                     <p style="font-size: 20px; padding: 5px 0px">Thời gian kết thúc</p>
                     <input type="date" style="color: red;" class="input" name="end_time" id="end_time" min="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->addDay()->format('Y-m-d') }}" placeholder="Thiết lập thời gian kết thúc">
                 </div>
@@ -35,7 +36,7 @@
                 </div>
                 <div class="banner_event">
                     <label for="image_select">Tải ảnh sự kiện</label>
-                    <input type="file" name="banner_event" id="image_select" style="display: none" accept="image/*">
+                    <input type="file" name="image" id="image_select" style="display: none" accept="image/*">
                     <div id="preview"></div>
                     <script>
                         document.querySelector("#image_select").addEventListener("change", function(event) {
@@ -52,7 +53,7 @@
                             imgContainer.appendChild(img);
                             preview = document.querySelector("#preview")
                             preview.innerHTML= imgContainer.innerHTML
-                        })
+                        }) 
                     </script>
                 </div>
             </div>
@@ -68,7 +69,7 @@
         </div>
         <div class="tool-bar">
             <div class="function">
-                <a href="#" onclick="clear_text(event); clickAddCategory(event)" data-url="{{ route('admin.event.store') }}"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
+                <a href="#" onclick="clear_text(event)" data-url="{{ route('admin.event.store') }}"> <i class="fa-solid fa-plus"></i> Sự kiện mới </a>
             </div>
         </div>
         <div class="table">

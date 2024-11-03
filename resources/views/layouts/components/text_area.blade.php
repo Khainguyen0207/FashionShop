@@ -7,7 +7,9 @@
             {!!$information!!}
         @endif
     </div>
-    <input type="hidden" class="input" id="information" name="information">
+    <div class="info">
+        <input type="hidden" id="information" name="information">
+    </div>
      {{-- script import ckeditor5 --}}
     <script type="importmap">
         {
@@ -75,17 +77,15 @@
                 return data.setData("")
             }
 
-            document.addEventListener("DOMContentLoaded", function() {
-                let element = document.querySelector("#editor");
-                do {
-                    element = element.parentElement
-                } while (element && !(element instanceof HTMLFormElement));
-                
-                element.addEventListener('submit', () => {
-                    document.querySelector("#information").value = getDataText()
-                });
-                
-            })
+            let element = document.querySelector("#editor");
+            do {
+                element = element.parentElement
+            } while (element && !(element instanceof HTMLFormElement));
+            
+            element.addEventListener('submit', () => {
+                document.querySelector("#information").value = getDataText()
+            });
+            
             document.querySelector("div.screen").addEventListener('click', function() {
                 setDataText()
             });

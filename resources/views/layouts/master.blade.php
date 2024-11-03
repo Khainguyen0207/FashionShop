@@ -24,7 +24,13 @@
     </head>
     <body>
         <div id="alert">
-            @include('common.error')
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    setTimeout(() => {
+                        document.querySelector("#alert").innerHTML += `@include('common.error')`;
+                    }, 500);
+                })
+            </script>
         </div>
         @yield('content')
     </body>

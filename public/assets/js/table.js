@@ -54,7 +54,6 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
                 url: url,
             }).then((data)=> {
                 clickAddCategory(event)
-                document.querySelector("#addCategoryForm").action = url;
                 $('#addCategory').html(data)
             });
         });
