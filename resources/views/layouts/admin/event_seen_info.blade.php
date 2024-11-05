@@ -23,7 +23,7 @@
         <div class="banner_event">
             <label for="image_select">Tải ảnh sự kiện</label>
             <input type="file" name="image" id="image_select" style="display: none" accept="image/*" value="{{ $image }}">
-            <div id="preview"><img src="{{ $image }}" style="width: 100%;max-width: 100px;" alt=""></div>
+            <div id="preview"><img src="{{ $image }}" style="width: 100%;max-width: 100px;" alt="select_images"></div>
             <script>
                 document.querySelector("#image_select").addEventListener("change", function(event) {
                     const file = event.currentTarget.files[0];
