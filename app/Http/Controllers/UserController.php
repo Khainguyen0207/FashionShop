@@ -19,7 +19,6 @@ class UserController extends Controller
         $products_new = $product->latest()->paginate(5)->items();
         $products_new = $this->getUrlForImage($products_new);
         $events = EventModel::query()->where('start_time',"<", Carbon::now())->where('end_time',">", Carbon::now())->get();
-        // $events = $this->getUrlForImage($products_new);
         $account = Auth::user();
         $categories = Category::query()->get(['id', 'name_category'])->toArray();
         foreach ($categories as $key => $value) {

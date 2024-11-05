@@ -60,7 +60,7 @@
                         <div class="swiper-wrapper">
                             @foreach ($events as $item)
                                 <div class="swiper-slide">
-                                    <a href="#"><img src="{{ url(Storage::url($item['image'])) }}" alt="promotion-program"></a>
+                                    <a href="/"><img src="{{ url(Storage::url($item['image'])) }}" alt="promotion-program"></a>
                                 </div>
                             @endforeach
                         </div>
@@ -69,7 +69,6 @@
                     </div> 
                 </div>
             </div>
-
             <div class="events-new_products">
                 <div class="new-products">
                     <h2>Sản phẩm mới</h2>
@@ -94,7 +93,7 @@
                             <div class="swiper-wrapper">
                                 @foreach ($events as $item)
                                 <div class="swiper-slide">
-                                    <a href="{{route("user.event.show", ['title_blog' => $item['title'], 'id' => $item['id']])}}"><img src="{{ url(Storage::url($item['image'] )) }}" alt="promotion-program"></a>
+                                    <a href="{{route("user.event.show", ['title_blog' => base64_encode($item['title']), 'id' => $item['id']])}}"><img src="{{ url(Storage::url($item['image'] )) }}" alt="promotion-program"></a>
                                 </div>
                                 @endforeach
                             </div>

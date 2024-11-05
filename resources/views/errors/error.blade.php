@@ -15,29 +15,8 @@
         body {
             width: 100%;
             height: 100vh;
-            /* background-color: bisque; */
-        }
-
-        .notifition {
-            position: absolute;
             text-align: center;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            color: black;
-            font-family: Verdana, Geneva, Tahoma, sans-serif, Courier, monospace;
-        }
-        
-        .img-404 {
-            position: absolute;
-            height: 100vh;
-            width: 100%;    
-            background-image: url(https://cdn.pixabay.com/photo/2021/07/21/12/49/error-6482984_960_720.png);
-            background-size: contain;
-            align-items : center;
-            justify-content: center;
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, 'ヒラギノ角ゴ Pro W3', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial, sans-serif;
         }
     </style>
 </head>
@@ -45,7 +24,10 @@
     {{-- <div class="img-404">
         <h1 class="notifition">Anh yêu em thì có chứ trang thì không tìm thấy</h1>
     </div> --}}
-    <h1>Not found</h1>
-    <a href="/">Về trang chủ</a>
+    <div class="error">
+        <img src="{{ asset("assets/img/404.gif") }}" style="max-width: 100%" alt="404">
+        <h2 style="color: orange">Oops! Something went wrong</h2>
+        <p> We couldn't find the page you were looking for. <br>Why not try back to the <span><a style="color: orange" href="/">homepage</a></span>.</p>
+    </div>
 </body>
 </html>

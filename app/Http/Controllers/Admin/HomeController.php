@@ -37,18 +37,6 @@ class HomeController extends Controller
         return $sum;
     }
 
-    public function customer($name)
-    {
-        dd($name);
-    }
-
-    public function store(Request $request)
-    {
-        dd($request);
-    }
-
-    public function show($id) {}
-
     public function destroy()
     {
         Auth::logout();
