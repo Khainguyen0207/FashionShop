@@ -121,9 +121,10 @@ a {
 }
 
 .menu-bar .menu .quantity {
-    background-color: red;
+    background-color: #8d8d8d;
     padding: 0px 5px;
-    border-radius: 100%;
+    border-radius: 100rem;
+    color: white;
 }
 .list-menu li:focus .list-small,
 .list-menu li:hover .list-small {

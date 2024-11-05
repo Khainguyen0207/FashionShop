@@ -8,6 +8,35 @@
         .ck .ck-powered-by {
             display: none;
         }
+
+        .info {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+            width: 150px;
+            bottom: 100%; /* Vị trí phía trên */
+            left: 50%;
+            margin-left: -75px; /* Căn giữa */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 10px
+            
+        }
+
+        .info:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 @endpush
 @section('overview')
@@ -25,7 +54,8 @@
                     <input type="text" name="title" class="input" placeholder="Tiêu đề danh mục" spellcheck="false" required>
                 </div>
                 <div class="timer_event">
-                    <p style="font-size: 20px; padding: 5px 0px">Thời gian bắt đầu</p>
+                    <p style="font-size: 20px; padding: 5px 0px">Thời gian bắt đầu <span class="info info_time"><i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> <span class="tooltip">Thời gian sẽ bắt đầu lúc 00:00</span></span></p>
+                    
                     <input type="date" style="color: red;" class="input" name="start_time" id="start_time" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}" placeholder="Thiết lập thời gian kết thúc">
                     <p style="font-size: 20px; padding: 5px 0px">Thời gian kết thúc</p>
                     <input type="date" style="color: red;" class="input" name="end_time" id="end_time" min="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d') }}" value="{{ \Carbon\Carbon::now('Asia/Ho_Chi_Minh')->addDay()->format('Y-m-d') }}" placeholder="Thiết lập thời gian kết thúc">

@@ -22,7 +22,9 @@ function clickAddCategory(event) {
 function clear_text(event) {
     var category = document.getElementById('addCategory')
     document.querySelectorAll(".input").forEach(element => {
-        element.value = ""
+        if (element.type != "date") {
+            element.value = ""
+        }
     });
 
     if (document.querySelector("#preview")) {
@@ -30,7 +32,7 @@ function clear_text(event) {
             element.remove()
             
         })
-    }   
+    }
 
     var frameAddCategory = document.querySelector('#frame_addCategory');
     if (frameAddCategory) {

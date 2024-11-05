@@ -43,6 +43,11 @@ class EventController extends Controller
     }
 
     public function store(EventRequest $request) {
+        $start_time = $request->input("start_time");
+        $end_time = $request->input("end_time");
+        if ($start_time > $end_time) {
+            return redirect()->back()->with("error", "Thời gian bắt đầu phải nhỏ hơn kết thúc");
+        }
         $render = [
             "image" => $request->file("image")->store('public/events'),
             ...$request->input()
@@ -53,17 +58,17 @@ class EventController extends Controller
             Log::error("SQL_eror", [
                 "message" => $th
             ]);
-        return redirect()->back()->with("error", "Thêm mới sự kiện thất bại");
+            return redirect()->back()->with("error", "Thêm mới sự kiện thất bại");
         }
         return redirect()->back()->with("success", "Thêm mới sự kiện thành công");
     }
 
     public function edit(string $id) {
-        $information = EventModel::query()->where('id',$id)->first();
-        $information->start_time = Carbon::parse($information->start_time)->format("Y-m-d");
-        $information->end_time = Carbon::parse($information->end_time )->format("Y-m-d");
-        $information->image = url(Storage::url($information->image));
-        return view('layouts.admin.event_seen_info', $information);
+        $event = EventModel::query()->where('id',$id)->first();
+        $event->start_time = Carbon::parse($event->start_time)->format("Y-m-d");
+        $event->end_time = Carbon::parse($event->end_time )->format("Y-m-d");
+        $event->image = url(Storage::url($event->image));
+        return view('layouts.admin.event_seen_info', $event);
     }
 
     public function update(Request $request, string $id) {
@@ -71,6 +76,9 @@ class EventController extends Controller
         $info->fill($request->all());
         if ($info->isDirty()) {
             if ($info->isDirty("image")) {
+                if (Storage::exists($info->image)) {
+                    Storage::delete($info->image);
+                }
                 $info->image = $request->file("image")->store('public/events');
             }
             $info->save();
@@ -79,7 +87,11 @@ class EventController extends Controller
     }
 
     public function destroy($id) {
-        EventModel::query()->where('id', $id)->delete();
+        $event = EventModel::query()->where('id', $id)->first();
+        if (Storage::exists($event->image)) {
+            Storage::delete($event->image);
+        }
+        $event->delete();
         return redirect()->back()->with("success", "Sự kiện đã được xóa");
     }
 }

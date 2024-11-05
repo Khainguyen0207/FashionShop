@@ -27,17 +27,19 @@
             Paragraph,
             Bold,
             Italic,
-            Font, Image, ImageUpload,FileRepository,SimpleUploadAdapter,ImageResize,ImageResizeEditing,ImageResizeButtons 
+            Font, Image, 
+            ImageUpload,FileRepository,SimpleUploadAdapter,ImageResize,ImageResizeEditing,ImageResizeButtons 
+            , AutoLink, Link 
         } from 'ckeditor5';
 
         var data
         ClassicEditor
             .create( document.querySelector( '#editor' ), {
-                plugins: [Heading,ImageResize, Essentials, Paragraph, Bold, Italic, Font , Image, ImageUpload, FileRepository, SimpleUploadAdapter,ImageResizeEditing,ImageResizeButtons],
+                plugins: [Heading , AutoLink, Link ,ImageResize, Essentials, Paragraph, Bold, Italic, Font , Image, ImageUpload, FileRepository, SimpleUploadAdapter,ImageResizeEditing,ImageResizeButtons],
                 toolbar: [
                     'heading', 'undo', 'redo', '|', 'bold', 'italic', '|',
                     'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
-                    'insertImage','|' // Thêm nút chèn hình ảnh vào thanh công cụ
+                    'insertImage','|', 'link' // Thêm nút chèn hình ảnh vào thanh công cụ
                 ],
                 image: {
                     toolbar: [
