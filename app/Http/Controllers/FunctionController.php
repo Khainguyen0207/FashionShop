@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Imagick;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Laravel\Facades\Image;
+
 class FunctionController extends Controller
 {
     public static function table($name_table, $key)
@@ -58,5 +63,16 @@ class FunctionController extends Controller
         //Mã lỗi từ bên vận chuyển => 3
         //Mã lỗi từ bên vận chuyển => 4
         //Mã lỗi từ hệ thống => 5
+    }
+
+    public static function cutImage($path) {
+        File::copy(url($path), "logo_32.png");
+        // Tải ảnh từ đường dẫn
+        $image = Image::read("logo_32.png");
+        // Cắt ảnh
+        $image->resize(32, 32);
+        // Lưu ảnh sau khi cắt
+        $image->save("logo_32.png");
+        return $image;
     }
 }

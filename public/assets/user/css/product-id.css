@@ -1,5 +1,4 @@
-
-:root {
+    :root {
     --background-item: #fff6ea;
     --background: #ffe0ae ;
     --text-color: black;
@@ -165,15 +164,13 @@ h1 {
 }
 
 .information .type .action {
-    box-shadow: 5px 5px #bababa;
+    box-shadow: 5px 5px 5px 0px #c7c7c7;
     transform: scale(1.1);
-    border: 1px solid #c0c0c0;
 }
 
 .information .type .information_btn:hover {
-    box-shadow: 5px 5px #bababa;
+    box-shadow: 5px 5px 5px 0px #c7c7c7;
     transform: scale(1.1);
-    border: 1px solid #c0c0c0;
 }
 
 .information .button-action .btn {

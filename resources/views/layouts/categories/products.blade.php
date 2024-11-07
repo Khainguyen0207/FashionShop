@@ -3,6 +3,7 @@
 @push('head')
     <link rel="shortcut icon" href="{{ asset('assets/admin/img/logo-2.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/products.css') }}">
+    <title>Dashboard</title>
 @endpush
 
 @section('content')

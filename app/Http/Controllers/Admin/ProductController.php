@@ -78,6 +78,7 @@ class ProductController extends Controller
 
     public function store(ProductRequest $productRequest)
     {
+        dd($productRequest);
         $data = $productRequest->validated();
         //Get id category from route parameter
         $id_category = $productRequest->route()->parameter('id_category');

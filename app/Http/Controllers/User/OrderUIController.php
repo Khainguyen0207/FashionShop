@@ -56,12 +56,14 @@ class OrderUIController extends Controller
             $product = json_decode($products[$key]['order_information'], true);
             $total = 0;
             foreach ($product as $product_key => $product_value) {
-                $image = Product::query()->where('product_code', $product_value['id'])->first('image');
-                if (! is_null($image) && Storage::exists($image->image)) {
-                    $product[$product_key]['image'] = Storage::url($image->image);
+                $image = Product::query()->where('product_code', $product_value['id'])->first();
+                if (!is_null($image) && Storage::exists("public/" .$image->image)) {
+                    $product[$product_key]['image'] = url(Storage::url($image->image));
                 } else {
                     $product[$product_key]['image'] = asset('assets/user/img/box.png');
                 }
+                $product[$product_key]['category_id'] = $image->category_id;
+                $product[$product_key]['product_id'] = $image->id;
                 $total += $product[$product_key]['price_product'];
             }
             $orders[$id] = [

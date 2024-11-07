@@ -1,5 +1,10 @@
-@media (max-width: 390px) {
+@media (max-width: 391px) {
     body {
+        #header {
+            .text_head {
+                display: none;
+            }
+        }
         #container {
             .avatar-menu {
                 flex-direction: row;

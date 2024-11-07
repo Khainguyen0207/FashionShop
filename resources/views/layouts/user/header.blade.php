@@ -11,9 +11,9 @@
     
     <div class="bar">
         @if (isset($role) && $role == 1)
-            <a href="{{route("admin.home")}}"><i class="fa-solid fa-headset"></i> Dashboard </a>
+            <a href="{{route("admin.home")}}"><i class="fa-solid fa-headset"></i> <span class="text_head">Admin</span> </a>
         @endif
-        <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> Giỏ hàng</a>
+        <a href="{{route('user.cart.home')}}" class="cart"><i class="fa-solid fa-cart-shopping" ></i> <span class="text_head">Giỏ hàng</span></a>
         <div class="login">
             @if (Auth::check())
                 <a href="#"><i class="fa-solid fa-user"></i> Người dùng</a>

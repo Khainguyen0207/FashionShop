@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FunctionController;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\AboutShopModel;
@@ -32,7 +33,9 @@ if (!function_exists('getHeader')) {
         if (!isset($role->role)) {
             $role = 0;
         }
+        $favicon = FunctionController::cutImage($data['logo']);
         $header = [
+            "favicon" => url($favicon->origin()->filePath()),
             "logo" => $data['logo'], 
             "role" => $role
         ];

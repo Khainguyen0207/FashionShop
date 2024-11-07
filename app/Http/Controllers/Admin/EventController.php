@@ -49,7 +49,7 @@ class EventController extends Controller
             return redirect()->back()->with("error", "Thời gian bắt đầu phải nhỏ hơn kết thúc");
         }
         $render = [
-            "image" => $request->file("image")->store('public/events'),
+            "image" => $request->file("image")->store('events', 'public'),
             ...$request->input()
         ];
         try {
@@ -79,7 +79,7 @@ class EventController extends Controller
                 if (Storage::exists($info->image)) {
                     Storage::delete($info->image);
                 }
-                $info->image = $request->file("image")->store('public/events');
+                $info->image = $request->file("image")->store('events', 'public');
             }
             $info->save();
         }
@@ -88,7 +88,7 @@ class EventController extends Controller
 
     public function destroy($id) {
         $event = EventModel::query()->where('id', $id)->first();
-        if (Storage::exists($event->image)) {
+        if (Storage::exists("public/" .$event->image)) {
             Storage::delete($event->image);
         }
         $event->delete();

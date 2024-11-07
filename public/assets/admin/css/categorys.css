@@ -206,6 +206,20 @@ label:hover,label:focus {
     background-color: rgb(77, 119, 77);
 }
 
+
+#addCategory .container .add_available {
+    display: inline-block;
+    padding: 10px;
+    background-color: #aabbff;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+#addCategory .container .add_available:hover {
+    background-color: rgb(77, 119, 77);
+}
+
+
 #addCategory .container .option {
     display: flex;
     gap: 10px;
@@ -214,13 +228,14 @@ label:hover,label:focus {
 
 #addCategory .container .btn_action {
     display: block;
-    padding: 10px;
+    padding: 9px 12px;
     background-color: #ff0000a8;
     border-radius: 5px;
 }
 
 #addCategory .container .btn_action:hover {
     background-color: #fd9696a8;
+    cursor: pointer;
 }
 
 #addCategory .container .input {
@@ -237,6 +252,11 @@ label:hover,label:focus {
 #addCategory .container .input:focus {
     outline: 0;
     box-shadow: 0px 0px 2px 2px #65b5ff;
+}
+
+
+#addCategoryForm > form > div.container > div.information-product > p {
+    font-size: 20px; padding: 5px 0px
 }
 
 #label_photo {

@@ -31,7 +31,7 @@ Route::post('/', [UserController::class, 'store'])->name('user.home.post');
 
 //Event_Blog
 Route::get('/events', [EventBlogController::class, 'index'])->name('user.event.home');
-Route::get('/events/{title_blog}_{id}', [EventBlogController::class, 'show'])->name('user.event.show');
+Route::get('/events/title={title_blog}&id={id}', [EventBlogController::class, 'show'])->name('user.event.show');
     
 //Cart
 Route::get('/cart', [CartController::class, 'index'])->name('user.cart.home');
@@ -133,6 +133,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     //Setting
     Route::get('/setting', [SettupController::class, 'home'])->name('admin.setting.home');
     Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
+    // Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
 
     //Event
     Route::get('/event', [EventController::class, 'home'])->name('admin.event.home');

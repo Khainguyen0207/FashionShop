@@ -209,12 +209,12 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    max-height: 100px;
+    max-height: 50%;
     padding: 10px;
     border-radius: 10px;
     height: 100px;
     background-color: rgba(0, 0, 0, 0.104);
-    transform: translateY(100%);
+    transform: translateY(10%);
     transition: 0.3s ease-in-out;
     z-index: -1;
 }

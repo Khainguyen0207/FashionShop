@@ -6,12 +6,30 @@
     align-items: flex-start;
 }
 
+.setup-admin .product-options .size-option,
+.setup-admin .product-options .color-option {
+    background-color: #bbf9bb;
+    padding: 10px;
+}
+
 .setup-admin .product-options .option {
     position: relative;
-    display: inline-block;
-    padding: 10px;
-    background-color: #d2fbd8;
+    display: flex;
+    gap: 10px;
     border-radius: 5px;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.setup-admin .product-options .btn_action  {
+    padding: 7px 9px;
+    border-radius: 10px;
+    background-color: rgba(255, 47, 47, 0.858);
+}
+.setup-admin .product-options .btn_action:hover  {
+    padding: 7px 9px;
+    border-radius: 10px;
+    background-color: rgba(251, 164, 164, 0.858);
 }
 
 table {
@@ -30,10 +48,11 @@ td,th {
 }
 
 .btn {
-    display: block;
-    float: left;
-    border-radius: 10px;
+    display: inline-block;
     padding: 5px 10px;
+    margin: 10px 2px;
+    margin-right: 10px;
+    outline: 2px solid #000000;
     background-color: #ffd6a08c;
     
 }
@@ -46,7 +65,6 @@ td,th {
 
 .btn-del {
     background-color: rgba(255, 47, 47, 0.858);
-    color: white;
 }
 
 

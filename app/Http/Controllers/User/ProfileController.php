@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use PhpParser\Node\Stmt\TryCatch;
 
 class ProfileController extends Controller
 {
@@ -23,14 +24,14 @@ class ProfileController extends Controller
         $user = User::query()->where('id', Auth::id())->first();
 
         $information = $user->attributesToArray();
-        if (! empty($information['avatar']) && Storage::exists($information['avatar'])) {
+        if (!empty($information['avatar']) && Storage::exists("public/" .$information['avatar'])) {
             $information['avatar'] = Storage::url($information['avatar']);
         } else {
             $information['avatar'] = asset('assets/user/img/box.png');
         }
+
         $render = [
             ...$information,
-
             'birthday' => Carbon::parse($user->birthday)->format('Y-m-d'),
         ];
 
@@ -57,8 +58,8 @@ class ProfileController extends Controller
 
         if (isset($avatar)) {
             $url_old = User::query()->where('id', Auth::id())->first()->avatar;
-            if (! empty($url_old)) {
-                Storage::delete($url_old);
+            if (!empty($url_old)) {
+                Storage::delete("public/" .$url_old);
             }
             $url = $avatar->store('avatar', 'public');
             $data += ['avatar' => $url];

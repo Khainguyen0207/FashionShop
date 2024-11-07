@@ -29,8 +29,8 @@ class SettupController extends Controller
 
     public function edit(Request $request)
     {
+        dd($request);
         $query = AboutShopModel::query();
-        $data = [];
 
         foreach ($request->request as $key => $value) {
             if ($key == "_token") {

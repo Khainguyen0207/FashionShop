@@ -5,6 +5,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,422&family=Roboto+Condensed:wght@504&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/responsize-admin.css') }}">
+    <style>
+        .info {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+
+        }
+
+        .tooltip {
+            visibility: hidden;
+            position: absolute;
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+            padding: 5px;
+            width: 150px;
+            bottom: 100%; /* Vị trí phía trên */
+            left: 50%;
+            margin-left: -75px; /* Căn giữa */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 10px
+        }
+
+        .info:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 @endpush
 @section('overview')
 
@@ -18,48 +47,54 @@
                     </div>
                     <div class="container">
                         <div class="information-product">
-                            <p style="font-size: 20px; padding: 5px 0px">Tên sản phẩm</p>
+                            <p>Tên sản phẩm</p>
                             <input type="text" name="product_name" class="input" placeholder="Tên sản phẩm của bạn" spellcheck="false" required>
-                            <p style="font-size: 20px; padding: 5px 0px">Giá</p>
+                            <p>Giá</p>
                             <input type="number" class="input" name="price" id="" placeholder="Giá sản phẩm" required>
-                            <p style="font-size: 20px; padding: 5px 0px">Số lượng</p>
+                            <p>Số lượng</p>
                             <input type="number" class="input" name="sold_quantity" id="" placeholder="Số lượng sản phẩm" required>
-                            <h3 style="font-size: 20px; padding: 5px 0px">Tùy chọn</h3>
-                            <p style="font-size: 20px; padding: 5px 0px">Màu sắc</p>
+                            <h3>Tùy chọn</h3>
+                            <p>Màu sắc</p>
                             <div class="color">
-                                <div class="option">
+                                <div class="option option_clone">
                                     <div class="name">
-                                        <label for="">Tên</label>
-                                        <input type="text" class="input">
+                                        <p style="margin: 5px 0px;">Tên</p>
+                                        <input type="text" class="input" name="name_color[]">
                                     </div>
                                     <div class="price">
-                                        <label for="">Giá trị</label>
-                                        <input type="number" class="input">
+                                        <p style="margin: 5px 0px;">Giá trị
+                                            <span class="info info_time">
+                                                <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
+                                                <span class="tooltip">Giá trị thay đổi của từng option</span>
+                                            </span>
+                                        </p>
+                                        <input type="number" class="input" name="value_color[]">
                                     </div>
-                                    <div class="action">
-                                        <a href="" class="btn btn_action" title="delete"><i class="fa-solid fa-trash"></i></a>
-                                    </div>
+                                    <a href="#" class="btn_action" onclick="deleteElement(event, 1)" title="delete"><i class="fa-solid fa-trash"></i></a>
                                 </div>
-                                <a href="" class="add_new">Thêm cột mới</a>
-                                <a href="" class="add_new">Sử dụng tùy chọn có sẵn</a>
+                                <a href="" class="add_new add_new_color">Thêm cột mới</a>
+                                <a href="" class="add_available available_colors">Sử dụng tùy chọn có sẵn</a>
                             </div>
-                            <p style="font-size: 20px; padding: 5px 0px">Kích thước</p>
+                            <p>Kích thước</p>
                             <div class="size">
-                                <div class="option">
+                                <div class="option option_clone">
                                     <div class="name">
-                                        <label for="">Tên</label>
-                                        <input type="text" class="input">
+                                        <p style="margin: 5px 0px;">Tên</p>
+                                        <input type="text" class="input" name="name_size[]">
                                     </div>
                                     <div class="price">
-                                        <label for="">Giá trị</label>
-                                        <input type="number" class="input">
+                                        <p style="margin: 5px 0px;">Giá trị 
+                                            <span class="info info_time">
+                                                <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
+                                                <span class="tooltip">Giá trị thay đổi của từng option</span>
+                                            </span>
+                                        </p>
+                                        <input type="number" class="input" name="value_size[]">
                                     </div>
-                                    <div class="btn_action">
-                                        <a href="" class="delete" title="delete"><i class="fa-solid fa-trash"></i></a>
-                                    </div>
+                                    <a href="#" class="btn_action" onclick="deleteElement(event, 1)"><i class="fa-solid fa-trash"></i></a>
                                 </div>
-                                <a href="" class="add_new">Thêm cột mới</a>
-                                <a href="" class="add_new" option="size">Sử dụng tùy chọn có sẵn</a>
+                                <a href="" class="add_new add_new_size">Thêm cột mới</a>
+                                <a href="" class="add_available available_sizes" option="size">Sử dụng tùy chọn có sẵn</a>
                             </div>
                             <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
                             <textarea class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" 
@@ -143,5 +178,6 @@
 @push('footer')
     <script src="{{asset('assets/admin/js/category.js')}}"></script>
     <script src="{{ asset('assets/admin/js/find.js') }}"></script> 
-    <script src="{{ asset('assets/js/table.js') }}"></script> 
+    <script src="{{ asset('assets/admin/js/setting.js') }}"></script> 
+    <script src="{{ asset('assets/js/table.js') }}"></script>
 @endpush

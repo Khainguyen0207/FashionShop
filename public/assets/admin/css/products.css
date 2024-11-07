@@ -37,6 +37,7 @@ a {
     position: relative;
     text-align: center;
     padding: 10px;
+    font-size: 20px;
     color: #FF0000;
 }
 
@@ -163,6 +164,7 @@ a {
 .overview .tool-bar {
     position: relative;
     display: flex;
+    padding: 10px 0px;
     justify-content: space-between;
 }
 

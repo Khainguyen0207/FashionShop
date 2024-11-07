@@ -16,9 +16,9 @@
             $header = getHeader();
         @endphp
         @if (isset($header['logo']))
-            <link rel="shortcut icon" href="{{ $header['logo'] }}" style="width:100%;" type="image/x-icon">
+            <link rel="shortcut icon" href="{{ $header['favicon'] }}" type="image/x-icon">
         @else
-            <link rel="shortcut icon" href="{{ asset('assets/user/img/box.png') }}" style="width: 32px; height: 32px;" type="image/x-icon">
+            <link rel="shortcut icon" href="{{ asset('assets/user/img/box.png') }}" type="image/x-icon">
         @endif
         @stack('head')
     </head>
@@ -35,6 +35,7 @@
         @yield('content')
     </body>
     <footer>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @stack('footer')
     </footer>
 </html>
