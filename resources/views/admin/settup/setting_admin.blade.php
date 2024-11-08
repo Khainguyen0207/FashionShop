@@ -4,9 +4,9 @@
     <div class="product-options">
         <div class="color-options options">
             <div class="color-option option_clone data_option">
-                <h4>Màu sắc 1</h4>
-                <div class="option option_clone">
-                    <form action="{{route("admin.setting.edit")}}" method="post" class="option">
+                <form action="{{route("admin.setting.edit")}}" method="post" id="form_option">
+                    <h4 style="text-align: left">Màu sắc 1</h4>
+                    <div class="option option_clone">
                         @csrf   
                         <div class="name">
                             <p style="margin: 5px 0px;">Tên</p>
@@ -21,11 +21,11 @@
                             </p>
                             <input type="number" class="input" name="value_color[]">
                         </div>
-                        <a href="#" class="btn_action" onclick="deleteElement(event, 2)"><i class="fa-solid fa-trash"></i></a>
-                    </form>
-                </div>
-                <a href="#" class="btn add_new">Thêm tùy chọn</a>
-                <a href="#" onclick="document.querySelector('form.option').submit()" class="btn">Lưu cài đặt</a>
+                        <a href="#" class="btn_action" onclick="deleteElement(event, 1)"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                    <a href="#" class="btn add_new">Thêm tùy chọn</a>
+                    <a href="#" onclick="event.target.parentElement.submit()" class="btn">Lưu cài đặt</a>
+                </form>
             </div>
             <a href="" class="btn add_new">Thêm mới</a>
         </div>  

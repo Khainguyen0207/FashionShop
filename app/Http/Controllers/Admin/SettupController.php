@@ -29,30 +29,29 @@ class SettupController extends Controller
 
     public function edit(Request $request)
     {
-        dd($request);
         $query = AboutShopModel::query();
-
         foreach ($request->request as $key => $value) {
             if ($key == "_token") {
                 continue;
             }
-            if (collect($value)->map('trim') != null) {
-                AboutShopModel::query()->where('key', $key)->update([
-                    'value' => json_encode($value), 
-                ]);
+            if (!is_null(collect($value)->map('trim'))) {
+                if (empty(AboutShopModel::query()->where('key', $key)->first()) && $value[0] != null) {
+                    AboutShopModel::query()->where('key', $key)->create([
+                        'value' => json_encode($value),
+                    ]);
+                } else {
+                    AboutShopModel::query()->where('key', $key)->update([
+                        'value' => json_encode($value),
+                    ]);
+                }
             }
         }
         if (!empty($request->file())) {
             foreach ($request->file() as $key => $value) {
                 $old_value = $query->where('key', $key)->first()->value;
                 $name_file = $request->file($key)->store('public/about_store');
-
-                // Get the original filename
                 $originalFileName = basename($name_file);
-
-                // Define the destination path
                 $destinationPath = public_path('storage/about_store/' . $originalFileName);
-                // Copy the file to the new location
                 File::copy(storage_path('app/' . $name_file), $destinationPath);
                 $query->where('key', $key)->update([
                     'value' => $name_file, 
@@ -63,6 +62,20 @@ class SettupController extends Controller
             }
         }
         return redirect()->back()->with("success", "Thay đổi thành công");
+    }
+
+    public function option(Request $request) {
+        $query = AboutShopModel::query();
+        foreach ($request->request as $key => $value) {
+            if ($key == "_token") {
+                continue;
+            }
+            if (collect($value)->map('trim') != null) {
+                AboutShopModel::query()->where('key', $key)->update([
+                    'value' => json_encode($value),
+                ]);
+            }
+        }
     }
 
     public static function getDataSettupController() {

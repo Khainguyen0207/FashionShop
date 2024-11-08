@@ -41,19 +41,16 @@ document.querySelector(".btn").addEventListener("click", function (event) {
     }
 })
 
-document.querySelectorAll(".options").forEach(element => {
+document.querySelectorAll(".options").forEach(element => { //Event Delegation
     element.addEventListener("click", function (event) {
         event.preventDefault()
-        console.log(event.target);
-        
-        // let current = event.currentTarget;
-        // let node = current.parentElement;
-        // const option = node.querySelector(".option_clone");
-        // const clone_option = option.cloneNode(true);
-        // clone_option.addEventListener("click", function(event) {
-            
-        // });
-        // node.insertBefore(clone_option, current);
+        if (event.target.className == "btn add_new") {
+            let current = event.target;
+            let node = current.parentElement;
+            const option = node.querySelector(".option_clone");
+            const clone_option = option.cloneNode(true);
+            node.insertBefore(clone_option, current);
+        }
     })
 });
 
