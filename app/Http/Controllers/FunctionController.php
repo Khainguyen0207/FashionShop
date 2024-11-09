@@ -75,4 +75,17 @@ class FunctionController extends Controller
         $image->save("logo_32.png");
         return $image;
     }
+    /**
+     * Bắt buộc phải là 2 mảng đều có key là 0,1,2...
+     */
+    public static function array_concat_key_value(array $key, array $value) : array {
+        $array = [];
+        foreach ($key as $data_key => $data_value) {
+            if (is_null($value[$data_key]) || is_null($data_value)) {
+                continue;
+            }
+            $array = array_merge($array, array($data_value => $value[$data_key]));
+        }
+        return $array;
+    }
 }

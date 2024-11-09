@@ -2,8 +2,6 @@
     position: relative;
     display: flex;
     gap: 10px;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .setup-admin .product-options .size-option,

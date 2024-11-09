@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('category_id', 255);
             $table->float('price');
             $table->string('image', 255);
-            $table->text("options", 65535);
+            $table->text("colors", 65535);
+            $table->text("sizes", 65535);
             $table->integer("sale")->nullable();
             $table->integer('unsold_quantity');
             $table->integer('sold_quantity');

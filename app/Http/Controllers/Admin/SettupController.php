@@ -8,9 +8,12 @@ use App\Models\AboutShopModel;
 use App\Http\Controllers\getData;
 use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FunctionController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
+
+use function PHPUnit\Framework\never;
 
 class SettupController extends Controller
 {
@@ -35,7 +38,7 @@ class SettupController extends Controller
                 continue;
             }
             if (!is_null(collect($value)->map('trim'))) {
-                if (empty(AboutShopModel::query()->where('key', $key)->first()) && $value[0] != null) {
+                if (empty(AboutShopModel::query()->where('key', $key)->first())) {
                     AboutShopModel::query()->where('key', $key)->create([
                         'value' => json_encode($value),
                     ]);
@@ -64,8 +67,21 @@ class SettupController extends Controller
         return redirect()->back()->with("success", "Thay đổi thành công");
     }
 
-    public function option(Request $request) {
+    public function update(Request $request) {
         $query = AboutShopModel::query();
+        $key = $request->input("name");
+        $value = $request->input("value");
+        $option = FunctionController::array_concat_key_value($key, $value);
+        //Setting option
+        if (empty($option)) {
+           return redirect()->back()->with("error", "Không có tác vụ nào được thực thi");
+        }
+        return redirect()->back()->with("success", "Thay đổi thành công");
+    }
+    
+    public function option(Request $request) {  
+        $query = AboutShopModel::query();
+        dd($request->all());
         foreach ($request->request as $key => $value) {
             if ($key == "_token") {
                 continue;
