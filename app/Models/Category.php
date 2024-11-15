@@ -9,6 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $table = "categories";
     /**
      * The attributes that are mass assignable.
      *

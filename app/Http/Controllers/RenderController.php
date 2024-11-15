@@ -40,7 +40,7 @@ class RenderController extends Controller
 
                 return $ordercheck;
             case 'settup':
-                $settup = ['logo', 'banner', 'social_network', 'contact'];
+                $settup = ['logo', 'banner', 'social_network', 'contact', 'option_samples'];
                 return $settup;
             case 'event':
                 $events = ['header', 'body', 'key', 'number', 'maxPage', 'url', 'icon', 'custom_button'];
@@ -61,7 +61,7 @@ class RenderController extends Controller
             'quantity_order_confirmation' => $quantity_order_confirmation,
             'number_of_order_in_transit' => $number_of_order_in_transit,
         ];
-
+        // dd($render_data, $data);
         return array_combine($render_data, $data);
     }
 }

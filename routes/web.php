@@ -134,7 +134,8 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/setting', [SettupController::class, 'home'])->name('admin.setting.home');
     Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
     Route::patch('/setting/edit_admin', [SettupController::class, 'update'])->name('admin.setting.edit_admin');
-
+    Route::delete('/setting/del/id={id}', [SettupController::class, 'destroy'])->name('admin.setting.destroy');
+    
     //Event
     Route::get('/event', [EventController::class, 'home'])->name('admin.event.home');
     Route::post('/event', [EventController::class, 'store'])->name('admin.event.store');

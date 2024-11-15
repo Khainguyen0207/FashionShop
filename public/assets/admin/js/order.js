@@ -3,7 +3,6 @@ document.querySelectorAll(".btn-action").forEach(function(button) {
     if (button.classList[0] == 'btn-del') {
         button.addEventListener("click", function(event) {
             const url = event.currentTarget.dataset.url;
-            
             Swal.fire({
                 title: 'Thông báo!',
                 text: 'Bạn thực sự muốn hủy đơn hàng',

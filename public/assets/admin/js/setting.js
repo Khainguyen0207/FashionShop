@@ -47,9 +47,19 @@ document.querySelectorAll(".options").forEach(element => { //Event Delegation
         if (event.target.className == "btn add_new") {
             let current = event.target;
             let node = current.parentElement;
+            const option = node.querySelector("#form_option");
+            const clone_option = option.cloneNode(true);
+            clone_option.style.display = "block";
+            clone_option.style.padding = "10px";
+            node.querySelector("div.data_option").appendChild(clone_option);
+        }
+
+        if (event.target.className == "btn add_new_option") {
+            let current = event.target;
+            let node = current.parentElement;
             const option = node.querySelector(".option_clone");
             const clone_option = option.cloneNode(true);
-            node.insertBefore(clone_option, current);
+            node.insertBefore(clone_option, current)
         }
     })
 });
@@ -61,21 +71,34 @@ function deleteElement(event, num) {
     for (let index = 0; index < num; index++) {
         element = element.parentElement;
     }
-
     if (element.parentElement.querySelectorAll("div.option_clone").length > 1) {
         element.remove()
     } else {
-        let par = element.parentElement.parentElement.querySelectorAll("div.data_option");
-        if(par && par.length > 1) {
-            element.parentElement.remove()
-        } else {
+        form = element.parentElement;
+        if (form.querySelector("#id_option")) {
             Swal.fire({
-                title: 'Thông báo',
-                text: 'Không thể xóa option gốc',
+                title: 'Thông báo!',
+                text: 'Bạn thực sự muốn xóa cài đặt này',
                 icon: 'error',
                 showConfirmButton: true,
-                confirmButtonText: 'OK',
+                showCancelButton: true,
+                confirmButtonText: 'Đồng ý',
+                cancelButtonText: 'Từ chối',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: form.querySelector("#id_option").dataset.url,
+                        method: "DELETE",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                    }).then(() => {
+                        element.parentElement.remove()
+                    })
+                }
             });
+        } else {
+            element.parentElement.remove()
         }
     }
 }

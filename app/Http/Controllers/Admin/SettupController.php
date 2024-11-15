@@ -12,6 +12,8 @@ use App\Http\Controllers\FunctionController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\RenderController;
+use App\Models\OptionModel;
+use Illuminate\Support\Facades\Session;
 
 use function PHPUnit\Framework\never;
 
@@ -25,8 +27,8 @@ class SettupController extends Controller
 
     public function store(Request $request)
     {
-        $data = [];
-
+        $data = [
+        ];
         return view('admin.setting', RenderController::render('settup', $data));
     }
 
@@ -68,7 +70,6 @@ class SettupController extends Controller
     }
 
     public function update(Request $request) {
-        $query = AboutShopModel::query();
         $key = $request->input("name");
         $value = $request->input("value");
         $option = FunctionController::array_concat_key_value($key, $value);
@@ -76,10 +77,28 @@ class SettupController extends Controller
         if (empty($option)) {
            return redirect()->back()->with("error", "Không có tác vụ nào được thực thi");
         }
-        return redirect()->back()->with("success", "Thay đổi thành công");
+        $query = OptionModel::query();
+        if (empty($request->input("id_option"))) {
+            $query->create([
+                'name' => $request->input("name_option"),
+                'option' => json_encode($option),
+            ]);
+        } else {
+            $data_option = OptionModel::findOrFail($request->input("id_option"));  
+            $data_option->fill([
+                'name' => $request->input("name_option"),
+                'option' => json_encode($option),
+            ]);
+            if ($data_option->isDirty()) {
+                $data_option->save();
+            } else {
+                return back()->with("error", "Không có tác vụ nào được thực thi");
+            }
+        }
+        return back()->with("success", "Dữ liệu được lưu");
     }
     
-    public function option(Request $request) {  
+    public function option(Request $request) {
         $query = AboutShopModel::query();
         dd($request->all());
         foreach ($request->request as $key => $value) {
@@ -95,10 +114,11 @@ class SettupController extends Controller
     }
 
     public static function getDataSettupController() {
-        $data = AboutShopModel::query()->get()->toArray();
+        $about_shop = AboutShopModel::query()->get()->toArray();
+        $option_samples = OptionModel::query()->get();
         $format = [];
         $json_no = ['logo', 'banner'];
-        foreach ($data as $value) {
+        foreach ($about_shop as $value) {
             if (in_array($value['key'], $json_no)) {
                 if (Storage::exists($value['value'])) {
                     $format[$value['key']] = Storage::url($value['value']);
@@ -109,6 +129,16 @@ class SettupController extends Controller
                 $format[$value['key']] = json_decode($value['value'], true);
             }
         }
+        $format["option_samples"] = $option_samples;
         return $format;
+    }
+
+    public function destroy(Request $request, string $id) {
+        $option = OptionModel::findOrFail($id);
+        if (empty($option)) {
+            return back()->with("error", "Không thể thực hiện");
+        }
+        $option->delete("id", $id);
+        return response()->json(['success' => "Thành công"], 200);
     }
 }
