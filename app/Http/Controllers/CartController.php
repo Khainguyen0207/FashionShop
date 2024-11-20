@@ -30,8 +30,9 @@ class CartController extends Controller
 
             return url()->previous();
         }
-        $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
 
+        $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
+        
         $data_image = [];
         foreach (explode('|', $product['image']) as $key => $value) {
             if (Storage::disk('public')->exists($value)) {
@@ -44,8 +45,8 @@ class CartController extends Controller
         $product['quantity'] = 1;
         $product['product_color'] = $request->query('color');
         $product['product_size'] = $request->query('size');
-
         $product['image'] = $data_image;
+        $product['price'] = $request->query('price');
         $cart = session()->get('cart', []);
         $cart[$product_id] = $product;
         session()->put('cart', $cart);

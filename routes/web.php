@@ -47,6 +47,7 @@ Route::get('/products/{category_id}/product', [ProductUIController::class, 'show
 
 //Product
 Route::get('/products/{category_id}/product/{product_id}', [ProductUIController::class, 'show'])->name('product.id');
+Route::get('/information_product', [ProductUIController::class, 'getSizeAndColor'])->name('product.getSizeAndColor');
 
 Route::prefix('/auth')->middleware('guest')->group(function () {
     Route::get('/', [LoginController::class, 'showFormLogin'])->name('login');
@@ -89,15 +90,14 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/products', [ProductController::class, 'index'])->name('category.products.home');
     Route::post('/categories/{id_category}/products', [ProductController::class, 'store'])->name('category.products.store');
+    Route::get('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
+    Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'update'])->name('category.products.update');
+    Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
+
     //categories - excel
     Route::post('/categories/{id_category}/products/import', [ExcelController::class, 'import'])->name('category.products.import');
     Route::get('/categories/{id_category}/products/export', [ExcelController::class, 'export'])->name('category.products.export');
-
-    Route::get('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'edit'])->name('category.products.edit');
-    Route::post('/categories/{id_category}/products/edit/{product_id}', [ProductController::class, 'update'])->name('category.products.update');
-
-    Route::delete('/categories/{id_category}/products/del/{product_id}', [ProductController::class, 'destroy'])->name('category.products.del');
-
+    
     //categories - charts
     Route::get('/categories/{id_category}', [ProductController::class, 'home'])->name('category.home');
     Route::get('/categories/{id_category}/charts', [ProductController::class, 'index'])->name('category.charts.home');
@@ -132,6 +132,7 @@ Route::prefix('/admin')->middleware('CheckRoleAccess')->group(function () {
 
     //Setting
     Route::get('/setting', [SettupController::class, 'home'])->name('admin.setting.home');
+    Route::get('/upload_settup_sample', [SettupController::class, 'get_data_settup'])->name('admin.setting.upload_settup_sample');
     Route::post('/setting/edit', [SettupController::class, 'edit'])->name('admin.setting.edit');
     Route::patch('/setting/edit_admin', [SettupController::class, 'update'])->name('admin.setting.edit_admin');
     Route::delete('/setting/del/id={id}', [SettupController::class, 'destroy'])->name('admin.setting.destroy');

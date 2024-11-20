@@ -58,23 +58,22 @@
                 <div class="information">
                     <h1 id="title title_product">Thông tin sản phẩm</h1>
                     <h2 class="product_name">{{ $product->product_name }}</h2>
-                    <p class="price" name='price'> Giá: {{ number_format($product->price, 0, ",", ".") }} <span class="sale" style="color: red"></span> VNĐ </p>
+                    <p class="price" name='price'> Giá: <span class="price_num">{{ number_format($product->price, 0, ",", ".") }}</span> <span class="sale" style="color: red"></span> VNĐ </p>
                     <p class="product_code"> Mã sản phẩm: {{ $product->product_code }} </p>
                     <p class="information_id"> Thông tin sản phẩm </p>
                     <div class="select_type">
                         <p class="">Chọn màu sắc
                             <div class="type color">
-                                <a href="#" class="information_btn btn_color">Đen</a>
-                                <a href="#" class="information_btn btn_color">Trắng</a>
-                                <a href="#" class="information_btn btn_color">Xám</a>
+                                @foreach (json_decode($product->colors, true) as $key_color => $value_color)
+                                    <a href="#" class="information_btn btn_color" data-value="{{ $value_color }}">{{$key_color}}</a>
+                                @endforeach
                             </div> 
                         </p>
                         <p class=""> Chọn kích thước
                             <div class="type size">
-                                <a href="#" class="information_btn btn_size">S</a>
-                                <a href="#" class="information_btn btn_size">M</a>
-                                <a href="#" class="information_btn btn_size">L</a>
-                                <a href="#" class="information_btn btn_size">XL</a>
+                                @foreach (json_decode($product->sizes, true) as $key_size => $value_size)
+                                    <a href="#" class="information_btn btn_size" data-value="{{ $value_size }}">{{ $key_size }}</a>
+                                @endforeach
                             </div> 
                         </p>
                     </div>
@@ -83,6 +82,11 @@
                         <a href="#" id="cart" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}" data-option="">Thêm vào giỏ hàng</a>
                     </div>
                     <script>
+                        const formatter = new Intl.NumberFormat('vi-VN', {
+                            style: 'decimal',
+                            currency: 'VND'
+                        });
+                        const price_num = document.querySelector(".information").querySelector(".price_num").textContent;
                         btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button_buy
                         btn_sizes.forEach(element => {
                             element.addEventListener('click', function(event) {
@@ -93,12 +97,18 @@
                                 });
                                 element.classList.add("action");
                                 const button = document.querySelector("#cart");
-                                color = document.querySelector(`.btn_color.action`)
-                                size = document.querySelector(`.btn_size.action`)
-                                if (color !== null && size !== null) {
-                                    url = button.getAttribute("data-option");
-                                    button.setAttribute("data-option", `color=${color.text}&size=${size.text}`);
-                                }
+                                const color = document.querySelector('.btn_color.action')?.textContent ?? "";
+                                const size = document.querySelector('.btn_size.action')?.textContent ?? "";
+                                let information = document.querySelector(".information");
+                                url = button.getAttribute("data-option");
+                                let price = parseInt(price_num.replace(/\./g, ""));
+                                let num = 0;
+                                information.querySelectorAll(".action").forEach(element => {
+                                    num += parseInt(element.dataset.value)
+                                });
+                                information.querySelector(".price_num").innerHTML = formatter.format(price + num);
+                                let price_n = information.querySelector(".price_num").textContent.replace(/\./g, '')
+                                button.setAttribute("data-option", `color=${color}&size=${size}&price=${price_n}`);
                             });
                         });
                     </script>
@@ -116,28 +126,12 @@
         <div class="header" style="margin: 20px auto;">
             <div class="title"><h1>Sản phẩm khác có thể bạn sẽ thích</h1></div>
         </div>
-        <div class="list-products">
-            <div class="products">
-                @for ($i = 0; $i < 10; $i++)
-                <div class="product">
-                    <a href="#" class="image" style="width: 100%">
-                        <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                        <div class="animation-img">
-                            <p style="color: black">Chi tiết sản phẩm</p>
-                        </div>
-                    </a>
-                    <div class="informations information-product ">
-                        <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                        <p class="sale-price">129.000 VNĐ</p>
-                    </div>
-                    <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
-                    <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
-                </div>  
-                @endfor
-            </div>
-        </div>
-        <div class="seen-product">
-            <a href="#" class="seen">Xem thêm</a>
+        <div id="hidden-list">
+            @if (count($products) > 0)
+                @include("layouts.user.list-products")
+            @else
+                <h3 style="padding: 10px 0">Sản phẩm hiện không có sẵn</h3>
+            @endif
         </div>
     </div>
     @include('layouts.user.footer')
@@ -145,4 +139,4 @@
         <script src="{{ asset('assets/js/cart.js') }}"></script>
         <script>seen()</script>
     </footer>
-@endsection 
+@endsection

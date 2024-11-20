@@ -54,7 +54,7 @@ document.querySelectorAll(".options").forEach(element => { //Event Delegation
             node.querySelector("div.data_option").appendChild(clone_option);
         }
 
-        if (event.target.className == "btn add_new_option") {
+        if (event.target.classList.contains("add_new_option")) {
             let current = event.target;
             let node = current.parentElement;
             const option = node.querySelector(".option_clone");
@@ -63,6 +63,44 @@ document.querySelectorAll(".options").forEach(element => { //Event Delegation
         }
     })
 });
+
+if (document.querySelector(".select_option_sample")) {
+    let data_select = -1;
+    let name_select = null;
+    document.querySelectorAll(".select_option_sample").forEach(element => {
+        element.addEventListener("change", function(event) {
+            const node = event.currentTarget
+            data_select = node.selectedIndex
+            name_select = node.name
+            node_apply = node.parentElement.querySelector(".apply_option_sample")
+            node_apply.style.display = "inline-block"
+        })
+
+        element.parentElement.querySelector(".apply_option_sample").addEventListener("click", function(event) {
+            const node = event.currentTarget
+            let data = node.parentElement.querySelectorAll("option")
+            console.log(data);
+            
+            if (data_select != -1) {
+                let node_apply = event.currentTarget;
+                $.ajax({
+                    url: event.currentTarget.dataset.url,
+                    data: {
+                        id: data[data_select].value,
+                        type: name_select
+                    },
+                }).done(function(ketqua) {
+                    node.parentElement.querySelectorAll(".option_clone").forEach(element => {
+                        element.remove()
+                    });
+                    $(node.parentElement).find(".add_new_option").before(ketqua);
+                    node_apply.style.display = "none"
+                }).fail(function() {console.log(node.selectedIndex);
+                });
+            }
+        })
+    })
+}
 
 function deleteElement(event, num) {
     event.preventDefault()
@@ -98,7 +136,11 @@ function deleteElement(event, num) {
                 }
             });
         } else {
-            element.parentElement.remove()
+            // element.parentElement.remove()
+            alert("Không thể xóa")
         }
     }
 }
+
+// let a = document.createElement("option")
+// a.select

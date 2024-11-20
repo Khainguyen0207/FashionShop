@@ -11,9 +11,15 @@ class ProductRequest extends FormRequest
         return [
             'product_name' => 'required|min:2|string|max:255',
             'price' => 'required',
-            'sold_quantity' => 'required|min:1',
+            'unsold_quantity' => 'required|min:1',
             'description' => 'required',
-            'image.*' => 'required|image|mimes:jpeg,png,gif,webp|max:2048',
+            'image.*' => 'required|image|mimes:jpeg,png,webp|max:2048',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'image.*.mimes' => 'Yêu cầu ảnh jpeg,png,webp.',
         ];
     }
 }

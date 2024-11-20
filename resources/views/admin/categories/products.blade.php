@@ -52,49 +52,72 @@
                             <p>Giá</p>
                             <input type="number" class="input" name="price" id="" placeholder="Giá sản phẩm" required>
                             <p>Số lượng</p>
-                            <input type="number" class="input" name="sold_quantity" id="" placeholder="Số lượng sản phẩm" required>
-                            <h3>Tùy chọn</h3>
-                            <p>Màu sắc</p>
-                            <div class="color">
-                                <div class="option option_clone">
-                                    <div class="name">
-                                        <p style="margin: 5px 0px;">Tên</p>
-                                        <input type="text" class="input" name="name_color[]">
+                            <input type="number" class="input" name="unsold_quantity" id="" placeholder="Số lượng sản phẩm" required>
+                            {{-- div color --}}
+                            <div class="color-options options" style="padding: 2px">
+                                <div class="color-option option_clone data_option">
+                                    <input type="hidden" name="name_option" value="colors">
+                                    <p style="text-align: left">
+                                        Màu sắc
+                                    </p>
+                                    <div class="option option_clone">
+                                        <div class="name">
+                                            <p style="margin: 5px 0px;">Tên</p>
+                                            <input type="text" class="input" name="name_color[]" required>
+                                        </div>
+                                        <div class="price">
+                                            <p style="margin: 5px 0px;">Giá trị
+                                                <span class="info info_time">
+                                                    <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
+                                                    <span class="tooltip">Giá trị thay đổi của từng option</span>
+                                                </span>
+                                            </p>
+                                            <input type="number" class="input" name="value_color[]"  required>
+                                        </div>
+                                        <a href="#" class="btn_action" onclick="deleteElement(event, 1)"><i class="fa-solid fa-trash"></i></a>
                                     </div>
-                                    <div class="price">
-                                        <p style="margin: 5px 0px;">Giá trị
-                                            <span class="info info_time">
-                                                <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
-                                                <span class="tooltip">Giá trị thay đổi của từng option</span>
-                                            </span>
-                                        </p>
-                                        <input type="number" class="input" name="value_color[]">
-                                    </div>
-                                    <a href="#" class="btn_action" onclick="deleteElement(event, 1)" title="delete"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="#" class="btn btn_action add_new_option">Thêm tùy chọn</a>
+                                    <select class="btn btn_action select_option_sample" name="color" style="background-color: transparent">
+                                        <option value="0">Sử dụng mẫu sẵn</option>
+                                        @foreach ($options as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <a href="#" class="btn btn_action apply_option_sample" onclick="" style="display: none" data-url="{{ route("admin.setting.upload_settup_sample") }}">Áp dụng</a>
                                 </div>
-                                <a href="" class="add_new add_new_color">Thêm cột mới</a>
-                                <a href="" class="add_available available_colors">Sử dụng tùy chọn có sẵn</a>
                             </div>
-                            <p>Kích thước</p>
-                            <div class="size">
-                                <div class="option option_clone">
-                                    <div class="name">
-                                        <p style="margin: 5px 0px;">Tên</p>
-                                        <input type="text" class="input" name="name_size[]">
+                            {{-- div size --}}
+                            <div class="size-options options" style="padding: 2px">
+                                <div class="size-option option_clone data_option">
+                                    <input type="hidden" name="name_option" value="sizes">
+                                    <p style="text-align: left">
+                                        Kích thước
+                                    </p>
+                                    <div class="option option_clone">
+                                        <div class="name">
+                                            <p style="margin: 5px 0px;">Tên</p>
+                                            <input type="text" class="input" name="name_size[]" required/>
+                                        </div>
+                                        <div class="price">
+                                            <p style="margin: 5px 0px;">Giá trị
+                                                <span class="info info_time">
+                                                    <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
+                                                    <span class="tooltip">Giá trị thay đổi của từng option</span>
+                                                </span>
+                                            </p>
+                                            <input type="number" class="input" name="value_size[]" value="0">
+                                        </div>
+                                        <a href="#" class="btn_action" onclick="deleteElement(event, 1)"><i class="fa-solid fa-trash"></i></a>
                                     </div>
-                                    <div class="price">
-                                        <p style="margin: 5px 0px;">Giá trị 
-                                            <span class="info info_time">
-                                                <i class="fa-regular fa-circle-question fa-xs" style="color: #f00000;"></i> 
-                                                <span class="tooltip">Giá trị thay đổi của từng option</span>
-                                            </span>
-                                        </p>
-                                        <input type="number" class="input" name="value_size[]">
-                                    </div>
-                                    <a href="#" class="btn_action" onclick="deleteElement(event, 1)"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="#" class="btn btn_action add_new_option">Thêm tùy chọn</a>
+                                    <select class="btn btn_action select_option_sample" name="size" style="background-color: transparent">
+                                        <option value="-1">Sử dụng mẫu sẵn</option>
+                                        @foreach ($options as $item)
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <a href="#" class="btn btn_action apply_option_sample" onclick=""  style="display: none" data-url="{{ route("admin.setting.upload_settup_sample") }}">Áp dụng</a>
                                 </div>
-                                <a href="" class="add_new add_new_size">Thêm cột mới</a>
-                                <a href="" class="add_available available_sizes" option="size">Sử dụng tùy chọn có sẵn</a>
                             </div>
                             <p style="margin:5px 0; font-size: 20px">Mô tả sản phẩm</p>
                             <textarea class="input" style="resize: vertical;padding: 5px ;width: 100%; height: 20vh; font-size: 16px;padding: 9px 12px " spellcheck="false" 
@@ -140,7 +163,7 @@
                             </script>
                         </div>
                     </div>
-                    <div class="footer">    
+                    <div class="footer">
                         <button type="submit" class="btn-add btn"><i class="fa-solid fa-plus"></i> Thêm sản phẩm</button>
                         <button type="submit" class="btn-close btn" onclick="clickAddCategory(event)"><i class="fa-solid fa-xmark"></i> Hủy</button>
                     </div>

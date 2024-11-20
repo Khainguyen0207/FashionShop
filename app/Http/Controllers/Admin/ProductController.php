@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\FunctionController;
 use App\Http\Controllers\RenderController;
 use App\Http\Requests\ProductRequest;
+use App\Models\OptionModel;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -41,7 +42,7 @@ class ProductController extends Controller
             abort(404);
         }
         $products = $this->getProducts($id_category, $getProducts);
-
+        $products['options'] = OptionModel::get();
         return view('admin.categories.products', RenderController::render('product', $products));
     }
 
@@ -78,7 +79,6 @@ class ProductController extends Controller
 
     public function store(ProductRequest $productRequest)
     {
-        dd($productRequest);
         $data = $productRequest->validated();
         //Get id category from route parameter
         $id_category = $productRequest->route()->parameter('id_category');
@@ -94,6 +94,8 @@ class ProductController extends Controller
             'product_code' => 'MSSP'.$productRequest->route()->parameter('id_category').floor(rand(1, $id_category * 10000)),
             'unsold_quantity' => 0,
             'category_id' => $id_category,
+            'colors' => json_encode(FunctionController::array_concat_key_value($productRequest->input("name_color"), $productRequest->input("value_color"))),
+            'sizes' => json_encode(FunctionController::array_concat_key_value( $productRequest->input("name_size"), $productRequest->input("value_size"))),
         ];
         try {
             Product::query()->create($data);
@@ -113,10 +115,12 @@ class ProductController extends Controller
             $images[] = Storage::url($value);
             $information_product->image = $images;
         }
+        $information_product['options'] = OptionModel::get();
         $render = [
             'title' => 'Chỉnh sửa sản phẩm',
             ...$information_product->toArray(),
         ];
+        
 
         return view('layouts.categories.product-add', $render);
     }
@@ -134,9 +138,13 @@ class ProductController extends Controller
         }
         $id_category = $productRequest->route()->parameter('id_category');
         $product_id = $productRequest->route()->parameter('product_id');
+        
         $data += [
             'category_id' => $id_category,
+            'colors' => json_encode(FunctionController::array_concat_key_value($productRequest->input("name_color"), $productRequest->input("value_color"))),
+            'sizes' => json_encode(FunctionController::array_concat_key_value( $productRequest->input("name_size"), $productRequest->input("value_size"))),
         ];
+        
         try {
             Product::query()->where('id', $product_id)->update($data);
         } catch (\Throwable $th) {

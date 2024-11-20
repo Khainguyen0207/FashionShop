@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -77,7 +78,7 @@ class ProductUIController extends Controller
 
         $name_category = Category::query()->where('id', $category_id)->first('name_category');
 
-        if (! isset($name_category)) {
+        if (!isset($name_category)) {
             return abort(404);
         }
         $products = $this->getUrlForImage($products->items());
@@ -99,6 +100,11 @@ class ProductUIController extends Controller
     public function show($category_id, $product_id)
     {
         $product = Product::query()->where('id', $product_id)->first();
+        $products = Product::query()
+            ->inRandomOrder()
+            ->paginate(MAX_PAGE_LOAD);
+        $max_page = $products->total();
+        $products = $this->getUrlForImage($products->items());
         if (! isset($product)) {
             return abort(404);
         }
@@ -116,7 +122,10 @@ class ProductUIController extends Controller
         $url_back = url()->previous();
         $render = [
             'product' => $product,
+            'products' => $products,
             'url_back' => $url_back,
+            'max_page' => $max_page,
+            'url' => route('products.home.post', ['product' => count($products), 'i' => $category_id, 'search' => request()->query('search')]),
         ];
 
         return view('user.product', $render);
@@ -152,6 +161,16 @@ class ProductUIController extends Controller
             return SORT_ASC;
         }
         return abort(500);
+    }
+
+    public function getSizeAndColor() {
+        $product = Product::findOrFail(request()->input("id"));
+        return response()->json(
+            [
+                "sizes" => $product->sizes,
+                "colors" => $product->colors
+            ]
+        );
     }
 
     private function getUrlForImage($products)

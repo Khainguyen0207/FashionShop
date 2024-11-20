@@ -16,50 +16,19 @@
             <div class="select_type">
                 <h1 id="title title_product">Thông tin sản phẩm</h1>
                 <h2 class="product_name"></h2>
-                <p> Giá: <span class="price" name="price"></span> <span class="sale" style="color: red"></span></p>
-                
+                <p> Giá: <span class="price" name="price"></span> <span class="sale" style="color: red"></span><span class="currency"></span></p>
                 <p class="">Chọn màu sắc
-                    <div class="type color">
-                        <a href="#" class="information_btn btn_color">Đen</a>
-                        <a href="#" class="information_btn btn_color">Trắng</a>
-                        <a href="#" class="information_btn btn_color">Xám</a>
-                    </div> 
-                <p>
+                <div class="type color"></div> 
+                </p>
                 <p class=""> Chọn kích thước
-                    <div class="type size">
-                        <a href="#" class="information_btn btn_size">S</a>
-                        <a href="#" class="information_btn btn_size">M</a>
-                        <a href="#" class="information_btn btn_size">L</a>
-                        <a href="#" class="information_btn btn_size">XL</a>
-                    </div> 
-                <p>
+                    <div class="type size"></div> 
+                </p>
                 <div class="button-action">
                     <a href="#" class="btn btn-cancel" onclick="event.preventDefault(); document.querySelector('.screen').click();">Hủy</a>
                     <a href="" id="cart" class="btn btn-cart" onclick="addCart(event)" data-option="">Thêm vào giỏ hàng</a>
                 </div>
             </div>
         </div>  
-        <script>
-            btn_sizes = document.querySelectorAll('.information_btn'); //Sự kiện click button_buy
-            btn_sizes.forEach(element => {
-                element.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    let classname = event.currentTarget.classList[1]
-                    document.querySelectorAll(`.${classname}`).forEach(element_del => {
-                        element_del.classList.remove("action")
-                    });
-                    element.classList.add("action");
-                    const button = document.querySelector("#cart");
-                    color = document.querySelector(`.btn_color.action`)
-                    size = document.querySelector(`.btn_size.action`)
-
-                    if (color !== null && size !== null) {
-                        url = button.getAttribute("data-option");
-                        button.setAttribute("data-option", `color=${color.text}&size=${size.text}`);
-                    }
-                });
-            });
-        </script>
     </div>
     <div id="container">
         <div class="header">
@@ -90,7 +59,7 @@
                 <p class="seen">Nhận ngay vouchers giảm giá đến 50% khi tham gia sự kiện cùng cô bé quàng khăn đỏ nào <a href="?hi" style="color: red">Đến ngay</a></p>   
             </div>
         </div>
-        <div id="other-products">
+        {{-- <div id="other-products">
             <div class="header" style="margin: 20px auto;">
                 <div class="title"><h1>Sản phẩm khác có thể bạn sẽ thích</h1></div>
             </div>
@@ -106,7 +75,7 @@
                         </a>
                         <div class="informations information-product ">
                             <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                            <p class="sale-price">129.000 VNĐ</p>
+                            <p class="sale-price">129.000 <span class="currency">VNĐ</span></p>
                         </div>
                         <a href="#" class="btn btn-buy" style="margin-bottom: 5px;">Mua ngay</a>
                         <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
@@ -114,7 +83,7 @@
                     @endfor
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
     @include('layouts.user.footer')
     <footer>

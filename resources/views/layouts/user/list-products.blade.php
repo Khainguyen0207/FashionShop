@@ -10,10 +10,10 @@
                 </a>
                 <div class="informations information-product ">
                     <div class="truncate-1"><p class="product_name">{{ $product->product_name }}</p> </div>
-                    <p class="sale-price">{{ number_format($product->price, 0, ",", ".")}} VNĐ</p>
+                    <p class="sale-price"><span class="price">{{ number_format($product->price, 0, ",", ".")}}</span> <span class="currency">VNĐ</span></p>
                 </div>
                 <a href="{{route('product.id', [$product->category_id , $product->id])}}" class="btn btn-seen " style="margin-bottom: 5px" data-url="{{ route('user.cart.post', $product->id) }}">Xem chi tiết</a>
-                <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a>
+                <a href="javascript:void(0);" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}" data-index="{{$product->id}}" data-value="{{ route("product.getSizeAndColor" ) }}">Thêm vào giỏ hàng</a>
             </div>
         @endforeach
     </div>

@@ -17,6 +17,7 @@ class ProductSeeder extends Seeder
     {
         Product::query()->delete();
         $products = $this->products_Seeder();
+        
         $data = [];
         foreach ($products as $value) {
             $data[] = [
@@ -25,7 +26,17 @@ class ProductSeeder extends Seeder
                 'category_id' => Category::inRandomOrder()->first("id")->id,
                 'price' => $value[5],
                 'image' => $this->getImage(),
-                'options' => "$value[3]|$value[4]",
+                'colors' => json_encode([
+                    "Đỏ" => "0",
+                    "Xanh" => "0",
+                    "Vàng" => "0"
+                ]),
+                'sizes' => json_encode([
+                    "S" => "0",
+                    "M" => "0",
+                    "L" => "0",
+                    "XL" => "0"
+                ]),
                 'unsold_quantity' => floor(rand(0, 1000)),
                 'sold_quantity' => 0,
                 'description' => $value[6],

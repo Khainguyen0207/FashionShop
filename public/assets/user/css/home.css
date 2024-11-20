@@ -241,6 +241,7 @@ body {
     border-radius: 10px;
     color: white;
     font-size: 14px;
+    background-color: red;
 }
 
 .list-products-sale .products-sale .product-sale .btn-buy,

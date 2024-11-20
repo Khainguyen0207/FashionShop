@@ -227,10 +227,14 @@ label:hover,label:focus {
 }
 
 #addCategory .container .btn_action {
-    display: block;
+    display: inline-block;
     padding: 9px 12px;
     background-color: #ff0000a8;
     border-radius: 5px;
+}
+
+#addCategory .container .btn {
+    margin-top: 10px;
 }
 
 #addCategory .container .btn_action:hover {
@@ -255,7 +259,7 @@ label:hover,label:focus {
 }
 
 
-#addCategoryForm > form > div.container > div.information-product > p {
+#addCategoryForm form  p {
     font-size: 20px; padding: 5px 0px
 }
 

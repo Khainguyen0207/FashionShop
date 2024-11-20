@@ -32,7 +32,7 @@ class RenderController extends Controller
 
                 return $customers;
             case 'product':
-                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage', 'url'];
+                $products = ['header', 'body', 'key',  'name_category', 'id', 'number', 'maxPage', 'url', "options"];
 
                 return $products;
             case 'order':

@@ -112,6 +112,14 @@ class SettupController extends Controller
             }
         }
     }
+    /*
+        return component view option_clone 
+        */
+    public function get_data_settup() {
+        $options = OptionModel::query()->findOrFail(request()->input("id"));
+        $options['type'] = request()->input("type");
+        return view("layouts.components.option_clone", $options);
+    }
 
     public static function getDataSettupController() {
         $about_shop = AboutShopModel::query()->get()->toArray();
