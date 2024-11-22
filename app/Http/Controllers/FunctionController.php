@@ -51,7 +51,7 @@ class FunctionController extends Controller
             case '10':
                 return 'Bị hủy bởi người bán';
             case '20':
-                return 'Bị hủy bởi người mua';
+                return 'Bị hủy bởi người mua'; 
             case '30':
                 return 'Bị lỗi khi vận chuyển';
             default:

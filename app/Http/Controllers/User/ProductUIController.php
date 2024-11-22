@@ -35,8 +35,8 @@ class ProductUIController extends Controller
 
     public function store(Request $request)
     {
-        $products_hided = Session::get('products_hided'); //Lấy các product đã hiện
-        $id_products_hided = Session::get('id_products_hided'); //Lấy các product đã hiện
+        $products_hided = Session::get('products_hided'); //get produucts hided
+        $id_products_hided = Session::get('id_products_hided');
         $products = Product::whereNotIn('id', $id_products_hided)->inRandomOrder();
 
         if (! empty($request->query('i'))) {

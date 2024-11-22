@@ -28,6 +28,7 @@
                             <p style="border-bottom: 1px solid; margin-bottom: 10px;"></p>
                         @endforeach
                         <p>Trạng thái đơn hàng: <span class="status">{{ $status }}</span></p>
+                        <p>Phương thức thanh toán: <span class="method_payment">{{ $method_payment }}</span></p>
                         <p>Thời gian đặt hàng: <span class="expired_at">{{ $expired_at }}</span></p>
                         <h4>Thành tiền: <span class="total">{{ number_format($total, 0, ",", ".") }} VNĐ</span> </h4>
                     </div>

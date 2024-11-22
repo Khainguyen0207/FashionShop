@@ -18,6 +18,8 @@ class UserController extends Controller
         $product = Product::query();
         $products_new = $product->latest()->paginate(5)->items();
         $products_new = $this->getUrlForImage($products_new);
+        $products_sale = $product->where("sale", ">", 0)->paginate(5)->items();
+        $products_sale = $this->getUrlForImage($products_sale);
         $events = EventModel::query()->where('start_time',"<", Carbon::now())->where('end_time',">", Carbon::now())->get();
         $account = Auth::user();
         $categories = Category::query()->get(['id', 'name_category'])->toArray();
@@ -29,6 +31,7 @@ class UserController extends Controller
             'title' => 'Trang chủ',
             'categories' => $categories,
             'products_new' => $products_new,
+            'products_sale' => $products_sale,
             'events' => $events
         ];
 

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Exists;
 
 class CartController extends Controller
 {
@@ -31,26 +34,34 @@ class CartController extends Controller
             return url()->previous();
         }
 
-        $product = Product::query()->where('id', $product_id)->first()->attributesToArray();
-        
+        $product = Product::query()->findOrFail($product_id);
         $data_image = [];
-        foreach (explode('|', $product['image']) as $key => $value) {
+        foreach (explode('|', $product->image) as $key => $value) {
             if (Storage::disk('public')->exists($value)) {
-                $data_image += [$key => Storage::url($value)];
+                $data_image += [$key => url(Storage::url($value))];
             } else {
                 $data_image += [asset('assets/user/img/box.png')];
             }
         }
-
-        $product['quantity'] = 1;
-        $product['product_color'] = $request->query('color');
-        $product['product_size'] = $request->query('size');
-        $product['image'] = $data_image;
-        $product['price'] = $request->query('price');
+        $product->image = $data_image;
+        $product->quantity = 1;
+        try {
+            $colors = json_decode($product->colors, true);
+            $sizes = json_decode($product->sizes, true);
+            if (key_exists($request->query('color'),  $colors) && key_exists($request->query('size'), $sizes)) {
+                $product->product_color = $request->query('color');
+                $product->product_size = $request->query('size');
+                $product->price += $colors[$request->query('color')] + $sizes[$request->query('size')];
+            } else {
+                throw new Exception('Vui lòng chọn kích thước và màu sắc', 1);
+            }
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Vui lòng chọn kích thước và màu sắc');
+            return url()->previous();
+        }
         $cart = session()->get('cart', []);
         $cart[$product_id] = $product;
         session()->put('cart', $cart);
-
         return session()->flash('success', 'Tuyệt vời! Sản phẩm được thêm vào giỏ hàng');
     }
 

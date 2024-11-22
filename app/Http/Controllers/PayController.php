@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderModel;
-use App\Models\Product;
+use Exception;
 use Carbon\Carbon;
+use App\Models\Product;
+use App\Models\OrderModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Session\Session;
 
 class PayController extends Controller
 {
@@ -23,19 +25,27 @@ class PayController extends Controller
         if (empty($products)) {
             return redirect()->back()->with('error', 'Vui lòng chọn sản phẩm thanh toán ở giỏ hàng');
         }
-        foreach ($products as $value) {
-            $sum += floatval($value['price_product']);
+        try {
+            $cart = session()->get("cart");
+            foreach ($products as &$product_value) {
+                $product = Product::query()->where("product_code" , $product_value['id'])->firstOrFail();
+                if ($product->unsold_quantity == $product->sold_quantity) {
+                    throw new Exception("Out of stockt", 1);
+                }
+                $product_value['price_product'] = $cart[$product->id]->price * $product_value['quantity'];
+                $sum += $product_value['price_product'];
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', 'Sản phẩm đã hết hàng hoặc không tồn tại');
         }
         $render = [
             'products' => $products,
             'sum_total' => number_format($sum, 0, ',', '.'),
         ];
-
         return view('user.pay', $render);
     }
 
-    public function create(Request $request, $information_order)
-    {
+    public function create(Request $request, $information_order) {
         // Lấy thông tin config:
         $vnp_TmnCode = 'EJF9QZVP'; // Mã website của bạn tại VNPAY
         $vnp_HashSecret = env('VNP_HASHSECRET'); // Chuỗi bí mật
@@ -120,8 +130,7 @@ class PayController extends Controller
         return redirect($vnp_Url);
     }
 
-    public function return(Request $request)
-    {
+    public function return(Request $request) {
         $vnp_SecureHash = $request->vnp_SecureHash;
         $inputData = $request->all();
         unset($inputData['vnp_SecureHash']);
@@ -180,20 +189,21 @@ class PayController extends Controller
             'number_phone' => $request->query('number_phone'),
             'address' => $request->query('address'),
             'order_information' => $request->query('id_order'),
+            'method_payment' => $request->input('method_payment'),
             'status' => '00',
             'expired_at' => Carbon::now()->toDateTime(),
         ];
         //kiểm tra số lượng tồn kho của đơn hàng nếu số lượng hết thì báo error và kèm LH: với người bán
-        if ($request->query('method_payment') == 'homebank') {
+        if ($request->input('method_payment') == 'homebank') {
             try {
                 foreach ($ids as $key => $value) {
                     $sold = Product::query()->where('product_code', $ids[$key]['id'])->first()->sold_quantity;
                     Product::query()->where('product_code', $ids[$key]['id'])->update(['sold_quantity' => $sold + $ids[$key]['quantity']]);
                 }
+                $information_order['method_payment'] = "Thanh toán sau khi nhận hàng";
                 OrderModel::query()->create($information_order);
             } catch (\Throwable $e) {
                 Log::error('Có lỗi xảy ra', ['error' => $e->getMessage()]);
-
                 return redirect(route('user.home'))->with('error', 'Đơn hàng đặt thất bại');
             }
             session()->put('cart', $cart);

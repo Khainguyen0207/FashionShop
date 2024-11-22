@@ -20,6 +20,7 @@ class OrderModel extends Model
         'order_information',
         'status',
         'expired_at',
+        'method_payment'
     ];
 
     protected function casts(): array

@@ -12,7 +12,8 @@ class OrderSeeder extends Seeder
      */
     public function run(): void
     {
-        OrderModel::query()->delete();
-        OrderModel::factory()->count(100)->create();
+        // OrderModel::query()->delete();
+        OrderModel::query()->update(["method_payment" => "Thanh toán sau khi nhận hàng"]);
+        // OrderModel::factory()->count(100)->create();
     }
 }

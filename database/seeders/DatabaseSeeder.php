@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
             // CategorySeeder::class,
             // AboutShopSeeder::class,
             // UserSeeder::class,
-            // OrderSeeder::class,
-            ProductSeeder::class,
+            OrderSeeder::class,
+            // ProductSeeder::class,
             // // Thêm các class seeder khác ở đây
         ]);
     }

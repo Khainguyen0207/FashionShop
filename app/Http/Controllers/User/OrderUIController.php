@@ -88,14 +88,12 @@ class OrderUIController extends Controller
     public function destroy(Request $request)
     {
         try {
-            OrderModel::query()->where('order_code', $request->id)->update(['status' => '20']);
+            $data = OrderModel::findOrFail(['order_code' => $request->id, 'customer_id' => Auth::id()]);
+            $data->update(['status' => '20']);
+            session()->flash('success', 'Hủy đơn hàng thành công');
         } catch (\Throwable $th) {
-            Log::error('Error Database SQL', ['messgae' => $th->getMessage()]);
-
-            return redirect()->back()->with('success', 'Hủy đơn hàng thất bại');
+            session()->flash('error', 'Hủy đơn hàng thất bại');
         }
-        session()->flash('success', 'Hủy đơn hàng thành công');
-
         return view('common.error');
     }
 

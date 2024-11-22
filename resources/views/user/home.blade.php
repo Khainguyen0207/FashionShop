@@ -125,7 +125,7 @@
                 });
             </script>
         </div>
-
+        @if (!empty($products_sale))
         <div class="nav-bar sale" id="sale">
             <div class="tittle" style="display: inline-block;margin-bottom: 10px;">
                 <h2>Giảm giá <span style="color:red; font-size: 14px;" id="time-sale">Thời gian: </span></h2>
@@ -140,30 +140,31 @@
             </div>
             <div class="list-products-sale">
                 <div class="products-sale">
-                    @for ($i = 0; $i < 5; $i++)
-                        <div class="product-sale">
-                            <a href="" class="image" style="width: 100%">
-                                <img class="img img-product-sale" src="{{asset('assets/user/img/box.png')}}" alt="review">
-                                <div class="animation-img">
-                                    <p style="color: black">Chi tiết sản phẩm</p>
-                                </div>
-                            </a>
-                            <div class="informations information-product-sale ">
-                                <div class="truncate-1"><p class="product_name">Áo thun gấu</p> </div>
-                                <p class="sale-price">129.000 - <span class="price" style="text-decoration: line-through; color: red;"> 200.000 VNĐ</span></p>
+                    @foreach ($products_sale as $product)
+                    <div class="product-sale">
+                        <a href="{{ route('product.id', [$product->category_id , $product->id]) }}" class="image" style="width: 100%">
+                            <img class="img img-product-sale" src="{{ $product['image'][0] }}" alt="review">
+                            <div class="animation-img">
+                                <p style="color: black">Chi tiết sản phẩm</p>
                             </div>
-                            <div class="action">
-                                <a href="" class="btn btn-buy">Mua ngay</a>
-                                <a href="#" class="btn btn-cart">Thêm vào giỏ hàng</a>
-                            </div>
-                        </div>  
-                    @endfor
+                        </a>
+                        <div class="informations information-product-sale ">
+                            <div class="truncate-1"><p class="product_name">{{ $product['product_name'] }}</p> </div>
+                            <p class="sale-price">{{ number_format($product['price'] * ((100 - $product['sale'])/100), 0, ",", ".")  }} - <span class="price" style="text-decoration: line-through; color: red;"> {{ number_format($product['price'], 0, ",", ".") }} VNĐ</span></p>
+                        </div>
+                        <div class="action">
+                            <a href="{{route('product.id', [$product->category_id , $product->id])}}" class="btn btn-seen" style="margin-bottom: 5px" data-url="{{ route('user.cart.post', $product->id) }}">Xem chi tiết</a>
+                            <a href="#" class="btn btn-cart" data-url="{{ route('user.cart.post', $product->id) }}">Thêm vào giỏ hàng</a> 
+                        </div>   
+                    </div>  
+                    @endforeach
                 </div>
             </div>
             <div class="info" style="display: block; float: right;">
                 <a href="#" style="text-decoration: none; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
+        @endif
 
         <div class="products" id="products">
             @foreach ($categories as $category)
@@ -198,7 +199,7 @@
                             <a href="{{ route('products.id', $category['id'] )}}" style="text-decoration: none ; color: black;">Xem thêm <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
-                </div>       
+                </div> 
                 @endif
             @endforeach
         </div>

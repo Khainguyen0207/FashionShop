@@ -105,10 +105,14 @@ function cart() {
 }
 
 function update_value_money(div, parent) {
+    let num = 0;
+    let sale_price_current = parseInt(parent.querySelector(".price").textContent.replace(/\./g, ''));
     div.querySelectorAll(".action").forEach(element => {
-        let sale_price_current = parseInt(parent.querySelector(".price").textContent.replace(/\./g, ''));
-        div.querySelector(".price").innerHTML = formatter.format(sale_price_current + parseInt(element.dataset.value));
+        console.log(element);
+        
+        num += parseInt(element.dataset.value)
     });
+    div.querySelector(".price").innerHTML = formatter.format(sale_price_current + num);
 }
 
 document.querySelector(".screen").addEventListener("click", function(event) {
