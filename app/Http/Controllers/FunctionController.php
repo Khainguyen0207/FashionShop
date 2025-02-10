@@ -27,15 +27,15 @@ class FunctionController extends Controller
     public static function button(array $buttons)
     {
         $button = [
-            'info' => 'fa-solid fa-info', 
-            'edit' => 'fa-solid fa-edit', 
+            'info' => 'fa-solid fa-info',
+            'edit' => 'fa-solid fa-edit',
             'cancel' => 'fa-solid fa-xmark',
             'check' => 'fa-solid fa-check',
             'del' => 'fa-solid fa-trash-can',
         ];
-        
+
         $btn_select = array_intersect_key($button, array_flip($buttons));
-        
+
         return $btn_select;
     }
 
@@ -51,7 +51,7 @@ class FunctionController extends Controller
             case '10':
                 return 'Bị hủy bởi người bán';
             case '20':
-                return 'Bị hủy bởi người mua'; 
+                return 'Bị hủy bởi người mua';
             case '30':
                 return 'Bị lỗi khi vận chuyển';
             default:
@@ -66,7 +66,7 @@ class FunctionController extends Controller
     }
 
     public static function cutImage($path) {
-        File::copy(url($path), "logo_32.png");
+//        File::copy(url($path), "logo_32.png");
         // Tải ảnh từ đường dẫn
         $image = Image::read("logo_32.png");
         // Cắt ảnh

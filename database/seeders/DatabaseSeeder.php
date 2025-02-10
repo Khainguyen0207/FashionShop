@@ -2,9 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
-use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,12 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            // CategorySeeder::class,
-            // AboutShopSeeder::class,
-            // UserSeeder::class,
+            CategorySeeder::class,
+            AboutShopSeeder::class,
+            UserSeeder::class,
             OrderSeeder::class,
-            // ProductSeeder::class,
-            // // Thêm các class seeder khác ở đây
+            ProductSeeder::class,
+            // Thêm các class seeder khác ở đây
         ]);
     }
 }
